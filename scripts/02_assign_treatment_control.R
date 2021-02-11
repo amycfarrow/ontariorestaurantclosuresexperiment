@@ -15,17 +15,17 @@ library(here)
 
 ### Get data ###
 # Read in the list of health departments
-all_depts <- read_csv(here::here("inputs/all_health_depts.csv"))
+all_depts <- read_csv(here::here("inputs/data/all_health_depts.csv"))
 
 
 ### Stratify health units by population ###
 
-# Using the data here:
-# https://www12.statcan.gc.ca/health-sante/82-228/search-recherche/lst/page.cfm?Lang=E&GeoLevel=PR&GEOCODE=35
+# Using the data here, from 2017:
+# https://www150.statcan.gc.ca/t1/tbl1/en/cv.action?pid=1710012201
 # We made a list of health departments by population, sorted from high to low, and split the list into 3 groups:
-# Large populations (400,000+), Medium populations (140,000 - 400,000), and Small (< 140,000)
+# Large populations (400,000+), Medium populations (150,000 - 400,000), and Small (< 150,000)
 # Note that the most recently available data was from 2013
-# Some health units amalgamated over 2013-2021, so their populations were added and entered for the amalgamated unit.
+# Some health units amalgamated over 2017-2021, so their populations were added and entered for the amalgamated unit.
 
 # This function applies labels based on which group the health unit falls into:
 assign_size_group <- function (name) {

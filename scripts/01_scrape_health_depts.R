@@ -1,5 +1,5 @@
 #### Preamble ####
-# Purpose: Get a tibble of all health units in Ontario 
+# Purpose: Get a tibble of all health units in Ontario
 # Data Toronto
 # Author: Amy Farrow
 # Date: 2021-02-10
@@ -20,13 +20,13 @@ library(here)
 health_depts <- read_html("https://www.inspection.gc.ca/food-safety-for-industry/information-for-consumers/report-a-concern/restaurants-and-food-services/eng/1323139279504/1323140830752")
 
 # Save the data
-write_html(health_depts, here::here("inputs/raw_health_depts.html"))
+write_html(health_depts, here::here("inputs/data/raw_health_depts.html"))
 
 # To get all the URLs we need a flat version of the page
 flat_page <- readLines(con = "https://www.inspection.gc.ca/food-safety-for-industry/information-for-consumers/report-a-concern/restaurants-and-food-services/eng/1323139279504/1323140830752")
 
 # Save the raw data.
-write_lines (flat_page, here::here("inputs/flat_page_health_depts.txt"))
+write_lines (flat_page, here::here("inputs/data/flat_page_health_depts.txt"))
 
 
 ### Clean the results into a tibble
@@ -91,4 +91,4 @@ all_depts <-
 
 ### Save data ###
 # Save the tibble that lists all health departments, areas, and URLs.
-write_csv(all_depts, here::here("inputs/all_health_depts.csv"))
+write_csv(all_depts, here::here("inputs/data/all_health_depts.csv"))
