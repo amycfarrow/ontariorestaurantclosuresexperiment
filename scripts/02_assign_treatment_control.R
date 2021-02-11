@@ -1,10 +1,33 @@
+#### Preamble ####
+# Purpose: Stratify health units by population and select a treatment and control from each strata. 
+# Data Toronto
+# Author: Amy Farrow
+# Date: 2021-01-10
+# Contact: amy.farrow@mail.utoronto.ca
+# License: MIT
+# Pre-requisites: 
+# - Need to have run 01_scrape_health_depts.R
+
+
+#### Workspace setup ####
 library(tidyverse)
 library(here)
 
-set.seed(24)
-
+### Get data ###
+# Read in the list of health departments
 all_depts <- read_csv(here::here("inputs/all_health_depts.csv"))
 
+
+### Stratify health units by population ###
+
+# Using the data here:
+# https://www12.statcan.gc.ca/health-sante/82-228/search-recherche/lst/page.cfm?Lang=E&GeoLevel=PR&GEOCODE=35
+# We made a list of health departments by population, sorted from high to low, and split the list into 3 groups:
+# Large populations (400,000+), Medium populations (140,000 - 400,000), and Small (< 140,000)
+# Note that the most recently available data was from 2013
+# Some health units amalgamated over 2013-2021, so their populations were added and entered for the amalgamated unit.
+
+# This function applies labels based on which group the health unit falls into:
 assign_size_group <- function (name) {
   if(name %in% c("Toronto",
                  "Region of Peel",
@@ -47,22 +70,18 @@ assign_size_group <- function (name) {
   }
 }
 
-
+# Apply the function (using https://dcl-prog.stanford.edu/purrr-mutate.html)
 all_depts <- all_depts %>%
   mutate(Size = map_chr(Name, assign_size_group))
-# https://dcl-prog.stanford.edu/purrr-mutate.html
 
-
-
-
-
-group_A <- all_depts %>% filter(Size == "A")
-group_B <- all_depts %>% filter(Size == "B")
-group_C <- all_depts %>% filter(Size == "C")
-
+# From each size group, randomly sampling one to be in the treatment group and one to be in the control.
+set.seed(24)
 treatment_control_groups <-
   tibble(Group = c("Treatment", "Control"),
-         Large = pull(sample_n(group_A, size = 2, replace = FALSE),  Name),
-         Medium = pull(sample_n(group_B, size = 2, replace = FALSE), Name),
-         Small = pull(sample_n(group_C, size = 2, replace = FALSE), Name)
+         Large = pull(sample_n(all_depts %>% filter(Size == "A"), size = 2, replace = FALSE),  Name),
+         Medium = pull(sample_n(all_depts %>% filter(Size == "B"), size = 2, replace = FALSE), Name),
+         Small = pull(sample_n(all_depts %>% filter(Size == "C"), size = 2, replace = FALSE), Name)
   )
+
+### Save sampling ###
+write_csv(treatment_control_groups, here::here("outputs/treatment_control_groups.csv"))
