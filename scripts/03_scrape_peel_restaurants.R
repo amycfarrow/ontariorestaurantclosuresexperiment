@@ -1,11 +1,15 @@
 #### Preamble ####
 # Purpose: Get a tibble of all health units in Ontario
-# Data Toronto
 # Author: Amy Farrow
 # Date: 2021-02-10
 # Contact: amy.farrow@mail.utoronto.ca
 # License: MIT
 # Pre-requisites: None
+
+
+
+######## TODO: (optional) write this script rather than copying the csvs the tables and saving.
+
 
 
 #### Workspace setup ####
