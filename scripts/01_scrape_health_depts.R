@@ -1,6 +1,5 @@
 #### Preamble ####
 # Purpose: Get a tibble of all health units in Ontario
-# Data Toronto
 # Author: Amy Farrow
 # Date: 2021-02-10
 # Contact: amy.farrow@mail.utoronto.ca

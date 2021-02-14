@@ -1,0 +1,74 @@
+---
+title: "TITLE"
+author: "Lorena Almaraz De La Garza, Amy Farrow, and Kumalasari Sondjaja"
+date: "`r format(Sys.time(), '%d %B %Y')`"
+output:
+  bookdown::pdf_document2:
+    toc: no
+subtitle: "SUBTITLE"
+abstract: "ABSTRACT"
+thanks: 'Code and data are available at: [github.com/amycfarrow/ontariorestaurantclosuresexperiment](https://github.com/amycfarrow/ontariorestaurantclosuresexperiment).'
+bibliography: references.bib
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+
+library(tidyverse)
+library(bookdown)    # for cross referencing figures and graphs; referencing
+library(scales)      # for fixing date axes
+library(lubridate)   # for manipulating timeseries data
+library(kableExtra)  # for nicer tables
+
+```
+
+
+# Introduction
+
+
+
+
+
+# Data
+
+
+
+
+
+# Discussion
+
+## Overview
+
+
+
+
+## Findings
+
+### FINDING ONE
+
+
+
+### FINDING TWO
+
+
+
+### FINDING THREE
+
+
+
+
+## Limitations
+
+
+
+
+## Future Directions
+
+
+
+
+
+
+\newpage
+
+# References

@@ -1,0 +1,43 @@
+---
+title: "Simulating data for the Ontario restaurant closures experiment"
+author: "Lorena Almaraz De La Garza, Amy Farrow, and Kumalasari Sondjaja"
+date: "`r format(Sys.time(), '%d %B %Y')`"
+output:
+  bookdown::pdf_document2:
+    toc: no
+subtitle: "SUBTITLE"
+abstract: "This document explains how data for the Ontario restaurant closures experiment was simulated, including the research that was used for parameterization and the methods used to randomize data."
+thanks: 'Code and data are available at: [github.com/amycfarrow/ontariorestaurantclosuresexperiment](https://github.com/amycfarrow/ontariorestaurantclosuresexperiment).'
+bibliography: references.bib
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+
+library(tidyverse)
+library(bookdown)    # for cross referencing figures and graphs; referencing
+library(scales)      # for fixing date axes
+library(lubridate)   # for manipulating timeseries data
+library(kableExtra)  # for nicer tables
+
+```
+
+
+# Survey questions that require simulated data
+
+
+
+# Sources of parameterization
+
+
+
+# Methods of data simulation
+
+
+
+
+
+
+\newpage
+
+# References
