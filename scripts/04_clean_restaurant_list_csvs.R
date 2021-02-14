@@ -15,9 +15,9 @@ library(tidyverse)
 
 # Read in data
 
-brant_r <- read_csv("inputs/data/brant_restaurants.csv") %>% 
+brant_r <- read_csv(here("inputs/data/brant_restaurants.csv")) %>% 
   add_column(type = "restaurant") 
-brant_to <- read_csv("inputs/data/brant_takeout.csv") %>% 
+brant_to <- read_csv(here("inputs/data/brant_takeout.csv")) %>% 
   add_column(type = "takeout") # TODO - split type into three (dine in, dine in and t-o, t-o only)
 
 brant_data <- rbind(brant_r, brant_to) %>% 
@@ -29,14 +29,14 @@ brant_data <- rbind(brant_r, brant_to) %>%
   
 
 # Save
-write_csv(brant_data,"outputs/data/brant_data.csv")
+write_csv(brant_data, here("outputs/data/brant_data.csv"))
 
 # Make a function to do same as above
 
 clean_data <- function(unit, csv_r, csv_to, save_dir){
-  unit_r <- read_csv(csv_r) %>% 
+  unit_r <- read_csv(here(csv_r)) %>% 
     add_column(type = "restaurant") 
-  unit_to <- read_csv(csv_to) %>% 
+  unit_to <- read_csv(here(csv_to)) %>% 
     add_column(type = "takeout") # TODO - split type into three (dine in, dine in and t-o, t-o only)
   
  unit_data <- rbind(unit_r, unit_to) %>% 
@@ -46,7 +46,7 @@ clean_data <- function(unit, csv_r, csv_to, save_dir){
     select(name, address, type) %>% 
     add_column(unit = unit) 
   
-  write_csv(unit_data, save_dir)
+  write_csv(unit_data, here(save_dir))
 }
 
 # Use function for remaining health units
@@ -82,4 +82,4 @@ all_units_data <- rbind(brant_data, chatham_kent_data, hamilton_data, peel_data,
 
 # Save
 
-write_csv(all_units_data,"outputs/data/all_units_data.csv")
+write_csv(all_units_data, here("outputs/data/all_units_data.csv"))
