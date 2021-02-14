@@ -1,6 +1,5 @@
 #### Preamble ####
 # Purpose: Stratify health units by population and select a treatment and control from each strata. 
-# Data Toronto
 # Author: Amy Farrow
 # Date: 2021-01-10
 # Contact: amy.farrow@mail.utoronto.ca
