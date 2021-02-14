@@ -1,7 +1,17 @@
+#### Preamble ####
+# Purpose: Compile Yelp restaurant data in Ontario
+# Author: Lala K. Sondjaja
+# Date: Sys.date()
+# Contact: k.sondjaja@mail.utoronto.ca
+# License: MIT
+# Pre-requisites: None
+
+### Install packages ###
 #install.packages("tidyverse")
 #install.packages("jsonlite")
 #install.packages("here")
 
+### Load packages ###
 library(tidyverse)
 library(jsonlite)
 library(here)
