@@ -16,7 +16,7 @@ yelp_business <-  stream_in(file(path))
 yelp_business_df <- as.data.frame(yelp_business)
 
 
-### Make all attributes sub-columns into regular columns ###
+### Make all attributes  sub-columns into regular columns ###
 yelp_attributes <- yelp_business_df$attributes
 yelp_business_df <- subset(yelp_business_df, select=-c(attributes))
 yelp_business_df <- cbind(yelp_business_df, yelp_attributes)
@@ -37,20 +37,13 @@ yelp_business_on <- yelp_business_df[yelp_business_df$state == 'ON',] %>%
          RestaurantsTakeOut,
          RestaurantsDelivery,
          OutdoorSeating,
+         categories,
          business_id
          )
 
 
-### Find all the businesses that might not be restaurants ###
-not_restaurant <- yelp_business_on %>%
-  filter(is.na(RestaurantsTakeOut),
-         is.na(RestaurantsDelivery),
-         is.na(OutdoorSeating)
-         )
-
-
-### Remove non-restaurant businesses ###
-yelp_restaurants_on <- yelp_business_on[!(yelp_business_on$business_id %in% not_restaurant$business_id),]
+### Get only Restaurants & Cafes businesses
+yelp_restaurants_on <- yelp_business_on[grepl("Restaurants|Cafes", yelp_business_on$categories),]
 
 
 ### Write into a .csv file ###
