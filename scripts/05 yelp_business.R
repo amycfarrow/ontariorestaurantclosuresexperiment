@@ -8,6 +8,9 @@ library(here)
 
 
 ### load yelp dataset .json file ###
+# Yelp dataset is not uploaded in inputs/data folder in github repository because the file is too large
+# But the dataset can be downloaded from https://www.yelp.com/dataset/download
+
 path <- here("inputs", "data", "yelp_academic_dataset_business.json")
 yelp_business <-  stream_in(file(path))
 yelp_business_df <- as.data.frame(yelp_business)
