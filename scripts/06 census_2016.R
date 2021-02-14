@@ -26,7 +26,13 @@ census_2016 <- janitor::clean_names(census_2016)
 
 names(census_2016)
 
+
+### Select demographic data to include, relating to employment, income, immigration status, minority groups, commute, etc. ###
+
 demographic_info <- c(1, 6, 8:33, 60:67, 100:104, 661:663, 694:707, 724:726, 1135:1136, 1139, 1140:1150, 1157, 1158, 1170, 1188, 1198, 1216, 1287, 1289:1292, 1324:1337, 1683:1697, 1884:1929)
+
+
+### Function to retrieve data from specific regions and rows ###
 
 get_region_data <- function(x, y){
   x <- census_2016 %>%
@@ -35,12 +41,16 @@ get_region_data <- function(x, y){
     select(dim_profile_of_health_regions_2247, member_id_profile_of_health_regions_2247, dim_sex_3_member_id_1_total_sex, dim_sex_3_member_id_2_male, dim_sex_3_member_id_3_female)
 }
 
+### Retrieve data from the following Health Regions ###
+
 brant <- get_region_data(brant, 3527)
 chatham <- get_region_data(chatham, 3540)
 hamilton <- get_region_data(hamilton, 3537)
 peel <- get_region_data(peel, 3553)
 sudbury <- get_region_data(sudbury, 3561)
 southwestern <- get_region_data(southwestern, 3502)
+
+### Write to separate .csv files ###
 
 write_csv(brant, here("inputs", "data", "brant_census_2016.csv"))
 write_csv(chatham, here("inputs", "data", "chatham_census_2016.csv"))
