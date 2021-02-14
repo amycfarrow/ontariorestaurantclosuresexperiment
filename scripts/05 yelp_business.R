@@ -1,0 +1,54 @@
+#install.packages("tidyverse")
+#install.packages("jsonlite")
+#install.packages("here")
+
+library(tidyverse)
+library(jsonlite)
+library(here)
+
+
+### load yelp dataset .json file ###
+path <- here("inputs", "data", "yelp_academic_dataset_business.json")
+yelp_business <-  stream_in(file(path))
+yelp_business_df <- as.data.frame(yelp_business)
+
+
+### Make all attributes sub-columns into regular columns ###
+yelp_attributes <- yelp_business_df$attributes
+yelp_business_df <- subset(yelp_business_df, select=-c(attributes))
+yelp_business_df <- cbind(yelp_business_df, yelp_attributes)
+names(yelp_business_df)
+
+
+### Put all businesses in Ontario into a dataframe ###
+yelp_business_on <- yelp_business_df[yelp_business_df$state == 'ON',] %>%
+  select(name,
+         address,
+         city,
+         postal_code,
+         latitude,
+         longitude,
+         stars,
+         is_open,
+         RestaurantsPriceRange2,
+         RestaurantsTakeOut,
+         RestaurantsDelivery,
+         OutdoorSeating,
+         business_id
+         )
+
+
+### Find all the businesses that might not be restaurants ###
+not_restaurant <- yelp_business_on %>%
+  filter(is.na(RestaurantsTakeOut),
+         is.na(RestaurantsDelivery),
+         is.na(OutdoorSeating)
+         )
+
+
+### Remove non-restaurant businesses ###
+yelp_restaurants_on <- yelp_business_on[!(yelp_business_on$business_id %in% not_restaurant$business_id),]
+
+
+### Write into a .csv file ###
+write_csv(yelp_restaurants_on, here("inputs", "data", "yelp_restaurants_ontario.csv"))

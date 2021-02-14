@@ -18,9 +18,3 @@ library(XML)
 ### Get raw data ###
 peel_restaurants_raw <- getURL("http://rmop.hedgerowsoftware.com/Portal/Food/Table?SortMode=FacilityName&page=1&PageSize=100000",
                                cookiefile = )
-
-
-
-
-
-
