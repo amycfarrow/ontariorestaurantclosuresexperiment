@@ -1,0 +1,162 @@
+dim_profile_of_health_regions_2247,member_id_profile_of_health_regions_2247,dim_sex_3_member_id_1_total_sex,dim_sex_3_member_id_2_male,dim_sex_3_member_id_3_female
+"Population, 2016",1,196448,...,...
+Population density per square kilometre,6,4.2,...,...
+Total - Age groups and average age of the population - 100% data,8,196445,96585,99860
+0 to 14 years,9,30140,15480,14665
+0 to 4 years,10,9755,5040,4720
+5 to 9 years,11,10330,5325,5000
+10 to 14 years,12,10060,5115,4940
+15 to 64 years,13,128715,63815,64895
+15 to 19 years,14,11180,5725,5450
+20 to 24 years,15,12035,6180,5860
+25 to 29 years,16,11475,5750,5730
+30 to 34 years,17,11345,5640,5710
+35 to 39 years,18,11420,5550,5875
+40 to 44 years,19,11915,5965,5945
+45 to 49 years,20,12810,6375,6435
+50 to 54 years,21,16250,7990,8260
+55 to 59 years,22,16135,7815,8310
+60 to 64 years,23,14145,6830,7320
+65 years and over,24,37590,17290,20300
+65 to 69 years,25,12420,6225,6195
+70 to 74 years,26,9025,4330,4695
+75 to 79 years,27,6740,3135,3600
+80 to 84 years,28,4905,2045,2855
+85 years and over,29,4500,1550,2955
+85 to 89 years,30,2960,1120,1840
+90 to 94 years,31,1225,355,870
+95 to 99 years,32,295,70,225
+100 years and over,33,20,5,20
+Married or living common law,60,96990,48455,48535
+Married,61,76565,38255,38310
+Living common law,62,20425,10195,10230
+Not married and not living common law,63,69320,32655,36665
+Never married,64,42415,23320,19095
+Separated,65,5635,2600,3035
+Divorced,66,9425,4225,5200
+Widowed,67,11845,2510,9330
+Total - Knowledge of official languages for the total population excluding institutional residents - 100% data,100,194350,95760,98590
+English only,101,122580,62335,60245
+French only,102,1565,675,895
+English and French,103,69735,32575,37160
+Neither English nor French,104,460,180,285
+Total - Income statistics in 2015 for the population aged 15 years and over in private households - 100% data,661,162905,79755,83145
+Number of total income recipients aged 15 years and over in private households - 100% data,662,157165,77220,79945
+Median total income in 2015 among recipients ($),663,36548,45188,28742
+Percentage with total income,694,96.5,96.8,96.2
+"Under $10,000 (including loss)",695,20425,8030,12390
+"$10,000 to $19,999",696,25955,9740,16215
+"$20,000 to $29,999",697,20360,7735,12620
+"$30,000 to $39,999",698,18385,8485,9900
+"$40,000 to $49,999",699,16685,8465,8215
+"$50,000 to $59,999",700,13395,6975,6425
+"$60,000 to $69,999",701,9910,5795,4115
+"$70,000 to $79,999",702,7195,4355,2835
+"$80,000 to $89,999",703,5895,3650,2245
+"$90,000 to $99,999",704,5195,3185,2010
+"$100,000 and over",705,13765,10800,2965
+"$100,000 to $149,999",706,10440,8170,2270
+"$150,000 and over",707,3325,2630,695
+Total - Employment income groups in 2015 for the population aged 15 years and over in private households - 100% data,724,162905,79755,83145
+Without employment income,725,48770,19200,29570
+With employment income,726,114135,60560,53570
+Total - Citizenship for the population in private households - 25% sample data,1135,192980,95200,97780
+Canadian citizens,1136,189980,93690,96290
+Not Canadian citizens,1139,2995,1505,1490
+Total - Immigrant status and period of immigration for the population in private households - 25% sample data,1140,192975,95200,97780
+Non-immigrants,1141,181625,89660,91965
+Immigrants,1142,10580,5120,5460
+Before 1981,1143,6195,2960,3235
+1981 to 1990,1144,835,455,375
+1991 to 2000,1145,925,450,470
+2001 to 2010,1146,1525,745,785
+2001 to 2005,1147,715,335,375
+2006 to 2010,1148,810,410,405
+2011 to 2016,1149,1100,505,600
+Non-permanent residents,1150,780,420,355
+Total - Selected places of birth for the immigrant population in private households - 25% sample data,1157,10580,5120,5460
+Americas,1158,1395,595,800
+Europe,1170,6300,3070,3230
+Africa,1188,610,315,295
+Asia,1198,2205,1100,1100
+Oceania and other places of birth,1216,70,35,35
+Refugees,1287,560,310,250
+Total - Aboriginal identity for the population in private households - 25% sample data,1289,192980,95200,97780
+Aboriginal identity,1290,24045,11875,12170
+Single Aboriginal responses,1291,23470,11605,11865
+First Nations (North American Indian),1292,13775,6615,7160
+Total visible minority population,1324,6345,3260,3080
+South Asian,1325,1550,810,735
+Chinese,1326,1040,565,475
+Black,1327,1550,845,710
+Filipino,1328,380,160,225
+Latin American,1329,295,115,175
+Arab,1330,655,315,335
+Southeast Asian,1331,325,165,160
+West Asian,1332,115,50,60
+Korean,1333,95,55,40
+Japanese,1334,115,50,65
+"Visible minority, n.i.e.",1335,60,30,30
+Multiple visible minorities,1336,170,95,75
+Not a visible minority,1337,186640,91935,94705
+"Total - Highest certificate, diploma or degree for the population aged 15 years and over in private households - 25% sample data",1683,162905,79755,83150
+"No certificate, diploma or degree",1684,34095,17495,16600
+Secondary (high) school diploma or equivalency certificate,1685,42540,20090,22450
+"Postsecondary certificate, diploma or degree",1686,86270,42170,44100
+Apprenticeship or trades certificate or diploma,1687,14300,11070,3230
+Trades certificate or diploma other than Certificate of Apprenticeship or Certificate of Qualification,1688,7140,5040,2105
+Certificate of Apprenticeship or Certificate of Qualification,1689,7160,6030,1125
+"College, CEGEP or other non-university certificate or diploma",1690,43875,19200,24675
+University certificate or diploma below bachelor level,1691,2110,845,1265
+"University certificate, diploma or degree at bachelor level or above",1692,25985,11055,14925
+Bachelor's degree,1693,18520,7385,11140
+University certificate or diploma above bachelor level,1694,1990,880,1110
+"Degree in medicine, dentistry, veterinary medicine or optometry",1695,815,490,330
+Master's degree,1696,3910,1800,2105
+Earned doctorate,1697,745,505,240
+Total labour force population aged 15 years and over by occupation - National Occupational Classification (NOC) 2016 - 25% sample data,1884,99555,51260,48295
+Occupation - not applicable,1885,2180,1130,1050
+All occupations,1886,97380,50130,47245
+0 Management occupations,1887,9100,5595,3505
+"1 Business, finance and administration occupations",1888,14950,3530,11420
+2 Natural and applied sciences and related occupations,1889,5245,4150,1095
+3 Health occupations,1890,8400,1475,6925
+"4 Occupations in education, law and social, community and government services",1891,11455,3315,8140
+"5 Occupations in art, culture, recreation and sport",1892,1835,760,1075
+6 Sales and service occupations,1893,22980,9345,13635
+"7 Trades, transport and equipment operators and related occupations",1894,16470,15655,820
+"8 Natural resources, agriculture and related production occupations",1895,4740,4455,285
+9 Occupations in manufacturing and utilities,1896,2200,1850,350
+Total Labour Force population aged 15 years and over by Industry - North American Industry Classification System (NAICS) 2012 - 25% sample data,1897,99555,51260,48295
+Industry - NAICS2012 - not applicable,1898,2180,1125,1050
+All industry categories,1899,97380,50135,47245
+"11 Agriculture, forestry, fishing and hunting",1900,1230,895,335
+"21 Mining, quarrying, and oil and gas extraction",1901,7325,6675,650
+22 Utilities,1902,640,450,190
+23 Construction,1903,7345,6470,875
+31-33 Manufacturing,1904,4955,4215,735
+41 Wholesale trade,1905,2920,2300,620
+44-45 Retail trade,1906,11990,5630,6360
+48-49 Transportation and warehousing,1907,4365,3270,1095
+51 Information and cultural industries,1908,1350,680,670
+52 Finance and insurance,1909,2490,890,1605
+53 Real estate and rental and leasing,1910,1525,900,620
+"54 Professional, scientific and technical services",1911,4445,2295,2150
+55 Management of companies and enterprises,1912,85,55,30
+"56 Administrative and support, waste management and remediation services",1913,3925,2240,1685
+61 Educational services,1914,8020,2375,5645
+62 Health care and social assistance,1915,14365,2245,12110
+"71 Arts, entertainment and recreation",1916,1605,780,825
+72 Accommodation and food services,1917,7175,2690,4485
+81 Other services (except public administration),1918,4060,2000,2065
+91 Public administration,1919,7570,3070,4495
+Total - Place of work status for the employed labour force aged 15 years and over in private households - 25% sample data,1920,90805,46030,44770
+Worked at home,1921,4360,2010,2355
+Worked outside Canada,1922,155,110,50
+No fixed workplace address,1923,10065,7650,2415
+Worked at usual place,1924,76220,36265,39960
+Total - Commuting destination for the employed labour force aged 15 years and over in private households with a usual place of work - 25% sample data,1925,76220,36265,39955
+Commute within census subdivision (CSD) of residence,1926,68360,32065,36290
+Commute to a different census subdivision (CSD) within census division (CD) of residence,1927,2645,1210,1435
+Commute to a different census subdivision (CSD) and census division (CD) within province or territory of residence,1928,4965,2765,2205
+Commute to a different province or territory,1929,250,225,25
