@@ -43,7 +43,9 @@ yelp_business_on <- yelp_business_df[yelp_business_df$state == 'ON',] %>%
 
 
 ### Get only Restaurants & Cafes businesses
-yelp_restaurants_on <- yelp_business_on[grepl("Restaurants|Cafes", yelp_business_on$categories),]
+yelp_restaurants_on <- yelp_business_on[grepl("Restaurants|Cafes|Bars", yelp_business_on$categories),]
+
+nrow(yelp_restaurants_on)
 
 
 ### Write into a .csv file ###
