@@ -16,11 +16,11 @@ library(tidyverse)
 # Read in data
 
 brant_r <- read_csv(here("inputs/data/brant_restaurants.csv")) %>% 
-  add_column(type = "restaurant") 
+  add_column(type = "") 
 brant_to <- read_csv(here("inputs/data/brant_takeout.csv")) %>% 
-  add_column(type = "takeout") # TODO - split type into three (dine in, dine in and t-o, t-o only)
+  add_column(type = "") 
 
-brant_data <- rbind(brant_r, brant_to) %>% 
+brant_data <- unique(rbind(brant_r, brant_to)) %>% 
   clean_names() %>%
   rename(name = facility_name,
          address = site_address) %>% 
@@ -35,11 +35,11 @@ write_csv(brant_data, here("outputs/data/brant_data.csv"))
 
 clean_data <- function(unit, csv_r, csv_to, save_dir){
   unit_r <- read_csv(here(csv_r)) %>% 
-    add_column(type = "restaurant") 
+    add_column(type = "") 
   unit_to <- read_csv(here(csv_to)) %>% 
-    add_column(type = "takeout") # TODO - split type into three (dine in, dine in and t-o, t-o only)
+    add_column(type = "") 
   
- unit_data <- rbind(unit_r, unit_to) %>% 
+ unit_data <- unique(rbind(unit_r, unit_to)) %>% 
     clean_names() %>%
     rename(name = facility_name,
            address = site_address) %>% 
@@ -56,11 +56,6 @@ chatham_kent_data <- clean_data("chatham",
                                 "inputs/data/chatham_kent_takeout.csv",
                                 "outputs/data/chatham_kent_data.csv")
 
-hamilton_data <- clean_data("hamilton",
-                            "inputs/data/hamilton_restaurants.csv",
-                            "inputs/data/hamilton_takeout.csv",
-                            "outputs/data/hamilton_data.csv")
-
 peel_data <- clean_data("peel",
                             "inputs/data/peel_restaurants.csv",
                             "inputs/data/peel_takeout.csv",
@@ -76,10 +71,23 @@ sudbury_data <- clean_data("sudbury",
                                 "inputs/data/sudbury_takeout.csv",
                                 "outputs/data/sudbury_data.csv")
 
+# Clean data further for Hamilton
+
+hamilton_data <- clean_data("hamilton",
+                            "inputs/data/hamilton_restaurants.csv",
+                            "inputs/data/hamilton_takeout.csv",
+                            "outputs/data/hamilton_data.csv") %>% 
+                            filter(!grepl("grocery|convenience|variety|store|market|private club|bakery|
+                            foodmart|food mart|bulk barn|canadian tire|church|gas|dollar|esso|fortinos|
+                            giant tiger|school|college|shop|petro|pioneer|pharma|legion|drug|express", name, ignore.case=TRUE))
+
+write_csv(hamilton_data, here("outputs/data/hamilton_data.csv"))
+
 # Compile info from all health units into main db
 
-all_units_data <- rbind(brant_data, chatham_kent_data, hamilton_data, peel_data, southwestern_data, sudbury_data)
+all_units_data <- unique(rbind(brant_data, chatham_kent_data, hamilton_data, peel_data, southwestern_data, sudbury_data))
 
 # Save
 
 write_csv(all_units_data, here("outputs/data/all_units_data.csv"))
+
