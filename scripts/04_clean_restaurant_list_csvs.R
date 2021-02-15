@@ -78,8 +78,8 @@ hamilton_data <- clean_data("hamilton",
                             "inputs/data/hamilton_takeout.csv",
                             "outputs/data/hamilton_data.csv") %>% 
                             filter(!grepl("grocery|convenience|variety|store|market|private club|bakery|
-                            foodmart|food mart|bulk barn|canadian tire|church|gas|dollar|esso|fortinos|
-                            giant tiger|school|college|shop|petro|pioneer|pharma|legion|drug|express", name, ignore.case=TRUE))
+                            |foodmart|food mart|bulk barn|canadian tire|church|gas|dollar|esso|fortinos|
+                            |giant tiger|school|college|shop|petro|pioneer|pharma|legion|drug|express", name, ignore.case=TRUE))
 
 write_csv(hamilton_data, here("outputs/data/hamilton_data.csv"))
 
