@@ -52,9 +52,20 @@ southwestern <- get_region_data(southwestern, 3502)
 
 ### Write to separate .csv files ###
 
-write_csv(brant, here("inputs", "data", "brant_census_2016.csv"))
-write_csv(chatham, here("inputs", "data", "chatham_census_2016.csv"))
-write_csv(hamilton, here("inputs", "data", "hamilton_census_2016.csv"))
-write_csv(peel, here("inputs", "data", "peel_census_2016.csv"))
-write_csv(sudbury, here("inputs", "data", "sudbury_census_2016.csv"))
-write_csv(southwestern, here("inputs", "data", "southwestern_census_2016.csv"))
+#write_csv(brant, here("inputs", "data", "brant_census_2016.csv"))
+#write_csv(chatham, here("inputs", "data", "chatham_census_2016.csv"))
+#write_csv(hamilton, here("inputs", "data", "hamilton_census_2016.csv"))
+#write_csv(peel, here("inputs", "data", "peel_census_2016.csv"))
+#write_csv(sudbury, here("inputs", "data", "sudbury_census_2016.csv"))
+#write_csv(southwestern, here("inputs", "data", "southwestern_census_2016.csv"))
+
+regions <- c(brant, chatham, hamilton, peel, sudbury, southwestern)
+
+
+for i in 1:length(regions){
+  total_population <- regions[i]$member_id_profile_of_health_regions_2247[regions[i]$dim_profile_of_health_regions_2247 == "Population, 2016"]
+  indigenous_from_25p <- regions[i]$member_id_profile_of_health_regions_2247[regions[i]$dim_profile_of_health_regions_2247 == "Aboriginal identity"]
+  vis_minority_from_25p <- regions[i]$member_id_profile_of_health_regions_2247[regions[i]$dim_profile_of_health_regions_2247 == "Total visible minority population"]
+  
+  info <- c(regions[i], total_population, indigenous_from_25p, vis_minority_from_25p)
+}
