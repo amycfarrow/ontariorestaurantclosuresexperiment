@@ -46,6 +46,7 @@ yelp_business_on <- yelp_business_df[yelp_business_df$state == 'ON',] %>%
          RestaurantsPriceRange2,
          RestaurantsTakeOut,
          RestaurantsDelivery,
+         RestaurantsTableService,
          OutdoorSeating,
          categories,
          business_id
