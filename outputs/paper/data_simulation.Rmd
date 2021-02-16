@@ -17,24 +17,169 @@ knitr::opts_chunk$set(echo = TRUE)
 library(tidyverse)
 library(bookdown)    # for cross referencing figures and graphs; referencing
 library(kableExtra)  # for nicer tables
+library(here) # for working in projects
+
+```
+
+```{r}
+# read in the data
+all_units_data <- read_csv(here::here("outputs/data/all_units_data.csv"))
+
+# assign treatment and control based on health unit random selection
+all_units_data <- all_units_data %>%
+  mutate(group = case_when(unit == "brant" ~ "treatment",
+                           unit == "peel" ~ "treatment",
+                           unit == "sudbury" ~ "treatment",
+                           unit == "hamilton" ~ "control",
+                           unit == "southwestern" ~ "control",
+                           unit == "chatham" ~ "control"
+                           ))
+
+all_treat <- all_units_data %>%
+  filter(group == "treatment")
+
+all_control <- all_units_data %>%
+  filter(group == "control")
+
+# count the numbers for treat, control, and total
+num_treat <- first(count(all_treat))
+
+num_control <- first(count(all_control))
+
+num_total <- first(count(all_units_data))
+
+
+# randomly select 10% of total to be surveyed for #1, and recount.
+set.seed(24)
+survey_1 <- bind_rows(
+  all_treat %>%
+    mutate(surveyed = sample(x = c("yes", "no"),
+                             size = num_treat,
+                             prob = c(0.1, 0.9),
+                             replace = TRUE
+                             )) %>%
+    filter(surveyed == "yes"),
+  all_control %>%
+    mutate(surveyed = sample(x = c("yes", "no"),
+                             size = num_control,
+                             prob = c(0.1, 0.9),
+                             replace = TRUE
+                             )) %>%
+    filter(surveyed == "yes")
+)
+  
+
+num_treat_1 <- first(count(survey_1 %>%
+                   filter(group == "treatment")))
+
+num_control_1 <- first(count(survey_1 %>%
+                   filter(group == "control")))
+
+num_total_1 <- first(count(survey_1))
+
+
+# randomly select 10% of total to be surveyed for #2, and recount.
+set.seed(25)
+survey_2 <- bind_rows(
+  all_treat %>%
+  mutate(surveyed = sample(x = c("yes", "no"),
+                           size = num_treat,
+                           prob = c(0.1, 0.9),
+                           replace = TRUE
+                           )) %>%
+  filter(surveyed == "yes"),
+  all_control %>%
+  mutate(surveyed = sample(x = c("yes", "no"),
+                           size = num_control,
+                           prob = c(0.1, 0.9),
+                           replace = TRUE
+                           )) %>%
+  filter(surveyed == "yes")
+)
+
+num_treat_2 <- first(count(survey_2 %>%
+                   filter(group == "treatment")))
+
+num_control_2 <- first(count(survey_2 %>%
+                   filter(group == "control")))
+
+num_total_2 <- first(count(survey_2))
 
 ```
 
 
+
 # Survey questions that require simulated data
 
+# Type of service provided
+LORENA
+## Survey 1
+```{r}
+
+```
+
+## Survey 2
+```{r}
+
+```
 
 
-# Sources of parameterization
+# Number of employees
+LALA
+## Survey 1
+```{r}
+
+```
+
+## Survey 2
+```{r}
+
+```
 
 
+# Revenue
+AMY
 
-# Methods of data simulation
+## Survey 1
+```{r}
+
+```
+
+## Survey 2
+```{r}
+
+```
 
 
+# Applications for government assistance
+LORENA
+## Survey 1
+```{r}
+
+```
+
+## Survey 2
+```{r}
+
+```
 
 
+# Demographic traits of owners
+AMY AND LALA
 
+## Survey 1
+```{r}
+
+```
+
+## Survey 2
+
+Based on:https://www150.statcan.gc.ca/t1/tbl1/en/cv.action?pid=3310028101
+there seems to be no significant difference in business losses for disabled owners.
+
+```{r}
+
+```
 
 \newpage
 
