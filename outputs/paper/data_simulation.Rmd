@@ -154,6 +154,7 @@ and combo places need -38*14/31 = -17
 
 ## Survey 2
 ```{r}
+set.seed(24)
 survey_2 <- survey_2 %>%
   mutate(revenue = 41975 * rf(num_total,10,5))
 
