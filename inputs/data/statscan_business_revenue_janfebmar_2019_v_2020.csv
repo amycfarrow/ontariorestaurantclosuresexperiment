@@ -1,0 +1,211 @@
+﻿REF_DATE,GEO,DGUID,Business characteristics,Revenue change,UOM,UOM_ID,SCALAR_FACTOR,SCALAR_ID,VECTOR,COORDINATE,VALUE,STATUS,SYMBOL,TERMINATED,DECIMALS
+Mar-20,Canada,2016A000011124,"Canada, all provinces and territories",Revenue increased 10% or more,Percent,239,units,0,v1146348028,1.1.1,5.8,,,,1
+Mar-20,Canada,2016A000011124,"Canada, all provinces and territories",Revenue increased 1% to less than 10%,Percent,239,units,0,v1146348080,1.1.2,4.7,,,,1
+Mar-20,Canada,2016A000011124,"Canada, all provinces and territories",No change in revenue,Percent,239,units,0,v1146348132,1.1.3,14.3,,,,1
+Mar-20,Canada,2016A000011124,"Canada, all provinces and territories",Revenue decreased 1% to less than 10%,Percent,239,units,0,v1146348184,1.1.4,6.9,,,,1
+Mar-20,Canada,2016A000011124,"Canada, all provinces and territories",Revenue decreased 10% to less than 20%,Percent,239,units,0,v1146348236,1.1.5,11,,,,1
+Mar-20,Canada,2016A000011124,"Canada, all provinces and territories",Revenue decreased 20% to less than 30%,Percent,239,units,0,v1146348288,1.1.6,11,,,,1
+Mar-20,Canada,2016A000011124,"Canada, all provinces and territories",Revenue decreased 30% to less than 40%,Percent,239,units,0,v1146348340,1.1.7,10.2,,,,1
+Mar-20,Canada,2016A000011124,"Canada, all provinces and territories",Revenue decreased 40% to less than 50%,Percent,239,units,0,v1146348392,1.1.8,6.1,,,,1
+Mar-20,Canada,2016A000011124,"Canada, all provinces and territories",Revenue decreased 50% or more,Percent,239,units,0,v1146348444,1.1.9,26.2,,,,1
+Mar-20,Canada,2016A000011124,"Canada, all provinces and territories",Not applicable,Percent,239,units,0,v1146348496,1.1.10,3.9,,,,1
+Mar-20,Canada,2016A000011124,Ontario,Revenue increased 10% or more,Percent,239,units,0,v1146348034,1.7.1,6.1,,,,1
+Mar-20,Canada,2016A000011124,Ontario,Revenue increased 1% to less than 10%,Percent,239,units,0,v1146348086,1.7.2,4.5,,,,1
+Mar-20,Canada,2016A000011124,Ontario,No change in revenue,Percent,239,units,0,v1146348138,1.7.3,12.6,,,,1
+Mar-20,Canada,2016A000011124,Ontario,Revenue decreased 1% to less than 10%,Percent,239,units,0,v1146348190,1.7.4,6.3,,,,1
+Mar-20,Canada,2016A000011124,Ontario,Revenue decreased 10% to less than 20%,Percent,239,units,0,v1146348242,1.7.5,10.2,,,,1
+Mar-20,Canada,2016A000011124,Ontario,Revenue decreased 20% to less than 30%,Percent,239,units,0,v1146348294,1.7.6,11.3,,,,1
+Mar-20,Canada,2016A000011124,Ontario,Revenue decreased 30% to less than 40%,Percent,239,units,0,v1146348346,1.7.7,10.6,,,,1
+Mar-20,Canada,2016A000011124,Ontario,Revenue decreased 40% to less than 50%,Percent,239,units,0,v1146348398,1.7.8,5.9,,,,1
+Mar-20,Canada,2016A000011124,Ontario,Revenue decreased 50% or more,Percent,239,units,0,v1146348450,1.7.9,28.5,,,,1
+Mar-20,Canada,2016A000011124,Ontario,Not applicable,Percent,239,units,0,v1146348502,1.7.10,3.9,,,,1
+Mar-20,Canada,2016A000011124,"North American Industry Classification System (NAICS), all industries",Revenue increased 10% or more,Percent,239,units,0,v1146348040,1.13.1,5.8,,,,1
+Mar-20,Canada,2016A000011124,"North American Industry Classification System (NAICS), all industries",Revenue increased 1% to less than 10%,Percent,239,units,0,v1146348092,1.13.2,4.7,,,,1
+Mar-20,Canada,2016A000011124,"North American Industry Classification System (NAICS), all industries",No change in revenue,Percent,239,units,0,v1146348144,1.13.3,14.3,,,,1
+Mar-20,Canada,2016A000011124,"North American Industry Classification System (NAICS), all industries",Revenue decreased 1% to less than 10%,Percent,239,units,0,v1146348196,1.13.4,6.9,,,,1
+Mar-20,Canada,2016A000011124,"North American Industry Classification System (NAICS), all industries",Revenue decreased 10% to less than 20%,Percent,239,units,0,v1146348248,1.13.5,11,,,,1
+Mar-20,Canada,2016A000011124,"North American Industry Classification System (NAICS), all industries",Revenue decreased 20% to less than 30%,Percent,239,units,0,v1146348300,1.13.6,11,,,,1
+Mar-20,Canada,2016A000011124,"North American Industry Classification System (NAICS), all industries",Revenue decreased 30% to less than 40%,Percent,239,units,0,v1146348352,1.13.7,10.2,,,,1
+Mar-20,Canada,2016A000011124,"North American Industry Classification System (NAICS), all industries",Revenue decreased 40% to less than 50%,Percent,239,units,0,v1146348404,1.13.8,6.1,,,,1
+Mar-20,Canada,2016A000011124,"North American Industry Classification System (NAICS), all industries",Revenue decreased 50% or more,Percent,239,units,0,v1146348456,1.13.9,26.2,,,,1
+Mar-20,Canada,2016A000011124,"North American Industry Classification System (NAICS), all industries",Not applicable,Percent,239,units,0,v1146348508,1.13.10,3.9,,,,1
+Mar-20,Canada,2016A000011124,Accommodation and food services [72],Revenue increased 10% or more,Percent,239,units,0,v1146348058,1.31.1,1,,,,1
+Mar-20,Canada,2016A000011124,Accommodation and food services [72],Revenue increased 1% to less than 10%,Percent,239,units,0,v1146348110,1.31.2,2.2,,,,1
+Mar-20,Canada,2016A000011124,Accommodation and food services [72],No change in revenue,Percent,239,units,0,v1146348162,1.31.3,4.6,,,,1
+Mar-20,Canada,2016A000011124,Accommodation and food services [72],Revenue decreased 1% to less than 10%,Percent,239,units,0,v1146348214,1.31.4,3.8,,,,1
+Mar-20,Canada,2016A000011124,Accommodation and food services [72],Revenue decreased 10% to less than 20%,Percent,239,units,0,v1146348266,1.31.5,10.8,,,,1
+Mar-20,Canada,2016A000011124,Accommodation and food services [72],Revenue decreased 20% to less than 30%,Percent,239,units,0,v1146348318,1.31.6,12.2,,,,1
+Mar-20,Canada,2016A000011124,Accommodation and food services [72],Revenue decreased 30% to less than 40%,Percent,239,units,0,v1146348370,1.31.7,11,,,,1
+Mar-20,Canada,2016A000011124,Accommodation and food services [72],Revenue decreased 40% to less than 50%,Percent,239,units,0,v1146348422,1.31.8,7.3,,,,1
+Mar-20,Canada,2016A000011124,Accommodation and food services [72],Revenue decreased 50% or more,Percent,239,units,0,v1146348474,1.31.9,42.1,,,,1
+Mar-20,Canada,2016A000011124,Accommodation and food services [72],Not applicable,Percent,239,units,0,v1146348526,1.31.10,4.9,,,,1
+Mar-20,Canada,2016A000011124,"Business size of employment, all employment sizes",Revenue increased 10% or more,Percent,239,units,0,v1146348061,1.34.1,5.8,,,,1
+Mar-20,Canada,2016A000011124,"Business size of employment, all employment sizes",Revenue increased 1% to less than 10%,Percent,239,units,0,v1146348113,1.34.2,4.7,,,,1
+Mar-20,Canada,2016A000011124,"Business size of employment, all employment sizes",No change in revenue,Percent,239,units,0,v1146348165,1.34.3,14.3,,,,1
+Mar-20,Canada,2016A000011124,"Business size of employment, all employment sizes",Revenue decreased 1% to less than 10%,Percent,239,units,0,v1146348217,1.34.4,6.9,,,,1
+Mar-20,Canada,2016A000011124,"Business size of employment, all employment sizes",Revenue decreased 10% to less than 20%,Percent,239,units,0,v1146348269,1.34.5,11,,,,1
+Mar-20,Canada,2016A000011124,"Business size of employment, all employment sizes",Revenue decreased 20% to less than 30%,Percent,239,units,0,v1146348321,1.34.6,11,,,,1
+Mar-20,Canada,2016A000011124,"Business size of employment, all employment sizes",Revenue decreased 30% to less than 40%,Percent,239,units,0,v1146348373,1.34.7,10.2,,,,1
+Mar-20,Canada,2016A000011124,"Business size of employment, all employment sizes",Revenue decreased 40% to less than 50%,Percent,239,units,0,v1146348425,1.34.8,6.1,,,,1
+Mar-20,Canada,2016A000011124,"Business size of employment, all employment sizes",Revenue decreased 50% or more,Percent,239,units,0,v1146348477,1.34.9,26.2,,,,1
+Mar-20,Canada,2016A000011124,"Business size of employment, all employment sizes",Not applicable,Percent,239,units,0,v1146348529,1.34.10,3.9,,,,1
+Mar-20,Canada,2016A000011124,0 employees,Revenue increased 10% or more,Percent,239,units,0,v1146348062,1.35.1,4,,,,1
+Mar-20,Canada,2016A000011124,0 employees,Revenue increased 1% to less than 10%,Percent,239,units,0,v1146348114,1.35.2,2.4,,,,1
+Mar-20,Canada,2016A000011124,0 employees,No change in revenue,Percent,239,units,0,v1146348166,1.35.3,19.4,,,,1
+Mar-20,Canada,2016A000011124,0 employees,Revenue decreased 1% to less than 10%,Percent,239,units,0,v1146348218,1.35.4,4.3,,,,1
+Mar-20,Canada,2016A000011124,0 employees,Revenue decreased 10% to less than 20%,Percent,239,units,0,v1146348270,1.35.5,7.4,,,,1
+Mar-20,Canada,2016A000011124,0 employees,Revenue decreased 20% to less than 30%,Percent,239,units,0,v1146348322,1.35.6,6.4,,,,1
+Mar-20,Canada,2016A000011124,0 employees,Revenue decreased 30% to less than 40%,Percent,239,units,0,v1146348374,1.35.7,7.3,,,,1
+Mar-20,Canada,2016A000011124,0 employees,Revenue decreased 40% to less than 50%,Percent,239,units,0,v1146348426,1.35.8,5.3,,,,1
+Mar-20,Canada,2016A000011124,0 employees,Revenue decreased 50% or more,Percent,239,units,0,v1146348478,1.35.9,35.3,,,,1
+Mar-20,Canada,2016A000011124,0 employees,Not applicable,Percent,239,units,0,v1146348530,1.35.10,8.1,,,,1
+Mar-20,Canada,2016A000011124,1 to 4 employees,Revenue increased 10% or more,Percent,239,units,0,v1146348063,1.36.1,4.4,,,,1
+Mar-20,Canada,2016A000011124,1 to 4 employees,Revenue increased 1% to less than 10%,Percent,239,units,0,v1146348115,1.36.2,3.1,,,,1
+Mar-20,Canada,2016A000011124,1 to 4 employees,No change in revenue,Percent,239,units,0,v1146348167,1.36.3,14.6,,,,1
+Mar-20,Canada,2016A000011124,1 to 4 employees,Revenue decreased 1% to less than 10%,Percent,239,units,0,v1146348219,1.36.4,5.1,,,,1
+Mar-20,Canada,2016A000011124,1 to 4 employees,Revenue decreased 10% to less than 20%,Percent,239,units,0,v1146348271,1.36.5,9.1,,,,1
+Mar-20,Canada,2016A000011124,1 to 4 employees,Revenue decreased 20% to less than 30%,Percent,239,units,0,v1146348323,1.36.6,10.9,,,,1
+Mar-20,Canada,2016A000011124,1 to 4 employees,Revenue decreased 30% to less than 40%,Percent,239,units,0,v1146348375,1.36.7,11.1,,,,1
+Mar-20,Canada,2016A000011124,1 to 4 employees,Revenue decreased 40% to less than 50%,Percent,239,units,0,v1146348427,1.36.8,6.6,,,,1
+Mar-20,Canada,2016A000011124,1 to 4 employees,Revenue decreased 50% or more,Percent,239,units,0,v1146348479,1.36.9,31,,,,1
+Mar-20,Canada,2016A000011124,1 to 4 employees,Not applicable,Percent,239,units,0,v1146348531,1.36.10,4,,,,1
+Mar-20,Canada,2016A000011124,5 to 19 employees,Revenue increased 10% or more,Percent,239,units,0,v1146348064,1.37.1,6.3,,,,1
+Mar-20,Canada,2016A000011124,5 to 19 employees,Revenue increased 1% to less than 10%,Percent,239,units,0,v1146348116,1.37.2,4.8,,,,1
+Mar-20,Canada,2016A000011124,5 to 19 employees,No change in revenue,Percent,239,units,0,v1146348168,1.37.3,11.2,,,,1
+Mar-20,Canada,2016A000011124,5 to 19 employees,Revenue decreased 1% to less than 10%,Percent,239,units,0,v1146348220,1.37.4,7.4,,,,1
+Mar-20,Canada,2016A000011124,5 to 19 employees,Revenue decreased 10% to less than 20%,Percent,239,units,0,v1146348272,1.37.5,12.2,,,,1
+Mar-20,Canada,2016A000011124,5 to 19 employees,Revenue decreased 20% to less than 30%,Percent,239,units,0,v1146348324,1.37.6,12.1,,,,1
+Mar-20,Canada,2016A000011124,5 to 19 employees,Revenue decreased 30% to less than 40%,Percent,239,units,0,v1146348376,1.37.7,11.7,,,,1
+Mar-20,Canada,2016A000011124,5 to 19 employees,Revenue decreased 40% to less than 50%,Percent,239,units,0,v1146348428,1.37.8,7.1,,,,1
+Mar-20,Canada,2016A000011124,5 to 19 employees,Revenue decreased 50% or more,Percent,239,units,0,v1146348480,1.37.9,24.6,,,,1
+Mar-20,Canada,2016A000011124,5 to 19 employees,Not applicable,Percent,239,units,0,v1146348532,1.37.10,2.7,,,,1
+Mar-20,Canada,2016A000011124,20 to 99 employees,Revenue increased 10% or more,Percent,239,units,0,v1146348065,1.38.1,8.2,,,,1
+Mar-20,Canada,2016A000011124,20 to 99 employees,Revenue increased 1% to less than 10%,Percent,239,units,0,v1146348117,1.38.2,7.3,,,,1
+Mar-20,Canada,2016A000011124,20 to 99 employees,No change in revenue,Percent,239,units,0,v1146348169,1.38.3,12.2,,,,1
+Mar-20,Canada,2016A000011124,20 to 99 employees,Revenue decreased 1% to less than 10%,Percent,239,units,0,v1146348221,1.38.4,9.4,,,,1
+Mar-20,Canada,2016A000011124,20 to 99 employees,Revenue decreased 10% to less than 20%,Percent,239,units,0,v1146348273,1.38.5,13.7,,,,1
+Mar-20,Canada,2016A000011124,20 to 99 employees,Revenue decreased 20% to less than 30%,Percent,239,units,0,v1146348325,1.38.6,13.7,,,,1
+Mar-20,Canada,2016A000011124,20 to 99 employees,Revenue decreased 30% to less than 40%,Percent,239,units,0,v1146348377,1.38.7,11,,,,1
+Mar-20,Canada,2016A000011124,20 to 99 employees,Revenue decreased 40% to less than 50%,Percent,239,units,0,v1146348429,1.38.8,6,,,,1
+Mar-20,Canada,2016A000011124,20 to 99 employees,Revenue decreased 50% or more,Percent,239,units,0,v1146348481,1.38.9,16.9,,,,1
+Mar-20,Canada,2016A000011124,20 to 99 employees,Not applicable,Percent,239,units,0,v1146348533,1.38.10,1.5,,,,1
+Mar-20,Canada,2016A000011124,100 to 249 employees,Revenue increased 10% or more,Percent,239,units,0,v1146348066,1.39.1,9.7,,,,1
+Mar-20,Canada,2016A000011124,100 to 249 employees,Revenue increased 1% to less than 10%,Percent,239,units,0,v1146348118,1.39.2,8.1,,,,1
+Mar-20,Canada,2016A000011124,100 to 249 employees,No change in revenue,Percent,239,units,0,v1146348170,1.39.3,15.4,,,,1
+Mar-20,Canada,2016A000011124,100 to 249 employees,Revenue decreased 1% to less than 10%,Percent,239,units,0,v1146348222,1.39.4,11.1,,,,1
+Mar-20,Canada,2016A000011124,100 to 249 employees,Revenue decreased 10% to less than 20%,Percent,239,units,0,v1146348274,1.39.5,19.2,,,,1
+Mar-20,Canada,2016A000011124,100 to 249 employees,Revenue decreased 20% to less than 30%,Percent,239,units,0,v1146348326,1.39.6,10.9,,,,1
+Mar-20,Canada,2016A000011124,100 to 249 employees,Revenue decreased 30% to less than 40%,Percent,239,units,0,v1146348378,1.39.7,7.7,,,,1
+Mar-20,Canada,2016A000011124,100 to 249 employees,Revenue decreased 40% to less than 50%,Percent,239,units,0,v1146348430,1.39.8,3.8,,,,1
+Mar-20,Canada,2016A000011124,100 to 249 employees,Revenue decreased 50% or more,Percent,239,units,0,v1146348482,1.39.9,12,,,,1
+Mar-20,Canada,2016A000011124,100 to 249 employees,Not applicable,Percent,239,units,0,v1146348534,1.39.10,2.2,,,,1
+Mar-20,Canada,2016A000011124,250 to 499 employees,Revenue increased 10% or more,Percent,239,units,0,v1146348067,1.40.1,8.1,,,,1
+Mar-20,Canada,2016A000011124,250 to 499 employees,Revenue increased 1% to less than 10%,Percent,239,units,0,v1146348119,1.40.2,11.7,,,,1
+Mar-20,Canada,2016A000011124,250 to 499 employees,No change in revenue,Percent,239,units,0,v1146348171,1.40.3,12.1,,,,1
+Mar-20,Canada,2016A000011124,250 to 499 employees,Revenue decreased 1% to less than 10%,Percent,239,units,0,v1146348223,1.40.4,15.2,,,,1
+Mar-20,Canada,2016A000011124,250 to 499 employees,Revenue decreased 10% to less than 20%,Percent,239,units,0,v1146348275,1.40.5,12.1,,,,1
+Mar-20,Canada,2016A000011124,250 to 499 employees,Revenue decreased 20% to less than 30%,Percent,239,units,0,v1146348327,1.40.6,13.9,,,,1
+Mar-20,Canada,2016A000011124,250 to 499 employees,Revenue decreased 30% to less than 40%,Percent,239,units,0,v1146348379,1.40.7,8.5,,,,1
+Mar-20,Canada,2016A000011124,250 to 499 employees,Revenue decreased 40% to less than 50%,Percent,239,units,0,v1146348431,1.40.8,3.6,,,,1
+Mar-20,Canada,2016A000011124,250 to 499 employees,Revenue decreased 50% or more,Percent,239,units,0,v1146348483,1.40.9,12.6,,,,1
+Mar-20,Canada,2016A000011124,250 to 499 employees,Not applicable,Percent,239,units,0,v1146348535,1.40.10,2.2,,,,1
+Mar-20,Canada,2016A000011124,500 or more employees,Revenue increased 10% or more,Percent,239,units,0,v1146348068,1.41.1,5.2,,,,1
+Mar-20,Canada,2016A000011124,500 or more employees,Revenue increased 1% to less than 10%,Percent,239,units,0,v1146348120,1.41.2,11.3,,,,1
+Mar-20,Canada,2016A000011124,500 or more employees,No change in revenue,Percent,239,units,0,v1146348172,1.41.3,18.4,,,,1
+Mar-20,Canada,2016A000011124,500 or more employees,Revenue decreased 1% to less than 10%,Percent,239,units,0,v1146348224,1.41.4,14.2,,,,1
+Mar-20,Canada,2016A000011124,500 or more employees,Revenue decreased 10% to less than 20%,Percent,239,units,0,v1146348276,1.41.5,15.2,,,,1
+Mar-20,Canada,2016A000011124,500 or more employees,Revenue decreased 20% to less than 30%,Percent,239,units,0,v1146348328,1.41.6,12.9,,,,1
+Mar-20,Canada,2016A000011124,500 or more employees,Revenue decreased 30% to less than 40%,Percent,239,units,0,v1146348380,1.41.7,5.2,,,,1
+Mar-20,Canada,2016A000011124,500 or more employees,Revenue decreased 40% to less than 50%,Percent,239,units,0,v1146348432,1.41.8,1.3,,,,1
+Mar-20,Canada,2016A000011124,500 or more employees,Revenue decreased 50% or more,Percent,239,units,0,v1146348484,1.41.9,12.6,,,,1
+Mar-20,Canada,2016A000011124,500 or more employees,Not applicable,Percent,239,units,0,v1146348536,1.41.10,3.9,,,,1
+Mar-20,Canada,2016A000011124,"Business type, all businesses",Revenue increased 10% or more,Percent,239,units,0,v1146348069,1.42.1,5.8,,,,1
+Mar-20,Canada,2016A000011124,"Business type, all businesses",Revenue increased 1% to less than 10%,Percent,239,units,0,v1146348121,1.42.2,4.7,,,,1
+Mar-20,Canada,2016A000011124,"Business type, all businesses",No change in revenue,Percent,239,units,0,v1146348173,1.42.3,14.3,,,,1
+Mar-20,Canada,2016A000011124,"Business type, all businesses",Revenue decreased 1% to less than 10%,Percent,239,units,0,v1146348225,1.42.4,6.9,,,,1
+Mar-20,Canada,2016A000011124,"Business type, all businesses",Revenue decreased 10% to less than 20%,Percent,239,units,0,v1146348277,1.42.5,11,,,,1
+Mar-20,Canada,2016A000011124,"Business type, all businesses",Revenue decreased 20% to less than 30%,Percent,239,units,0,v1146348329,1.42.6,11,,,,1
+Mar-20,Canada,2016A000011124,"Business type, all businesses",Revenue decreased 30% to less than 40%,Percent,239,units,0,v1146348381,1.42.7,10.2,,,,1
+Mar-20,Canada,2016A000011124,"Business type, all businesses",Revenue decreased 40% to less than 50%,Percent,239,units,0,v1146348433,1.42.8,6.1,,,,1
+Mar-20,Canada,2016A000011124,"Business type, all businesses",Revenue decreased 50% or more,Percent,239,units,0,v1146348485,1.42.9,26.2,,,,1
+Mar-20,Canada,2016A000011124,"Business type, all businesses",Not applicable,Percent,239,units,0,v1146348537,1.42.10,3.9,,,,1
+Mar-20,Canada,2016A000011124,Private sector businesses,Revenue increased 10% or more,Percent,239,units,0,v1146348071,1.44.1,6.1,,,,1
+Mar-20,Canada,2016A000011124,Private sector businesses,Revenue increased 1% to less than 10%,Percent,239,units,0,v1146348123,1.44.2,4.8,,,,1
+Mar-20,Canada,2016A000011124,Private sector businesses,No change in revenue,Percent,239,units,0,v1146348175,1.44.3,13.4,,,,1
+Mar-20,Canada,2016A000011124,Private sector businesses,Revenue decreased 1% to less than 10%,Percent,239,units,0,v1146348227,1.44.4,6.6,,,,1
+Mar-20,Canada,2016A000011124,Private sector businesses,Revenue decreased 10% to less than 20%,Percent,239,units,0,v1146348279,1.44.5,11.1,,,,1
+Mar-20,Canada,2016A000011124,Private sector businesses,Revenue decreased 20% to less than 30%,Percent,239,units,0,v1146348331,1.44.6,11,,,,1
+Mar-20,Canada,2016A000011124,Private sector businesses,Revenue decreased 30% to less than 40%,Percent,239,units,0,v1146348383,1.44.7,10.2,,,,1
+Mar-20,Canada,2016A000011124,Private sector businesses,Revenue decreased 40% to less than 50%,Percent,239,units,0,v1146348435,1.44.8,6.2,,,,1
+Mar-20,Canada,2016A000011124,Private sector businesses,Revenue decreased 50% or more,Percent,239,units,0,v1146348487,1.44.9,26.9,,,,1
+Mar-20,Canada,2016A000011124,Private sector businesses,Not applicable,Percent,239,units,0,v1146348539,1.44.10,3.8,,,,1
+Mar-20,Canada,2016A000011124,"Majority ownership, all ownerships",Revenue increased 10% or more,Percent,239,units,0,v1146348073,1.46.1,5.8,,,,1
+Mar-20,Canada,2016A000011124,"Majority ownership, all ownerships",Revenue increased 1% to less than 10%,Percent,239,units,0,v1146348125,1.46.2,4.7,,,,1
+Mar-20,Canada,2016A000011124,"Majority ownership, all ownerships",No change in revenue,Percent,239,units,0,v1146348177,1.46.3,14.3,,,,1
+Mar-20,Canada,2016A000011124,"Majority ownership, all ownerships",Revenue decreased 1% to less than 10%,Percent,239,units,0,v1146348229,1.46.4,6.9,,,,1
+Mar-20,Canada,2016A000011124,"Majority ownership, all ownerships",Revenue decreased 10% to less than 20%,Percent,239,units,0,v1146348281,1.46.5,11,,,,1
+Mar-20,Canada,2016A000011124,"Majority ownership, all ownerships",Revenue decreased 20% to less than 30%,Percent,239,units,0,v1146348333,1.46.6,11,,,,1
+Mar-20,Canada,2016A000011124,"Majority ownership, all ownerships",Revenue decreased 30% to less than 40%,Percent,239,units,0,v1146348385,1.46.7,10.2,,,,1
+Mar-20,Canada,2016A000011124,"Majority ownership, all ownerships",Revenue decreased 40% to less than 50%,Percent,239,units,0,v1146348437,1.46.8,6.1,,,,1
+Mar-20,Canada,2016A000011124,"Majority ownership, all ownerships",Revenue decreased 50% or more,Percent,239,units,0,v1146348489,1.46.9,26.2,,,,1
+Mar-20,Canada,2016A000011124,"Majority ownership, all ownerships",Not applicable,Percent,239,units,0,v1146348541,1.46.10,3.9,,,,1
+Mar-20,Canada,2016A000011124,"Majority ownership, woman",Revenue increased 10% or more,Percent,239,units,0,v1146348074,1.47.1,4.7,,,,1
+Mar-20,Canada,2016A000011124,"Majority ownership, woman",Revenue increased 1% to less than 10%,Percent,239,units,0,v1146348126,1.47.2,4.4,,,,1
+Mar-20,Canada,2016A000011124,"Majority ownership, woman",No change in revenue,Percent,239,units,0,v1146348178,1.47.3,10.2,,,,1
+Mar-20,Canada,2016A000011124,"Majority ownership, woman",Revenue decreased 1% to less than 10%,Percent,239,units,0,v1146348230,1.47.4,4.6,,,,1
+Mar-20,Canada,2016A000011124,"Majority ownership, woman",Revenue decreased 10% to less than 20%,Percent,239,units,0,v1146348282,1.47.5,8.1,,,,1
+Mar-20,Canada,2016A000011124,"Majority ownership, woman",Revenue decreased 20% to less than 30%,Percent,239,units,0,v1146348334,1.47.6,9.9,,,,1
+Mar-20,Canada,2016A000011124,"Majority ownership, woman",Revenue decreased 30% to less than 40%,Percent,239,units,0,v1146348386,1.47.7,9.2,,,,1
+Mar-20,Canada,2016A000011124,"Majority ownership, woman",Revenue decreased 40% to less than 50%,Percent,239,units,0,v1146348438,1.47.8,7.3,,,,1
+Mar-20,Canada,2016A000011124,"Majority ownership, woman",Revenue decreased 50% or more,Percent,239,units,0,v1146348490,1.47.9,36.2,,,,1
+Mar-20,Canada,2016A000011124,"Majority ownership, woman",Not applicable,Percent,239,units,0,v1146348542,1.47.10,5.3,,,,1
+Mar-20,Canada,2016A000011124,"Majority ownership, First Nations, Métis or Inuit",Revenue increased 10% or more,Percent,239,units,0,v1146348075,1.48.1,6.3,,,,1
+Mar-20,Canada,2016A000011124,"Majority ownership, First Nations, Métis or Inuit",Revenue increased 1% to less than 10%,Percent,239,units,0,v1146348127,1.48.2,3.9,,,,1
+Mar-20,Canada,2016A000011124,"Majority ownership, First Nations, Métis or Inuit",No change in revenue,Percent,239,units,0,v1146348179,1.48.3,15.9,,,,1
+Mar-20,Canada,2016A000011124,"Majority ownership, First Nations, Métis or Inuit",Revenue decreased 1% to less than 10%,Percent,239,units,0,v1146348231,1.48.4,4.8,,,,1
+Mar-20,Canada,2016A000011124,"Majority ownership, First Nations, Métis or Inuit",Revenue decreased 10% to less than 20%,Percent,239,units,0,v1146348283,1.48.5,8.7,,,,1
+Mar-20,Canada,2016A000011124,"Majority ownership, First Nations, Métis or Inuit",Revenue decreased 20% to less than 30%,Percent,239,units,0,v1146348335,1.48.6,8.7,,,,1
+Mar-20,Canada,2016A000011124,"Majority ownership, First Nations, Métis or Inuit",Revenue decreased 30% to less than 40%,Percent,239,units,0,v1146348387,1.48.7,9.2,,,,1
+Mar-20,Canada,2016A000011124,"Majority ownership, First Nations, Métis or Inuit",Revenue decreased 40% to less than 50%,Percent,239,units,0,v1146348439,1.48.8,5.3,,,,1
+Mar-20,Canada,2016A000011124,"Majority ownership, First Nations, Métis or Inuit",Revenue decreased 50% or more,Percent,239,units,0,v1146348491,1.48.9,33.3,,,,1
+Mar-20,Canada,2016A000011124,"Majority ownership, First Nations, Métis or Inuit",Not applicable,Percent,239,units,0,v1146348543,1.48.10,3.9,,,,1
+Mar-20,Canada,2016A000011124,"Majority ownership, visible minority",Revenue increased 10% or more,Percent,239,units,0,v1146348076,1.49.1,5.8,,,,1
+Mar-20,Canada,2016A000011124,"Majority ownership, visible minority",Revenue increased 1% to less than 10%,Percent,239,units,0,v1146348128,1.49.2,4.6,,,,1
+Mar-20,Canada,2016A000011124,"Majority ownership, visible minority",No change in revenue,Percent,239,units,0,v1146348180,1.49.3,7.6,,,,1
+Mar-20,Canada,2016A000011124,"Majority ownership, visible minority",Revenue decreased 1% to less than 10%,Percent,239,units,0,v1146348232,1.49.4,5.1,,,,1
+Mar-20,Canada,2016A000011124,"Majority ownership, visible minority",Revenue decreased 10% to less than 20%,Percent,239,units,0,v1146348284,1.49.5,8.8,,,,1
+Mar-20,Canada,2016A000011124,"Majority ownership, visible minority",Revenue decreased 20% to less than 30%,Percent,239,units,0,v1146348336,1.49.6,12.7,,,,1
+Mar-20,Canada,2016A000011124,"Majority ownership, visible minority",Revenue decreased 30% to less than 40%,Percent,239,units,0,v1146348388,1.49.7,12,,,,1
+Mar-20,Canada,2016A000011124,"Majority ownership, visible minority",Revenue decreased 40% to less than 50%,Percent,239,units,0,v1146348440,1.49.8,6.7,,,,1
+Mar-20,Canada,2016A000011124,"Majority ownership, visible minority",Revenue decreased 50% or more,Percent,239,units,0,v1146348492,1.49.9,32.6,,,,1
+Mar-20,Canada,2016A000011124,"Majority ownership, visible minority",Not applicable,Percent,239,units,0,v1146348544,1.49.10,3.9,,,,1
+Mar-20,Canada,2016A000011124,"Majority ownership, immigrant to Canada",Revenue increased 10% or more,Percent,239,units,0,v1146348077,1.50.1,5.1,,,,1
+Mar-20,Canada,2016A000011124,"Majority ownership, immigrant to Canada",Revenue increased 1% to less than 10%,Percent,239,units,0,v1146348129,1.50.2,4.1,,,,1
+Mar-20,Canada,2016A000011124,"Majority ownership, immigrant to Canada",No change in revenue,Percent,239,units,0,v1146348181,1.50.3,9.5,,,,1
+Mar-20,Canada,2016A000011124,"Majority ownership, immigrant to Canada",Revenue decreased 1% to less than 10%,Percent,239,units,0,v1146348233,1.50.4,7.5,,,,1
+Mar-20,Canada,2016A000011124,"Majority ownership, immigrant to Canada",Revenue decreased 10% to less than 20%,Percent,239,units,0,v1146348285,1.50.5,9.1,,,,1
+Mar-20,Canada,2016A000011124,"Majority ownership, immigrant to Canada",Revenue decreased 20% to less than 30%,Percent,239,units,0,v1146348337,1.50.6,11.7,,,,1
+Mar-20,Canada,2016A000011124,"Majority ownership, immigrant to Canada",Revenue decreased 30% to less than 40%,Percent,239,units,0,v1146348389,1.50.7,9.7,,,,1
+Mar-20,Canada,2016A000011124,"Majority ownership, immigrant to Canada",Revenue decreased 40% to less than 50%,Percent,239,units,0,v1146348441,1.50.8,7.6,,,,1
+Mar-20,Canada,2016A000011124,"Majority ownership, immigrant to Canada",Revenue decreased 50% or more,Percent,239,units,0,v1146348493,1.50.9,30.1,,,,1
+Mar-20,Canada,2016A000011124,"Majority ownership, immigrant to Canada",Not applicable,Percent,239,units,0,v1146348545,1.50.10,5.5,,,,1
+Mar-20,Canada,2016A000011124,"Majority ownership, person with a disability",Revenue increased 10% or more,Percent,239,units,0,v1146348078,1.51.1,5.7,,,,1
+Mar-20,Canada,2016A000011124,"Majority ownership, person with a disability",Revenue increased 1% to less than 10%,Percent,239,units,0,v1146348130,1.51.2,1.9,,,,1
+Mar-20,Canada,2016A000011124,"Majority ownership, person with a disability",No change in revenue,Percent,239,units,0,v1146348182,1.51.3,7.5,,,,1
+Mar-20,Canada,2016A000011124,"Majority ownership, person with a disability",Revenue decreased 1% to less than 10%,Percent,239,units,0,v1146348234,1.51.4,3.8,,,,1
+Mar-20,Canada,2016A000011124,"Majority ownership, person with a disability",Revenue decreased 10% to less than 20%,Percent,239,units,0,v1146348286,1.51.5,5.7,,,,1
+Mar-20,Canada,2016A000011124,"Majority ownership, person with a disability",Revenue decreased 20% to less than 30%,Percent,239,units,0,v1146348338,1.51.6,7.5,,,,1
+Mar-20,Canada,2016A000011124,"Majority ownership, person with a disability",Revenue decreased 30% to less than 40%,Percent,239,units,0,v1146348390,1.51.7,8.5,,,,1
+Mar-20,Canada,2016A000011124,"Majority ownership, person with a disability",Revenue decreased 40% to less than 50%,Percent,239,units,0,v1146348442,1.51.8,12.3,,,,1
+Mar-20,Canada,2016A000011124,"Majority ownership, person with a disability",Revenue decreased 50% or more,Percent,239,units,0,v1146348494,1.51.9,41.5,,,,1
+Mar-20,Canada,2016A000011124,"Majority ownership, person with a disability",Not applicable,Percent,239,units,0,v1146348546,1.51.10,5.7,,,,1
+Mar-20,Canada,2016A000011124,"Majority ownership, other",Revenue increased 10% or more,Percent,239,units,0,v1146348079,1.52.1,6.1,,,,1
+Mar-20,Canada,2016A000011124,"Majority ownership, other",Revenue increased 1% to less than 10%,Percent,239,units,0,v1146348131,1.52.2,4.8,,,,1
+Mar-20,Canada,2016A000011124,"Majority ownership, other",No change in revenue,Percent,239,units,0,v1146348183,1.52.3,15.8,,,,1
+Mar-20,Canada,2016A000011124,"Majority ownership, other",Revenue decreased 1% to less than 10%,Percent,239,units,0,v1146348235,1.52.4,7.6,,,,1
+Mar-20,Canada,2016A000011124,"Majority ownership, other",Revenue decreased 10% to less than 20%,Percent,239,units,0,v1146348287,1.52.5,12,,,,1
+Mar-20,Canada,2016A000011124,"Majority ownership, other",Revenue decreased 20% to less than 30%,Percent,239,units,0,v1146348339,1.52.6,11.2,,,,1
+Mar-20,Canada,2016A000011124,"Majority ownership, other",Revenue decreased 30% to less than 40%,Percent,239,units,0,v1146348391,1.52.7,10.5,,,,1
+Mar-20,Canada,2016A000011124,"Majority ownership, other",Revenue decreased 40% to less than 50%,Percent,239,units,0,v1146348443,1.52.8,5.6,,,,1
+Mar-20,Canada,2016A000011124,"Majority ownership, other",Revenue decreased 50% or more,Percent,239,units,0,v1146348495,1.52.9,22.9,,,,1
+Mar-20,Canada,2016A000011124,"Majority ownership, other",Not applicable,Percent,239,units,0,v1146348547,1.52.10,3.4,,,,1
