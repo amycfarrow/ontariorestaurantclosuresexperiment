@@ -29,8 +29,21 @@ library(kableExtra)  # for nicer tables
 
 # Data
 
+```{r}
+treatment_control_groups
+```
 
+```{r}
+all_units_data
+```
 
+```{r}
+table_for_surveys
+```
+
+```{r}
+
+```
 
 
 # Discussion
@@ -43,15 +56,15 @@ library(kableExtra)  # for nicer tables
 ## Findings
 
 ### FINDING ONE
-
+ Closures had a negative impact
 
 
 ### FINDING TWO
-
+Closures had a stronger negative impact on dine-in only restaurants
 
 
 ### FINDING THREE
-
+CLosures had a stronger negative impact on POC-owned
 
 
 

@@ -5,7 +5,7 @@
 # Contact: amy.farrow@mail.utoronto.ca
 # License: MIT
 # Pre-requisites: 
-# - Need to have run 01_scrape_health_depts.R
+# - Need to have run 01_scrape_health_depts
 
 
 #### Workspace setup ####
@@ -84,3 +84,49 @@ treatment_control_groups <-
 
 ### Save sampling ###
 write_csv(treatment_control_groups, here::here("outputs/treatment_control_groups.csv"))
+
+## assign groups on table of all treatment and control restaurants
+all_units_data <- all_units_data %>%
+  mutate(group = case_when(unit == "brant" ~ "treatment",
+                           unit == "peel" ~ "treatment",
+                           unit == "sudbury" ~ "treatment",
+                           unit == "hamilton" ~ "control",
+                           unit == "southwestern" ~ "control",
+                           unit == "chatham" ~ "control"
+  )) %>%
+  select(-type)
+
+
+# construct table to conduct the survey from.
+
+all_treat <- all_units_data %>%
+  filter(group == "treatment")
+
+all_control <- all_units_data %>%
+  filter(group == "control")
+
+
+set.seed(24)
+table_for_surveys <- bind_rows(
+  all_treat %>%
+    mutate(surveyed = sample(x = c("yes", "no"),
+                             size = first(count(all_treat)),
+                             prob = c(0.15, 0.85),
+                             replace = TRUE
+    )) %>%
+    filter(surveyed == "yes"),
+  all_control %>%
+    mutate(surveyed = sample(x = c("yes", "no"),
+                             size = first(count(all_control)),
+                             prob = c(0.15, 0.85),
+                             replace = TRUE
+    )) %>%
+    filter(surveyed == "yes")
+) 
+
+set.seed(24)
+table_for_surveys <- table_for_surveys %>%
+  mutate(ID = pull(tibble(sample(seq(1, first(count(table_for_surveys)), by = 1), size = first(count(table_for_surveys)), replace = FALSE)))) %>%
+  select(-surveyed)
+
+write_csv(table_for_surveys, here::here("outputs/table_for_surveys.csv"))
