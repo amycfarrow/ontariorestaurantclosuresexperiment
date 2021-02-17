@@ -74,25 +74,35 @@ all_depts <- all_depts %>%
   mutate(Size = map_chr(Name, assign_size_group))
 
 # From each size group, randomly sampling one to be in the treatment group and one to be in the control.
-set.seed(24)
+
+set.seed(19893)
 treatment_control_groups <-
-  tibble(Group = c("Treatment", "Control"),
-         Large = pull(sample_n(all_depts %>% filter(Size == "A"), size = 2, replace = FALSE),  Name),
-         Medium = pull(sample_n(all_depts %>% filter(Size == "B"), size = 2, replace = FALSE), Name),
-         Small = pull(sample_n(all_depts %>% filter(Size == "C"), size = 2, replace = FALSE), Name)
+  tibble(Group = c("Treatment", "Treatment", "Control", "Control"),
+         Large = pull(sample_n(all_depts %>% filter(Size == "A"), size = 4, replace = FALSE),  Name),
+         Medium = pull(sample_n(all_depts %>% filter(Size == "B"), size = 4, replace = FALSE), Name),
+         Small = pull(sample_n(all_depts %>% filter(Size == "C"), size = 4, replace = FALSE), Name)
   )
+
+
 
 ### Save sampling ###
 write_csv(treatment_control_groups, here::here("outputs/treatment_control_groups.csv"))
 
+all_units_data <- read_csv(here::here("outputs/data/all_units_data.csv"))
 ## assign groups on table of all treatment and control restaurants
 all_units_data <- all_units_data %>%
-  mutate(group = case_when(unit == "brant" ~ "treatment",
-                           unit == "peel" ~ "treatment",
-                           unit == "sudbury" ~ "treatment",
-                           unit == "hamilton" ~ "control",
+  mutate(group = case_when(unit == "hamilton" ~ "treatment",
+                           unit == "simcoe" ~ "treatment",
+                           unit == "haliburton" ~ "treatment",
+                           unit == "windsor" ~ "treatment",
+                           unit == "algoma" ~ "treatment",
+                           unit == "timiskaming" ~ "treatment",
+                           unit == "durham" ~ "control",
+                           unit == "waterloo" ~ "control",
                            unit == "southwestern" ~ "control",
-                           unit == "chatham" ~ "control"
+                           unit == "sudbury" ~ "control",
+                           unit == "brant" ~ "control",
+                           unit == "northwestern" ~ "control"
   )) %>%
   select(-type)
 
@@ -106,7 +116,7 @@ all_control <- all_units_data %>%
   filter(group == "control")
 
 
-set.seed(24)
+set.seed(19893)
 table_for_surveys <- bind_rows(
   all_treat %>%
     mutate(surveyed = sample(x = c("yes", "no"),
@@ -124,8 +134,9 @@ table_for_surveys <- bind_rows(
     filter(surveyed == "yes")
 ) 
 
-set.seed(24)
+set.seed(19893)
 table_for_surveys <- table_for_surveys %>%
+  mutate(verify = substr(address, -3, -1)) %>%
   mutate(ID = pull(tibble(sample(seq(1, first(count(table_for_surveys)), by = 1), size = first(count(table_for_surveys)), replace = FALSE)))) %>%
   select(-surveyed)
 

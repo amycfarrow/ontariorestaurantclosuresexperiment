@@ -18,6 +18,9 @@ library(tidyverse)
 library(bookdown)    # for cross referencing figures and graphs; referencing
 library(kableExtra)  # for nicer tables
 
+# NOTE: scripts 01_scrape_health_depts and 02_sampling_frame, 
+# and markdown file data_simulation must have been run already
+
 ```
 
 
