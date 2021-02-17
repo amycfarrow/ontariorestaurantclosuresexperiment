@@ -51,15 +51,35 @@ clean_data <- function(unit, csv_r, csv_to, save_dir){
 
 # Use function for remaining health units
 
-chatham_kent_data <- clean_data("chatham",
-                                "inputs/data/chatham_kent_restaurants.csv",
-                                "inputs/data/chatham_kent_takeout.csv",
-                                "outputs/data/chatham_kent_data.csv")
+#chatham_kent_data <- clean_data("chatham",
+#                                "inputs/data/chatham_kent_restaurants.csv",
+#                                "inputs/data/chatham_kent_takeout.csv",
+#                                "outputs/data/chatham_kent_data.csv")
 
-peel_data <- clean_data("peel",
-                            "inputs/data/peel_restaurants.csv",
-                            "inputs/data/peel_takeout.csv",
-                            "outputs/data/peel_data.csv")
+#peel_data <- clean_data("peel",
+#                            "inputs/data/peel_restaurants.csv",
+#                            "inputs/data/peel_takeout.csv",
+#                            "outputs/data/peel_data.csv")
+
+algoma_data <- clean_data("algoma",
+                          "inputs/data/algoma_restaurants.csv",
+                          "inputs/data/algoma_takeout.csv",
+                          "outputs/data/algoma_data.csv")
+
+durham_data <- clean_data("durham",
+                           "inputs/data/durham_restaurants.csv",
+                           "inputs/data/durham_takeout.csv",
+                           "outputs/data/durham_data.csv")
+
+northwestern_data <- clean_data("northwestern",
+                          "inputs/data/northwestern_restaurants.csv",
+                          "inputs/data/northwestern_takeout.csv",
+                          "outputs/data/northwestern_data.csv")
+
+simcoe_data <- clean_data("simcoe",
+                                "inputs/data/simcoe_restaurants.csv",
+                                "inputs/data/simcoe_takeout.csv",
+                                "outputs/data/simcoe_data.csv")
 
 southwestern_data <- clean_data("southwestern",
                         "inputs/data/southwestern_restaurants.csv",
@@ -71,7 +91,22 @@ sudbury_data <- clean_data("sudbury",
                                 "inputs/data/sudbury_takeout.csv",
                                 "outputs/data/sudbury_data.csv")
 
-# Clean data further for Hamilton
+timiskaming_data <- clean_data("timiskaming",
+                          "inputs/data/timiskaming_restaurants.csv",
+                          "inputs/data/timiskaming_takeout.csv",
+                          "outputs/data/timiskaming_data.csv")
+
+windsor_data <- clean_data("windsor",
+                           "inputs/data/windsor_restaurants.csv",
+                           "inputs/data/windsor_takeout.csv",
+                           "outputs/data/windsor_data.csv")
+
+waterloo_data <- clean_data("waterloo",
+                          "inputs/data/waterloo_restaurants_and_takeout.csv",
+                          "inputs/data/waterloo_restaurants_and_takeout.csv",
+                          "outputs/data/waterloo_data.csv")
+
+# Clean data further for Hamilton & Haliburton
 
 hamilton_data <- clean_data("hamilton",
                             "inputs/data/hamilton_restaurants.csv",
@@ -83,9 +118,20 @@ hamilton_data <- clean_data("hamilton",
 
 write_csv(hamilton_data, here("outputs/data/hamilton_data.csv"))
 
+
+haliburton_data <- clean_data("hamilton",
+                            "inputs/data/haliburton_restaurants.csv",
+                            "inputs/data/haliburton_restaurants.csv",
+                            "outputs/data/haliburton_data.csv") %>% 
+                            filter(!grepl("grocery|convenience|variety|store|market|private club|bakery|
+                            |foodmart|food mart|bulk barn|canadian tire|church|gas|dollar|esso|fortinos|
+                            |giant tiger|school|college|shop|petro|pioneer|pharma|legion|drug|express", name, ignore.case=TRUE))
+
+write_csv(haliburton_data, here("outputs/data/haliburton_data.csv"))
+
 # Compile info from all health units into main db
 
-all_units_data <- unique(rbind(brant_data, chatham_kent_data, hamilton_data, peel_data, southwestern_data, sudbury_data))
+all_units_data <- unique(rbind(algoma_data, brant_data, durham_data, hamilton_data, haliburton_data, northwestern_data, simcoe_data, southwestern_data, sudbury_data, timiskaming_data, windsor_data, waterloo_data))
 
 # Save
 
