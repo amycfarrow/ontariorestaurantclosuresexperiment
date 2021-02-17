@@ -23,12 +23,12 @@ library(here) # for working in projects
 
 ```{r}
 # read in the data
-# NOTE: scripts 01_scrape_health_depts and 02_sampling_frame must have been run already
+# NOTE: scripts 01_scrape_health_depts, 04_clean_restaurant_list_csvs, and 02_sampling_frame must have been run already
 
 table_for_surveys <- read_csv(here::here("outputs/table_for_surveys.csv"))
 
 survey_1 <- table_for_surveys %>%
-  select(ID, group) %>%
+  select(ID, group, verify) %>%
   arrange(ID)
 
 # count the numbers for treat, control, and total
@@ -50,20 +50,100 @@ survey_1
 # Survey questions that require simulated data
 
 # Type of service provided
-LORENA
+```{r}
+# Read in data
+yelp_data <- read_csv(here("inputs/data/yelp_restaurants_ontario.csv")) %>% 
+  na.omit() # Remove all NAs
+total_restaurants <- count(yelp_data)
+
+
+# Check proportion of RestaurantsTakeOut
+takeout <- yelp_data %>% 
+  select(RestaurantsTakeOut)
+summary(takeout)
+```
+```{r}
+takeout_percentage <- takeout %>%
+  group_by(RestaurantsTakeOut) %>% 
+  summarize(count = n()) %>%
+  mutate(percentage = count/sum(count))
+
+takeout_percentage
+```
+```{r}
+# Check proportion of RestaurantsTableService
+tableserv <- yelp_data %>% 
+  select(RestaurantsTableService)
+summary(tableserv)
+```
+```{r}
+tableserv_percentage <- tableserv %>%
+  group_by(RestaurantsTableService) %>% 
+  summarize(count = n()) %>%
+  mutate(percentage = count/sum(count))
+
+tableserv_percentage
+```
+
+```{r}
+# Calculate invalid responses (neither dine-in nor takeout)
+invalid <- yelp_data %>% 
+  filter(RestaurantsTableService == FALSE & RestaurantsTakeOut == FALSE) %>% 
+  count()
+
+valid_restaurants <- total_restaurants-invalid
+
+# Calculate service type percentages
+takeout_only <- yelp_data %>% 
+  filter(RestaurantsTableService == FALSE & RestaurantsTakeOut == TRUE) %>% 
+  count()/valid_restaurants
+
+dinein_only <- yelp_data %>% 
+  filter(RestaurantsTableService == TRUE & RestaurantsTakeOut == FALSE) %>% 
+  count()/valid_restaurants
+
+both <- yelp_data %>% 
+  filter(RestaurantsTableService == TRUE & RestaurantsTakeOut == TRUE) %>% 
+  count()/valid_restaurants
+
+service_percentage<- data.frame(
+  service = c("takeout", "dinein", "both"),
+  percentage = c(takeout_only$n, dinein_only$n, both$n), options(digits = 2)
+)
+
+ service_percentage
+```
+According to Ontario restaurant data from Yelp (cite, KSondjaja source), approximately 6% of restaurants
+offer dine in service, 32.5% offer takeout, and 61.5% offer both.
+
 ## Survey 1
 ```{r}
+set.seed(19)
 survey_1 <- survey_1 %>%
+  mutate(service_type = sample(x = c("dinein",
+                                     "both",
+                                     "takeout"),
+      size = num_total,
+      replace = TRUE, 
+      prob = c(0.06, 0.615, 0.325)
+      ))
 ```
 
 ## Survey 2
 ```{r}
+set.seed(19)
 survey_2 <- survey_2 %>%
+  mutate(service_type = sample(x = c("dinein",
+                                     "both",
+                                     "takeout"),
+      size = num_total,
+      replace = TRUE, 
+      prob = c(0.06, 0.615, 0.325)
+      ))
 ```
 
 
 # Demographic traits of owners
-AMY AND LALA
 
 https://www.ic.gc.ca/eic/site/061.nsf/eng/h_03115.html
 0.5% are owned by persons with disabilities
@@ -180,9 +260,12 @@ minority owned businesses had a median decrease of about 25%.
 Decrease of about 12%.
 
 ```{r}
-set.seed(19894)
+set.seed(19893)
 survey_2 <- survey_2 %>%
-  mutate(revenue = 41975 * rf(num_total,10,5))
+  mutate(revenue = 41975 * rf(num_total,10,5)) %>%
+  mutate(factor = abs(rnorm(num_total, 1, .05))) %>%
+  mutate(revenue = factor * revenue) %>%
+  select(-factor)
 
 survey_2 <-
   bind_rows(
@@ -200,19 +283,18 @@ survey_2 <-
   ) %>%
   arrange(ID)
 
-####################33 THIS WONT WORK UNTIL LORENA"S PART IS ADDED ON TYPE
 survey_2 <-
   bind_rows(
     survey_2 %>%
-      filter(type == "dinein" & group == "treatment") %>%
+      filter(service_type == "dinein" & group == "treatment") %>%
       mutate(revenue = 0.55 * revenue)
     ,
     survey_2 %>%
-      filter(type == "both" & group == "treatment") %>%
+      filter(service_type == "both" & group == "treatment") %>%
       mutate(revenue = 0.83 * revenue)
     ,
     survey_2 %>%
-      filter(type == "takeout" & group == "treatment") %>%
+      filter(service_type == "takeout" & group == "treatment") %>%
       mutate(revenue = revenue)
     ,
     survey_2 %>%

@@ -1,3 +1,5 @@
 Group,Large,Medium,Small
-Treatment,Region of Peel,Sudbury and Districts,Brant County
-Control,Hamilton,Southwestern Ontario,Chatham-Kent
+Treatment,Hamilton,"Haliburton, Kawartha, Pine Ridge District",Algoma
+Treatment,Simcoe Muskoka,Windsor-Essex County,Timiskaming
+Control,Durham Region,Southwestern Ontario,Brant County
+Control,Region of Waterloo,Sudbury and Districts,Northwestern Health

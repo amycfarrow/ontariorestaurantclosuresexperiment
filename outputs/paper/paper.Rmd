@@ -18,7 +18,7 @@ library(tidyverse)
 library(bookdown)    # for cross referencing figures and graphs; referencing
 library(kableExtra)  # for nicer tables
 
-# NOTE: scripts 01_scrape_health_depts and 02_sampling_frame, 
+# NOTE: scripts 01_scrape_health_depts, 04_clean_restaurant_list_csvs, and 02_sampling_frame, 
 # and markdown file data_simulation must have been run already
 
 ```
@@ -33,14 +33,17 @@ library(kableExtra)  # for nicer tables
 # Data
 
 ```{r}
+treatment_control_groups <- read_csv(here::here("outputs/treatment_control_groups.csv"))
 treatment_control_groups
 ```
 
 ```{r}
+all_units_data <- read_csv(here::here("outputs/data/all_units_data.csv"))
 all_units_data
 ```
 
 ```{r}
+table_for_surveys <- read_csv(here::here("outputs/table_for_surveys.csv"))
 table_for_surveys
 ```
 

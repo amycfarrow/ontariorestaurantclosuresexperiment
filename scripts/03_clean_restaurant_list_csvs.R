@@ -114,7 +114,8 @@ hamilton_data <- clean_data("hamilton",
                             "outputs/data/hamilton_data.csv") %>% 
                             filter(!grepl("grocery|convenience|variety|store|market|private club|bakery|
                             |foodmart|food mart|bulk barn|canadian tire|church|gas|dollar|esso|fortinos|
-                            |giant tiger|school|college|shop|petro|pioneer|pharma|legion|drug|express", name, ignore.case=TRUE))
+                            |giant tiger|school|college|shop|petro|pioneer|pharma|legion|drug|express|
+                            wee watch|club|centre|camp|valu|sobeys|shell|army|park|community|meals", name, ignore.case=TRUE))
 
 write_csv(hamilton_data, here("outputs/data/hamilton_data.csv"))
 
@@ -125,7 +126,8 @@ haliburton_data <- clean_data("haliburton",
                             "outputs/data/haliburton_data.csv") %>% 
                             filter(!grepl("grocery|convenience|variety|store|market|private club|bakery|
                             |foodmart|food mart|bulk barn|canadian tire|church|gas|dollar|esso|fortinos|
-                            |giant tiger|school|college|shop|petro|pioneer|pharma|legion|drug|express", name, ignore.case=TRUE))
+                            |giant tiger|school|college|shop|petro|pioneer|pharma|legion|drug|express|
+                            wee watch|club|centre|camp|valu|sobeys|shell|army|park|community|meals", name, ignore.case=TRUE))
 
 write_csv(haliburton_data, here("outputs/data/haliburton_data.csv"))
 
