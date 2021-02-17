@@ -11,27 +11,29 @@
 
 #### 2019:
 
-# From https://www150.statcan.gc.ca/t1/tbl1/en/tv.action?pid=3310022201&pickMembers%5B0%5D=2.1&pickMembers%5B1%5D=3.116
-# 27,985 employers
+# From https://www150.statcan.gc.ca/t1/tbl1/en/tv.action?pid=3310022201&pickMembers%5B0%5D=2.1&pickMembers%5B1%5D=3.423
+# 25,836 employers
 
-# From https://www150.statcan.gc.ca/t1/tbl1/en/tv.action?pid=3310022301&pickMembers%5B0%5D=2.116
-# 9,508 non-employers
+# From https://www150.statcan.gc.ca/t1/tbl1/en/tv.action?pid=3310022301&pickMembers%5B0%5D=2.423
+# 6,968 non-employers
 
-# So 37,493 businesses in 2019
+# So 32,804 businesses in 2019
 
-# From https://www150.statcan.gc.ca/t1/tbl1/en/tv.action?pid=2110017101&pickMembers%5B0%5D=1.7&pickMembers%5B1%5D=2.1&cubeTimeFrame.startYear=2015&cubeTimeFrame.endYear=2019&referencePeriods=20150101%2C20190101
-# there is 30,999,300,000 in revenue in 2019.
+# https://www150.statcan.gc.ca/t1/tbl1/en/tv.action?pid=2110017101&pickMembers%5B0%5D=1.7&pickMembers%5B1%5D=2.2&cubeTimeFrame.startYear=2015&cubeTimeFrame.endYear=2019&referencePeriods=20150101%2C20190101
+# full-service restaurants have 13,456,600,000 in revenue in 2019.
+# https://www150.statcan.gc.ca/t1/tbl1/en/tv.action?pid=2110017101&pickMembers%5B0%5D=1.7&pickMembers%5B1%5D=2.3&cubeTimeFrame.startYear=2015&cubeTimeFrame.endYear=2019&referencePeriods=20150101%2C20190101
+# limited-service eating places have 14,082,700,000 in revenue in 2019.
 
-# so averaging 826,802 in annual revenue.
+# so averaging 839,510 in annual revenue.
 
-# 68,900 average per month.
+# 69,959 average per month.
 
 # This is including non-restaurants, presumably, because caterers would be included in "food services and drinking places"
 
 # From http://www.mbel.io/2019/08/23/kaggle-restaurant-revenue-prediction/
 # we can see the distribution looks like an F distribution, or a log normal distribution.
 # rf(n, df1, df2, ncp) = rf(num_rest, 10, 5) should have a mean of 5/3
-# so we would multiply by 41,340 to get the mean where we want.
+# so we would multiply by 41,975 to get the mean where we want.
 
 # looks like 2% closed permanently: https://www150.statcan.gc.ca/t1/tbl1/en/tv.action?pid=3310025001
 # maybe 3%? https://www150.statcan.gc.ca/t1/tbl1/en/tv.action?pid=3310027601
@@ -47,4 +49,12 @@
 # 
 
 #survey_1 <- survey_1 %>%
-#mutate(revenue = 41340 * rf(num_total,10,5))
+#mutate(revenue = 41975 * rf(num_total,10,5))
+
+# from https://www.eater.com/2020/3/24/21184301/restaurant-industry-data-impact-covid-19-coronavirus
+# revenues went from +5 to -35 when the shutdowns started. loss of -38. 
+# but takeout places need -0, dine-in only places -100, and combo places the right amount to make the weighted average -38.
+# then account that closures are only closed for 14 days out of 31. 
+
+#survey_2 <- survey_2 %>%
+#mutate(revenue = 34839 * rf(num_total,10,5))
