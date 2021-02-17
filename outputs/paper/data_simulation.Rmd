@@ -21,7 +21,7 @@ library(here) # for working in projects
 
 ```
 
-```{r}
+```{r surveyframe}
 # read in the data
 # NOTE: scripts 01_scrape_health_depts, 04_clean_restaurant_list_csvs, and 02_sampling_frame must have been run already
 
@@ -47,9 +47,20 @@ survey_1
 
 
 
+
+
+
+
+
+
+
+
 # Survey questions that require simulated data
 
+
+
 # Type of service provided
+
 ```{r}
 # Read in data
 yelp_data <- read_csv(here("inputs/data/yelp_restaurants_ontario.csv")) %>% 
@@ -143,11 +154,19 @@ survey_2 <- survey_2 %>%
 ```
 
 
+
+
+
+
+
+
+
+
+
+
 # Demographic traits of owners
 
-https://www.ic.gc.ca/eic/site/061.nsf/eng/h_03115.html
-0.5% are owned by persons with disabilities
-
+0.5% of small to medium enterprises in Canada are owned by persons with disabilities [@ownershipdemos].
 
 ## Survey 1
 ```{r}
@@ -157,16 +176,9 @@ survey_1 <- survey_1 %>%
                              size = num_total,
                              prob = c(0.005, .995),
                              replace = TRUE))
-
-survey_1 <- survey_1 %>%
-  
 ```
 
 ## Survey 2
-
-Based on:https://www150.statcan.gc.ca/t1/tbl1/en/cv.action?pid=3310028101
-there seems to be no significant difference in business losses for disabled owners.
-
 ```{r}
 set.seed(19893)
 survey_2 <- survey_2 %>%
@@ -174,20 +186,196 @@ survey_2 <- survey_2 %>%
                              size = num_total,
                              prob = c(0.005, .995),
                              replace = TRUE))
-
-survey_2 <- survey_2 %>%
 ```
+
+
+
+Download link: https://www12.statcan.gc.ca/census-recensement/2016/dp-pd/prof/details/download-telecharger/comp/GetFile.cfm?Lang=E&FILETYPE=CSV&GEONO=058 ###
+GEO_CODE indicates public health regions, taken from Census 2016 links:
+https://www12.statcan.gc.ca/census-recensement/2016/dp-pd/prof/search-recherche/lst/results-resultats.cfm?Lang=E&TABID=1&G=1&Geo1=&Code1=&Geo2=&Code2=&GEOCODE=35&type=0
+```{r}
+### Load census dataset by Health Regions ###
+census_2016 <- read.csv(here("inputs", "data", "census_2016.csv"))
+census_2016 <- janitor::clean_names(census_2016)
+
+### Select demographic data to include, relating to employment, income, immigration status, minority groups, commute, etc. ###
+# Many categories
+# demographic_info <- c(1, 6, 8:33, 60:67, 100:104, 661:663, 694:707, 724:726, 1135:1136, 1139, 1140:1150, 1157, 1158, 1170, 1188, 1198, 1216, 1287, 1289:1292, 1324:1337, 1683:1697, 1884:1929)
+
+# Narrowed down categories
+demographic_info <- c(1, 8, 1324, 1290, 1917)
+
+
+### Function to get data from specific regions and rows ###
+
+get_region_data <- function(y){
+  census_2016 %>%
+    filter(geo_code_por == y,
+           member_id_profile_of_health_regions_2247 %in% demographic_info) %>%
+    select(dim_profile_of_health_regions_2247, member_id_profile_of_health_regions_2247, dim_sex_3_member_id_1_total_sex, dim_sex_3_member_id_2_male, dim_sex_3_member_id_3_female)
+}
+
+### Get data from the randomly selected Health Regions ###
+
+ontario <- get_region_data(35)
+
+haliburton <- get_region_data(3535)
+hamilton <- get_region_data(3537)
+algoma <- get_region_data(3526)
+simcoe_muskoka <- get_region_data(3560)
+timiskaming <- get_region_data(3563)
+windsor_essex <- get_region_data(3568)
+
+northwest <- get_region_data(3549)
+# southwestern <- get_region_data(3502)
+# Southwestern is a newer health unit. it was created by almagamating oxford and elgin-st. thomas units:
+oxford <- get_region_data(3552)
+elgin <- get_region_data(3531)
+waterloo <- get_region_data(3565)
+durham <- get_region_data(3530)
+sudbury <- get_region_data(3561)
+brant <- get_region_data(3527)
+
+
+### Put together demographic info in one table ###
+
+populationss <- c("Total_Population", "Indigenous_Population_25%_sample", "Visible_Minority_25%_sample", "Accommodation_and_Food_Services_25%_sample", "Total_Population_Women")
+
+get_pop_info <- function(x){
+  c(as.numeric(x$dim_sex_3_member_id_1_total_sex[x$dim_profile_of_health_regions_2247 == "Population, 2016"]),
+    as.numeric(x$dim_sex_3_member_id_1_total_sex[x$dim_profile_of_health_regions_2247 == "Aboriginal identity"]),
+    as.numeric(x$dim_sex_3_member_id_1_total_sex[x$dim_profile_of_health_regions_2247 == "Total visible minority population"]),
+    as.numeric(x$dim_sex_3_member_id_1_total_sex[x$dim_profile_of_health_regions_2247 == "72 Accommodation and food services"]),
+    as.numeric(x$dim_sex_3_member_id_3_female[x$dim_profile_of_health_regions_2247 == "Total - Age groups and average age of the population - 100% data"]))
+}
+
+ontario_pop <- get_pop_info(ontario)
+
+haliburton_pop <- get_pop_info(haliburton)
+algoma_pop <- get_pop_info(algoma)
+hamilton_pop <- get_pop_info(hamilton)
+windsor_essex_pop <- get_pop_info(windsor_essex)
+simcoe_muskoka_pop <- get_pop_info(simcoe_muskoka)
+timiskaming_pop <- get_pop_info(timiskaming)
+
+brant_pop <- get_pop_info(brant)
+sudbury_pop <- get_pop_info(sudbury)
+#southwestern_pop <- get_pop_info(southwestern)
+oxford_pop <- get_pop_info(oxford)
+elgin_pop <- get_pop_info(elgin)
+northwest_pop <- get_pop_info(northwest)
+waterloo_pop <- get_pop_info(waterloo)
+durham_pop <- get_pop_info(durham)
+
+
+populations <- bind_cols(populationss, ontario_pop, haliburton_pop, algoma_pop, hamilton_pop, windsor_essex_pop, simcoe_muskoka_pop, timiskaming_pop, brant_pop, sudbury_pop, oxford_pop, elgin_pop, northwest_pop, waterloo_pop, durham_pop)
+
+colnames(populations) <- c("Info", "Ontario", "Haliburton", "Algoma", "Hamilton", "Windsor_Essex", "Simcoe_Muskoka", "Timiskaming",
+                           "Brant", "Sudbury", "Oxford", "Elgin", "Northwest", "Waterloo", "Durham")
+
+populations <- populations %>%
+  mutate(Southwestern = Oxford + Elgin) %>%
+  mutate(total_treat = Haliburton + Algoma + Hamilton + Windsor_Essex + Simcoe_Muskoka + Timiskaming,
+         total_control = Brant + Sudbury + Northwest + Waterloo + Durham + Southwestern) %>%
+  select(-Oxford, -Elgin)
+
+populations
+```
+
+```{r}
+populations_split <- matrix(ncol=4, nrow=5)
+populations_split[,1] <- c("Total_Population", "Indigenous_Population_25%_sample", "Visible_Minority_25%_sample", "Accommodation_and_Food_Services_25%_sample", "Total_Population_Women")
+populations_split[,2] <- ontario_pop
+
+total_pop_treatment <- sum(populations[1,c(3:8)])
+indigenous_treatment <- sum(populations[2,c(3:8)])
+minority_treatment <- sum(populations[3,c(3:8)])
+food_services_treatment <- sum(populations[4,c(3:8)])
+women_treatment <- sum(populations[5,c(3:8)])
+
+treatment <- c(total_pop_treatment, indigenous_treatment, minority_treatment, food_services_treatment, women_treatment)
+populations_split[,3] <- treatment
+
+total_pop_control <- sum(populations[1,c(9:14)])
+indigenous_control <- sum(populations[2,c(9:14)])
+minority_control <- sum(populations[3,c(9:14)])
+food_services_control <- sum(populations[4,c(9:14)])
+women_control <- sum(populations[5,c(9:14)])
+
+control <- c(total_pop_control, indigenous_control, minority_control, food_services_control, women_control)
+populations_split[,4] <- control
+
+populations_split <- as.data.frame(populations_split)
+colnames(populations_split) <- c("Info", "Ontario", "Treatment", "Control")
+
+populations_split
+```
+
+```{r}
+### Get percentage proportions of demographic groups of interest ###
+
+populations_split_percentage <- matrix(ncol=4, nrow=5)
+
+for(i in 2:length(populations_split)){
+  for(j in 1:5){
+    populations_split_percentage[j,i] <- round(as.numeric(populations_split[j,i])/as.numeric(populations_split[1,i]), digits=3)
+  }
+}
+
+#populations_percentage[1, 2:4] <- c(1, 1, 1)
+populations_split_percentage[,1] <- c("Total_Population", "Indigenous_Population_25%_sample", "Visible_Minority_25%_sample", "Accommodation_and_Food_Services_25%_sample", "Total_Population_Women")
+
+populations_split_percentage <- as.data.frame(populations_split_percentage)
+colnames(populations_split_percentage) <- c("Info", "Ontario", "Treatment", "Control")
+
+populations_split_percentage
+```
+https://www150.statcan.gc.ca/n1/pub/89-656-x/89-656-x2015001-eng.htm
+Indigenous groups are 4% of the population.
+
+https://www.statcan.gc.ca/eng/dai/btd/othervisuals/other010
+visible minorities are 25% of the population
+
+https://www.ic.gc.ca/eic/site/061.nsf/eng/h_03115.html
+1.4% of business owners are indigenous, and 12.2% are visible minorities.
+
+Therefore, Indigenous people are 0.35 times as likely to own a business, and visible minorities are 0.49 as likely to own a business.
+
+## Survey 1
+```{r}
+set.seed(19893)
+survey_1 <- survey_1 %>%
+  <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<ADD MINORITY DATA SIMULATION HERE LALA>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+```
+
+## Survey 2
+
+```{r}
+set.seed(19893)
+survey_2 <- survey_2 %>%
+  <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<ADD MINORITY DATA SIMULATION HERE LALA>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+```
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 # Shutdowns
 
 # Survey 2
 
-https://www150.statcan.gc.ca/t1/tbl1/en/cv.action?pid=3310027601
-43.2% shut down temporarily
+43.2% of restaurants shut down temporarily due to the pandemic [@covid19impactonbusiness].
 
-https://nypost.com/2020/06/30/more-than-half-of-us-restaurants-closed-due-to-covid-19-study/
-3% closed permanently - but that was over far more than two weeks.
+3% closed of restaurants in the US closed permanently between March and June [@restaurantclosures]. This period was about six times as long as our two week closure.
 
 ```{r}
 set.seed(19893)
@@ -211,31 +399,36 @@ survey_2 <- bind_rows(
 ```
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 # Revenue
 
 ## Survey 1
 
-From https://www150.statcan.gc.ca/t1/tbl1/en/tv.action?pid=3310022201&pickMembers%5B0%5D=2.1&pickMembers%5B1%5D=3.423
-25,836 employers
+In 2019, there were 25,836 restaurants and eating-places that were employers [@businesseswithemployees] and 6,968 restaurants that were not employers [@businesseswithoutemployees] in Canada, for a total of 32,804 restaurants.
 
-From https://www150.statcan.gc.ca/t1/tbl1/en/tv.action?pid=3310022301&pickMembers%5B0%5D=2.423
-6,968 non-employers
+In the same year, full-service restaurants had \$13,456,600,000 in revenue, and limited-service eating places had \$14,082,700,000 in revenue [@foodservicessummary].
 
-So 32,804 businesses in 2019
+From this, we can calculate an estimated \$69,959 average revenue per month.
 
-https://www150.statcan.gc.ca/t1/tbl1/en/tv.action?pid=2110017101&pickMembers%5B0%5D=1.7&pickMembers%5B1%5D=2.2&cubeTimeFrame.startYear=2015&cubeTimeFrame.endYear=2019&referencePeriods=20150101%2C20190101
-full-service restaurants have 13,456,600,000 in revenue in 2019.
-https://www150.statcan.gc.ca/t1/tbl1/en/tv.action?pid=2110017101&pickMembers%5B0%5D=1.7&pickMembers%5B1%5D=2.3&cubeTimeFrame.startYear=2015&cubeTimeFrame.endYear=2019&referencePeriods=20150101%2C20190101
-limited-service eating places have 14,082,700,000 in revenue in 2019.
-
-so averaging 839,510 in annual revenue.
-
-69,959 average per month.
-
-From http://www.mbel.io/2019/08/23/kaggle-restaurant-revenue-prediction/
-we can see the distribution looks like an F distribution, or a log normal distribution.
-rf(n, df1, df2, ncp) = rf(num_rest, 10, 5) should have a mean of 5/3
-so we would multiply by 41,975 to get the mean where we want.
+From an analysis of Kaggle restaurant data [@kagglerestaurantdata], we can see that restaurant revenue looks like an F distribution.
+The distribution rf(n, df1, df2, ncp) = rf(num_rest, 10, 5) gives an approximate shape. Using the f-distribution formula, we know the distribution has a mean of 5/3, so we would multiply by 41,975 to get the mean to 69,959.
 
 ```{r}
 set.seed(19893)
@@ -246,24 +439,24 @@ survey_1 <- survey_1 %>%
 
 ## Survey 2
 
-need to account for total and partial shutdowns: assume that total shutdowns cut revenue 75%, and partial cut revenue 50%
+First, the revenues from the first survey will have a randomized factor (normal distribution with a mean of 1 and a standard distribution of 0.1) to add some random variance between months.
 
-from https://www.eater.com/2020/3/24/21184301/restaurant-industry-data-impact-covid-19-coronavirus
-revenues went from +5 to -35 when the shutdowns started. loss of -38. 
-but takeout only places need -0
-dine-in only places -100*14/31 = -45
-and combo places need -38*14/31 = -17
+Second, places that are closed permanently will be assumed to experience -75% average revenue, and temporary shutdowns will be assumed to experience -50% revenue.
 
-https://www150.statcan.gc.ca/t1/tbl1/en/cv.action?pid=3310028101
-all business had a median decrease of about 15%
-minority owned businesses had a median decrease of about 25%.
-Decrease of about 12%.
+Revenues went to -35% during the first lockdown wave in March [@bythenumbers]. We will assume that these numbers are accurate for a dine-in/takeout restaurant that is experiencing a takeout-only closure. They are closed 14 out of 31 days, so we will assume average losses of -17%.
+
+We will assume that takeout-only restaurants will not have losses on average, and dine-in only places will have -100% revenue on average for the days they are closed. With closures 14 out of 31 days in the month, dine-in only will have average losses of -45%.
+
+
+All businesses had a median decrease of -15%, but visible minority-owned businesses had a median decrease of -25% [@aug20192020]. Therefore, an additional -12% will be applied to visible minority-owned restaurants.
+
+There seems to be no significant difference in business losses for disabled owners [@aug20192020].
 
 ```{r}
 set.seed(19893)
 survey_2 <- survey_2 %>%
   mutate(revenue = 41975 * rf(num_total,10,5)) %>%
-  mutate(factor = abs(rnorm(num_total, 1, .05))) %>%
+  mutate(factor = abs(rnorm(num_total, 1, .1))) %>%
   mutate(revenue = factor * revenue) %>%
   select(-factor)
 
@@ -302,6 +495,7 @@ survey_2 <-
   ) %>%
   arrange(ID)
 
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<CHECK IF THIS WORKS ONCE MINORITY DATA IS ADDED AMY>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 survey_2 <-
   bind_rows(
     survey_2 %>%
@@ -320,17 +514,45 @@ survey_2 <-
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 # Number of employees
 LALA
 ## Survey 1
 ```{r}
 survey_1 <- survey_1 %>%
+  <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<ADD EMPLOYMENT DATA SIMULATION HERE LALA>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 ```
 
 ## Survey 2
 ```{r}
 survey_2 <- survey_2 %>%
+  <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<ADD EMPLOYMENT DATA SIMULATION HERE LALA>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 ```
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -341,12 +563,86 @@ LORENA
 ## Survey 1
 ```{r}
 survey_1 <- survey_1 %>%
+  <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<ADD ASSISTANCE DATA SIMULATION HERE LORENA>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 ```
 
 ## Survey 2
 ```{r}
 survey_2 <- survey_2 %>%
+  <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<ADD ASSISTANCE DATA SIMULATION HERE LORENA>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 ```
+
+
+
+
+
+
+
+
+
+
+
+
+# Non-response
+
+A professional mail survey with follow up found a non-response rate of 61% [@nonresponse].
+We will also assume that some people will mail in answers and fill in the form incompletely.
+
+```{r}
+num_cols_1 = number of columns in the tibble <<<<<<<<<<<<<<<<<<<<<<<SET AMY>>>>>>>>>>>>>>>>>>>>
+
+set.seed(19893)
+survey_1 <- survey_1 %>%
+  mutate(nonresponse = sample(c("yes","partial","no"), size = num_total, prob = c(0.6, 0.01, 0.39), replace = TRUE)) %>%
+  filter(nonresponse != "no") 
+
+set.seed(19893)
+survey_1 <- survey_1 %>%
+  mutate(which_partial = sample(c(4:num_cols_1), size = first(count(survey_1)), replace = TRUE))
+
+for (i in c(1:as.numeric(count(survey_1)))){
+  if (survey_1[i, "nonresponse"] == "partial") {
+    survey_1[i, as.numeric(survey_1[i,"which_partial"])] <- NA
+  }
+}
+
+survey_1 <- survey_1 %>%
+  select(-nonresponse, -which_partial)
+
+```
+
+```{r}
+num_cols_2 = number of columns in the tibble <<<<<<<<<<<<<<<<<<<<<<<SET AMY>>>>>>>>>>>>>>>>>>>>
+
+set.seed(19894)
+survey_2 <- survey_2 %>%
+  mutate(nonresponse = sample(c("yes","partial","no"), size = num_total, prob = c(0.6, 0.01, 0.39), replace = TRUE)) %>%
+  filter(nonresponse != "no") 
+
+set.seed(19894)
+survey_2 <- survey_2 %>%
+  mutate(which_partial = sample(c(4:num_cols_1), size = first(count(survey_2)), replace = TRUE))
+
+for (i in c(1:as.numeric(count(survey_2)))){
+  if (survey_2[i, "nonresponse"] == "partial") {
+    survey_2[i, as.numeric(survey_2[i,"which_partial"])] <- NA
+  }
+}
+
+survey_2 <- survey_2 %>%
+  select(-nonresponse, -which_partial)
+```
+
+
+
+
+
+
+
+
+
+
+
 
 
 
