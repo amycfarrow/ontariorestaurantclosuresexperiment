@@ -119,7 +119,7 @@ hamilton_data <- clean_data("hamilton",
 write_csv(hamilton_data, here("outputs/data/hamilton_data.csv"))
 
 
-haliburton_data <- clean_data("hamilton",
+haliburton_data <- clean_data("haliburton",
                             "inputs/data/haliburton_restaurants.csv",
                             "inputs/data/haliburton_restaurants.csv",
                             "outputs/data/haliburton_data.csv") %>% 
