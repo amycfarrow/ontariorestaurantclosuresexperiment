@@ -73,6 +73,8 @@ The table for surveys was used to generate 2,006 mailers to be sent to each rest
 
 Each link and paper survey was personalized to the restaurant's ID number. The link lead to the survey, which asked for confirmation of the last three letters of the restaurant's postal code. This was to ensure that no mailing mistakes were made, and to prevent duplicate data collection. Once verified, the survey-taker was given the main survey.
 
+This survey cost <<<<<<<<LORENA>>>>>>>>>>>>>.
+
 The data from the survey was tied to the ID number and last three digits of the postal code, but not the restaurant name or address. This was to ensure data privacy. The identifying information was kept in a separate dataframe (Table for Surveys) than the survey answers (Survey 1 Data, Survey 2 Data).
 
 ```{r}
@@ -90,14 +92,12 @@ Survey 1 collected the following data:
 - Disability status
 - Indigenous status
 - Visible minority (non-Indigenous) status
+- Gender identity
 * Type of service provided (dine-in, take-out, or both)
 * Revenue in May 2021
 * Employees
 - Number of full-time employees (30 hours/week or more)
 - Number of part-time employees (less than 30 hours/week)
-* Applications for government assistance
-- Which funds were applied for
-- Estimated money received
 
 Distributions for revenue and tables for key demographics were compared.
 
@@ -116,15 +116,22 @@ Survey 2 collected the following data:
 - Disability status
 - Indigenous status
 - Visible minority (non-Indigenous) status
+- Gender identity
 * Type of service provided (dine-in, take-out, or both)
 * Closures (none, temporary, or permanent)
 * Revenue in May 2021
 * Employees
 - Number of full-time employees (30 hours/week or more)
 - Number of part-time employees (less than 30 hours/week)
-* Applications for government assistance
-- Which funds were applied for
-- Estimated money received
+
+
+Survey 1 data as baseline
+
+Counterfactuals
+
+Survey 2 data to contrast treatment and control.
+
+
 
 # Discussion
 
@@ -136,28 +143,46 @@ Survey 2 collected the following data:
 ## Findings
 
 ### FINDING ONE
- Closures had a negative impact
+Closures had a negative impact on revenues and employment counts
+ 
+Suggestion: funding for businesses and temporary unemployment
 
 
 ### FINDING TWO
 Closures had a stronger negative impact on dine-in only restaurants
 
+Suggestions: technical support for restaurants to increase takeout business
+
 
 ### FINDING THREE
-CLosures had a stronger negative impact on POC-owned
+Closures had a stronger negative impact on indigenous or visible minority-owned businesses.
+
+Suggestions: grants for minority business owners
+
 
 
 
 ## Limitations
 
+External validity, internal validity, cluster sampling. Unavoidable because shutdowns were by health unit for COVID, and we were trying to replicate them.
+
+Legally registered businesses only.
+
+Survey non-response.
+
+Self-reported information.
 
 
 
 ## Future Directions
 
 
+For statistical analysis, this would require propensity score weighting.
 
 
+\newpage
+
+# Appendix {-}
 
 
 \newpage
