@@ -124,7 +124,7 @@ service_percentage<- data.frame(
 
  service_percentage
 ```
-According to Ontario restaurant data from Yelp (cite, KSondjaja source), approximately 6% of restaurants
+According to Ontario restaurant data from Yelp [@yelp_dataset], approximately 6% of restaurants
 offer dine in service, 32.5% offer takeout, and 61.5% offer both.
 
 ## Survey 1
@@ -138,6 +138,8 @@ survey_1 <- survey_1 %>%
       replace = TRUE, 
       prob = c(0.06, 0.615, 0.325)
       ))
+
+survey_1
 ```
 
 ## Survey 2
@@ -151,6 +153,8 @@ survey_2 <- survey_2 %>%
       replace = TRUE, 
       prob = c(0.06, 0.615, 0.325)
       ))
+
+survey_2
 ```
 
 
@@ -176,6 +180,8 @@ survey_1 <- survey_1 %>%
                              size = num_total,
                              prob = c(0.005, .995),
                              replace = TRUE))
+
+survey_1
 ```
 
 ## Survey 2
@@ -186,21 +192,19 @@ survey_2 <- survey_2 %>%
                              size = num_total,
                              prob = c(0.005, .995),
                              replace = TRUE))
+
+survey_2
 ```
 
 
 
-Download link: https://www12.statcan.gc.ca/census-recensement/2016/dp-pd/prof/details/download-telecharger/comp/GetFile.cfm?Lang=E&FILETYPE=CSV&GEONO=058 ###
-GEO_CODE indicates public health regions, taken from Census 2016 links:
-https://www12.statcan.gc.ca/census-recensement/2016/dp-pd/prof/search-recherche/lst/results-resultats.cfm?Lang=E&TABID=1&G=1&Geo1=&Code1=&Geo2=&Code2=&GEOCODE=35&type=0
+
+
 ```{r}
 ### Load census dataset by Health Regions ###
+### Download link: https://www12.statcan.gc.ca/census-recensement/2016/dp-pd/prof/details/download-telecharger/comp/GetFile.cfm?Lang=E&FILETYPE=CSV&GEONO=058 ###
 census_2016 <- read.csv(here("inputs", "data", "census_2016.csv"))
 census_2016 <- janitor::clean_names(census_2016)
-
-### Select demographic data to include, relating to employment, income, immigration status, minority groups, commute, etc. ###
-# Many categories
-# demographic_info <- c(1, 6, 8:33, 60:67, 100:104, 661:663, 694:707, 724:726, 1135:1136, 1139, 1140:1150, 1157, 1158, 1170, 1188, 1198, 1216, 1287, 1289:1292, 1324:1337, 1683:1697, 1884:1929)
 
 # Narrowed down categories
 demographic_info <- c(1, 8, 1324, 1290, 1917)
@@ -216,6 +220,8 @@ get_region_data <- function(y){
 }
 
 ### Get data from the randomly selected Health Regions ###
+# GEO_CODE indicates public health regions, taken from Census 2016 links:
+#https://www12.statcan.gc.ca/census-recensement/2016/dp-pd/prof/search-recherche/lst/results-resultats.cfm?Lang=E&TABID=1&G=1&Geo1=&Code1=&Geo2=&Code2=&GEOCODE=35&type=0
 
 ontario <- get_region_data(35)
 
@@ -330,22 +336,59 @@ colnames(populations_split_percentage) <- c("Info", "Ontario", "Treatment", "Con
 
 populations_split_percentage
 ```
-https://www150.statcan.gc.ca/n1/pub/89-656-x/89-656-x2015001-eng.htm
-Indigenous groups are 4% of the population.
 
-https://www.statcan.gc.ca/eng/dai/btd/othervisuals/other010
-visible minorities are 25% of the population
+We established expected percentages for the treatment and control regions based on census data [@census_2016].
 
-https://www.ic.gc.ca/eic/site/061.nsf/eng/h_03115.html
-1.4% of business owners are indigenous, and 12.2% are visible minorities.
+15.6% of business owners are women in Canada [@ownershipdemos].
 
-Therefore, Indigenous people are 0.35 times as likely to own a business, and visible minorities are 0.49 as likely to own a business.
+Visible minorities are 25% of the population [@visibleminority].
+
+12.2% of business owners are visible minorities [@ownershipdemos].
+
+Therefore, visible minorities are 0.49 as likely to own a business.
+Therefore, we can estimate that 0.058 of restaurant owners are a visible minority in the treatment group, and 0.081 in the control group. 
+
+Indigenous people have 3.7% service business ownership as opposed to 15.3% in the reference population [@businessesper]. They are 0.24 times as likely to own a service business in Ontario.
+Therefore, we can estimate that 0.009 of business owners in the treatment group are Indigenous, and 0.011 in the control group.
+
 
 ## Survey 1
 ```{r}
 set.seed(19893)
 survey_1 <- survey_1 %>%
-  <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<ADD MINORITY DATA SIMULATION HERE LALA>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+  mutate(woman = sample(c("yes","no","nonanswer"), size = num_total, prob = c(0.154, 0.836, 0.01), replace = TRUE))
+
+set.seed(19893)
+survey_1 <- bind_rows(
+  survey_1 %>%
+    filter(group == "treatment") %>%
+    mutate(indigenous = sample(c("yes", "no", "nonanswer"), size = num_treat, prob = c(0.009, 0.981, 0.01), replace = TRUE))
+  ,
+  survey_1 %>%
+    filter(group == "control") %>%
+   mutate(indigenous = sample(c("yes", "no", "nonanswer"), size = num_control, prob = c(0.011, 0.979, 0.01), replace = TRUE))
+)
+
+set.seed(19893)
+survey_1 <- bind_rows(
+  survey_1 %>%
+    filter(group == "treatment", indigenous != "yes") %>%
+    mutate(visible = sample(c("yes", "no", "nonanswer"), 
+                               size = first(count(survey_1 %>% filter(group == "treatment", indigenous != "yes"))), 
+                               prob = c(0.057, 0.933, 0.01), replace = TRUE))
+  ,
+  survey_1 %>%
+    filter(group == "control", indigenous != "yes") %>%
+   mutate(visible = sample(c("yes", "no", "nonanswer"), 
+                              size = first(count(survey_1 %>% filter(group == "control", indigenous != "yes"))), 
+                              prob = c(0.08, 0.91, 0.01), replace = TRUE))
+  ,
+  survey_1 %>%
+    filter(indigenous == "yes") %>%
+    mutate(visible = "no")
+)
+  
+survey_1
 ```
 
 ## Survey 2
@@ -353,18 +396,40 @@ survey_1 <- survey_1 %>%
 ```{r}
 set.seed(19893)
 survey_2 <- survey_2 %>%
-  <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<ADD MINORITY DATA SIMULATION HERE LALA>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+  mutate(woman = sample(c("yes","no","nonanswer"), size = num_total, prob = c(0.154, 0.836, 0.01), replace = TRUE))
+
+set.seed(19893)
+survey_2 <- bind_rows(
+  survey_2 %>%
+    filter(group == "treatment") %>%
+    mutate(indigenous = sample(c("yes", "no", "nonanswer"), size = num_treat, prob = c(0.009, 0.981, 0.01), replace = TRUE))
+  ,
+  survey_2 %>%
+    filter(group == "control") %>%
+   mutate(indigenous = sample(c("yes", "no", "nonanswer"), size = num_control, prob = c(0.011, 0.979, 0.01), replace = TRUE))
+)
+
+set.seed(19893)
+survey_2 <- bind_rows(
+  survey_2 %>%
+    filter(group == "treatment", indigenous != "yes") %>%
+    mutate(visible = sample(c("yes", "no", "nonanswer"), 
+                               size = first(count(survey_2 %>% filter(group == "treatment", indigenous != "yes"))), 
+                               prob = c(0.057, 0.933, 0.01), replace = TRUE))
+  ,
+  survey_2 %>%
+    filter(group == "control", indigenous != "yes") %>%
+   mutate(visible = sample(c("yes", "no", "nonanswer"), 
+                              size = first(count(survey_2 %>% filter(group == "control", indigenous != "yes"))), 
+                              prob = c(0.08, 0.91, 0.01), replace = TRUE))
+  ,
+  survey_1 %>%
+    filter(indigenous == "yes") %>%
+    mutate(visible = "no")
+)
+  
+survey_2
 ```
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -396,21 +461,8 @@ survey_2 <- bind_rows(
 ) %>%
   arrange(ID)
   
+survey_2
 ```
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -428,12 +480,14 @@ In the same year, full-service restaurants had \$13,456,600,000 in revenue, and 
 From this, we can calculate an estimated \$69,959 average revenue per month.
 
 From an analysis of Kaggle restaurant data [@kagglerestaurantdata], we can see that restaurant revenue looks like an F distribution.
-The distribution rf(n, df1, df2, ncp) = rf(num_rest, 10, 5) gives an approximate shape. Using the f-distribution formula, we know the distribution has a mean of 5/3, so we would multiply by 41,975 to get the mean to 69,959.
+The distribution rf(n, df1, df2, ncp) = rf(num_rest, 10, 5) gives an approximate shape. Using the f-distribution formula, we know the distribution has a mean of 10/9, so we would multiply by 62,963 to get the mean to 69,959.
 
 ```{r}
-set.seed(19893)
+set.seed(19894)
 survey_1 <- survey_1 %>%
-  mutate(revenue = 41975 * rf(num_total,10,5))
+  mutate(revenue = 62963 * rf(num_total,20,20))
+
+survey_1
 ```
 
 
@@ -450,12 +504,12 @@ We will assume that takeout-only restaurants will not have losses on average, an
 
 All businesses had a median decrease of -15%, but visible minority-owned businesses had a median decrease of -25% [@aug20192020]. Therefore, an additional -12% will be applied to visible minority-owned restaurants.
 
-There seems to be no significant difference in business losses for disabled owners [@aug20192020].
+There seems to be no significant difference in business losses for disabled owners or female business owners [@aug20192020].
 
 ```{r}
-set.seed(19893)
+set.seed(19894)
 survey_2 <- survey_2 %>%
-  mutate(revenue = 41975 * rf(num_total,10,5)) %>%
+  mutate(revenue = 62963 * rf(num_total,20,20)) %>%
   mutate(factor = abs(rnorm(num_total, 1, .1))) %>%
   mutate(revenue = factor * revenue) %>%
   select(-factor)
@@ -495,73 +549,80 @@ survey_2 <-
   ) %>%
   arrange(ID)
 
-<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<CHECK IF THIS WORKS ONCE MINORITY DATA IS ADDED AMY>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 survey_2 <-
   bind_rows(
     survey_2 %>%
-      filter((minority == "yes" | indigenous == "yes") & group == "treatment") %>%
+      filter((visible == "yes" | indigenous == "yes") & group == "treatment") %>%
       mutate(revenue = 0.88 * revenue)
     ,
     survey_2 %>%
-      filter(minority == "no" & group == "treatment")
+      filter(visible == "no" & group == "treatment")
     ,
     survey_2 %>%
       filter(group == "control")
   )
 
+survey_2
 ```
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
 # Number of employees
-LALA
+
+$82,000 in yearly sales (gross revenue) per full-time equivalent employee [@restfact]
+
+Therefore 6,833 monthly revenue per full-time equivalent employee.
+
+In January 2021, there were 2187300 full time sales and service employees in Canada and 1164000 part time sales and service employees [@hourswages].
+Therefore there are 1.9 full time employees per part time employee.
+Part time employees in service and sales averaged 16.6 hours per week. We will assume that 2 PTE = 1 FTE, or 1 PTE = 0.5 FTE.
+Therefore, for every 1.9 + 1 employees, there are 1.9 + 1*0.5 FTE. For every 2.9 employees, there are 2.4 FTE. 
+
+2.4 FTE -> 1.9 FT + 1 PT.
+0.79 = 1.9 / 2.4 = 1.9 / (1.9 + 0.5)
+0.42 = 1 / 2.4 = 0.42 = 1 / (1.9 + 0.5)
+
 ## Survey 1
 ```{r}
+set.seed(19893)
 survey_1 <- survey_1 %>%
-  <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<ADD EMPLOYMENT DATA SIMULATION HERE LALA>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+  mutate(fte = revenue / 6833) %>%
+  mutate(ft = round(fte * 0.79)) %>%
+  mutate(pt = round(fte * 0.42)) %>%
+  select(-fte)
+
+survey_1 <- bind_rows(
+  survey_1 %>% filter(ft < 1) %>%
+    mutate(ft = 1),
+  survey_1 %>% filter(ft >= 1)
+)
+
+survey_1
 ```
 
 ## Survey 2
+
+For the second survey, we will assume that treatment restaurants shifted towards part time random amounts-- that is, the number of full time employees per part time employee dropped from 1.9. X is some number less than or equal to 1.9.
+x / (x + 0.5)
+1 / (x + 0.5)
+
 ```{r}
+set.seed(19893)
 survey_2 <- survey_2 %>%
-  <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<ADD EMPLOYMENT DATA SIMULATION HERE LALA>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+  mutate(fte = revenue / 6833) %>%
+  mutate(ptincrease = 1.9 * (1 - abs(rnorm(num_total, 0, sd = 0.1)))) %>%
+  mutate(ft = round(fte * (ptincrease / (ptincrease + 0.5)))) %>%
+  mutate(pt = round(fte * (1 / (ptincrease + 0.5)))) %>%
+  select(-fte, - ptincrease)
+
+survey_2 <- bind_rows(
+  survey_2 %>% filter(ft < 1) %>%
+    mutate(ft = 1),
+  survey_2 %>% filter(ft >= 1)
+)
+
+survey_2
 ```
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 # Non-response
@@ -570,7 +631,7 @@ A professional mail survey with follow up found a non-response rate of 61% [@non
 We will also assume that some people will mail in answers and fill in the form incompletely.
 
 ```{r}
-num_cols_1 = number of columns in the tibble <<<<<<<<<<<<<<<<<<<<<<<SET AMY>>>>>>>>>>>>>>>>>>>>
+num_cols_1 = 11
 
 set.seed(19893)
 survey_1 <- survey_1 %>%
@@ -590,10 +651,11 @@ for (i in c(1:as.numeric(count(survey_1)))){
 survey_1 <- survey_1 %>%
   select(-nonresponse, -which_partial)
 
+survey_1
 ```
 
 ```{r}
-num_cols_2 = number of columns in the tibble <<<<<<<<<<<<<<<<<<<<<<<SET AMY>>>>>>>>>>>>>>>>>>>>
+num_cols_2 = 12
 
 set.seed(19894)
 survey_2 <- survey_2 %>%
@@ -612,9 +674,15 @@ for (i in c(1:as.numeric(count(survey_2)))){
 
 survey_2 <- survey_2 %>%
   select(-nonresponse, -which_partial)
+
+survey_2
 ```
 
 
+```{r}
+write_csv(survey_1, here("outputs/data/survey_1.csv"))
+write_csv(survey_2, here("outputs/data/survey_2.csv"))
+```
 
 
 

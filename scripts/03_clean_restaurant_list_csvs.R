@@ -135,6 +135,12 @@ write_csv(haliburton_data, here("outputs/data/haliburton_data.csv"))
 
 all_units_data <- unique(rbind(algoma_data, brant_data, durham_data, hamilton_data, haliburton_data, northwestern_data, simcoe_data, southwestern_data, sudbury_data, timiskaming_data, windsor_data, waterloo_data))
 
+
+all_units_data <- all_units_data %>%
+  mutate(address = str_replace(address, "(?: Canada)$", "")) %>%
+  mutate(address = str_replace(address, "(?: ON)$", "")) %>%
+  mutate(address = str_replace(address, "(?: Ontario)$", ""))
+  
 # Save
 
 write_csv(all_units_data, here("outputs/data/all_units_data.csv"))
