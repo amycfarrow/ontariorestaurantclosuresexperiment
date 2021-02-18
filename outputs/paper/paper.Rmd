@@ -18,7 +18,7 @@ library(tidyverse)
 library(bookdown)    # for cross referencing figures and graphs; referencing
 library(kableExtra)  # for nicer tables
 
-# NOTE: scripts 01_scrape_health_depts and 02_sampling_frame, 
+# NOTE: scripts 01_scrape_health_depts, 04_clean_restaurant_list_csvs, and 02_sampling_frame, 
 # and markdown file data_simulation must have been run already
 
 ```
@@ -32,22 +32,99 @@ library(kableExtra)  # for nicer tables
 
 # Data
 
-```{r}
+#TODO: citations for R and all packages used.
+
+This experiment used two-stage stratified cluster sampling with survey data collection.
+
+The population was all restaurants in Ontario.
+
+A list of Ontario local health authorities (LHAs) that carry out food inspections was used to identify units that inspect restaurants. Using census data from 2016, these LHAs were sorted by population covered by the LHA, and the list was stratified into equally sized strata of small (less than 150,000 population), medium (150,000 to 400,000 population), and large (more than 400,000 population) LHAs. This list of stratified LHAs was the frame at the cluster level.
+
+From each strata, two LHAs were randomly sampled to participate in the treatment, and two LHAs were randomly selected to participate in the control. This was the sample at the cluster level.
+
+The clusters were used because pandemic shutdowns operated based on LHA, and the goal was to recreate the effect as closely as possible.
+
+The stratification was used because there were very differently sized LHAs, and randomly selecting only 12 LHAs from a list of 33 left too high a likelihood of unequivalent treatment and control groups.
+
+
+```{r treatmentcontrolgroups}
+treatment_control_groups <- read_csv(here::here("outputs/treatment_control_groups.csv"))
 treatment_control_groups
 ```
 
+Once the treatment and control LHAs were selected, each corresponding Food Inspection unit was contacting, and a list of all registered restaurants in each LHA was obtained. Each restaurant was listed by name and address. Once collected into one dataframe, this was the frame at the unit level.
+
 ```{r}
+all_units_data <- read_csv(here::here("outputs/data/all_units_data.csv"))
 all_units_data
 ```
 
+A simple random sample of 15% of the treatment list and 15% of the control list was randomly selected to be surveyed. This was the sample at the unit level.
+
+This selection was used to create a panel, so the same restaurants would be surveyed for the first survey and the second survey. Attempting to sample only 15% of the restaurants allowed time and money to be spent on follow-up and multiple methods of data collecting, reducing the non-response bias.
+
 ```{r}
+table_for_surveys <- read_csv(here::here("outputs/table_for_surveys.csv"))
 table_for_surveys
 ```
+The randomly sampled restaurants were all assigned ID numbers in a random order.
+
+The table for surveys was used to generate 2,006 mailers to be sent to each restaurant on the list. Each mailer was a small envelope containing a sheet that explained the survey, provided a link to the survey, and provided a QR code that went to the same place as the link. There was also a copy of the survey contained in a mailer envelope and a contact number, allowing restaurant owners to complete the survey by phone or mail if they did not feel able to complete it online. This procedure was repeated for Survey 1 and Survey 2. If there was no response within two weeks, the restaurant was contacted by phone, and again if there was no response five days later.
+
+Each link and paper survey was personalized to the restaurant's ID number. The link lead to the survey, which asked for confirmation of the last three letters of the restaurant's postal code. This was to ensure that no mailing mistakes were made, and to prevent duplicate data collection. Once verified, the survey-taker was given the main survey.
+
+The data from the survey was tied to the ID number and last three digits of the postal code, but not the restaurant name or address. This was to ensure data privacy. The identifying information was kept in a separate dataframe (Table for Surveys) than the survey answers (Survey 1 Data, Survey 2 Data).
 
 ```{r}
-
+survey_1_data <- read_csv(here::here("outputs/survey__data.csv"))
+survey_1_data
 ```
 
+Survey 1 was conducted June 3rd to 27th 2021, and it asked about May 2021.
+
+Survey 1 Data was used to confirm that the two-stage stratified cluster sampling had created treatment and control groups that were roughly equivalent.
+
+Survey 1 collected the following data:
+
+* Demographic information
+- Disability status
+- Indigenous status
+- Visible minority (non-Indigenous) status
+* Type of service provided (dine-in, take-out, or both)
+* Revenue in May 2021
+* Employees
+- Number of full-time employees (30 hours/week or more)
+- Number of part-time employees (less than 30 hours/week)
+* Applications for government assistance
+- Which funds were applied for
+- Estimated money received
+
+Distributions for revenue and tables for key demographics were compared.
+
+```{r}
+survey_2_data <- read_csv(here::here("outputs/survey_2_data.csv"))
+survey_2_data
+```
+
+After Survey 1 data was collected, on June 28th, shutdowns were announced for the six treatment LHAs. The shutdowns ran from July 1s to July 14th, inclusive. This length of time was considered to be the minimum effective length for a shutdown to stop circulation of the virus. During the shutdown, all restaurants in the treatment LHAs were officially banned from offering dine-in and patio services. Take-out and delivery were permitted. This type of partial shutdown was selected because it has been the most common type of shutdown since the pandemic began.
+
+Survey 2 was conducted August 3rd to 27th 2021, and it asked about July 2021.
+
+Survey 2 collected the following data:
+
+* Demographic information
+- Disability status
+- Indigenous status
+- Visible minority (non-Indigenous) status
+* Type of service provided (dine-in, take-out, or both)
+* Closures (none, temporary, or permanent)
+* Revenue in May 2021
+* Employees
+- Number of full-time employees (30 hours/week or more)
+- Number of part-time employees (less than 30 hours/week)
+* Applications for government assistance
+- Which funds were applied for
+- Estimated money received
 
 # Discussion
 
