@@ -17,6 +17,7 @@ knitr::opts_chunk$set(echo = TRUE)
 library(tidyverse)
 library(bookdown)    # for cross referencing figures and graphs; referencing
 library(kableExtra)  # for nicer tables
+library(here) # for working in an RProject
 
 # NOTE: scripts 01_scrape_health_depts, 04_clean_restaurant_list_csvs, and 02_sampling_frame, 
 # and markdown file data_simulation must have been run already
@@ -77,10 +78,7 @@ This survey cost <<<<<<<<LORENA>>>>>>>>>>>>>.
 
 The data from the survey was tied to the ID number and last three digits of the postal code, but not the restaurant name or address. This was to ensure data privacy. The identifying information was kept in a separate dataframe (Table for Surveys) than the survey answers (Survey 1 Data, Survey 2 Data).
 
-```{r}
-survey_1_data <- read_csv(here::here("outputs/survey__data.csv"))
-survey_1_data
-```
+
 
 Survey 1 was conducted June 3rd to 27th 2021, and it asked about May 2021.
 
@@ -101,10 +99,6 @@ Survey 1 collected the following data:
 
 Distributions for revenue and tables for key demographics were compared.
 
-```{r}
-survey_2_data <- read_csv(here::here("outputs/survey_2_data.csv"))
-survey_2_data
-```
 
 After Survey 1 data was collected, on June 28th, shutdowns were announced for the six treatment LHAs. The shutdowns ran from July 1s to July 14th, inclusive. This length of time was considered to be the minimum effective length for a shutdown to stop circulation of the virus. During the shutdown, all restaurants in the treatment LHAs were officially banned from offering dine-in and patio services. Take-out and delivery were permitted. This type of partial shutdown was selected because it has been the most common type of shutdown since the pandemic began.
 
@@ -124,14 +118,64 @@ Survey 2 collected the following data:
 - Number of full-time employees (30 hours/week or more)
 - Number of part-time employees (less than 30 hours/week)
 
+```{r}
+survey_1 <- read_csv(here("outputs/data/survey_1.csv"))
+survey_2 <- read_csv(here("outputs/data/survey_2.csv"))
+```
 
+## Survey 1 results
+```{r}
+treat1 <- subset(survey_1, group == "treatment")
+control1 <- subset(survey_1, group == "control")
+t.test(treat1$revenue, control1$revenue)
+```
+
+```{r}
+survey_1 %>%
+  group_by(group) %>%
+  summarise(mean_revenue = mean(revenue, na.rm = TRUE),
+            median_revenue = median(revenue, na.rm = TRUE),
+            n = n())
+```
+
+
+```{r}
+survey_1 %>%
+  ggplot(aes(x = revenue)) +
+  geom_histogram() +
+  facet_wrap(~group)
+```
 Survey 1 data as baseline
 
-Counterfactuals
+Counterfactuals established.
+
+
+
+## Survey 2 results
 
 Survey 2 data to contrast treatment and control.
 
+```{r}
+survey_2 %>%
+  group_by(group) %>%
+  summarise(mean_revenue = mean(revenue, na.rm = TRUE),
+            median_revenue = median(revenue, na.rm = TRUE),
+            n = n())
+```
 
+```{r}
+treat2 <- subset(survey_2, group == "treatment")
+control2 <- subset(survey_2, group == "control")
+t.test(treat2$revenue, control2$revenue)
+```
+
+
+```{r}
+survey_2 %>%
+  ggplot(aes(x = revenue)) +
+  geom_histogram() +
+  facet_wrap(~group)
+```
 
 # Discussion
 
@@ -151,20 +195,20 @@ Suggestion: funding for businesses and temporary unemployment
 ### FINDING TWO
 Closures had a stronger negative impact on dine-in only restaurants
 
-Suggestions: technical support for restaurants to increase takeout business
+Suggestion: technical support for restaurants to increase takeout business
 
 
 ### FINDING THREE
 Closures had a stronger negative impact on indigenous or visible minority-owned businesses.
 
-Suggestions: grants for minority business owners
+Suggestion: grants for minority business owners
 
 
 
 
 ## Limitations
 
-External validity, internal validity, cluster sampling. Unavoidable because shutdowns were by health unit for COVID, and we were trying to replicate them.
+External validity, internal validity, cluster sampling. Unavoidable because shutdowns were by health unit for COVID, and we were trying to replicate them. It was ethically unsound to run the experiment on the entire province, so sampling was necessary.
 
 Legally registered businesses only.
 

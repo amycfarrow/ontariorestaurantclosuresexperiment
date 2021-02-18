@@ -2,7 +2,7 @@ name,address,unit,group,verify,ID
 A&W - Restaurant,121 Great Northern Rd Sault Ste. Marie ON P6B 4Y9,algoma,treatment,4Y9,605
 A&W - Restaurant,659 Great Northern Rd Sault Ste Marie ON P6B 5Y1,algoma,treatment,5Y1,835
 A&W - Restaurant,201 Highway 17 White River ON P0M 3G0,algoma,treatment,3G0,840
-Antico - Restaurant,6 Village Ct Sault Ste. Marie ON P6B 6K1 Canada,algoma,treatment,ada,749
+Antico - Restaurant,6 Village Ct Sault Ste. Marie ON P6B 6K1,algoma,treatment,6K1,749
 Aurora's Westside - Restaurant,300 Second Line W Sault Ste. Marie ON P6C 2J5,algoma,treatment,2J5,1313
 Blueberry Hill Motel and Campground Kitchen - Restaurant,D-2528 D Highway 17 N Goulais River ON P0S1E0,algoma,treatment,1E0,1664
 Casey's Bar & Grill (Water Tower Inn) - Restaurant,360 Great Northern Road Sault Ste. Marie ON P6B 4Z7,algoma,treatment,4Z7,1795
@@ -49,363 +49,363 @@ Sweet Greetings - Food Take Out,275 Second Line West Sault Ste Marie ON P6A 1Z5,
 The Yellow Butterfly Trading Post Cafe - Food Take Out,21467-Highway 17 Iron Bridge ON P0R 1H0,algoma,treatment,1H0,1295
 Twilight Taters and Convenience Store - Food Take Out,"1 Twilight Road, Highway 17 N Montreal River ON P0S 1H0",algoma,treatment,1H0,1177
 Voyageur's General Store - Food Take Out,11048 Highway 17 N Batchawana ON P0S 1A0,algoma,treatment,1A0,470
-2416454 Ontario Inc.,2416 Barton St E Hamilton ON L8E 2W7 Canada,hamilton,treatment,ada,551
-8090 Teahouse,149 King St E Hamilton ON L8N 1B1 Canada,hamilton,treatment,ada,1202
-A & W,931 Upper James St Hamilton ON L9C 3A6 Canada,hamilton,treatment,ada,423
-A & W,190 Barton St E. Hamilton ON L8L 2W8 Canada,hamilton,treatment,ada,427
-A & W (Eastgate),75 Centennial Pkwy Hamilton ON L8E 2P2 Canada,hamilton,treatment,ada,73
-A&W,999 Upper Wentworth St Hamilton ON L9A 4X5 Canada,hamilton,treatment,ada,1932
-Abington Crt,1500 Main St E Hamilton ON L8K 1E1 Canada,hamilton,treatment,ada,548
-African Lion Safari - Eagles Nest Corner,1386 Cooper Rd Flamborough ON N1R 5S2 Canada,hamilton,treatment,ada,1100
-African Lion Safari - Kanga Kool Treats,1386 Cooper Rd Flamborough ON N1R 5S2 Canada,hamilton,treatment,ada,1926
-Afshar's Shawarma and Grill,234 King St W Hamilton ON L8P 1A9 Canada,hamilton,treatment,ada,643
-Al Naveed Take-out,214 Barton St E StoneyCreek ON L8E 2K2 Canada,hamilton,treatment,ada,498
+2416454 Ontario Inc.,2416 Barton St E Hamilton ON L8E 2W7,hamilton,treatment,2W7,551
+8090 Teahouse,149 King St E Hamilton ON L8N 1B1,hamilton,treatment,1B1,1202
+A & W,931 Upper James St Hamilton ON L9C 3A6,hamilton,treatment,3A6,423
+A & W,190 Barton St E. Hamilton ON L8L 2W8,hamilton,treatment,2W8,427
+A & W (Eastgate),75 Centennial Pkwy Hamilton ON L8E 2P2,hamilton,treatment,2P2,73
+A&W,999 Upper Wentworth St Hamilton ON L9A 4X5,hamilton,treatment,4X5,1932
+Abington Crt,1500 Main St E Hamilton ON L8K 1E1,hamilton,treatment,1E1,548
+African Lion Safari - Eagles Nest Corner,1386 Cooper Rd Flamborough ON N1R 5S2,hamilton,treatment,5S2,1100
+African Lion Safari - Kanga Kool Treats,1386 Cooper Rd Flamborough ON N1R 5S2,hamilton,treatment,5S2,1926
+Afshar's Shawarma and Grill,234 King St W Hamilton ON L8P 1A9,hamilton,treatment,1A9,643
+Al Naveed Take-out,214 Barton St E StoneyCreek ON L8E 2K2,hamilton,treatment,2K2,498
 Alexandros Take Out,1400 Upper James HAMILTON,hamilton,treatment,TON,949
-All Nations Full Gospel,1209 Main Street East Hamilton ON L8K 1A3 Canada,hamilton,treatment,ada,113
-All Souls Parish Hall,21 Barton St W Hamilton ON L8L 1A2 Canada,hamilton,treatment,ada,1138
-Amica at Stoney Creek (Ice Cream Parlour),135 King St E Hamilton ON L8G 1L4 Canada,hamilton,treatment,ada,1540
-Andys Submarines,1342 Barton St E Hamilton ON L8H 2W3 Canada,hamilton,treatment,ada,1499
-Annunciation of Our Lord ES,250 Limeridge Rd W Hamilton ON L9C 2V2 Canada,hamilton,treatment,ada,1018
-Arby's,483 HWY 8 . STONEY CREEK ON L8G 5B9 Canada,hamilton,treatment,ada,88
-ArcelorMittal Dofasco - V16 Hot Strip S,1330 Burlington St E Hamilton ON L8N 3J5 Canada,hamilton,treatment,ada,1770
-Art Gallery of Hamilton - Scarlett House Catering,123 King St W Hamilton ON L8P 4S8 Canada,hamilton,treatment,ada,472
-At Hot Foods Plate# 133,270 Cumberland Ave Hamilton ON L8M 2A1 Canada,hamilton,treatment,ada,1783
-August 8 Restaurant,835 Paramount Dr Hamilton ON L8J 0B4 Canada,hamilton,treatment,ada,637
-Augusta's Winking Judge,25 Augusta St Hamilton ON L8N 1P6 Canada,hamilton,treatment,ada,1438
-Bakers Corner,133 Freelton Rd Flamborough Ontario L8B 0Z5 Canada,hamilton,treatment,ada,782
+All Nations Full Gospel,1209 Main Street East Hamilton ON L8K 1A3,hamilton,treatment,1A3,113
+All Souls Parish Hall,21 Barton St W Hamilton ON L8L 1A2,hamilton,treatment,1A2,1138
+Amica at Stoney Creek (Ice Cream Parlour),135 King St E Hamilton ON L8G 1L4,hamilton,treatment,1L4,1540
+Andys Submarines,1342 Barton St E Hamilton ON L8H 2W3,hamilton,treatment,2W3,1499
+Annunciation of Our Lord ES,250 Limeridge Rd W Hamilton ON L9C 2V2,hamilton,treatment,2V2,1018
+Arby's,483 HWY 8 . STONEY CREEK ON L8G 5B9,hamilton,treatment,5B9,88
+ArcelorMittal Dofasco - V16 Hot Strip S,1330 Burlington St E Hamilton ON L8N 3J5,hamilton,treatment,3J5,1770
+Art Gallery of Hamilton - Scarlett House Catering,123 King St W Hamilton ON L8P 4S8,hamilton,treatment,4S8,472
+At Hot Foods Plate# 133,270 Cumberland Ave Hamilton ON L8M 2A1,hamilton,treatment,2A1,1783
+August 8 Restaurant,835 Paramount Dr Hamilton ON L8J 0B4,hamilton,treatment,0B4,637
+Augusta's Winking Judge,25 Augusta St Hamilton ON L8N 1P6,hamilton,treatment,1P6,1438
+Bakers Corner,133 Freelton Rd Flamborough Ontario L8B 0Z5,hamilton,treatment,0Z5,782
 Bar Burrito,1374 SOUTH SERVICE RD STONEY CREEK,hamilton,treatment,EEK,87
 BBQ HOUSE INC,760 CONCESSION ST HAMILTON,hamilton,treatment,TON,541
-Beanermunky Chocolate,50 King St W Dundas ON L9H 1T8 Canada,hamilton,treatment,ada,212
-Bennetto Nutrition Program,47 Simcoe St E. Hamilton ON L8L 3N2 Canada,hamilton,treatment,ada,1809
-Bentford Orchards,35 York Blvd. Hamilton ON Canada,hamilton,treatment,ada,1350
+Beanermunky Chocolate,50 King St W Dundas ON L9H 1T8,hamilton,treatment,1T8,212
+Bennetto Nutrition Program,47 Simcoe St E. Hamilton ON L8L 3N2,hamilton,treatment,3N2,1809
+Bentford Orchards,35 York Blvd. Hamilton ON,hamilton,treatment, ON,1350
 BENTO SUSHI - Walmart,675 UPPER JAMES ST HAMILTON,hamilton,treatment,TON,668
-Beverley Hall,793 Old Hwy 8 Flamborough ON L0R 1X0 Canada,hamilton,treatment,ada,1433
-Beyond the Batter,4-1791 Stonechurch Rd E Stoney Creek ON L8J 0B4 Canada,hamilton,treatment,ada,130
-Bitten,219 Locke St S Hamilton ON L8P 4B6 Canada,hamilton,treatment,ada,820
-Body Pro Gym Inc.,635 Upper Wentworth Str. Hamilton ON L9A 4V4 Canada,hamilton,treatment,ada,706
-Booster Juice,737 Golf Links Rd Ancaster ON L9K 1L5 Canada,hamilton,treatment,ada,682
-Booster Juice,94 Hamilton Regional Rd 8 Hamilton ON L0R 1C0 Canada,hamilton,treatment,ada,176
-Boston Pizza,1219 Barton St E Hamilton ON L8H 2V4 Canada,hamilton,treatment,ada,1703
-Boston Pizza #509,1563 Main St W Hamilton ON L8S 1E6 Canada,hamilton,treatment,ada,1866
-Brandish Bar & Grill,1085 Barton St E Hamilton ON L8L 3E2 Canada,hamilton,treatment,ada,433
-Breakers,680 Van Wagner's Beach Rd Hamilton ON L9E 3L8 Canada,hamilton,treatment,ada,623
-Broadway Diner,20-1550 Upper James St Hamilton ON L9B 2L6 Canada,hamilton,treatment,ada,1461
-Bronzie's Place,201 James St S Hamilton ON L8P 3A8 Canada,hamilton,treatment,ada,230
-Burger King,2 King St W Hamilton ON L8P 1A1 Canada,hamilton,treatment,ada,1771
-BURRITO BANDIDOS,228 KING STREET. W HAMILTON ON L8P 1A9 Canada,hamilton,treatment,ada,1990
-Cafe Baffico,1375 King St. E Hamilton Ontario L8M 1H6 Canada,hamilton,treatment,ada,980
-Cakes for All Occasions,152 Oakland Dr HAMILTON ON L8E 1B6 Canada,hamilton,treatment,ada,1618
-Cardinal Newman H.S.,127 Grays Rd Stoney Creek ON L8G 3V3 Canada,hamilton,treatment,ada,939
-Caribbean & Canadian Fast Food,568 Concession St Hamilton ON L8V 1B1 Canada,hamilton,treatment,ada,291
-Carluke Orchards,R.R.#2-2194 Shaver Rd S Ancaster ON L9G 3L1 Canada,hamilton,treatment,ada,562
+Beverley Hall,793 Old Hwy 8 Flamborough ON L0R 1X0,hamilton,treatment,1X0,1433
+Beyond the Batter,4-1791 Stonechurch Rd E Stoney Creek ON L8J 0B4,hamilton,treatment,0B4,130
+Bitten,219 Locke St S Hamilton ON L8P 4B6,hamilton,treatment,4B6,820
+Body Pro Gym Inc.,635 Upper Wentworth Str. Hamilton ON L9A 4V4,hamilton,treatment,4V4,706
+Booster Juice,737 Golf Links Rd Ancaster ON L9K 1L5,hamilton,treatment,1L5,682
+Booster Juice,94 Hamilton Regional Rd 8 Hamilton ON L0R 1C0,hamilton,treatment,1C0,176
+Boston Pizza,1219 Barton St E Hamilton ON L8H 2V4,hamilton,treatment,2V4,1703
+Boston Pizza #509,1563 Main St W Hamilton ON L8S 1E6,hamilton,treatment,1E6,1866
+Brandish Bar & Grill,1085 Barton St E Hamilton ON L8L 3E2,hamilton,treatment,3E2,433
+Breakers,680 Van Wagner's Beach Rd Hamilton ON L9E 3L8,hamilton,treatment,3L8,623
+Broadway Diner,20-1550 Upper James St Hamilton ON L9B 2L6,hamilton,treatment,2L6,1461
+Bronzie's Place,201 James St S Hamilton ON L8P 3A8,hamilton,treatment,3A8,230
+Burger King,2 King St W Hamilton ON L8P 1A1,hamilton,treatment,1A1,1771
+BURRITO BANDIDOS,228 KING STREET. W HAMILTON ON L8P 1A9,hamilton,treatment,1A9,1990
+Cafe Baffico,1375 King St. E Hamilton Ontario L8M 1H6,hamilton,treatment,1H6,980
+Cakes for All Occasions,152 Oakland Dr HAMILTON ON L8E 1B6,hamilton,treatment,1B6,1618
+Cardinal Newman H.S.,127 Grays Rd Stoney Creek ON L8G 3V3,hamilton,treatment,3V3,939
+Caribbean & Canadian Fast Food,568 Concession St Hamilton ON L8V 1B1,hamilton,treatment,1B1,291
+Carluke Orchards,R.R.#2-2194 Shaver Rd S Ancaster ON L9G 3L1,hamilton,treatment,3L1,562
 CARO RESTAURANT & BAR,229 JAMES ST.N HAMILTON,hamilton,treatment,TON,670
-Caroline Place Retirement Residence,118 Market St Hamilton - Downtown (Centre) ON L8R 3P9 Canada,hamilton,treatment,ada,1838
+Caroline Place Retirement Residence,118 Market St Hamilton - Downtown (Centre) ON L8R 3P9,hamilton,treatment,3P9,1838
 CASTELLI CUCINA,337 JAMES ST.N HAMILTON,hamilton,treatment,TON,299
-Cavallo Nero,370 Wilson St E Ancaster ON L9G 4S4 Canada,hamilton,treatment,ada,960
-Chartwell Deerview Crossing Retirement,460 Rymal Rd W Hamilton ON L9B 0B2 Canada,hamilton,treatment,ada,1154
-Chippewa Creek Golf Course - Restaurant,9639 Chippewa Rd W Hamilton ON L0R 1W0 Canada,hamilton,treatment,ada,492
-Cineplex Entertainment - Snack Bar,771 Golf Links Rd Ancaster ON L9K 1L5 Canada,hamilton,treatment,ada,345
+Cavallo Nero,370 Wilson St E Ancaster ON L9G 4S4,hamilton,treatment,4S4,960
+Chartwell Deerview Crossing Retirement,460 Rymal Rd W Hamilton ON L9B 0B2,hamilton,treatment,0B2,1154
+Chippewa Creek Golf Course - Restaurant,9639 Chippewa Rd W Hamilton ON L0R 1W0,hamilton,treatment,1W0,492
+Cineplex Entertainment - Snack Bar,771 Golf Links Rd Ancaster ON L9K 1L5,hamilton,treatment,1L5,345
 Circle K,2471 Barton St. E Hamilton Ontario,hamilton,treatment,rio,767
-City Housing - Vanier Towers,"181 Jackson St, W Hamilton ON L8P 1L8 Canada",hamilton,treatment,ada,1080
-Clarion Nursing Home,337 Highway No. 8 Stoney Creek ON L8G 1E7 Canada,hamilton,treatment,ada,929
-Coffee Culture,4B-140 Centennial Pkwy N Hamilton ON L8E Canada,hamilton,treatment,ada,1513
-Conquistador,542 Upper Wellington St Hamilton ON L9A 3P5 Canada,hamilton,treatment,ada,1490
-Cookhouse Bistro,787 Old Highway 8 Rockton ON L0R 1X0 Canada,hamilton,treatment,ada,2001
-Cooler's Cafe,1-558 Upper Gage Ave Hamilton ON L8V 4J6 Canada,hamilton,treatment,ada,120
-Coop Wicked Chicken,272 King St W Hamilton ON L8P 1B1 Canada,hamilton,treatment,ada,553
-Corktown Pub and Fare,175 Young St Hamilton ON L8N 1V7 Canada,hamilton,treatment,ada,1949
-Country Style,Food Court-100 King St W Hamilton ON L8P 1A2 Canada,hamilton,treatment,ada,595
-Crumbled,339 Barton Street East Hamilton ON L8L 2X6 Canada,hamilton,treatment,ada,1958
-Cucina Fresca,455 Barton Street Stoney Creek ON L8E 2L7 Canada,hamilton,treatment,ada,231
-Curbside Foods Plate # 032,73 Gordon Drummond Ave Stoney Creek ON Canada,hamilton,treatment,ada,1125
-Dairy Queen,981 Queenston Rd Stoney Creek ON L8G 1B8 Canada,hamilton,treatment,ada,1576
-Dairy Queen,233 Dundas St E Waterdown ON L0R 2H0 Canada,hamilton,treatment,ada,598
-Dolled Up Desserts Gluten Free and Vegan Baking Inc.,142 James St. N Hamilton Ontario L8R 2K9 Canada,hamilton,treatment,ada,1038
-Domino's Pizza,4-188 Barton St Stoney Creek ON L8E 4W3 Canada,hamilton,treatment,ada,1031
+City Housing - Vanier Towers,"181 Jackson St, W Hamilton ON L8P 1L8",hamilton,treatment,1L8,1080
+Clarion Nursing Home,337 Highway No. 8 Stoney Creek ON L8G 1E7,hamilton,treatment,1E7,929
+Coffee Culture,4B-140 Centennial Pkwy N Hamilton ON L8E,hamilton,treatment,L8E,1513
+Conquistador,542 Upper Wellington St Hamilton ON L9A 3P5,hamilton,treatment,3P5,1490
+Cookhouse Bistro,787 Old Highway 8 Rockton ON L0R 1X0,hamilton,treatment,1X0,2001
+Cooler's Cafe,1-558 Upper Gage Ave Hamilton ON L8V 4J6,hamilton,treatment,4J6,120
+Coop Wicked Chicken,272 King St W Hamilton ON L8P 1B1,hamilton,treatment,1B1,553
+Corktown Pub and Fare,175 Young St Hamilton ON L8N 1V7,hamilton,treatment,1V7,1949
+Country Style,Food Court-100 King St W Hamilton ON L8P 1A2,hamilton,treatment,1A2,595
+Crumbled,339 Barton Street East Hamilton ON L8L 2X6,hamilton,treatment,2X6,1958
+Cucina Fresca,455 Barton Street Stoney Creek ON L8E 2L7,hamilton,treatment,2L7,231
+Curbside Foods Plate # 032,73 Gordon Drummond Ave Stoney Creek ON,hamilton,treatment, ON,1125
+Dairy Queen,981 Queenston Rd Stoney Creek ON L8G 1B8,hamilton,treatment,1B8,1576
+Dairy Queen,233 Dundas St E Waterdown ON L0R 2H0,hamilton,treatment,2H0,598
+Dolled Up Desserts Gluten Free and Vegan Baking Inc.,142 James St. N Hamilton Ontario L8R 2K9,hamilton,treatment,2K9,1038
+Domino's Pizza,4-188 Barton St Stoney Creek ON L8E 4W3,hamilton,treatment,4W3,1031
 Donut Monster Inc.,246 Locke St. S Hamilton Ontario L8P 4B9,hamilton,treatment,4B9,281
-"Donut Stop, The",617 Parkdale Ave N Hamilton ON L8H 5Z1 Canada,hamilton,treatment,ada,218
-Dr. J. Edgar Davey,99 Ferguson Ave N Hamilton ON L8R 1L6 Canada,hamilton,treatment,ada,1111
-Dundas Shawama,24 King St E Dundas ON L9H 1B8 Canada,hamilton,treatment,ada,1355
+"Donut Stop, The",617 Parkdale Ave N Hamilton ON L8H 5Z1,hamilton,treatment,5Z1,218
+Dr. J. Edgar Davey,99 Ferguson Ave N Hamilton ON L8R 1L6,hamilton,treatment,1L6,1111
+Dundas Shawama,24 King St E Dundas ON L9H 1B8,hamilton,treatment,1B8,1355
 East Hamilton Cheese Company,187 Ottawa St. N Hamilton Ontario,hamilton,treatment,rio,98
-East Side Mario's,1389 Upper James St Hamilton ON L9B 1K2 Canada,hamilton,treatment,ada,1507
-Easy Seafood Ltd.,675 Rymal Road East Hamilton ON Canada,hamilton,treatment,ada,1394
-Easy Seafood Ltd.,640 Queenston Rd Hamilton ON L8K 1K2 Canada,hamilton,treatment,ada,1531
-EEC Monseigneur-De-Laval,135 Bendamere Ave HAMILTON ON L9C 1N4 Canada,hamilton,treatment,ada,116
-Emerson 109,109 Emerson St Hamilton ON L8S 2X5 Canada,hamilton,treatment,ada,1511
-Emilio's Eatery,117 King St W Dundas ON L9H 1V1 Canada,hamilton,treatment,ada,1081
-Eve's Plate#139,339 Emerald St N Hamilton ON L8L 5L2 Canada,hamilton,treatment,ada,400
-Faces Cafe Bar,1123 Main St E Hamilton ON L8M 2M5 Canada,hamilton,treatment,ada,1194
-Fairweather Brewing Company,1-5 Ofield Rd Hamilton ON L8S 2M4 Canada,hamilton,treatment,ada,1896
-Faith Care Villa,2129 King St E Hamilton ON L8K 1W5 Canada,hamilton,treatment,ada,1688
-Faith Hope Manor,178 John St N Hamilton ON L8L 4P2 Canada,hamilton,treatment,ada,346
-Fallsway Management Group Plate# 176,26 Harriet St Hamilton Ontario L8R 2E4 Canada,hamilton,treatment,ada,1779
-Farm House,254 King William Street Hamilton ON L8R 1B2 Canada,hamilton,treatment,ada,1746
+East Side Mario's,1389 Upper James St Hamilton ON L9B 1K2,hamilton,treatment,1K2,1507
+Easy Seafood Ltd.,675 Rymal Road East Hamilton ON,hamilton,treatment, ON,1394
+Easy Seafood Ltd.,640 Queenston Rd Hamilton ON L8K 1K2,hamilton,treatment,1K2,1531
+EEC Monseigneur-De-Laval,135 Bendamere Ave HAMILTON ON L9C 1N4,hamilton,treatment,1N4,116
+Emerson 109,109 Emerson St Hamilton ON L8S 2X5,hamilton,treatment,2X5,1511
+Emilio's Eatery,117 King St W Dundas ON L9H 1V1,hamilton,treatment,1V1,1081
+Eve's Plate#139,339 Emerald St N Hamilton ON L8L 5L2,hamilton,treatment,5L2,400
+Faces Cafe Bar,1123 Main St E Hamilton ON L8M 2M5,hamilton,treatment,2M5,1194
+Fairweather Brewing Company,1-5 Ofield Rd Hamilton ON L8S 2M4,hamilton,treatment,2M4,1896
+Faith Care Villa,2129 King St E Hamilton ON L8K 1W5,hamilton,treatment,1W5,1688
+Faith Hope Manor,178 John St N Hamilton ON L8L 4P2,hamilton,treatment,4P2,346
+Fallsway Management Group Plate# 176,26 Harriet St Hamilton Ontario L8R 2E4,hamilton,treatment,2E4,1779
+Farm House,254 King William Street Hamilton ON L8R 1B2,hamilton,treatment,1B2,1746
 Fat Bastard Burrito,94 HWY 8 Stoney Creek ON L8G 1C3,hamilton,treatment,1C3,1077
-First Place Hamilton,Suite 300-350 King St E Hamilton ON L8N 3Y3 Canada,hamilton,treatment,ada,7
-Flamboro Downs - The Eatery,967 Highway 5 w Flamborough ON Canada,hamilton,treatment,ada,2
-Flamborough Food Bank,1432 Centre Rd Carlisle ON L0R 1H1 Canada,hamilton,treatment,ada,1946
-Fox and Fiddle,107A-999 Upper Wentworth St Hamilton ON L9A 4X5 Canada,hamilton,treatment,ada,780
-Franco's No Frills,1-640 Queenston Rd. Hamilton ON L8K 1K2 Canada,hamilton,treatment,ada,64
-Fresh Kravings Foods Inc.,107 James Street North Hamilton ON L8R 2K6 Canada,hamilton,treatment,ada,1086
-FRESH LOCAL KITCHEN,"14 ST. ANN'S CRT., ANCASTER ON L9G 2C8 Canada",hamilton,treatment,ada,1509
-Fry Hard Plate #117 MTO Plate #R2053D,253 Mary St Hamilton ON L8L 4W2 Canada,hamilton,treatment,ada,1128
-Gallery Snack Bar,1000-25 Charlton Ave E Hamilton ON L8N 1Y2 Canada,hamilton,treatment,ada,319
-Gateway Newstands 631,275-2 King St W Hamilton - Downtown (Centre) ON L8P 1A1 Canada,hamilton,treatment,ada,1224
-Get together bar and grill,253 Kenilworth Ave N. Hamilton - Downtown (East) ON L8H 4S6 Canada,hamilton,treatment,ada,1041
-Giuseppe's Italian Cuisine & Pizza,762 King St E Hamilton ON L8M 1A6 Canada,hamilton,treatment,ada,634
+First Place Hamilton,Suite 300-350 King St E Hamilton ON L8N 3Y3,hamilton,treatment,3Y3,7
+Flamboro Downs - The Eatery,967 Highway 5 w Flamborough ON,hamilton,treatment, ON,2
+Flamborough Food Bank,1432 Centre Rd Carlisle ON L0R 1H1,hamilton,treatment,1H1,1946
+Fox and Fiddle,107A-999 Upper Wentworth St Hamilton ON L9A 4X5,hamilton,treatment,4X5,780
+Franco's No Frills,1-640 Queenston Rd. Hamilton ON L8K 1K2,hamilton,treatment,1K2,64
+Fresh Kravings Foods Inc.,107 James Street North Hamilton ON L8R 2K6,hamilton,treatment,2K6,1086
+FRESH LOCAL KITCHEN,"14 ST. ANN'S CRT., ANCASTER ON L9G 2C8",hamilton,treatment,2C8,1509
+Fry Hard Plate #117 MTO Plate #R2053D,253 Mary St Hamilton ON L8L 4W2,hamilton,treatment,4W2,1128
+Gallery Snack Bar,1000-25 Charlton Ave E Hamilton ON L8N 1Y2,hamilton,treatment,1Y2,319
+Gateway Newstands 631,275-2 King St W Hamilton - Downtown (Centre) ON L8P 1A1,hamilton,treatment,1A1,1224
+Get together bar and grill,253 Kenilworth Ave N. Hamilton - Downtown (East) ON L8H 4S6,hamilton,treatment,4S6,1041
+Giuseppe's Italian Cuisine & Pizza,762 King St E Hamilton ON L8M 1A6,hamilton,treatment,1A6,634
 GLOBAL,"1413 HWY 8, STONEY CREEK",hamilton,treatment,EEK,601
-Golden Griddle,1119 Fennell Ave. E Hamilton ON L8T 1S2 Canada,hamilton,treatment,ada,332
-Governor's Manor,37 Ogilvie St Dundas ON L9H 2S3 Canada,hamilton,treatment,ada,1565
-Gown and Gavel Restaurant Inc.,24 Hess St S Hamilton ON L8P 3M8 Canada,hamilton,treatment,ada,803
-Grain & Grit Small Batch Beer,11 Ewen Road Hamilton ON Canada,hamilton,treatment,ada,911
-GREEN LEAF RESTAURANT,865 Upper James St Hamilton ON L9C 3A3 Canada,hamilton,treatment,ada,1713
-Hambrgr,49 King William St Hamilton ON L8R 1A2 Canada,hamilton,treatment,ada,1050
-Hamilton Air Force Association,128 King St E Dundas ON L9H 1C3 Canada,hamilton,treatment,ada,1035
-Hamilton Beach Rescue Unit Inc,316 Beach Blvd Hamilton ON L8H 6W2 Canada,hamilton,treatment,ada,1146
-Hamilton General Hospital - Barton Bean,237 Barton St E Hamilton ON L8L 2X2 Canada,hamilton,treatment,ada,1558
-Hamilton Harbour Queen - Boat,47 Discovery Dr Hamilton ON L8L 8K4 Canada,hamilton,treatment,ada,880
-Hamilton Indoor Go Carts,193 Cavell Ave Hamilton - Downtown (East) ON L8L 8C9 Canada,hamilton,treatment,ada,150
-Hamilton Regionettes Gymnastic,456 Grays Rd Stoney Creek ON L8E 2Z4 Canada,hamilton,treatment,ada,1107
-Hamilton Waterfront Grill,47 Discovery Dr Hamilton ON L8L 8K4 Canada,hamilton,treatment,ada,1711
-Hamilton Waterfront Scoop,47 Discovery Dr Hamilton ON L8L 8K4 Canada,hamilton,treatment,ada,1956
+Golden Griddle,1119 Fennell Ave. E Hamilton ON L8T 1S2,hamilton,treatment,1S2,332
+Governor's Manor,37 Ogilvie St Dundas ON L9H 2S3,hamilton,treatment,2S3,1565
+Gown and Gavel Restaurant Inc.,24 Hess St S Hamilton ON L8P 3M8,hamilton,treatment,3M8,803
+Grain & Grit Small Batch Beer,11 Ewen Road Hamilton ON,hamilton,treatment, ON,911
+GREEN LEAF RESTAURANT,865 Upper James St Hamilton ON L9C 3A3,hamilton,treatment,3A3,1713
+Hambrgr,49 King William St Hamilton ON L8R 1A2,hamilton,treatment,1A2,1050
+Hamilton Air Force Association,128 King St E Dundas ON L9H 1C3,hamilton,treatment,1C3,1035
+Hamilton Beach Rescue Unit Inc,316 Beach Blvd Hamilton ON L8H 6W2,hamilton,treatment,6W2,1146
+Hamilton General Hospital - Barton Bean,237 Barton St E Hamilton ON L8L 2X2,hamilton,treatment,2X2,1558
+Hamilton Harbour Queen - Boat,47 Discovery Dr Hamilton ON L8L 8K4,hamilton,treatment,8K4,880
+Hamilton Indoor Go Carts,193 Cavell Ave Hamilton - Downtown (East) ON L8L 8C9,hamilton,treatment,8C9,150
+Hamilton Regionettes Gymnastic,456 Grays Rd Stoney Creek ON L8E 2Z4,hamilton,treatment,2Z4,1107
+Hamilton Waterfront Grill,47 Discovery Dr Hamilton ON L8L 8K4,hamilton,treatment,8K4,1711
+Hamilton Waterfront Scoop,47 Discovery Dr Hamilton ON L8L 8K4,hamilton,treatment,8K4,1956
 HANGRY CHURRASQUEIRA CHICKEN INC.,1374 SOUTH SERVICE RD STONEY CREEK,hamilton,treatment,EEK,1474
-HEALTHY PLANET - STONEY CREEK,B3-502 CENTENNIAL PARKWAY. N STONEY CREEK ON L8E 0G2 Canada,hamilton,treatment,ada,1157
-Heritage Green Nursing Home,353 Isaac Brock Dr Stoney Creek ON L8J 1Y1 Canada,hamilton,treatment,ada,1800
-Homestead Ice Cream,3149 Homestead Dr Glanbrook ON L0R 1W0 Canada,hamilton,treatment,ada,1234
-Hotdiggtitydog Trailer -new plate# 079 (old Plate 414),118 Hatt St Hamilton ON L9H Canada,hamilton,treatment,ada,1980
-Hotti Biscotti,35 York Blvd Hamilton ON L8R 3K1 Canada,hamilton,treatment,ada,1014
-Hub Burrito,1405 Upper Ottawa Street Hamilton ON L8W 3J6 Canada,hamilton,treatment,ada,1187
-Hungry Ninja Hamilton,368 Main St W Hamilton ON L8P 1K2 Canada,hamilton,treatment,ada,557
-HUSKY,102 King St W Stoney Creek ON L8G 1J2 Canada,hamilton,treatment,ada,1640
-Husky,5 Rymal Rd W Hamilton ON Canada,hamilton,treatment,ada,1401
-Husky,1 Parkdale Avenue North Hamilton ON L8H 5W7 Canada,hamilton,treatment,ada,92
-Husky,271 Dundas St E Waterdown ON L0R 2H0 Canada,hamilton,treatment,ada,1701
-Hutch's,325 Bay St N Hamilton ON L8L 1M5 Canada,hamilton,treatment,ada,1982
-India Village,"370 Wilson St E, Ancaster ON L9G 2C2 Canada",hamilton,treatment,ada,155
-India Village Grill Restaurant & Catering Ltd.,100 King St W Dundas ON L9H 1T9 Canada,hamilton,treatment,ada,265
+HEALTHY PLANET - STONEY CREEK,B3-502 CENTENNIAL PARKWAY. N STONEY CREEK ON L8E 0G2,hamilton,treatment,0G2,1157
+Heritage Green Nursing Home,353 Isaac Brock Dr Stoney Creek ON L8J 1Y1,hamilton,treatment,1Y1,1800
+Homestead Ice Cream,3149 Homestead Dr Glanbrook ON L0R 1W0,hamilton,treatment,1W0,1234
+Hotdiggtitydog Trailer -new plate# 079 (old Plate 414),118 Hatt St Hamilton ON L9H,hamilton,treatment,L9H,1980
+Hotti Biscotti,35 York Blvd Hamilton ON L8R 3K1,hamilton,treatment,3K1,1014
+Hub Burrito,1405 Upper Ottawa Street Hamilton ON L8W 3J6,hamilton,treatment,3J6,1187
+Hungry Ninja Hamilton,368 Main St W Hamilton ON L8P 1K2,hamilton,treatment,1K2,557
+HUSKY,102 King St W Stoney Creek ON L8G 1J2,hamilton,treatment,1J2,1640
+Husky,5 Rymal Rd W Hamilton ON,hamilton,treatment, ON,1401
+Husky,1 Parkdale Avenue North Hamilton ON L8H 5W7,hamilton,treatment,5W7,92
+Husky,271 Dundas St E Waterdown ON L0R 2H0,hamilton,treatment,2H0,1701
+Hutch's,325 Bay St N Hamilton ON L8L 1M5,hamilton,treatment,1M5,1982
+India Village,"370 Wilson St E, Ancaster ON L9G 2C2",hamilton,treatment,2C2,155
+India Village Grill Restaurant & Catering Ltd.,100 King St W Dundas ON L9H 1T9,hamilton,treatment,1T9,265
 Industria Pizzeria + Bar,1791 Stone Church Rd. E Bldg 4 Stoney Creek Ontario,hamilton,treatment,rio,1504
-Jamaican Patty Wagon Plate # 126,18 Vanderwood Ct Hamilton ON L8G 2Y6 Canada,hamilton,treatment,ada,1772
+Jamaican Patty Wagon Plate # 126,18 Vanderwood Ct Hamilton ON L8G 2Y6,hamilton,treatment,2Y6,1772
 Jan Bingo Dining Company,100-2 King St W Hamilton ON L8P 1A1,hamilton,treatment,1A1,390
-Jenny Vasquez-Mamey,811 King St. E Hamilton ON Canada,hamilton,treatment,ada,1346
-John St Diner,29 John St N Hamilton ON L8R 1H1 Canada,hamilton,treatment,ada,355
-Jonny Blond,664 Concession St E Hamilton ON L8V 4T9 Canada,hamilton,treatment,ada,1208
-Joshy's Good Eats,35 York Blvd Hamilton ON L8R 3K7 Canada,hamilton,treatment,ada,1135
-Jowahar Productions Inc O/A SRH Health Foods,1230 Barton St E Hamilton ON L8H 2V8 Canada,hamilton,treatment,ada,692
+Jenny Vasquez-Mamey,811 King St. E Hamilton ON,hamilton,treatment, ON,1346
+John St Diner,29 John St N Hamilton ON L8R 1H1,hamilton,treatment,1H1,355
+Jonny Blond,664 Concession St E Hamilton ON L8V 4T9,hamilton,treatment,4T9,1208
+Joshy's Good Eats,35 York Blvd Hamilton ON L8R 3K7,hamilton,treatment,3K7,1135
+Jowahar Productions Inc O/A SRH Health Foods,1230 Barton St E Hamilton ON L8H 2V8,hamilton,treatment,2V8,692
 Joya Sushi,1685 MAIN ST.W HAMILTON,hamilton,treatment,TON,986
-Kamoosh Bistro,34 Main St. N Waterdown Ontario L0R 2H0 Canada,hamilton,treatment,ada,1021
-Karam Kitchen Corp,811 King St E Hamilton ON L8M 1B1 Canada,hamilton,treatment,ada,2002
-Karlik Pastry Inc.,762 BARTON ST E HAMILTON ON L8L 3B1 Canada,hamilton,treatment,ada,1127
-Kelly's Residence Main,650 Main St E Hamilton ON L8M 1J8 Canada,hamilton,treatment,ada,747
-Knights Of Columbus,222 Queenston Rd Hamilton ON L8H 4S7 Canada,hamilton,treatment,ada,1130
-Kohinur Indian Cuisine,2537 Regional Rd. 56 Glanbrook ON Canada,hamilton,treatment,ada,389
-Koi Restaurant,27 Hess St S Hamilton ON L8P 3M7 Canada,hamilton,treatment,ada,1321
-La Luna Restaurant,306 King St W Hamilton - Downtown (Centre) ON L8L 1B1 Canada,hamilton,treatment,ada,1238
-La Prep,258-999 Upper Wentworth St Hamilton ON L9A 4X5 Canada,hamilton,treatment,ada,1300
-Latin Food & Products,35 York Blvd. Hamilton ON L8R 1R6 Canada,hamilton,treatment,ada,817
-Lava Pizza & Wings,876 King Street West Hamilton ON L8S 4S6 Canada,hamilton,treatment,ada,943
-Lawfield Arena Food Concession,150 Folkstone Ave Hamilton ON L8V 4N4 Canada,hamilton,treatment,ada,1101
-Lazeez Shawarma,1031 King St W Hamilton ON L8S 1L6 Canada,hamilton,treatment,ada,704
+Kamoosh Bistro,34 Main St. N Waterdown Ontario L0R 2H0,hamilton,treatment,2H0,1021
+Karam Kitchen Corp,811 King St E Hamilton ON L8M 1B1,hamilton,treatment,1B1,2002
+Karlik Pastry Inc.,762 BARTON ST E HAMILTON ON L8L 3B1,hamilton,treatment,3B1,1127
+Kelly's Residence Main,650 Main St E Hamilton ON L8M 1J8,hamilton,treatment,1J8,747
+Knights Of Columbus,222 Queenston Rd Hamilton ON L8H 4S7,hamilton,treatment,4S7,1130
+Kohinur Indian Cuisine,2537 Regional Rd. 56 Glanbrook ON,hamilton,treatment, ON,389
+Koi Restaurant,27 Hess St S Hamilton ON L8P 3M7,hamilton,treatment,3M7,1321
+La Luna Restaurant,306 King St W Hamilton - Downtown (Centre) ON L8L 1B1,hamilton,treatment,1B1,1238
+La Prep,258-999 Upper Wentworth St Hamilton ON L9A 4X5,hamilton,treatment,4X5,1300
+Latin Food & Products,35 York Blvd. Hamilton ON L8R 1R6,hamilton,treatment,1R6,817
+Lava Pizza & Wings,876 King Street West Hamilton ON L8S 4S6,hamilton,treatment,4S6,943
+Lawfield Arena Food Concession,150 Folkstone Ave Hamilton ON L8V 4N4,hamilton,treatment,4N4,1101
+Lazeez Shawarma,1031 King St W Hamilton ON L8S 1L6,hamilton,treatment,1L6,704
 Legends Grill,2-399 GREENHILL AVE HAMILTON,hamilton,treatment,TON,1427
-Limeridge Pizza & Subs,310 Limerdige Road West Hamilton ON L9C 2V2 Canada,hamilton,treatment,ada,1397
-Limeridge Pizza & Wings,1-990 Upper Wentworth St Hamilton ON L9A 4V9 Canada,hamilton,treatment,ada,663
-Little Caesars,675 Rymal Rd. E. Hamilton ON L8W 1B5 Canada,hamilton,treatment,ada,1229
-Little Caesars,752 Upper james Hamilton ON Canada,hamilton,treatment,ada,1037
-Little Caesars Pizza,80 Dundas St E Waterdown ON L9H 7K6 Canada,hamilton,treatment,ada,22
-Little Red Wagon (Roll'N Baked Spudz) - Plate 112,523 Ofield Rd N Dundas ON L9H 5E2 Canada,hamilton,treatment,ada,1522
-Lo Presti's at Maxwell's,165 Jackson St E Hamilton ON L8N 1L6 Canada,hamilton,treatment,ada,175
-Loyal Order of the Moose Lodge,1860 Barton St E Hamilton ON L8H 2Y6 Canada,hamilton,treatment,ada,1020
-"Lucky's Fish ""N"" Chips",2666 Regional Road 56 Glanbrook Ontario Canada,hamilton,treatment,ada,432
-Luscious D's,23 Gage Ave S Hamilton ON L8M 3C7 Canada,hamilton,treatment,ada,574
-Mama Africa Tropical Food,424 Cannon St E Hamilton ON L8L 2C6 Canada,hamilton,treatment,ada,582
-Manna Korean Takeout,1050 King St W Hamilton ON L8S 1L5 Canada,hamilton,treatment,ada,1940
-Maple Crest Manor,904 King St E Hamilton ON L8M 1B7 Canada,hamilton,treatment,ada,415
-Maple Leaf Pancake House,1520 Main St W Hamilton ON L8S 1E3 Canada,hamilton,treatment,ada,982
+Limeridge Pizza & Subs,310 Limerdige Road West Hamilton ON L9C 2V2,hamilton,treatment,2V2,1397
+Limeridge Pizza & Wings,1-990 Upper Wentworth St Hamilton ON L9A 4V9,hamilton,treatment,4V9,663
+Little Caesars,675 Rymal Rd. E. Hamilton ON L8W 1B5,hamilton,treatment,1B5,1229
+Little Caesars,752 Upper james Hamilton ON,hamilton,treatment, ON,1037
+Little Caesars Pizza,80 Dundas St E Waterdown ON L9H 7K6,hamilton,treatment,7K6,22
+Little Red Wagon (Roll'N Baked Spudz) - Plate 112,523 Ofield Rd N Dundas ON L9H 5E2,hamilton,treatment,5E2,1522
+Lo Presti's at Maxwell's,165 Jackson St E Hamilton ON L8N 1L6,hamilton,treatment,1L6,175
+Loyal Order of the Moose Lodge,1860 Barton St E Hamilton ON L8H 2Y6,hamilton,treatment,2Y6,1020
+"Lucky's Fish ""N"" Chips",2666 Regional Road 56 Glanbrook Ontario,hamilton,treatment,rio,432
+Luscious D's,23 Gage Ave S Hamilton ON L8M 3C7,hamilton,treatment,3C7,574
+Mama Africa Tropical Food,424 Cannon St E Hamilton ON L8L 2C6,hamilton,treatment,2C6,582
+Manna Korean Takeout,1050 King St W Hamilton ON L8S 1L5,hamilton,treatment,1L5,1940
+Maple Crest Manor,904 King St E Hamilton ON L8M 1B7,hamilton,treatment,1B7,415
+Maple Leaf Pancake House,1520 Main St W Hamilton ON L8S 1E3,hamilton,treatment,1E3,982
 Marigold's Maplesyrup,35 York Blvd Hamilton,hamilton,treatment,ton,1724
-Mark's Chinese Food & Tavern,468 King St W. Hamilton ON L8P 1B7 Canada,hamilton,treatment,ada,1432
-Mberry Canada Plate # 094,28 Sedgebrook Ave Stoney Creek ON L8E 6E9 Canada,hamilton,treatment,ada,348
-McDonald's,10 Cootes Dr Dundas ON L9H 1A9 Canada,hamilton,treatment,ada,1170
-McDonald's,2190 Rymal Rd E Glanbrook ON L0R 1P0 Canada,hamilton,treatment,ada,1607
-McDonald's,385 Highway No. 8 Stoney Creek ON L3G 5A2 Canada,hamilton,treatment,ada,233
-McMaster - Bistro 2 Go,1280 Main St W Keyes Res-Bldg Hamilton ON L8S 4K1 Canada,hamilton,treatment,ada,1828
-McMaster - Eggcetera,1280 Main St W Student Centre Hamilton ON L8S 4K1 Canada,hamilton,treatment,ada,448
-McMaster - Tim Hortons (Bistro 2 Go),"1280 Main St W, Keyes Res. Bldg Hamilton L8S ON Canada",hamilton,treatment,ada,621
-McMaster- Global Comfort Foods,1280 Main St W.- Student Ctr. Hamilton ON L8S 4K1 Canada,hamilton,treatment,ada,329
-McMaster- Hammertown Deli,1280 Main St W.- Student Ctr. Hamilton ON L8S 4K1 Canada,hamilton,treatment,ada,289
-McMaster- The Reactor - Thode Library,1280 Main St W Hamilton ON L8S Canada,hamilton,treatment,ada,554
-McMaster-The Grill,1280 Main St. W Student Center Hamilton ON L8S 4K1 Canada,hamilton,treatment,ada,278
-Meadowlands Retirement Residence,1248 Mohawk Rd ANCASTER ON L9K 1P5 Canada,hamilton,treatment,ada,610
-Merit Brewing Company Inc,107 James St N Hamilton ON L8R 2K6 Canada,hamilton,treatment,ada,1942
+Mark's Chinese Food & Tavern,468 King St W. Hamilton ON L8P 1B7,hamilton,treatment,1B7,1432
+Mberry Canada Plate # 094,28 Sedgebrook Ave Stoney Creek ON L8E 6E9,hamilton,treatment,6E9,348
+McDonald's,10 Cootes Dr Dundas ON L9H 1A9,hamilton,treatment,1A9,1170
+McDonald's,2190 Rymal Rd E Glanbrook ON L0R 1P0,hamilton,treatment,1P0,1607
+McDonald's,385 Highway No. 8 Stoney Creek ON L3G 5A2,hamilton,treatment,5A2,233
+McMaster - Bistro 2 Go,1280 Main St W Keyes Res-Bldg Hamilton ON L8S 4K1,hamilton,treatment,4K1,1828
+McMaster - Eggcetera,1280 Main St W Student Centre Hamilton ON L8S 4K1,hamilton,treatment,4K1,448
+McMaster - Tim Hortons (Bistro 2 Go),"1280 Main St W, Keyes Res. Bldg Hamilton L8S ON",hamilton,treatment, ON,621
+McMaster- Global Comfort Foods,1280 Main St W.- Student Ctr. Hamilton ON L8S 4K1,hamilton,treatment,4K1,329
+McMaster- Hammertown Deli,1280 Main St W.- Student Ctr. Hamilton ON L8S 4K1,hamilton,treatment,4K1,289
+McMaster- The Reactor - Thode Library,1280 Main St W Hamilton ON L8S,hamilton,treatment,L8S,554
+McMaster-The Grill,1280 Main St. W Student Center Hamilton ON L8S 4K1,hamilton,treatment,4K1,278
+Meadowlands Retirement Residence,1248 Mohawk Rd ANCASTER ON L9K 1P5,hamilton,treatment,1P5,610
+Merit Brewing Company Inc,107 James St N Hamilton ON L8R 2K6,hamilton,treatment,2K6,1942
 MILESTONES,"787 PARAMOUNT DR Bldg B, STONEY CREEK",hamilton,treatment,EEK,1117
-Mill Street & Five American House,324 Dundas St E Waterdown ON L0R 2H0 Canada,hamilton,treatment,ada,221
-Miss Lyn's,677 King St E Hamilton ON L8M 1A3 Canada,hamilton,treatment,ada,508
-Mohawk Student Association - Booster Juice,135 Fennell Ave W Hamilton ON L9C 0E5 Canada,hamilton,treatment,ada,860
+Mill Street & Five American House,324 Dundas St E Waterdown ON L0R 2H0,hamilton,treatment,2H0,221
+Miss Lyn's,677 King St E Hamilton ON L8M 1A3,hamilton,treatment,1A3,508
+Mohawk Student Association - Booster Juice,135 Fennell Ave W Hamilton ON L9C 0E5,hamilton,treatment,0E5,860
 Monstylefile,804 King St W Hamilton,hamilton,treatment,ton,1436
-Mo's Cafe - Student Residence,245 Fennell Ave W Hamilton ON L9C 0E5 Canada,hamilton,treatment,ada,1536
-Mr. Sub,1144 Main St W Hamilton ON L8G 4X8 Canada,hamilton,treatment,ada,1012
-MRS GREENWAY,3-2 KING STREET. W DUNDAS ON L9H 7B4 Canada,hamilton,treatment,ada,1777
-Murray Wholesale,401 Grays Rd Hamilton ON L8E 2Z3 Canada,hamilton,treatment,ada,832
-My dog's cafe & bar,229 LOCKE ST S HAMILTON ON L8P 4B8 Canada,hamilton,treatment,ada,63
-MY-THAI STONEY CREEK,826 Queenston Rd Hamilton ON L8G 2B5 Canada,hamilton,treatment,ada,354
-Nabils Middle East Food,2-3-1 Wilson St Hamilton ON L8R 1C4 Canada,hamilton,treatment,ada,969
-Nahas Basha Restaurant,610 Upper James St Hamilton ON L9C 2Y8 Canada,hamilton,treatment,ada,878
-Nam Nom Banh Mi,35 York Blvd Hamilton ON Canada,hamilton,treatment,ada,1143
-Nardini Specialties,184 Highway No. 8 Stoney Creek ON L8G 1G2 Canada,hamilton,treatment,ada,1132
-Narula's Authentic Indian Cuisine,291 Queenston Rd Hamilton ON L8K 1H2 Canada,hamilton,treatment,ada,1353
-New Village Retirement,490 Highway No. 8 Stoney Creek ON L8G 1G6 Canada,hamilton,treatment,ada,1689
-No Frills,930 Upper Paradise Rd Hamilton ON L9B 2N1 Canada,hamilton,treatment,ada,834
+Mo's Cafe - Student Residence,245 Fennell Ave W Hamilton ON L9C 0E5,hamilton,treatment,0E5,1536
+Mr. Sub,1144 Main St W Hamilton ON L8G 4X8,hamilton,treatment,4X8,1012
+MRS GREENWAY,3-2 KING STREET. W DUNDAS ON L9H 7B4,hamilton,treatment,7B4,1777
+Murray Wholesale,401 Grays Rd Hamilton ON L8E 2Z3,hamilton,treatment,2Z3,832
+My dog's cafe & bar,229 LOCKE ST S HAMILTON ON L8P 4B8,hamilton,treatment,4B8,63
+MY-THAI STONEY CREEK,826 Queenston Rd Hamilton ON L8G 2B5,hamilton,treatment,2B5,354
+Nabils Middle East Food,2-3-1 Wilson St Hamilton ON L8R 1C4,hamilton,treatment,1C4,969
+Nahas Basha Restaurant,610 Upper James St Hamilton ON L9C 2Y8,hamilton,treatment,2Y8,878
+Nam Nom Banh Mi,35 York Blvd Hamilton ON,hamilton,treatment, ON,1143
+Nardini Specialties,184 Highway No. 8 Stoney Creek ON L8G 1G2,hamilton,treatment,1G2,1132
+Narula's Authentic Indian Cuisine,291 Queenston Rd Hamilton ON L8K 1H2,hamilton,treatment,1H2,1353
+New Village Retirement,490 Highway No. 8 Stoney Creek ON L8G 1G6,hamilton,treatment,1G6,1689
+No Frills,930 Upper Paradise Rd Hamilton ON L9B 2N1,hamilton,treatment,2N1,834
 O Leao Cafe & Restaurant,746 Barton St E. HAMILTON L8L 3B1,hamilton,treatment,3B1,1223
-Old Navy ( Canada Inc.),999 Upper Wentworth St Hamilton ON L9A 4X5 Canada,hamilton,treatment,ada,1029
-Olympic Softee - Plate# 120,200 Coon's Road Richmond Hill ON L4E 4R3 Canada,hamilton,treatment,ada,920
-One Duke,1 Duke St Hamilton ON L8P 1W8 Canada,hamilton,treatment,ada,1987
+Old Navy ( Canada Inc.),999 Upper Wentworth St Hamilton ON L9A 4X5,hamilton,treatment,4X5,1029
+Olympic Softee - Plate# 120,200 Coon's Road Richmond Hill ON L4E 4R3,hamilton,treatment,4R3,920
+One Duke,1 Duke St Hamilton ON L8P 1W8,hamilton,treatment,1W8,1987
 Osmow's Modern Mediterranean Restaurant,2120 Rymal Rd E Glanbrook,hamilton,treatment,ook,1288
-Our Lady of Lourdes - HWCCCC,420 Mohawk E Hamilton ON Canada,hamilton,treatment,ada,524
+Our Lady of Lourdes - HWCCCC,420 Mohawk E Hamilton ON,hamilton,treatment, ON,524
 P&K SUSHI,301 FRUITLAND RD STONEY CREEK,hamilton,treatment,EEK,963
-PAK Sushi,54 Wilson St W Hamilton ON L9G 3T8 Canada,hamilton,treatment,ada,418
-Papa Pauly's Pizza,997 Cannon ST E Hamilton - Downtown (East ON Canada,hamilton,treatment,ada,808
-Perogie Bar,70 King St. E Dundas Ontario Canada,hamilton,treatment,ada,1469
-Pho Binh Minh Inc,740 Upper James St Hamilton ON L9C 3A2 Canada,hamilton,treatment,ada,1354
-Pho Nhung,85 Queen St N Hamilton ON L8R 2V5 Canada,hamilton,treatment,ada,1641
+PAK Sushi,54 Wilson St W Hamilton ON L9G 3T8,hamilton,treatment,3T8,418
+Papa Pauly's Pizza,997 Cannon ST E Hamilton - Downtown (East ON,hamilton,treatment, ON,808
+Perogie Bar,70 King St. E Dundas Ontario,hamilton,treatment,rio,1469
+Pho Binh Minh Inc,740 Upper James St Hamilton ON L9C 3A2,hamilton,treatment,3A2,1354
+Pho Nhung,85 Queen St N Hamilton ON L8R 2V5,hamilton,treatment,2V5,1641
 PI-CO Pizza Bar,413E-999 Upper Wentworth St Hamilton Ontario,hamilton,treatment,rio,1592
-Pine Valley - Ice Cream,955 Valens Rd Hamilton ON N0B 1L0 Canada,hamilton,treatment,ada,1178
-Pisa Pizza,55 Parkdale Ave N Hamilton ON L8H 5W7 Canada,hamilton,treatment,ada,1252
-Pita Pit,3-649 UPPER JAMES ST HAMILTON ON L9C 2Y9 Canada,hamilton,treatment,ada,1647
-Pita Pit,2 King St. W Hamilton ON L8P 1A1 Canada,hamilton,treatment,ada,261
-Pita Shawarma Donair and Kabab,2-309 Grays Rd Hamilton ON L8E 1V6 Canada,hamilton,treatment,ada,1814
-PIZZA HUT,238 GOVERNORS RD DUNDAS ON L9H 3K2 Canada,hamilton,treatment,ada,1483
-Pizza Pizza #161,833 Upper James St Hamilton ON L9C 3A3 Canada,hamilton,treatment,ada,987
-Pizza Pizza #170,1508 Upper James St Hamilton ON L9B 1K3 Canada,hamilton,treatment,ada,1204
-Planted in Hamilton,225 John Street South Hamilton ON L8N 2C7 Canada,hamilton,treatment,ada,228
-Ponderosa Nature Resort,1218 Concession 8 W Flamborough ON N0B 2J0 Canada,hamilton,treatment,ada,1374
-Popeyes,5-1352 South Service Road Hamilton ON L8E 5C5 Canada,hamilton,treatment,ada,1384
-Popeye's,1183 Wilson St W Hamilton ON L9G 3K9 Canada,hamilton,treatment,ada,801
-Popeyes Chicken and Seafood,1275 Barton Street East Bldg L Hamilton - Downtown (East) ON L8H 2V4 Canada,hamilton,treatment,ada,1893
-Popeye's Supplements,247 Centennial Pkwy N Hamilton ON L8E 2X3 Canada,hamilton,treatment,ada,1720
+Pine Valley - Ice Cream,955 Valens Rd Hamilton ON N0B 1L0,hamilton,treatment,1L0,1178
+Pisa Pizza,55 Parkdale Ave N Hamilton ON L8H 5W7,hamilton,treatment,5W7,1252
+Pita Pit,3-649 UPPER JAMES ST HAMILTON ON L9C 2Y9,hamilton,treatment,2Y9,1647
+Pita Pit,2 King St. W Hamilton ON L8P 1A1,hamilton,treatment,1A1,261
+Pita Shawarma Donair and Kabab,2-309 Grays Rd Hamilton ON L8E 1V6,hamilton,treatment,1V6,1814
+PIZZA HUT,238 GOVERNORS RD DUNDAS ON L9H 3K2,hamilton,treatment,3K2,1483
+Pizza Pizza #161,833 Upper James St Hamilton ON L9C 3A3,hamilton,treatment,3A3,987
+Pizza Pizza #170,1508 Upper James St Hamilton ON L9B 1K3,hamilton,treatment,1K3,1204
+Planted in Hamilton,225 John Street South Hamilton ON L8N 2C7,hamilton,treatment,2C7,228
+Ponderosa Nature Resort,1218 Concession 8 W Flamborough ON N0B 2J0,hamilton,treatment,2J0,1374
+Popeyes,5-1352 South Service Road Hamilton ON L8E 5C5,hamilton,treatment,5C5,1384
+Popeye's,1183 Wilson St W Hamilton ON L9G 3K9,hamilton,treatment,3K9,801
+Popeyes Chicken and Seafood,1275 Barton Street East Bldg L Hamilton - Downtown (East) ON L8H 2V4,hamilton,treatment,2V4,1893
+Popeye's Supplements,247 Centennial Pkwy N Hamilton ON L8E 2X3,hamilton,treatment,2X3,1720
 Powerhouse Restaurant,21 Jones St Stoney Creek ON L8R 1X7,hamilton,treatment,1X7,1410
-Premier BBQ House,800 Queenston Rd #7 Stoney Creek ON L8G 1A7 Canada,hamilton,treatment,ada,1892
-Queenston Retirement Home,346 Queenston Rd Hamilton ON L8K 1H9 Canada,hamilton,treatment,ada,1284
-Quesada Burritos & Tacos,891 Upper James St Hamilton ON L9C 7N1 Canada,hamilton,treatment,ada,258
-Quik Chik,1331 Main St W Hamilton ON L8S 1C6 Canada,hamilton,treatment,ada,333
-Quiznos Sub,1100 Golf Links Rd ANCASTER ON L9K 1J8 Canada,hamilton,treatment,ada,925
-Ralph Kew - Plate 001,1220 Mud St. E Stoney Creek ON L8J 3E5 Canada,hamilton,treatment,ada,741
-Rannosh Restaurant & Cafe,578 -580 Concession St Hamilton ON L8V 1B1 Canada,hamilton,treatment,ada,910
-REAL FRUIT BUBBLE TEA,75 CENTENNIAL PKWY N Hamilton ON Canada,hamilton,treatment,ada,1285
-Red Rockets,930 Upper Paradise Rd (1A) Hamilton ON Canada,hamilton,treatment,ada,279
-Refreshment Vehicle - Plate #260,200 Queen St S. Hamilton ON L8P 3S7 Canada,hamilton,treatment,ada,1824
+Premier BBQ House,800 Queenston Rd #7 Stoney Creek ON L8G 1A7,hamilton,treatment,1A7,1892
+Queenston Retirement Home,346 Queenston Rd Hamilton ON L8K 1H9,hamilton,treatment,1H9,1284
+Quesada Burritos & Tacos,891 Upper James St Hamilton ON L9C 7N1,hamilton,treatment,7N1,258
+Quik Chik,1331 Main St W Hamilton ON L8S 1C6,hamilton,treatment,1C6,333
+Quiznos Sub,1100 Golf Links Rd ANCASTER ON L9K 1J8,hamilton,treatment,1J8,925
+Ralph Kew - Plate 001,1220 Mud St. E Stoney Creek ON L8J 3E5,hamilton,treatment,3E5,741
+Rannosh Restaurant & Cafe,578 -580 Concession St Hamilton ON L8V 1B1,hamilton,treatment,1B1,910
+REAL FRUIT BUBBLE TEA,75 CENTENNIAL PKWY N Hamilton ON,hamilton,treatment, ON,1285
+Red Rockets,930 Upper Paradise Rd (1A) Hamilton ON,hamilton,treatment, ON,279
+Refreshment Vehicle - Plate #260,200 Queen St S. Hamilton ON L8P 3S7,hamilton,treatment,3S7,1824
 REIGNING TREATS INC.,142 JAMES ST. N HAMILTON,hamilton,treatment,TON,1249
-Romanian Culture Banquet Hall,395-10 th Con. E East Flamborough ON L0R 1K0 Canada,hamilton,treatment,ada,1928
+Romanian Culture Banquet Hall,395-10 th Con. E East Flamborough ON L0R 1K0,hamilton,treatment,1K0,1928
 Rona Inc,1245 Rymal Rd E Hamilton,hamilton,treatment,ton,846
-Rosedale Sportsbar & Eatery,876 Lawrence Rd Hamilton ON Canada,hamilton,treatment,ada,398
-Rotary Kitchen AB,385 Jerseyville Rd W Ancaster ON L9G 3L5 Canada,hamilton,treatment,ada,164
-Royal Pizza,108-180 James St S Hamilton ON L8P 4V1 Canada,hamilton,treatment,ada,322
-Royal Pizza & Wings,826 Queenston Rd Stoney Creek ON L8G 4A8 Canada,hamilton,treatment,ada,1491
+Rosedale Sportsbar & Eatery,876 Lawrence Rd Hamilton ON,hamilton,treatment, ON,398
+Rotary Kitchen AB,385 Jerseyville Rd W Ancaster ON L9G 3L5,hamilton,treatment,3L5,164
+Royal Pizza,108-180 James St S Hamilton ON L8P 4V1,hamilton,treatment,4V1,322
+Royal Pizza & Wings,826 Queenston Rd Stoney Creek ON L8G 4A8,hamilton,treatment,4A8,1491
 ROYAL SPICE INDIAN RESTAURANT,160-1685 MAIN ST.W HAMILTON,hamilton,treatment,TON,1136
-R-place Tavern,172 Beach Rd Hamilton ON L8L 4A5 Canada,hamilton,treatment,ada,143
-Rymal Pizza Wings,1001 Rymal Rd E Hamilton ON L8W 3M2 Canada,hamilton,treatment,ada,988
-Safin Grill Shawarma,Unit 4-919 Upper Paradise Rd Hamilton ON L9B 2M9 Canada,hamilton,treatment,ada,1945
-Saigon Asian Restaurant,1024 King St.W. HAMILTON ON L8S 1L5 Canada,hamilton,treatment,ada,2003
-Saigon Soul Food Inc.,152 James St S. Hamilton ON L8P 3A2 Canada,hamilton,treatment,ada,1042
+R-place Tavern,172 Beach Rd Hamilton ON L8L 4A5,hamilton,treatment,4A5,143
+Rymal Pizza Wings,1001 Rymal Rd E Hamilton ON L8W 3M2,hamilton,treatment,3M2,988
+Safin Grill Shawarma,Unit 4-919 Upper Paradise Rd Hamilton ON L9B 2M9,hamilton,treatment,2M9,1945
+Saigon Asian Restaurant,1024 King St.W. HAMILTON ON L8S 1L5,hamilton,treatment,1L5,2003
+Saigon Soul Food Inc.,152 James St S. Hamilton ON L8P 3A2,hamilton,treatment,3A2,1042
 Salted Pig (Kreative Katering) Plate #091 (Old Plate #246),29 Sunnyhurst Ave Stoney Creek,hamilton,treatment,eek,1370
-Sampaguita Lodging & Rest Home,265 Bay St S Hamilton ON L8P 3J3 Canada,hamilton,treatment,ada,1968
-Sana Grill,Unit C-436 Highway No. 8 Stoney Creek ON L8G 1G3 Canada,hamilton,treatment,ada,1598
-SARAI FRESH FOOD,C-21 PANABAKER DR ANCASTER ON L9G 0A4 Canada,hamilton,treatment,ada,1614
-Shalom Village Nursing Home - Apt Kitchen ( 1st Floor),70 Macklin St N Hamilton ON L8S 3S1 Canada,hamilton,treatment,ada,1883
-Shanghai Chinese Food,856 Lawrence Rd Hamilton ON L8K 2A2 Canada,hamilton,treatment,ada,216
-Shawarma & Grill,4-675 Rymal Road East Hamilton ON L8W 1B5 Canada,hamilton,treatment,ada,913
-Sheraton Hamilton (Chagall's/Loft),116 King St W Hamilton ON L8P 4V3 Canada,hamilton,treatment,ada,323
-Shoeless Joe's Sports Grill,1183 Upper James St Hamilton ON Canada,hamilton,treatment,ada,1426
-Shorty's Pizza,1099 Cannon St. E Hamilton Ontario L8L 2J6 Canada,hamilton,treatment,ada,1919
-Sizzle Steakhouse and Lounge,25 Hess St S Hamilton ON L8P 3M7 Canada,hamilton,treatment,ada,1200
-Skyway Bowl 2020 Inc.,235 Melvin Ave Hamilton ON L8H 2J9 Canada,hamilton,treatment,ada,580
-Slick Willies,1129 HWY 5 W Flamborough ON L9H 5E3 Canada,hamilton,treatment,ada,1002
+Sampaguita Lodging & Rest Home,265 Bay St S Hamilton ON L8P 3J3,hamilton,treatment,3J3,1968
+Sana Grill,Unit C-436 Highway No. 8 Stoney Creek ON L8G 1G3,hamilton,treatment,1G3,1598
+SARAI FRESH FOOD,C-21 PANABAKER DR ANCASTER ON L9G 0A4,hamilton,treatment,0A4,1614
+Shalom Village Nursing Home - Apt Kitchen ( 1st Floor),70 Macklin St N Hamilton ON L8S 3S1,hamilton,treatment,3S1,1883
+Shanghai Chinese Food,856 Lawrence Rd Hamilton ON L8K 2A2,hamilton,treatment,2A2,216
+Shawarma & Grill,4-675 Rymal Road East Hamilton ON L8W 1B5,hamilton,treatment,1B5,913
+Sheraton Hamilton (Chagall's/Loft),116 King St W Hamilton ON L8P 4V3,hamilton,treatment,4V3,323
+Shoeless Joe's Sports Grill,1183 Upper James St Hamilton ON,hamilton,treatment, ON,1426
+Shorty's Pizza,1099 Cannon St. E Hamilton Ontario L8L 2J6,hamilton,treatment,2J6,1919
+Sizzle Steakhouse and Lounge,25 Hess St S Hamilton ON L8P 3M7,hamilton,treatment,3M7,1200
+Skyway Bowl 2020 Inc.,235 Melvin Ave Hamilton ON L8H 2J9,hamilton,treatment,2J9,580
+Slick Willies,1129 HWY 5 W Flamborough ON L9H 5E3,hamilton,treatment,5E3,1002
 "Smoke and Candy, Plate# 153, MTO# S3497C",1632 Wilson St W Jerseyville ON,hamilton,treatment, ON,1022
-Somerset Orchards,84 Concession 8 E Freelton ON L8B 1N7 Canada,hamilton,treatment,ada,864
-South City Restaurant,1405 Upper Ottawa St Hamilton ON L8W 3J6 Canada,hamilton,treatment,ada,897
-South Pacific Rest.,469 Fennell Ave E Hamilton ON L8V 1S8 Canada,hamilton,treatment,ada,1380
-Souvlocke,252 Locke Street South Hamilton ON L8P 4B9 Canada,hamilton,treatment,ada,1430
-SPORT CHEK,N1-75 Centennial Pkwy N Hamilton ON L8E 2P2 Canada,hamilton,treatment,ada,915
-Sport Chek,17 Clappison Avenue Waterdown Ontario L8B 0Y2 Canada,hamilton,treatment,ada,661
-St. John Paul II CES - Nutrition Program,600 Acadia Dr Hamilton ON L8W 3A8 Canada,hamilton,treatment,ada,976
-"St. Joseph's Villa Cafe- 1st floor, East Tower",56 Governor's Rd Dundas ON L9H 5G7 Canada,hamilton,treatment,ada,615
-St.Thomas More -Cafeteria,1045 Upper Paradise Rd Hamilton ON L9B 2N4 Canada,hamilton,treatment,ada,1052
-STACKED PANCAKE HOUSE,25BC-73 WILSON ST.W Ancaster ON L9G 1N1 Canada,hamilton,treatment,ada,41
-Starbucks,1100 Wilson St W Ancaster ON L9G 3K9 Canada,hamilton,treatment,ada,1216
-Starbucks,1783 Stone Church Rd E -Bldg 3 Stoney Creek ON L8J 0B4 Canada,hamilton,treatment,ada,1460
-Starbucks,737 Golf Links Rd ANCASTER ON L9G 3K9 Canada,hamilton,treatment,ada,1760
-Starbucks - Metro,1161 Barton St E Hamilton ON L8H 2V4 Canada,hamilton,treatment,ada,263
+Somerset Orchards,84 Concession 8 E Freelton ON L8B 1N7,hamilton,treatment,1N7,864
+South City Restaurant,1405 Upper Ottawa St Hamilton ON L8W 3J6,hamilton,treatment,3J6,897
+South Pacific Rest.,469 Fennell Ave E Hamilton ON L8V 1S8,hamilton,treatment,1S8,1380
+Souvlocke,252 Locke Street South Hamilton ON L8P 4B9,hamilton,treatment,4B9,1430
+SPORT CHEK,N1-75 Centennial Pkwy N Hamilton ON L8E 2P2,hamilton,treatment,2P2,915
+Sport Chek,17 Clappison Avenue Waterdown Ontario L8B 0Y2,hamilton,treatment,0Y2,661
+St. John Paul II CES - Nutrition Program,600 Acadia Dr Hamilton ON L8W 3A8,hamilton,treatment,3A8,976
+"St. Joseph's Villa Cafe- 1st floor, East Tower",56 Governor's Rd Dundas ON L9H 5G7,hamilton,treatment,5G7,615
+St.Thomas More -Cafeteria,1045 Upper Paradise Rd Hamilton ON L9B 2N4,hamilton,treatment,2N4,1052
+STACKED PANCAKE HOUSE,25BC-73 WILSON ST.W Ancaster ON L9G 1N1,hamilton,treatment,1N1,41
+Starbucks,1100 Wilson St W Ancaster ON L9G 3K9,hamilton,treatment,3K9,1216
+Starbucks,1783 Stone Church Rd E -Bldg 3 Stoney Creek ON L8J 0B4,hamilton,treatment,0B4,1460
+Starbucks,737 Golf Links Rd ANCASTER ON L9G 3K9,hamilton,treatment,3K9,1760
+Starbucks - Metro,1161 Barton St E Hamilton ON L8H 2V4,hamilton,treatment,2V4,263
 Starbucks Coffee,1350 South Service Road Stoney Creek ON L8E 5C5,hamilton,treatment,5C5,456
-Starbucks Coffee,1-6 Clappison Ave Waterdown ON L0R 2H2 Canada,hamilton,treatment,ada,549
-Starbucks Coffee Canada,46 King St W Dundas ON L8G 1H8 Canada,hamilton,treatment,ada,1715
+Starbucks Coffee,1-6 Clappison Ave Waterdown ON L0R 2H2,hamilton,treatment,2H2,549
+Starbucks Coffee Canada,46 King St W Dundas ON L8G 1H8,hamilton,treatment,1H8,1715
 STARBUCKS COFFEE CANADA INC,1796 STONE CHURCH RD.E STONEY CREEK,hamilton,treatment,EEK,1447
-Stoneroads Bar & Grill Inc.,533 - 537 Concession St Hamilton ON L8V 1A7 Canada,hamilton,treatment,ada,1864
-Subway,211 John St S Hamilton ON L8N 2C7 Canada,hamilton,treatment,ada,298
-Subway,11-119 Osler Dr Dundas ON L9H 6X4 Canada,hamilton,treatment,ada,40
-Subway,1018 King St W Hamilton ON L8S 1L4 Canada,hamilton,treatment,ada,375
-Sunny Corner Bar,302 James Street North Hamilton ON Canada,hamilton,treatment,ada,475
-Sunset Grill,N8-75 Centennial Pky N Hamilton ON L8E 2P2 Canada,hamilton,treatment,ada,1729
-Sunshine Banquet Hall,5 Merchison Ave Hamilton ON L8H 3C8 Canada,hamilton,treatment,ada,1804
-Sushi - Fortino's,50 Dundurn St S Hamilton ON Canada,hamilton,treatment,ada,1400
-"Svatoslav Pavelka, Plate# 020",18 James Street South Hamilton ON L8P 4R5 Canada,hamilton,treatment,ada,739
-Sweet Avenue Cakery,286 Dewitt Rd Stoney Creek ON L8E 2R1 Canada,hamilton,treatment,ada,928
-Sweet Celebrations,461 Green Rd Stoney Creek ON L8E 5B4 Canada,hamilton,treatment,ada,689
-Sweet Surprise,2-29 Sunnyhurst Ave Hamilton ON L8M 2K1 Canada,hamilton,treatment,ada,211
-Taco Bell,677 Upper James St Hamilton ON L9C 5R9 Canada,hamilton,treatment,ada,1683
-Taco Bell,1550 Upper James St Hamilton ON L9B 1K3 Canada,hamilton,treatment,ada,1964
-Taco Del Mar,5-1331 Main St W Hamilton ON L8S 1C6 Canada,hamilton,treatment,ada,566
+Stoneroads Bar & Grill Inc.,533 - 537 Concession St Hamilton ON L8V 1A7,hamilton,treatment,1A7,1864
+Subway,211 John St S Hamilton ON L8N 2C7,hamilton,treatment,2C7,298
+Subway,11-119 Osler Dr Dundas ON L9H 6X4,hamilton,treatment,6X4,40
+Subway,1018 King St W Hamilton ON L8S 1L4,hamilton,treatment,1L4,375
+Sunny Corner Bar,302 James Street North Hamilton ON,hamilton,treatment, ON,475
+Sunset Grill,N8-75 Centennial Pky N Hamilton ON L8E 2P2,hamilton,treatment,2P2,1729
+Sunshine Banquet Hall,5 Merchison Ave Hamilton ON L8H 3C8,hamilton,treatment,3C8,1804
+Sushi - Fortino's,50 Dundurn St S Hamilton ON,hamilton,treatment, ON,1400
+"Svatoslav Pavelka, Plate# 020",18 James Street South Hamilton ON L8P 4R5,hamilton,treatment,4R5,739
+Sweet Avenue Cakery,286 Dewitt Rd Stoney Creek ON L8E 2R1,hamilton,treatment,2R1,928
+Sweet Celebrations,461 Green Rd Stoney Creek ON L8E 5B4,hamilton,treatment,5B4,689
+Sweet Surprise,2-29 Sunnyhurst Ave Hamilton ON L8M 2K1,hamilton,treatment,2K1,211
+Taco Bell,677 Upper James St Hamilton ON L9C 5R9,hamilton,treatment,5R9,1683
+Taco Bell,1550 Upper James St Hamilton ON L9B 1K3,hamilton,treatment,1K3,1964
+Taco Del Mar,5-1331 Main St W Hamilton ON L8S 1C6,hamilton,treatment,1C6,566
 Tassi's Homemade Foods,811 King St E HAMILTON,hamilton,treatment,TON,1642
-Tenth Moon Mothercare,811 King St E Hamilton ON L8K 2E9 Canada,hamilton,treatment,ada,124
-The Brain,199 James St N Hamilton ON L8R 2L2 Canada,hamilton,treatment,ada,558
+Tenth Moon Mothercare,811 King St E Hamilton ON L8K 2E9,hamilton,treatment,2E9,124
+The Brain,199 James St N Hamilton ON L8R 2L2,hamilton,treatment,2L2,558
 THE CASUAL GOURMET,1027 KING ST.W HAMILTON,hamilton,treatment,TON,1832
 The Dirty South - Kreative Katering Concepts - Plate #092 (Old Plate# 267),29 Sunnyhurst Ave Stoney Creek,hamilton,treatment,eek,614
-The Egg And I,1760 Upper James St Hamilton ON L9B 1K9 Canada,hamilton,treatment,ada,1930
-The Green Bar,236 James St N Hamilton ON L8R 2L3 Canada,hamilton,treatment,ada,1833
-"The Hammer Press, Plate# 147",345 Magnolia Dr Hamilton ON L9C 6N6 Canada,hamilton,treatment,ada,1694
-The Moghul's,2-288 Mud St W Stoney Creek ON L8J 3Z6 Canada,hamilton,treatment,ada,1309
-The People Under The Stairs,27 Dundurn St. N Hamilton Ontario L8R 3C9 Canada,hamilton,treatment,ada,430
-The Side Door Bar,C-1831 Main Street West Hamilton ON L8S 1H6 Canada,hamilton,treatment,ada,382
-The Soup Stop,1 Young St Hamilton ON L8N 1T8 Canada,hamilton,treatment,ada,811
+The Egg And I,1760 Upper James St Hamilton ON L9B 1K9,hamilton,treatment,1K9,1930
+The Green Bar,236 James St N Hamilton ON L8R 2L3,hamilton,treatment,2L3,1833
+"The Hammer Press, Plate# 147",345 Magnolia Dr Hamilton ON L9C 6N6,hamilton,treatment,6N6,1694
+The Moghul's,2-288 Mud St W Stoney Creek ON L8J 3Z6,hamilton,treatment,3Z6,1309
+The People Under The Stairs,27 Dundurn St. N Hamilton Ontario L8R 3C9,hamilton,treatment,3C9,430
+The Side Door Bar,C-1831 Main Street West Hamilton ON L8S 1H6,hamilton,treatment,1H6,382
+The Soup Stop,1 Young St Hamilton ON L8N 1T8,hamilton,treatment,1T8,811
 The Zoetic Theater Company,524 Concession St Hamilton ON,hamilton,treatment, ON,1831
-Tim Hortons,954 Barton St E Hamilton ON L8L 3C4 Canada,hamilton,treatment,ada,1901
-Tim Hortons,25 Rymal Rd W Hamilton ON L9B 1B5 Canada,hamilton,treatment,ada,870
-Tim Hortons,80 John St S Hamilton ON L8N 2C1 Canada,hamilton,treatment,ada,1061
-Tim Hortons,894 Upper James St Hamilton ON L9C 3A5 Canada,hamilton,treatment,ada,1743
-Tim Hortons,1354 South Service Road Stoney Creek ON L8E 5C5 Canada,hamilton,treatment,ada,1874
-Tim Hortons,505 Rymal Rd E Hamilton ON L8W 3X1 Canada,hamilton,treatment,ada,642
-Tim Hortons,327 Fruitland Rd Stoney Creek ON L8E 5M8 Canada,hamilton,treatment,ada,394
-Tim Hortons,888 Main St E Hamilton ON L8M 1M3 Canada,hamilton,treatment,ada,1855
-Tim Hortons,2200 Rymal Rd E. Hamilton ON L0R 1P0 Canada,hamilton,treatment,ada,1245
-Tim Hortons,634 Parkdale Ave N Hamilton ON L8H 5Z3 Canada,hamilton,treatment,ada,1448
-Tim Hortons,1180 Hwy 2 W ANCASTER ON L9G 3K9 Canada,hamilton,treatment,ada,287
-Tim Hortons,1554 Main St W Hamilton ON L8S 1E5 Canada,hamilton,treatment,ada,12
-Tim Hortons #4,951 King St W Hamilton ON L8B 1K9 Canada,hamilton,treatment,ada,1210
-TJ's Grill & Cafe Inc,2 Castlewood Blvd Hamilton ON L9H 7M8 Canada,hamilton,treatment,ada,444
-Tom's Sports Bar,969 Upper Ottawa Hamilton ON L8T 4V9 Canada,hamilton,treatment,ada,937
-Topper's Pizza,905 Rymal Road East Hamilton ON L8W 3M2 Canada,hamilton,treatment,ada,1572
+Tim Hortons,954 Barton St E Hamilton ON L8L 3C4,hamilton,treatment,3C4,1901
+Tim Hortons,25 Rymal Rd W Hamilton ON L9B 1B5,hamilton,treatment,1B5,870
+Tim Hortons,80 John St S Hamilton ON L8N 2C1,hamilton,treatment,2C1,1061
+Tim Hortons,894 Upper James St Hamilton ON L9C 3A5,hamilton,treatment,3A5,1743
+Tim Hortons,1354 South Service Road Stoney Creek ON L8E 5C5,hamilton,treatment,5C5,1874
+Tim Hortons,505 Rymal Rd E Hamilton ON L8W 3X1,hamilton,treatment,3X1,642
+Tim Hortons,327 Fruitland Rd Stoney Creek ON L8E 5M8,hamilton,treatment,5M8,394
+Tim Hortons,888 Main St E Hamilton ON L8M 1M3,hamilton,treatment,1M3,1855
+Tim Hortons,2200 Rymal Rd E. Hamilton ON L0R 1P0,hamilton,treatment,1P0,1245
+Tim Hortons,634 Parkdale Ave N Hamilton ON L8H 5Z3,hamilton,treatment,5Z3,1448
+Tim Hortons,1180 Hwy 2 W ANCASTER ON L9G 3K9,hamilton,treatment,3K9,287
+Tim Hortons,1554 Main St W Hamilton ON L8S 1E5,hamilton,treatment,1E5,12
+Tim Hortons #4,951 King St W Hamilton ON L8B 1K9,hamilton,treatment,1K9,1210
+TJ's Grill & Cafe Inc,2 Castlewood Blvd Hamilton ON L9H 7M8,hamilton,treatment,7M8,444
+Tom's Sports Bar,969 Upper Ottawa Hamilton ON L8T 4V9,hamilton,treatment,4V9,937
+Topper's Pizza,905 Rymal Road East Hamilton ON L8W 3M2,hamilton,treatment,3M2,1572
 "Toys ""R"" Us",540 Centennial Pkwy. N Hamilton ON,hamilton,treatment, ON,26
-Transfiguration Luth Chur,232 Fennell Ave E Hamilton ON L9A 1S7 Canada,hamilton,treatment,ada,1533
-Trocadero Restaurant,525 Barton St E Hamilton ON L8L 2Y9 Canada,hamilton,treatment,ada,1595
-Twice the Deal Pizza,697 Queenston Rd. Hamilton ON L8E 5J6 Canada,hamilton,treatment,ada,1314
-Twisted Indian Wraps,1508 UPPER JAMES STREET HAMILTON L9B 1K3 Canada,hamilton,treatment,ada,1969
-Uncle Joe's Pool Hall & Bar,G-859 Barton Street East Hamilton ON L8L 3B4 Canada,hamilton,treatment,ada,1918
-Unity Hall - I.O.O.F.,64 Wellington St N Hamilton ON L8R 1N1 Canada,hamilton,treatment,ada,1390
-Urban Cafe,393 Rymal Rd W. Hamilton ON L9B 1V2 Canada,hamilton,treatment,ada,1215
-V & O Sausages - Plate 007,1051 Highway 53 W ANCASTER ON Canada,hamilton,treatment,ada,1049
-Venice Beach Pizzeria,5-1050 Paramount Dr Unit 5 Stoney Creek ON L8T 1P8 Canada,hamilton,treatment,ada,1283
-Vibez Caribbean Southern Grill,971 King St. E Hamilton Ontario L8M 1C3 Canada,hamilton,treatment,ada,341
-Wah Sardaarji,647 Upper James Street Hamilton ON L9C 2Y9 Canada,hamilton,treatment,ada,138
-Wah Sardaarji,107-77 James St N Hamilton ON L8R 2K3 Canada,hamilton,treatment,ada,1753
-Wal-Mart,499 Mohawk Rd E Hamilton ON L8V 4V7 Canada,hamilton,treatment,ada,887
-Walmart-1115 Barton St E,"1115 Barton St E, Bldg Z Hamilton ON L8H 2V2 Canada",hamilton,treatment,ada,684
-Waterdown Sushi Ya,11A-255 Dundas St. E Waterdown ON L8B 0E5 Canada,hamilton,treatment,ada,1553
-Wellington Husky,221 Limeridge Road East Hamilton ON L9A 2S6 Canada,hamilton,treatment,ada,306
-Wendy's,1550 Upper James St Hamilton ON L8B 2B9 Canada,hamilton,treatment,ada,1629
-Wendy's,967 Rymal Rd E Hamilton ON L8W 3M2 Canada,hamilton,treatment,ada,1763
-Westmount Terrace,723 Rymal Rd W Hamilton ON L9B 2W1 Canada,hamilton,treatment,ada,1131
-Whitehern Historic House,41 Jackson St W Hamilton ON L8P 1L3 Canada,hamilton,treatment,ada,178
-Willy's Catering Plate 021,706-288 Mount Albion Rd Hamilton ON L8K 5T1 Canada,hamilton,treatment,ada,898
+Transfiguration Luth Chur,232 Fennell Ave E Hamilton ON L9A 1S7,hamilton,treatment,1S7,1533
+Trocadero Restaurant,525 Barton St E Hamilton ON L8L 2Y9,hamilton,treatment,2Y9,1595
+Twice the Deal Pizza,697 Queenston Rd. Hamilton ON L8E 5J6,hamilton,treatment,5J6,1314
+Twisted Indian Wraps,1508 UPPER JAMES STREET HAMILTON L9B 1K3,hamilton,treatment,1K3,1969
+Uncle Joe's Pool Hall & Bar,G-859 Barton Street East Hamilton ON L8L 3B4,hamilton,treatment,3B4,1918
+Unity Hall - I.O.O.F.,64 Wellington St N Hamilton ON L8R 1N1,hamilton,treatment,1N1,1390
+Urban Cafe,393 Rymal Rd W. Hamilton ON L9B 1V2,hamilton,treatment,1V2,1215
+V & O Sausages - Plate 007,1051 Highway 53 W ANCASTER ON,hamilton,treatment, ON,1049
+Venice Beach Pizzeria,5-1050 Paramount Dr Unit 5 Stoney Creek ON L8T 1P8,hamilton,treatment,1P8,1283
+Vibez Caribbean Southern Grill,971 King St. E Hamilton Ontario L8M 1C3,hamilton,treatment,1C3,341
+Wah Sardaarji,647 Upper James Street Hamilton ON L9C 2Y9,hamilton,treatment,2Y9,138
+Wah Sardaarji,107-77 James St N Hamilton ON L8R 2K3,hamilton,treatment,2K3,1753
+Wal-Mart,499 Mohawk Rd E Hamilton ON L8V 4V7,hamilton,treatment,4V7,887
+Walmart-1115 Barton St E,"1115 Barton St E, Bldg Z Hamilton ON L8H 2V2",hamilton,treatment,2V2,684
+Waterdown Sushi Ya,11A-255 Dundas St. E Waterdown ON L8B 0E5,hamilton,treatment,0E5,1553
+Wellington Husky,221 Limeridge Road East Hamilton ON L9A 2S6,hamilton,treatment,2S6,306
+Wendy's,1550 Upper James St Hamilton ON L8B 2B9,hamilton,treatment,2B9,1629
+Wendy's,967 Rymal Rd E Hamilton ON L8W 3M2,hamilton,treatment,3M2,1763
+Westmount Terrace,723 Rymal Rd W Hamilton ON L9B 2W1,hamilton,treatment,2W1,1131
+Whitehern Historic House,41 Jackson St W Hamilton ON L8P 1L3,hamilton,treatment,1L3,178
+Willy's Catering Plate 021,706-288 Mount Albion Rd Hamilton ON L8K 5T1,hamilton,treatment,5T1,898
 Xcalibur Food Trendz,535 King St E Hamilton,hamilton,treatment,ton,1732
-Yogurty's,1309 Main Street West Hamilton ON L8S 1C5 Canada,hamilton,treatment,ada,1843
-Yukiguni Izakaya,1686 Main St W Units 6/8) Hamilton ON Canada,hamilton,treatment,ada,853
-Zen Lounge,69 JOHN ST. S LL1 HAMILTON ON L8N 2B9 Canada,hamilton,treatment,ada,1366
+Yogurty's,1309 Main Street West Hamilton ON L8S 1C5,hamilton,treatment,1C5,1843
+Yukiguni Izakaya,1686 Main St W Units 6/8) Hamilton ON,hamilton,treatment, ON,853
+Zen Lounge,69 JOHN ST. S LL1 HAMILTON ON L8N 2B9,hamilton,treatment,2B9,1366
 6 FLAGS CHINESE THAI AND SUSHI RESTAURANT,F7-449 KENT ST W LINDSAY ON,haliburton,treatment, ON,1265
 ALE HOUSE,246 DIVISION ST COBOURG ON K9A 2M4,haliburton,treatment,2M4,1142
 ANTONIA'S BISTRO,28 DOXSEE AVE S CAMPBELLFORD ON K0L 1L0,haliburton,treatment,1L0,1859
@@ -1330,33 +1330,33 @@ Tribute Communities Centre - Stand 1/Outdoor Area Prep,99 Athol St E Oshawa ON L
 Tribute Communities Centre- Stand 5,99 Athol St E Oshawa ON L1H 1J8,durham,control,1J8,628
 Villa Madina,25-1355 Kingston Rd Pickering ON L1V 1B8,durham,control,1B8,1802
 Vis a Vis Stone Pizza & Pasta,B5-1101 Kingston Rd Pickering ON L1V 1B5,durham,control,1B5,1419
-Atikokan Hotel - Restaurant,400 Front St Atikokan ON P0T 1C0 Canada,northwestern,control,ada,123
-Atikokan Nite Club Tavern - Restaurant,214 Burns St Atikokan ON P0T 1C0 Canada,northwestern,control,ada,14
-Dino's Restaurant,206 Second St S Kenora ON P9N 1G2 Canada,northwestern,control,ada,1055
-From the Grind Up,221 Scott St Fort Frances ON P9A 1G6 Canada,northwestern,control,ada,11
-Howey Bay Motel,26 Hwy 105 Red Lake ON P0V 2M0 Canada,northwestern,control,ada,438
-Husky Restaurant and Truck Stop,379 Government St Dryden ON P8N 2Z5 Canada,northwestern,control,ada,1367
-Lake-Vu Restaurant & Gas Station,740 Lakeview Dr Kenora ON P9N 3P7 Canada,northwestern,control,ada,1587
-Little Amik Grill,300 8th St E Fort Frances ON Canada,northwestern,control,ada,996
-Mr. Sub - Fort Frances,215 Scott St Fort Frances ON P9A 1G8 Canada,northwestern,control,ada,571
-Pape's Diner & Lounge,1230 Spruce St Ear Falls ON P0V 1T0 Canada,northwestern,control,ada,559
-Pizza Hut - Dryden,397 Government St Dryden ON P8N 2P4 Canada,northwestern,control,ada,1083
-Plaza Restaurant,125 Main St S Kenora ON P9N 1T1 Canada,northwestern,control,ada,657
-Rebel Cafe,132 Matheson St S Kenora ON P9N 1T8 Canada,northwestern,control,ada,206
-Red Lake Golf and Country Club,1541 Hwy 125 Balmertown ON P0V 1C0 Canada,northwestern,control,ada,1870
-Roy Lane,84 1/2 Front St Sioux Lookout ON P8T 1B7 Canada,northwestern,control,ada,890
-Subway - Dryden,460 Government St Dryden ON P8N 2P5 Canada,northwestern,control,ada,1404
-Sushi 251,251 Second St S Kenora ON P9N 1G1 Canada,northwestern,control,ada,535
-The Pickle Lake Hotel,6 Koval St Pickle Lake ON P0V 3A0 Canada,northwestern,control,ada,1863
-Tim Hortons - Red Lake,5 Hughs Cr Red Lake ON Canada,northwestern,control,ada,490
-Willard Lake Resort Restaurant,Hwy 17 E Kenora (Unorganized) ON P0X 1H0 Canada,northwestern,control,ada,1139
-Woods Quality Bakery,214 Fourth St Rainy River ON P0W 1L0 Canada,northwestern,control,ada,620
-Almondo's,1220 9th St N Kenora ON P9N 2T7 Canada,northwestern,control,ada,369
-Casual's Convenience Store and Take Out,1 Patricia Ave Pickle Lake ON P0V 3A0 Canada,northwestern,control,ada,1681
-Domino's Pizza - Dryden,14-539 Government St Dryden ON P8N 2P6 Canada,northwestern,control,ada,1989
-Gill's Trading Post,5701C Hwy 71 Sioux Narrows ON P0X 1N0 Canada,northwestern,control,ada,1299
-Spud and Dog,140 Howey St Red Lake ON P0V 2M0 Canada,northwestern,control,ada,1643
-Sunset Strip Husky,1401 Hwy 17 E Kenora ON P9N 1M1 Canada,northwestern,control,ada,997
+Atikokan Hotel - Restaurant,400 Front St Atikokan ON P0T 1C0,northwestern,control,1C0,123
+Atikokan Nite Club Tavern - Restaurant,214 Burns St Atikokan ON P0T 1C0,northwestern,control,1C0,14
+Dino's Restaurant,206 Second St S Kenora ON P9N 1G2,northwestern,control,1G2,1055
+From the Grind Up,221 Scott St Fort Frances ON P9A 1G6,northwestern,control,1G6,11
+Howey Bay Motel,26 Hwy 105 Red Lake ON P0V 2M0,northwestern,control,2M0,438
+Husky Restaurant and Truck Stop,379 Government St Dryden ON P8N 2Z5,northwestern,control,2Z5,1367
+Lake-Vu Restaurant & Gas Station,740 Lakeview Dr Kenora ON P9N 3P7,northwestern,control,3P7,1587
+Little Amik Grill,300 8th St E Fort Frances ON,northwestern,control, ON,996
+Mr. Sub - Fort Frances,215 Scott St Fort Frances ON P9A 1G8,northwestern,control,1G8,571
+Pape's Diner & Lounge,1230 Spruce St Ear Falls ON P0V 1T0,northwestern,control,1T0,559
+Pizza Hut - Dryden,397 Government St Dryden ON P8N 2P4,northwestern,control,2P4,1083
+Plaza Restaurant,125 Main St S Kenora ON P9N 1T1,northwestern,control,1T1,657
+Rebel Cafe,132 Matheson St S Kenora ON P9N 1T8,northwestern,control,1T8,206
+Red Lake Golf and Country Club,1541 Hwy 125 Balmertown ON P0V 1C0,northwestern,control,1C0,1870
+Roy Lane,84 1/2 Front St Sioux Lookout ON P8T 1B7,northwestern,control,1B7,890
+Subway - Dryden,460 Government St Dryden ON P8N 2P5,northwestern,control,2P5,1404
+Sushi 251,251 Second St S Kenora ON P9N 1G1,northwestern,control,1G1,535
+The Pickle Lake Hotel,6 Koval St Pickle Lake ON P0V 3A0,northwestern,control,3A0,1863
+Tim Hortons - Red Lake,5 Hughs Cr Red Lake ON,northwestern,control, ON,490
+Willard Lake Resort Restaurant,Hwy 17 E Kenora (Unorganized) ON P0X 1H0,northwestern,control,1H0,1139
+Woods Quality Bakery,214 Fourth St Rainy River ON P0W 1L0,northwestern,control,1L0,620
+Almondo's,1220 9th St N Kenora ON P9N 2T7,northwestern,control,2T7,369
+Casual's Convenience Store and Take Out,1 Patricia Ave Pickle Lake ON P0V 3A0,northwestern,control,3A0,1681
+Domino's Pizza - Dryden,14-539 Government St Dryden ON P8N 2P6,northwestern,control,2P6,1989
+Gill's Trading Post,5701C Hwy 71 Sioux Narrows ON P0X 1N0,northwestern,control,1N0,1299
+Spud and Dog,140 Howey St Red Lake ON P0V 2M0,northwestern,control,2M0,1643
+Sunset Strip Husky,1401 Hwy 17 E Kenora ON P9N 1M1,northwestern,control,1M1,997
 A & W,533 Broadway St Tillsonburg ON N4G 3S8,southwestern,control,3S8,1908
 Big D's Sandwich Shack,220 Springbank Ave Woostock ON N4S 7R2,southwestern,control,7R2,618
 "Bistro, The",625 Talbot St St. Thomas ON N5P 1C6,southwestern,control,1C6,503
