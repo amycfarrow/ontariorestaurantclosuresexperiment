@@ -499,7 +499,7 @@ survey_2 <-
 survey_2 <-
   bind_rows(
     survey_2 %>%
-      filter(minority == "yes" & group == "treatment") %>%
+      filter((minority == "yes" | indigenous == "yes") & group == "treatment") %>%
       mutate(revenue = 0.88 * revenue)
     ,
     survey_2 %>%
@@ -552,25 +552,6 @@ survey_2 <- survey_2 %>%
 
 
 
-
-
-
-
-
-
-# Applications for government assistance
-LORENA
-## Survey 1
-```{r}
-survey_1 <- survey_1 %>%
-  <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<ADD ASSISTANCE DATA SIMULATION HERE LORENA>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-```
-
-## Survey 2
-```{r}
-survey_2 <- survey_2 %>%
-  <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<ADD ASSISTANCE DATA SIMULATION HERE LORENA>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-```
 
 
 
