@@ -6,7 +6,7 @@ output:
   bookdown::pdf_document2:
     toc: no
 subtitle: "SUBTITLE"
-abstract: "ABSTRACT"
+abstract: "Four sentences. 1) what was done, 2) what was found, and 3) why this matters (all at a high level). Top level finding"
 thanks: 'Code and data are available at: [github.com/amycfarrow/ontariorestaurantclosuresexperiment](https://github.com/amycfarrow/ontariorestaurantclosuresexperiment).'
 bibliography: references.bib
 ---
@@ -29,13 +29,19 @@ library(gridExtra)  # for paired graphs
 
 # Introduction
 
+<<<<tells a reader everything they need to know, including putting it into a broader context.>>>>
 
+The experiment was comissioned by ___.
 
+<<<<<<you’re interested in, what you did, what you found, why it’s important, etc.>>>>>>>>
 
+<<<Outline paper structure>>>
 
 # Data
 
 #TODO: citations for R and all packages used.
+
+## Methodology
 
 This experiment used two-stage stratified cluster sampling with survey data collection.
 
@@ -47,7 +53,7 @@ From each strata, two LHAs were randomly sampled to participate in the treatment
 
 The clusters were used because pandemic shutdowns operated based on LHA, and the goal was to recreate the effect as closely as possible.
 
-The stratification was used because there were very differently sized LHAs, and randomly selecting only 12 LHAs from a list of 33 left too high a likelihood of nonequivalent treatment and control groups.
+The stratification was used because there were very differently sized LHAs, and randomly selecting only 12 LHAs from a list of 33 left too high a likelihood of nonequivalent treatment and control groups. Given the limitations of cluster sampling, stratifying the clusters by size helped ensure the experiment would be representative of Ontario. <stuff about the statistical properties of cluster and stratified sampling somewhere in here, cite textbook reading>.
 
 ```{r, include = FALSE}
 treatment_control_groups <- read_csv(here::here("outputs/treatment_control_groups.csv"))
@@ -114,8 +120,15 @@ Survey 1 collected the following data:
 - Number of full-time employees (30 hours/week or more)
 - Number of part-time employees (less than 30 hours/week)
 
+The demographic information was collected so that disparate impacts on different communities could be identified.
+Revenue and number of employees were collected as measures of the restaurant's performance and impact on the local employment levels. These were the primary indicators of interest, due to the <GOVERNMENT ORGANIZATION>>>>> focus on economic stability and employment levels.
+
 
 After Survey 1 data was collected, on June 28th, shutdowns were announced for the six treatment LHAs. The shutdowns ran from July 1s to July 14th, inclusive. This length of time was considered to be the minimum effective length for a shutdown to stop circulation of the virus. During the shutdown, all restaurants in the treatment LHAs were officially banned from offering dine-in and patio services. Take-out and delivery were permitted. This type of partial shutdown was selected because it has been the most common type of shutdown since the pandemic began.
+
+<Something about enforcement of closures-- how have fines worked during covid closures?)
+
+Because it is very difficult for a restaurant to move location in under two weeks, the control and treatment groups were effectively separated.
 
 Survey 2 was conducted August 3rd to 27th 2021, and it asked about the month of July 2021.
 
@@ -132,6 +145,8 @@ Survey 2 collected the following data:
 * Employees
 - Number of full-time employees (30 hours/week or more)
 - Number of part-time employees (less than 30 hours/week)
+
+<<<<<<<<<<<<survey strengths and weaknesses>>>>>>>>>>>>>
 
 ```{r, include = FALSE}
 survey_1 <- read_csv(here("outputs/data/survey_1.csv")) %>%
@@ -153,6 +168,10 @@ survey_2 <- read_csv(here("outputs/data/survey_2.csv")) %>%
 
 ## Survey 1 results
 
+<<<<<Consider: do we need to plot more raw data?>>>>>>>>>>>
+
+It was necessary to collect data before the intervention to establish that the treatment and control groups were in fact comparable.
+
 Survey 1 data as baseline  Table \@ref(tab:survey1summary) Figure \@ref(fig:baselinerevenue) Figure \@ref(fig:baselineemployees)
 
 Counterfactuals established.
@@ -172,14 +191,14 @@ survey_1 %>%
   knitr::kable(caption = "Summary statistics for treatment and control baselines",
                booktabs = TRUE,
                col.names = c("", "", "Treatment", "Control")) %>%
-  kableExtra::kable_styling()
+  kableExtra::kable_styling(latex_options = "striped", stripe_index =c(1,5:7,11:13,17:19))
 ```
 
 ```{r baselinerevenue, fig.cap="Revenue distribution for treatment and control baselines, from Survey 1", fig.width=10, fig.height=4, echo = FALSE, message = FALSE, warning = FALSE}
 ggplot(survey_1, aes(x = revenue / 1000, fill = group)) +                       
   geom_histogram(position = "dodge", binwidth = 5) +
   theme_minimal() +
-  scale_x_continuous(breaks = c(0, 50, 100, 150, 200, 250, 300)) +
+  scale_x_continuous(limits = c(0, 250), breaks = c(0, 50, 100, 150, 200, 250, 300)) +
   labs(fill = NULL,
        x = "Revenue in May 2021 (in thousands of Canadian dollars)",
        y = "Number of restaurants")
@@ -217,6 +236,8 @@ grid.arrange(p1, p2, ncol = 2)
 
 ## Survey 2 results
 
+<<<<<Consider: do we need to plot more raw data?>>>>>>>>>>>
+
 Survey 2 data to contrast treatment and control. Table \@ref(tab:survey2summary)
 
 ```{r survey2summary, echo = FALSE, message = FALSE, warning = FALSE}
@@ -234,7 +255,7 @@ survey_2 %>%
   knitr::kable(caption = "Summary statistics for treatment and control groups post-treatment",
                booktabs = TRUE,
                col.names = c("", "", "Treatment", "Control")) %>%
-   kableExtra::kable_styling()
+   kableExtra::kable_styling(latex_options = "striped", stripe_index =c(1,5:7,11:13,17:19))
 ```
 
 
@@ -243,7 +264,9 @@ survey_2 %>%
 
 ## Overview
 
+<<< overview of the results>>>
 
+<<<how they fit in existing literature -- need some references here>>>>
 
 
 ## Findings
@@ -293,7 +316,7 @@ Suggestion: funding for businesses and temporary unemployment
 
 Closures had a stronger negative impact on dine-in only restaurants Figure \@ref(fig:servicetypeimpact)
 
-```{r servicetypeimpact, fig.cap="Revenues more heavily impacted for dine-in only establishments", fig.width=6, fig.height=4, echo = FALSE, message = FALSE, warning = FALSE}
+```{r servicetypeimpact, fig.cap="Revenues more heavily impacted for dine-in only establishments", fig.width=6, fig.height=4, echo = FALSE, message = FALSE, warning = FALSE, out.width = '70%', fig.align = "center"}
 survey_2 %>%
   filter(service_type != "NA") %>%
   ggplot(aes(x = service_type, y = revenue / 1000, fill = group)) +
@@ -313,7 +336,7 @@ Suggestion: technical support for restaurants to increase takeout business
 ### FINDING THREE
 Closures had a stronger negative impact on indigenous or visible minority-owned businesses. Figure \@ref(fig:minorityimpact)
 
-```{r minorityimpact, fig.cap="Minority-owned businesses were more heavily impacted", fig.width=6, fig.height=4, echo = FALSE, message = FALSE, warning = FALSE}
+```{r minorityimpact, fig.cap="Minority-owned businesses were more heavily impacted", fig.width=5, fig.height=4, echo = FALSE, message = FALSE, warning = FALSE, out.width = '70%', fig.align = "center"}
 bind_rows(
   survey_2 %>%
     filter(indigenous == "yes" | visible == "yes") %>%
@@ -327,14 +350,14 @@ bind_rows(
   ggplot(aes(x = minority, y = revenue / 1000, fill = group)) +
   geom_bar(position = "dodge", stat = "summary", fun.y = mean) +
   labs(fill = NULL,
-       x = "Racial and ethic minorities",
+       x = "Racial and ethnic minorities",
        y = "Mean revenue (in thousands of Canadian dollars") +
   theme_minimal()
 ```
 
 Suggestion: grants for minority business owners
 
-
+## Ethics ? Or integrate in other sections.
 
 
 ## Limitations
@@ -343,7 +366,52 @@ External validity, internal validity, cluster sampling. Unavoidable because shut
 
 Legally registered businesses only.
 
-Survey non-response.
+Survey non-response. Figure \@ref(fig:nonresponse)
+
+```{r nonresponse, fig.cap="More than half of surveyed restaurants did not respond", fig.width=8, fig.height=4, echo = FALSE, message = FALSE, warning = FALSE}
+num_treat_sample <- as.numeric(count(table_for_surveys %>% filter(group == "treatment")))
+
+num_control_sample <- as.numeric(count(table_for_surveys %>% filter(group == "control")))
+
+
+num_treat_complete_survey1 <- sum(complete.cases(survey_1 %>% filter(group == "treatment")))
+
+num_control_complete_survey1 <- sum(complete.cases(survey_1 %>% filter(group == "control")))
+
+num_treat_partial_survey1 <- sum(!complete.cases(survey_1 %>% filter(group == "treatment")))
+
+num_control_partial_survey1 <- sum(!complete.cases(survey_1 %>% filter(group == "control")))
+
+num_treat_nonre_survey1 <- num_treat_sample - num_treat_complete_survey1 - num_treat_partial_survey1
+
+num_control_nonresurvey1 <- num_control_sample - num_control_complete_survey1 - num_control_partial_survey1
+
+
+num_treat_complete_survey2 <- sum(complete.cases(survey_2 %>% filter(group == "treatment")))
+
+num_control_complete_survey2 <- sum(complete.cases(survey_2 %>% filter(group == "control")))
+
+num_treat_partial_survey2 <- sum(!complete.cases(survey_2 %>% filter(group == "treatment")))
+
+num_control_partial_survey2 <- sum(!complete.cases(survey_2 %>% filter(group == "control")))
+
+num_treat_nonre_survey2 <- num_treat_sample - num_treat_complete_survey2 - num_treat_partial_survey2
+
+num_control_nonresurvey2 <- num_control_sample - num_control_complete_survey2 - num_control_partial_survey2
+
+
+tibble(Group = c("Treatment", "Control", "Treatment", "Control", "Treatment", "Control", "Treatment", "Control", "Treatment", "Control", "Treatment", "Control"), 
+        Response = c("Complete", "Complete", "Partial", "Partial", "No response", "No response", "Complete", "Complete", "Partial", "Partial", "No response", "No response"), 
+        Survey = c("Survey 1", "Survey 1","Survey 1","Survey 1","Survey 1","Survey 1", "Survey 2", "Survey 2", "Survey 2", "Survey 2", "Survey 2", "Survey 2"), 
+        Count = c(num_treat_complete_survey1, num_control_complete_survey1, num_treat_partial_survey1, num_control_partial_survey1, num_treat_nonre_survey1, num_control_nonresurvey1,
+          num_treat_complete_survey2, num_control_complete_survey2, num_treat_partial_survey2, num_control_partial_survey2, num_treat_nonre_survey2, num_control_nonresurvey2)) %>%
+  ggplot(aes(x = Response, y = Count, fill = Group)) +
+  geom_bar(stat = "identity", position = "dodge") +
+  facet_wrap(~Survey) +
+  theme_minimal()
+
+```
+
 
 Self-reported information.
 
