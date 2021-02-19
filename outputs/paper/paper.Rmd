@@ -18,6 +18,8 @@ library(tidyverse)
 library(bookdown)    # for cross referencing figures and graphs; referencing
 library(kableExtra)  # for nicer tables
 library(here) # for working in an RProject
+library(finalfit) # for a summary table
+library(gridExtra)  # for paired graphs
 
 # NOTE: scripts 01_scrape_health_depts, 04_clean_restaurant_list_csvs, and 02_sampling_frame, 
 # and markdown file data_simulation must have been run already
@@ -41,28 +43,39 @@ The population was all restaurants in Ontario.
 
 A list of Ontario local health authorities (LHAs) that carry out food inspections was used to identify units that inspect restaurants. Using census data from 2016, these LHAs were sorted by population covered by the LHA, and the list was stratified into equally sized strata of small (less than 150,000 population), medium (150,000 to 400,000 population), and large (more than 400,000 population) LHAs. This list of stratified LHAs was the frame at the cluster level.
 
-From each strata, two LHAs were randomly sampled to participate in the treatment, and two LHAs were randomly selected to participate in the control. This was the sample at the cluster level. This sample is shown in Table \@ref(table:treatmentcontrolgroups).
+From each strata, two LHAs were randomly sampled to participate in the treatment, and two LHAs were randomly selected to participate in the control. This was the sample at the cluster level. This sample is shown in Table \@ref(tab:treatmentcontrolgroups).
 
 The clusters were used because pandemic shutdowns operated based on LHA, and the goal was to recreate the effect as closely as possible.
 
 The stratification was used because there were very differently sized LHAs, and randomly selecting only 12 LHAs from a list of 33 left too high a likelihood of nonequivalent treatment and control groups.
 
+```{r, include = FALSE}
+treatment_control_groups <- read_csv(here::here("outputs/treatment_control_groups.csv"))
+```
 
 ```{r treatmentcontrolgroups, echo = FALSE, message = FALSE, warning = FALSE}
-treatment_control_groups <- read_csv(here::here("outputs/treatment_control_groups.csv"))
 treatment_control_groups %>%
-  knitr::kable() %>%
+  knitr::kable(caption = "Cluster sample randomly selecting Local Health Authorities from strata based on population size",
+               booktabs = TRUE) %>%
   kableExtra::kable_styling()
 ```
 
-Once the treatment and control LHAs were selected, each corresponding Food Inspection unit was contacting, and a list of all registered restaurants in each LHA was obtained. Each restaurant was listed by name and address. Once collected into one dataframe, this was the frame at the unit level. A sample of this frame is shown in Table \@ref(table:sampleallunitsdata).
+Once the treatment and control LHAs were selected, each corresponding Food Inspection unit was contacting, and a list of all registered restaurants in each LHA was obtained. Each restaurant was listed by name and address. Once collected into one dataframe, this was the frame at the unit level. A sample of this frame is shown in Table \@ref(tab:sampleallunitsdata).
+
+```{r, include = FALSE}
+all_units_data <- read_csv(here::here("outputs/data/all_units_data.csv")) 
+```
 
 ```{r sampleallunitsdata, echo = FALSE, message = FALSE, warning = FALSE}
-all_units_data <- read_csv(here::here("outputs/data/all_units_data.csv"))
 all_units_data %>%
   slice(1:10) %>%
-  knitr::kable() %>%
-  kableExtra::kable_styling()
+  knitr::kable(caption = "Example segment of the unit level sampling frame",
+               booktabs = TRUE) %>%
+  column_spec(1, width = "14em") %>%
+  column_spec(2, width = "14em") %>%
+  column_spec(3, width = "6em") %>%
+  column_spec(4, width = "6em") %>%
+  kableExtra::kable_styling(latex_options = c("scale_down"))
 ```
 
 A simple random sample of 15% of the treatment list and 15% of the control list was randomly selected to be surveyed. This was the sample at the unit level.
@@ -78,7 +91,7 @@ The table for surveys was used to generate 2,006 mailers to be sent to each rest
 
 Each link and paper survey was personalized to the restaurant's ID number. The link lead to the survey, which asked for confirmation of the last three letters of the restaurant's postal code. This was to ensure that no mailing mistakes were made, and to prevent duplicate data collection. Once verified, the survey-taker was given the main survey.
 
-This survey cost <<<<<<<<LORENA>>>>>>>>>>>>>.
+This survey cost $5,606. A detailed breakdown of costs can be found on [Appendix A](#appendixA).
 
 The data from the survey was tied to the ID number and last three digits of the postal code, but not the restaurant name or address. This was to ensure data privacy. The identifying information was kept in a separate dataframe (Table for Surveys) than the survey answers (Survey 1 Data, Survey 2 Data).
 
@@ -91,9 +104,9 @@ Survey 1 Data was used to confirm that the two-stage stratified cluster sampling
 Survey 1 collected the following data:
 
 * Demographic information
-- Disability status
-- Indigenous status
-- Visible minority (non-Indigenous) status
+- Disability status: According to the UN Convention on the Rights of Persons with Disabilities, persons with disabilities are described as having "long-term physical, mental, intellectual or sensory impairments which in interaction with various barriers may hinder their full and effective participation in society on an equal basis with others."
+- Indigenous status: According to the Government of Canada, Indigenous people include "First Nations (North American Indian), Métis or Inuit and/or those who reported Registered or Treaty Indian status, that is registered under the Indian Act of Canada, and/or those who reported membership in a First Nation or Indian band". 
+- Visible minority (non-Indigenous) status: "Visible minority" is defined by the Government of Canada as "persons, other than aboriginal peoples, who are non-Caucasian in race or non-white in colour."
 - Gender identity
 * Type of service provided (dine-in, take-out, or both)
 * Revenue in May 2021
@@ -109,9 +122,9 @@ Survey 2 was conducted August 3rd to 27th 2021, and it asked about the month of 
 Survey 2 collected the following data:
 
 * Demographic information
-- Disability status: According to the UN Convention on the Rights of Persons with Disabilities, persons with disabilities are described as having "long-term physical, mental, intellectual or sensory impairments which in interaction with various barriers may hinder their full and effective participation in society on an equal basis with others."
-- Indigenous status: According to the Government of Canada, Indigenous people include "First Nations (North American Indian), Métis or Inuit and/or those who reported Registered or Treaty Indian status, that is registered under the Indian Act of Canada, and/or those who reported membership in a First Nation or Indian band". 
-- Visible minority (non-Indigenous) status: "Visible minority" is defined by the Government of Canada as "persons, other than aboriginal peoples, who are non-Caucasian in race or non-white in colour."
+- Disability status
+- Indigenous status
+- Visible minority (non-Indigenous) status
 - Gender identity
 * Type of service provided (dine-in, take-out, or both)
 * Closures (none, temporary, or permanent)
@@ -121,27 +134,108 @@ Survey 2 collected the following data:
 - Number of part-time employees (less than 30 hours/week)
 
 ```{r, include = FALSE}
-survey_1 <- read_csv(here("outputs/data/survey_1.csv"))
-survey_2 <- read_csv(here("outputs/data/survey_2.csv"))
+survey_1 <- read_csv(here("outputs/data/survey_1.csv")) %>%
+    mutate(group = fct_relevel(group, "treatment", "control"),
+           service_type = fct_relevel(service_type, "dinein", "takeout", "both"),
+           disability = fct_relevel(disability, "yes", "no", "nonanswer"),
+           woman = fct_relevel(woman, "yes", "no", "nonanswer"),
+           indigenous = fct_relevel(indigenous, "yes", "no", "nonanswer"),
+           visible = fct_relevel(visible, "yes", "no", "nonanswer"))
+
+survey_2 <- read_csv(here("outputs/data/survey_2.csv")) %>%
+    mutate(group = fct_relevel(group, "treatment", "control"),
+           service_type = fct_relevel(service_type, "dinein", "takeout", "both"),
+           disability = fct_relevel(disability, "yes", "no", "nonanswer"),
+           woman = fct_relevel(woman, "yes", "no", "nonanswer"),
+           indigenous = fct_relevel(indigenous, "yes", "no", "nonanswer"),
+           visible = fct_relevel(visible, "yes", "no", "nonanswer"))
 ```
 
 ## Survey 1 results
 
-
-
-
-
-Survey 1 data as baseline
+Survey 1 data as baseline  Table \@ref(tab:survey1summary) Figure \@ref(fig:baselinerevenue) Figure \@ref(fig:baselineemployees)
 
 Counterfactuals established.
+
+```{r survey1summary, echo = FALSE, message = FALSE, warning = FALSE}
+survey_1 %>% 
+  summary_factorlist("group", c("service_type", "disability", "woman", "indigenous", "visible", "revenue", "ft", "pt"),
+                     p = FALSE, 
+                     add_dependent_label = TRUE, 
+                     dependent_label_prefix = "",
+                     add_col_totals = TRUE,
+                     include_row_missing_col = FALSE,
+                     col_totals_rowname = "",
+                     col_totals_prefix = "N = ",
+                     total_col = FALSE) %>%
+  mutate(group = c("", "Service type", "", "", "Owner has disability", "", "", "Owner identifies as woman", "", "", "Owner is indigenous", "", "", "Owner is a visible minority (non-Indigenous)", "", "", "Revenue", "Number of full-time employees", "Number of part-time employees")) %>%
+  knitr::kable(caption = "Summary statistics for treatment and control baselines",
+               booktabs = TRUE,
+               col.names = c("", "", "Treatment", "Control")) %>%
+  kableExtra::kable_styling()
+```
+
+```{r baselinerevenue, fig.cap="Revenue distribution for treatment and control baselines, from Survey 1", fig.width=10, fig.height=4, echo = FALSE, message = FALSE, warning = FALSE}
+ggplot(survey_1, aes(x = revenue / 1000, fill = group)) +                       
+  geom_histogram(position = "dodge", binwidth = 5) +
+  theme_minimal() +
+  scale_x_continuous(breaks = c(0, 50, 100, 150, 200, 250, 300)) +
+  labs(fill = NULL,
+       x = "Revenue in May 2021 (in thousands of Canadian dollars)",
+       y = "Number of restaurants")
+```
+
+```{r baselineemployees, fig.cap="Employment distribution for treatment and control baselines, from Survey 1", fig.width=10, fig.height=6, echo = FALSE, message = FALSE, warning = FALSE}
+p1 <- ggplot(survey_1, aes(x = pt, fill = group)) +                       
+  geom_histogram(position = "dodge", binwidth = 1, show.legend = FALSE) +
+  coord_flip() +
+  xlim(0,35) +
+  scale_y_continuous(limits = c(0,150), breaks = c(0,25,50,75,100,125,150)) +
+  theme_minimal() +
+  labs(x = "Number of employees in a restaurant",
+       y = "Number of restaurants",
+       title = "Part-time employees")
+
+p2 <- ggplot(survey_1, aes(x = ft, fill = group)) +                       
+  geom_histogram(position = "dodge", binwidth = 1) +
+  coord_flip() +
+  xlim(0,35) +
+  scale_y_continuous(limits = c(0,100), breaks = c(0,25,50,75,100)) +
+  theme_minimal() +
+  labs(fill = NULL,
+       x = NULL,
+       y = "Number of restaurants",
+       title = "Full-time employees")
+
+grid.arrange(p1, p2, ncol = 2)
+```
+
+
+
 
 
 
 ## Survey 2 results
 
-Survey 2 data to contrast treatment and control.
+Survey 2 data to contrast treatment and control. Table \@ref(tab:survey2summary)
 
-
+```{r survey2summary, echo = FALSE, message = FALSE, warning = FALSE}
+survey_2 %>% 
+  summary_factorlist("group", c("service_type", "disability", "woman", "indigenous", "visible", "shutdown", "revenue", "ft", "pt"),
+                     p = FALSE, 
+                     add_dependent_label = TRUE, 
+                     dependent_label_prefix = "",
+                     add_col_totals = TRUE,
+                     include_row_missing_col = FALSE,
+                     col_totals_rowname = "",
+                     col_totals_prefix = "N = ",
+                     total_col = FALSE) %>%
+  mutate(group = c("", "Service type", "", "", "Owner has disability", "", "", "Owner identifies as woman", "", "", "Owner is indigenous", "", "", "Owner is a visible minority (non-Indigenous)", "", "", "Closure", "", "", "Revenue", "Number of full-time employees", "Number of part-time employees")) %>%
+  knitr::kable(caption = "Summary statistics for treatment and control groups post-treatment",
+               booktabs = TRUE,
+               col.names = c("", "", "Treatment", "Control")) %>%
+   kableExtra::kable_styling()
+```
 
 
 
@@ -155,19 +249,88 @@ Survey 2 data to contrast treatment and control.
 ## Findings
 
 ### FINDING ONE
-Closures had a negative impact on revenues and employment counts
+Closures had a negative impact on revenues and employment counts Figure \@ref(fig:postrevenue) Figure \@ref(fig:postemployees)
+
+```{r postrevenue, fig.cap="Revenue distribution for treatment and control groups, from Survey 2", fig.width=10, fig.height=4, echo = FALSE, message = FALSE, warning = FALSE}
+ggplot(survey_2, aes(x = revenue / 1000, fill = group)) +                       
+  geom_histogram(position = "dodge", binwidth = 5) +
+  theme_minimal() +
+  scale_x_continuous(breaks = c(0, 50, 100, 150, 200, 250, 300)) +
+  labs(fill = NULL,
+       x = "Revenue in July 2021 (in thousands of Canadian dollars)",
+       y = "Number of restaurants")
+```
+
+```{r postemployees, fig.cap="Employment distribution for treatment and control groups, from Survey 2", fig.width=10, fig.height=6, echo = FALSE, message = FALSE, warning = FALSE}
+p1 <- ggplot(survey_2, aes(x = pt, fill = group)) +                       
+  geom_histogram(position = "dodge", binwidth = 1, show.legend = FALSE) +
+  coord_flip() +
+  xlim(0,35) +
+  scale_y_continuous(limits = c(0,150), breaks = c(0,25,50,75,100,125,150)) +
+  theme_minimal() +
+  labs(x = "Number of employees in a restaurant",
+       y = "Number of restaurants",
+       title = "Part-time employees")
+
+p2 <- ggplot(survey_2, aes(x = ft, fill = group)) +                       
+  geom_histogram(position = "dodge", binwidth = 1) +
+  coord_flip() +
+  xlim(0,35) +
+  scale_y_continuous(limits = c(0,100), breaks = c(0,25,50,75,100)) +
+  theme_minimal() +
+  labs(fill = NULL,
+       x = NULL,
+       y = "Number of restaurants",
+       title = "Full-time employees")
+
+grid.arrange(p1, p2, ncol = 2)
+```
  
 Suggestion: funding for businesses and temporary unemployment
 
 
 ### FINDING TWO
-Closures had a stronger negative impact on dine-in only restaurants
+
+Closures had a stronger negative impact on dine-in only restaurants Figure \@ref(fig:servicetypeimpact)
+
+```{r servicetypeimpact, fig.cap="Revenues more heavily impacted for dine-in only establishments", fig.width=6, fig.height=4, echo = FALSE, message = FALSE, warning = FALSE}
+survey_2 %>%
+  filter(service_type != "NA") %>%
+  ggplot(aes(x = service_type, y = revenue / 1000, fill = group)) +
+  geom_bar(position = "dodge", stat = "summary", fun.y = mean) +
+  labs(fill = NULL,
+       x = "Service type provided",
+       y = "Mean revenue (in thousands of Canadian dollars") +
+  scale_x_discrete(labels = c( "Dine-in Only", "Take-out only", "Both")) +
+  theme_minimal()
+```
+
 
 Suggestion: technical support for restaurants to increase takeout business
 
 
+
 ### FINDING THREE
-Closures had a stronger negative impact on indigenous or visible minority-owned businesses.
+Closures had a stronger negative impact on indigenous or visible minority-owned businesses. Figure \@ref(fig:minorityimpact)
+
+```{r minorityimpact, fig.cap="Minority-owned businesses were more heavily impacted", fig.width=6, fig.height=4, echo = FALSE, message = FALSE, warning = FALSE}
+bind_rows(
+  survey_2 %>%
+    filter(indigenous == "yes" | visible == "yes") %>%
+     mutate(minority = "Visible minority / Indigenous")
+  ,
+  survey_2 %>%
+   filter(indigenous == "no" & visible == "no") %>%
+    mutate(minority = "No")
+) %>% 
+  mutate(minority = fct_relevel(minority, "Visible minority / Indigenous", "No")) %>%
+  ggplot(aes(x = minority, y = revenue / 1000, fill = group)) +
+  geom_bar(position = "dodge", stat = "summary", fun.y = mean) +
+  labs(fill = NULL,
+       x = "Racial and ethic minorities",
+       y = "Mean revenue (in thousands of Canadian dollars") +
+  theme_minimal()
+```
 
 Suggestion: grants for minority business owners
 
@@ -195,6 +358,47 @@ For statistical analysis, this would require propensity score weighting.
 \newpage
 
 # Appendix {-}
+
+# Appendix A
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+restaurants = 2006
+survey_total = 2
+indiv_postage = 0.85 # https://www.canadapost.ca/cpc/en/business/postal-services/mailing/letter-discounts.page?
+minimum_wage = 14.25 # https://www.ontario.ca/document/your-guide-employment-standards-act-0/minimum-wage
+management_service = 195 # https://www.alchemer.com/plans-pricing/small-teams/
+average_call_mins = 7
+response_rate = .3 
+
+phone_interviewer_cost = round(restaurants*survey_total*response_rate, 2)*average_call_mins/60*minimum_wage
+
+postage_cost = (restaurants*2)*indiv_postage
+
+survey_budget <- data.frame(
+  Item = c ("Data Management", "Phone Interviewer Wages", "Postage", "TOTAL"),
+  Cost = c (management_service, phone_interviewer_cost, postage_cost, sum(management_service, phone_interviewer_cost, postage_cost)),
+  Description = c ("Online survey management account fees",
+                   "1,203 calls (7 minutes on average) at $14.25/hr",
+                   "4,012 mailers at $0.85/ea",
+                   "")
+)
+
+survey_budget %>% 
+  kable(digits = 2,
+        caption = "2021 Ontario Restaurant Survey Budget") %>% 
+  kable_styling() %>% 
+  row_spec(0, bold = T, color = "white", background = "gray") %>% 
+  row_spec(4, bold = T) %>%
+  kableExtra::kable_styling(latex_options = c("hold_position"))
+```
+
+# Appendix B
+
+TODO: add survey screenshot
+
+# Appendix C
+
+TODO: add complete list of survey questions
 
 
 \newpage
