@@ -611,6 +611,7 @@ survey_2 <- bind_rows(
 )
 
 survey_2
+
 ```
 
 
@@ -622,12 +623,12 @@ We will also assume that some people will mail in answers and fill in the form i
 ```{r, warning = FALSE}
 num_cols_1 = 11
 
-set.seed(19894)
+set.seed(891)
 survey_1 <- survey_1 %>%
   mutate(nonresponse = sample(c("yes","partial","no"), size = num_total, prob = c(0.6, 0.01, 0.39), replace = TRUE)) %>%
-  filter(nonresponse != "no") 
+  filter(nonresponse != "yes") 
 
-set.seed(19894)
+set.seed(891)
 survey_1 <- survey_1 %>%
   mutate(which_partial = sample(c(4:num_cols_1), size = first(count(survey_1)), replace = TRUE))
 
@@ -646,12 +647,12 @@ survey_1
 ```{r, warning = FALSE}
 num_cols_2 = 12
 
-set.seed(19895)
+set.seed(198)
 survey_2 <- survey_2 %>%
   mutate(nonresponse = sample(c("yes","partial","no"), size = num_total, prob = c(0.6, 0.01, 0.39), replace = TRUE)) %>%
-  filter(nonresponse != "no") 
+  filter(nonresponse != "yes") 
 
-set.seed(19895)
+set.seed(198)
 survey_2 <- survey_2 %>%
   mutate(which_partial = sample(c(4:num_cols_1), size = first(count(survey_2)), replace = TRUE))
 
