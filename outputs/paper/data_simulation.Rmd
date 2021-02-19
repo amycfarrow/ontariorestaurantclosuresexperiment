@@ -21,7 +21,7 @@ library(here) # for working in projects
 
 ```
 
-```{r surveyframe}
+```{r, warning = FALSE}
 # read in the data
 # NOTE: scripts 01_scrape_health_depts, 04_clean_restaurant_list_csvs, and 02_sampling_frame must have been run already
 
@@ -48,20 +48,9 @@ survey_1
 
 
 
-
-
-
-
-
-
-
-# Survey questions that require simulated data
-
-
-
 # Type of service provided
 
-```{r}
+```{r, warning = FALSE}
 # Read in data
 yelp_data <- read_csv(here("inputs/data/yelp_restaurants_ontario.csv")) %>% 
   na.omit() # Remove all NAs
@@ -73,7 +62,7 @@ takeout <- yelp_data %>%
   select(RestaurantsTakeOut)
 summary(takeout)
 ```
-```{r}
+```{r, warning = FALSE}
 takeout_percentage <- takeout %>%
   group_by(RestaurantsTakeOut) %>% 
   summarize(count = n()) %>%
@@ -81,13 +70,13 @@ takeout_percentage <- takeout %>%
 
 takeout_percentage
 ```
-```{r}
+```{r, warning = FALSE}
 # Check proportion of RestaurantsTableService
 tableserv <- yelp_data %>% 
   select(RestaurantsTableService)
 summary(tableserv)
 ```
-```{r}
+```{r, warning = FALSE}
 tableserv_percentage <- tableserv %>%
   group_by(RestaurantsTableService) %>% 
   summarize(count = n()) %>%
@@ -96,7 +85,7 @@ tableserv_percentage <- tableserv %>%
 tableserv_percentage
 ```
 
-```{r}
+```{r, warning = FALSE}
 # Calculate invalid responses (neither dine-in nor takeout)
 invalid <- yelp_data %>% 
   filter(RestaurantsTableService == FALSE & RestaurantsTakeOut == FALSE) %>% 
@@ -128,7 +117,7 @@ According to Ontario restaurant data from Yelp [@yelp_dataset], approximately 6%
 offer dine in service, 32.5% offer takeout, and 61.5% offer both.
 
 ## Survey 1
-```{r}
+```{r, warning = FALSE}
 set.seed(19)
 survey_1 <- survey_1 %>%
   mutate(service_type = sample(x = c("dinein",
@@ -143,7 +132,7 @@ survey_1
 ```
 
 ## Survey 2
-```{r}
+```{r, warning = FALSE}
 set.seed(19)
 survey_2 <- survey_2 %>%
   mutate(service_type = sample(x = c("dinein",
@@ -173,7 +162,7 @@ survey_2
 0.5% of small to medium enterprises in Canada are owned by persons with disabilities [@ownershipdemos].
 
 ## Survey 1
-```{r}
+```{r, warning = FALSE}
 set.seed(19893)
 survey_1 <- survey_1 %>%
   mutate(disability = sample(c("yes", "no"),
@@ -185,7 +174,7 @@ survey_1
 ```
 
 ## Survey 2
-```{r}
+```{r, warning = FALSE}
 set.seed(19893)
 survey_2 <- survey_2 %>%
   mutate(disability = sample(c("yes", "no"),
@@ -200,7 +189,7 @@ survey_2
 
 
 
-```{r}
+```{r, warning = FALSE}
 ### Load census dataset by Health Regions ###
 ### Download link: https://www12.statcan.gc.ca/census-recensement/2016/dp-pd/prof/details/download-telecharger/comp/GetFile.cfm?Lang=E&FILETYPE=CSV&GEONO=058 ###
 census_2016 <- read.csv(here("inputs", "data", "census_2016.csv"))
@@ -288,7 +277,7 @@ populations <- populations %>%
 populations
 ```
 
-```{r}
+```{r, warning = FALSE}
 populations_split <- matrix(ncol=4, nrow=5)
 populations_split[,1] <- c("Total_Population", "Indigenous_Population_25%_sample", "Visible_Minority_25%_sample", "Accommodation_and_Food_Services_25%_sample", "Total_Population_Women")
 populations_split[,2] <- ontario_pop
@@ -317,7 +306,7 @@ colnames(populations_split) <- c("Info", "Ontario", "Treatment", "Control")
 populations_split
 ```
 
-```{r}
+```{r, warning = FALSE}
 ### Get percentage proportions of demographic groups of interest ###
 
 populations_split_percentage <- matrix(ncol=4, nrow=5)
@@ -353,7 +342,7 @@ Therefore, we can estimate that 0.009 of business owners in the treatment group 
 
 
 ## Survey 1
-```{r}
+```{r, warning = FALSE}
 set.seed(19893)
 survey_1 <- survey_1 %>%
   mutate(woman = sample(c("yes","no","nonanswer"), size = num_total, prob = c(0.154, 0.836, 0.01), replace = TRUE))
@@ -393,7 +382,7 @@ survey_1
 
 ## Survey 2
 
-```{r}
+```{r, warning = FALSE}
 set.seed(19893)
 survey_2 <- survey_2 %>%
   mutate(woman = sample(c("yes","no","nonanswer"), size = num_total, prob = c(0.154, 0.836, 0.01), replace = TRUE))
@@ -442,7 +431,7 @@ survey_2
 
 3% closed of restaurants in the US closed permanently between March and June [@restaurantclosures]. This period was about six times as long as our two week closure.
 
-```{r}
+```{r, warning = FALSE}
 set.seed(19893)
 survey_2 <- bind_rows(
   survey_2 %>%
@@ -482,7 +471,7 @@ From this, we can calculate an estimated \$69,959 average revenue per month.
 From an analysis of Kaggle restaurant data [@kagglerestaurantdata], we can see that restaurant revenue looks like an F distribution.
 The distribution rf(n, df1, df2, ncp) = rf(num_rest, 10, 5) gives an approximate shape. Using the f-distribution formula, we know the distribution has a mean of 10/9, so we would multiply by 62,963 to get the mean to 69,959.
 
-```{r}
+```{r, warning = FALSE}
 set.seed(19894)
 survey_1 <- survey_1 %>%
   mutate(revenue = 62963 * rf(num_total,20,20))
@@ -506,7 +495,7 @@ All businesses had a median decrease of -15%, but visible minority-owned busines
 
 There seems to be no significant difference in business losses for disabled owners or female business owners [@aug20192020].
 
-```{r}
+```{r, warning = FALSE}
 set.seed(19894)
 survey_2 <- survey_2 %>%
   mutate(revenue = 62963 * rf(num_total,20,20)) %>%
@@ -583,7 +572,7 @@ Therefore, for every 1.9 + 1 employees, there are 1.9 + 1*0.5 FTE. For every 2.9
 0.42 = 1 / 2.4 = 0.42 = 1 / (1.9 + 0.5)
 
 ## Survey 1
-```{r}
+```{r, warning = FALSE}
 set.seed(19893)
 survey_1 <- survey_1 %>%
   mutate(fte = revenue / 6833) %>%
@@ -606,7 +595,7 @@ For the second survey, we will assume that treatment restaurants shifted towards
 x / (x + 0.5)
 1 / (x + 0.5)
 
-```{r}
+```{r, warning = FALSE}
 set.seed(19893)
 survey_2 <- survey_2 %>%
   mutate(fte = revenue / 6833) %>%
@@ -630,7 +619,7 @@ survey_2
 A professional mail survey with follow up found a non-response rate of 61% [@nonresponse].
 We will also assume that some people will mail in answers and fill in the form incompletely.
 
-```{r}
+```{r, warning = FALSE}
 num_cols_1 = 11
 
 set.seed(19893)
@@ -654,7 +643,7 @@ survey_1 <- survey_1 %>%
 survey_1
 ```
 
-```{r}
+```{r, warning = FALSE}
 num_cols_2 = 12
 
 set.seed(19894)
@@ -679,7 +668,7 @@ survey_2
 ```
 
 
-```{r}
+```{r, warning = FALSE}
 write_csv(survey_1, here("outputs/data/survey_1.csv"))
 write_csv(survey_2, here("outputs/data/survey_2.csv"))
 ```
