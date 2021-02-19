@@ -165,9 +165,9 @@ survey_2
 ```{r, warning = FALSE}
 set.seed(19893)
 survey_1 <- survey_1 %>%
-  mutate(disability = sample(c("yes", "no"),
+  mutate(disability = sample(c("yes", "no", "nonanswer"),
                              size = num_total,
-                             prob = c(0.005, .995),
+                             prob = c(0.005, .985, 0.01),
                              replace = TRUE))
 
 survey_1
@@ -177,9 +177,9 @@ survey_1
 ```{r, warning = FALSE}
 set.seed(19893)
 survey_2 <- survey_2 %>%
-  mutate(disability = sample(c("yes", "no"),
+  mutate(disability = sample(c("yes", "no", "nonanswer"),
                              size = num_total,
-                             prob = c(0.005, .995),
+                             prob = c(0.005, .985, 0.01),
                              replace = TRUE))
 
 survey_2
@@ -622,12 +622,12 @@ We will also assume that some people will mail in answers and fill in the form i
 ```{r, warning = FALSE}
 num_cols_1 = 11
 
-set.seed(19893)
+set.seed(19894)
 survey_1 <- survey_1 %>%
   mutate(nonresponse = sample(c("yes","partial","no"), size = num_total, prob = c(0.6, 0.01, 0.39), replace = TRUE)) %>%
   filter(nonresponse != "no") 
 
-set.seed(19893)
+set.seed(19894)
 survey_1 <- survey_1 %>%
   mutate(which_partial = sample(c(4:num_cols_1), size = first(count(survey_1)), replace = TRUE))
 
@@ -646,12 +646,12 @@ survey_1
 ```{r, warning = FALSE}
 num_cols_2 = 12
 
-set.seed(19894)
+set.seed(19895)
 survey_2 <- survey_2 %>%
   mutate(nonresponse = sample(c("yes","partial","no"), size = num_total, prob = c(0.6, 0.01, 0.39), replace = TRUE)) %>%
   filter(nonresponse != "no") 
 
-set.seed(19894)
+set.seed(19895)
 survey_2 <- survey_2 %>%
   mutate(which_partial = sample(c(4:num_cols_1), size = first(count(survey_2)), replace = TRUE))
 
