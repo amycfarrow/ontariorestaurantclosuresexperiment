@@ -5,7 +5,7 @@
 # Contact: amy.farrow@mail.utoronto.ca
 # License: MIT
 # Pre-requisites: 
-# - Need to have run 01, 03, and 03 scripts
+# - Need to have run 03_clean_restaurant_list_csvs
 
 
 #### Workspace setup ####
@@ -69,4 +69,5 @@ table_for_surveys <- table_for_surveys %>%
   mutate(ID = pull(tibble(sample(seq(1, first(count(table_for_surveys)), by = 1), size = first(count(table_for_surveys)), replace = FALSE)))) %>%
   select(-surveyed)
 
-write_csv(table_for_surveys, here::here("outputs/table_for_surveys.csv"))
+# Save the table for conducting the surveys
+write_csv(table_for_surveys, here::here("outputs/data/table_for_surveys.csv"))
