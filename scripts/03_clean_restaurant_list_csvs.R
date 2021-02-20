@@ -5,7 +5,6 @@
 # Contact: l.almaraz@mail.utoronto.ca
 # License: MIT
 # Pre-requisites: Needs CSVs with restaurant data per health unit, available here: https://github.com/amycfarrow/ontariorestaurantclosuresexperiment/tree/main/inputs/data
-# TODO: split type into three (dine in, dine in and t-o, t-o only)
 
 # Setup
 # install packages if needed
@@ -50,16 +49,6 @@ clean_data <- function(unit, csv_r, csv_to, save_dir){
 }
 
 # Use function for remaining health units
-
-#chatham_kent_data <- clean_data("chatham",
-#                                "inputs/data/chatham_kent_restaurants.csv",
-#                                "inputs/data/chatham_kent_takeout.csv",
-#                                "outputs/data/chatham_kent_data.csv")
-
-#peel_data <- clean_data("peel",
-#                            "inputs/data/peel_restaurants.csv",
-#                            "inputs/data/peel_takeout.csv",
-#                            "outputs/data/peel_data.csv")
 
 algoma_data <- clean_data("algoma",
                           "inputs/data/algoma_restaurants.csv",

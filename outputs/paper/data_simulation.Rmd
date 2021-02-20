@@ -21,11 +21,20 @@ library(here) # for working in projects
 
 ```
 
+
+Analysis for this project uses the R statistical programming language [@R], and more specifically, the `tidyverse` package for data manipulation [@tidyverse]. Because the data is managed using R Projects, `here` is used to reference file locations [@here]. `kableExtra` formats tables [@kableExtra]. `bookdown` is used to format the report [@bookdown].
+
+First, we read in the skeleton for the survey data. This is what we would hypothetically know about a restaurant before they took the survey. We keep only the ID numbers, the group, and the last 3 characters of the postal code, which the survey-taker will have to enter to verify identity. All other variables, like name and full address, are only kept in the only frame for surveying, which contains no private information.
+
 ```{r, warning = FALSE}
 # read in the data
-# NOTE: scripts 01_scrape_health_depts, 04_clean_restaurant_list_csvs, and 02_sampling_frame must have been run already
+# NOTE: scripts 01_scrape_health_depts, 
+# 02_stratified_cluster_sampling,
+# 03_clean_restaurant_list_csvs, 
+# 04_restaurant_survey_frame,
+# and 05_import_yelp_data must have been run already
 
-table_for_surveys <- read_csv(here::here("outputs/table_for_surveys.csv"))
+table_for_surveys <- read_csv(here::here("outputs/data/table_for_surveys.csv"))
 
 survey_1 <- table_for_surveys %>%
   select(ID, group, verify) %>%
@@ -45,10 +54,12 @@ survey_2 <- survey_1
 survey_1
 ```
 
-
+From there, data was simulated for all questions asked on the survey.
 
 
 # Type of service provided
+
+First, some research:
 
 ```{r, warning = FALSE}
 # Read in data
@@ -118,6 +129,8 @@ offer dine in service, 32.5% offer takeout, and 61.5% offer both.
 
 ## Survey 1
 ```{r, warning = FALSE}
+# randomly assign service_provided using ratios above
+
 set.seed(19)
 survey_1 <- survey_1 %>%
   mutate(service_type = sample(x = c("dinein",
@@ -133,6 +146,8 @@ survey_1
 
 ## Survey 2
 ```{r, warning = FALSE}
+# randomly assign service_provided using ratios above
+
 set.seed(19)
 survey_2 <- survey_2 %>%
   mutate(service_type = sample(x = c("dinein",
@@ -163,6 +178,8 @@ survey_2
 
 ## Survey 1
 ```{r, warning = FALSE}
+# randomly assign disability status using ratios above
+
 set.seed(19893)
 survey_1 <- survey_1 %>%
   mutate(disability = sample(c("yes", "no", "nonanswer"),
@@ -175,6 +192,8 @@ survey_1
 
 ## Survey 2
 ```{r, warning = FALSE}
+# randomly assign disability status using ratios above
+
 set.seed(19893)
 survey_2 <- survey_2 %>%
   mutate(disability = sample(c("yes", "no", "nonanswer"),
@@ -187,11 +206,13 @@ survey_2
 
 
 
-
+Some research for racial and ethnic minorities and women in Canada and in business:
 
 ```{r, warning = FALSE}
 ### Load census dataset by Health Regions ###
-### Download link: https://www12.statcan.gc.ca/census-recensement/2016/dp-pd/prof/details/download-telecharger/comp/GetFile.cfm?Lang=E&FILETYPE=CSV&GEONO=058 ###
+### Download link: 
+### https://www12.statcan.gc.ca/census-recensement/2016/dp-pd/prof/details/
+### download-telecharger/comp/GetFile.cfm?Lang=E&FILETYPE=CSV&GEONO=058
 census_2016 <- read.csv(here("inputs", "data", "census_2016.csv"))
 census_2016 <- janitor::clean_names(census_2016)
 
@@ -205,12 +226,18 @@ get_region_data <- function(y){
   census_2016 %>%
     filter(geo_code_por == y,
            member_id_profile_of_health_regions_2247 %in% demographic_info) %>%
-    select(dim_profile_of_health_regions_2247, member_id_profile_of_health_regions_2247, dim_sex_3_member_id_1_total_sex, dim_sex_3_member_id_2_male, dim_sex_3_member_id_3_female)
+    select(dim_profile_of_health_regions_2247, 
+           member_id_profile_of_health_regions_2247, 
+           dim_sex_3_member_id_1_total_sex, 
+           dim_sex_3_member_id_2_male, 
+           dim_sex_3_member_id_3_female)
 }
 
 ### Get data from the randomly selected Health Regions ###
 # GEO_CODE indicates public health regions, taken from Census 2016 links:
-#https://www12.statcan.gc.ca/census-recensement/2016/dp-pd/prof/search-recherche/lst/results-resultats.cfm?Lang=E&TABID=1&G=1&Geo1=&Code1=&Geo2=&Code2=&GEOCODE=35&type=0
+# https://www12.statcan.gc.ca/census-recensement/2016/dp-pd/prof/
+# search-recherche/lst/results-resultats.cfm?Lang=E&TABID=1&G=1&Geo1=&Code1=
+# &Geo2=&Code2=&GEOCODE=35&type=0
 
 ontario <- get_region_data(35)
 
@@ -222,8 +249,7 @@ timiskaming <- get_region_data(3563)
 windsor_essex <- get_region_data(3568)
 
 northwest <- get_region_data(3549)
-# southwestern <- get_region_data(3502)
-# Southwestern is a newer health unit. it was created by almagamating oxford and elgin-st. thomas units:
+# Southwestern was created by almagamating oxford and elgin-st. thomas units:
 oxford <- get_region_data(3552)
 elgin <- get_region_data(3531)
 waterloo <- get_region_data(3565)
@@ -234,14 +260,26 @@ brant <- get_region_data(3527)
 
 ### Put together demographic info in one table ###
 
-populationss <- c("Total_Population", "Indigenous_Population_25%_sample", "Visible_Minority_25%_sample", "Accommodation_and_Food_Services_25%_sample", "Total_Population_Women")
+populationss <- c("Total_Population", 
+                  "Indigenous_Population_25%_sample", 
+                  "Visible_Minority_25%_sample", 
+                  "Accommodation_and_Food_Services_25%_sample", 
+                  "Total_Population_Women")
 
 get_pop_info <- function(x){
-  c(as.numeric(x$dim_sex_3_member_id_1_total_sex[x$dim_profile_of_health_regions_2247 == "Population, 2016"]),
-    as.numeric(x$dim_sex_3_member_id_1_total_sex[x$dim_profile_of_health_regions_2247 == "Aboriginal identity"]),
-    as.numeric(x$dim_sex_3_member_id_1_total_sex[x$dim_profile_of_health_regions_2247 == "Total visible minority population"]),
-    as.numeric(x$dim_sex_3_member_id_1_total_sex[x$dim_profile_of_health_regions_2247 == "72 Accommodation and food services"]),
-    as.numeric(x$dim_sex_3_member_id_3_female[x$dim_profile_of_health_regions_2247 == "Total - Age groups and average age of the population - 100% data"]))
+  c(as.numeric(x$dim_sex_3_member_id_1_total_sex
+               [x$dim_profile_of_health_regions_2247 == "Population, 2016"]),
+    as.numeric(x$dim_sex_3_member_id_1_total_sex
+               [x$dim_profile_of_health_regions_2247 == "Aboriginal identity"]),
+    as.numeric(x$dim_sex_3_member_id_1_total_sex
+               [x$dim_profile_of_health_regions_2247 == 
+                   "Total visible minority population"]),
+    as.numeric(x$dim_sex_3_member_id_1_total_sex
+               [x$dim_profile_of_health_regions_2247 == 
+                   "72 Accommodation and food services"]),
+    as.numeric(x$dim_sex_3_member_id_3_female
+               [x$dim_profile_of_health_regions_2247 == 
+                   "Total - Age groups and average age of the population - 100% data"]))
 }
 
 ontario_pop <- get_pop_info(ontario)
@@ -263,23 +301,47 @@ waterloo_pop <- get_pop_info(waterloo)
 durham_pop <- get_pop_info(durham)
 
 
-populations <- bind_cols(populationss, ontario_pop, haliburton_pop, algoma_pop, hamilton_pop, windsor_essex_pop, simcoe_muskoka_pop, timiskaming_pop, brant_pop, sudbury_pop, oxford_pop, elgin_pop, northwest_pop, waterloo_pop, durham_pop)
+populations <- bind_cols(populationss, 
+                         ontario_pop, 
+                         haliburton_pop, 
+                         algoma_pop, 
+                         hamilton_pop, 
+                         windsor_essex_pop, 
+                         simcoe_muskoka_pop, 
+                         timiskaming_pop, 
+                         brant_pop, 
+                         sudbury_pop, 
+                         oxford_pop, 
+                         elgin_pop, 
+                         northwest_pop, 
+                         waterloo_pop, 
+                         durham_pop)
 
-colnames(populations) <- c("Info", "Ontario", "Haliburton", "Algoma", "Hamilton", "Windsor_Essex", "Simcoe_Muskoka", "Timiskaming",
-                           "Brant", "Sudbury", "Oxford", "Elgin", "Northwest", "Waterloo", "Durham")
+colnames(populations) <- c("Info", "Ontario", "Haliburton", "Algoma", 
+                           "Hamilton", "Windsor_Essex", "Simcoe_Muskoka", 
+                           "Timiskaming", "Brant", "Sudbury", "Oxford", 
+                           "Elgin", "Northwest", "Waterloo", "Durham")
 
 populations <- populations %>%
   mutate(Southwestern = Oxford + Elgin) %>%
-  mutate(total_treat = Haliburton + Algoma + Hamilton + Windsor_Essex + Simcoe_Muskoka + Timiskaming,
-         total_control = Brant + Sudbury + Northwest + Waterloo + Durham + Southwestern) %>%
+  mutate(total_treat = 
+           Haliburton + Algoma + Hamilton + Windsor_Essex + Simcoe_Muskoka + Timiskaming,
+         total_control = 
+           Brant + Sudbury + Northwest + Waterloo + Durham + Southwestern) %>%
   select(-Oxford, -Elgin)
 
 populations
 ```
 
 ```{r, warning = FALSE}
+# Split the population info into our treatment and control groups.
+
 populations_split <- matrix(ncol=4, nrow=5)
-populations_split[,1] <- c("Total_Population", "Indigenous_Population_25%_sample", "Visible_Minority_25%_sample", "Accommodation_and_Food_Services_25%_sample", "Total_Population_Women")
+populations_split[,1] <- c("Total_Population", 
+                           "Indigenous_Population_25%_sample", 
+                           "Visible_Minority_25%_sample", "
+                           Accommodation_and_Food_Services_25%_sample", 
+                           "Total_Population_Women")
 populations_split[,2] <- ontario_pop
 
 total_pop_treatment <- sum(populations[1,c(3:8)])
@@ -288,7 +350,11 @@ minority_treatment <- sum(populations[3,c(3:8)])
 food_services_treatment <- sum(populations[4,c(3:8)])
 women_treatment <- sum(populations[5,c(3:8)])
 
-treatment <- c(total_pop_treatment, indigenous_treatment, minority_treatment, food_services_treatment, women_treatment)
+treatment <- c(total_pop_treatment, 
+               indigenous_treatment, 
+               minority_treatment, 
+               food_services_treatment, 
+               women_treatment)
 populations_split[,3] <- treatment
 
 total_pop_control <- sum(populations[1,c(9:14)])
@@ -297,7 +363,11 @@ minority_control <- sum(populations[3,c(9:14)])
 food_services_control <- sum(populations[4,c(9:14)])
 women_control <- sum(populations[5,c(9:14)])
 
-control <- c(total_pop_control, indigenous_control, minority_control, food_services_control, women_control)
+control <- c(total_pop_control, 
+             indigenous_control, 
+             minority_control, 
+             food_services_control, 
+             women_control)
 populations_split[,4] <- control
 
 populations_split <- as.data.frame(populations_split)
@@ -307,21 +377,30 @@ populations_split
 ```
 
 ```{r, warning = FALSE}
-### Get percentage proportions of demographic groups of interest ###
+### Get percentage proportions of demographic groups of interest
 
 populations_split_percentage <- matrix(ncol=4, nrow=5)
 
 for(i in 2:length(populations_split)){
   for(j in 1:5){
-    populations_split_percentage[j,i] <- round(as.numeric(populations_split[j,i])/as.numeric(populations_split[1,i]), digits=3)
+    populations_split_percentage[j,i] <- 
+      round(as.numeric(populations_split[j,i])/as.numeric(populations_split[1,i]), 
+            digits=3)
   }
 }
 
 #populations_percentage[1, 2:4] <- c(1, 1, 1)
-populations_split_percentage[,1] <- c("Total_Population", "Indigenous_Population_25%_sample", "Visible_Minority_25%_sample", "Accommodation_and_Food_Services_25%_sample", "Total_Population_Women")
+populations_split_percentage[,1] <- c("Total_Population", 
+                                      "Indigenous_Population_25%_sample", 
+                                      "Visible_Minority_25%_sample", 
+                                      "Accommodation_and_Food_Services_25%_sample", 
+                                      "Total_Population_Women")
 
 populations_split_percentage <- as.data.frame(populations_split_percentage)
-colnames(populations_split_percentage) <- c("Info", "Ontario", "Treatment", "Control")
+colnames(populations_split_percentage) <- c("Info", 
+                                            "Ontario", 
+                                            "Treatment", 
+                                            "Control")
 
 populations_split_percentage
 ```
@@ -343,19 +422,30 @@ Therefore, we can estimate that 0.009 of business owners in the treatment group 
 
 ## Survey 1
 ```{r, warning = FALSE}
+# Randomly assign racial and ethnic minorities, and women, using the ratios above:
+
 set.seed(19893)
 survey_1 <- survey_1 %>%
-  mutate(woman = sample(c("yes","no","nonanswer"), size = num_total, prob = c(0.154, 0.836, 0.01), replace = TRUE))
+  mutate(woman = sample(c("yes","no","nonanswer"), 
+                        size = num_total, 
+                        prob = c(0.154, 0.836, 0.01), 
+                        replace = TRUE))
 
 set.seed(19893)
 survey_1 <- bind_rows(
   survey_1 %>%
     filter(group == "treatment") %>%
-    mutate(indigenous = sample(c("yes", "no", "nonanswer"), size = num_treat, prob = c(0.009, 0.981, 0.01), replace = TRUE))
+    mutate(indigenous = sample(c("yes", "no", "nonanswer"), 
+                               size = num_treat, 
+                               prob = c(0.009, 0.981, 0.01), 
+                               replace = TRUE))
   ,
   survey_1 %>%
     filter(group == "control") %>%
-   mutate(indigenous = sample(c("yes", "no", "nonanswer"), size = num_control, prob = c(0.011, 0.979, 0.01), replace = TRUE))
+   mutate(indigenous = sample(c("yes", "no", "nonanswer"), 
+                              size = num_control, 
+                              prob = c(0.011, 0.979, 0.01), 
+                              replace = TRUE))
 )
 
 set.seed(19893)
@@ -363,14 +453,20 @@ survey_1 <- bind_rows(
   survey_1 %>%
     filter(group == "treatment", indigenous != "yes") %>%
     mutate(visible = sample(c("yes", "no", "nonanswer"), 
-                               size = first(count(survey_1 %>% filter(group == "treatment", indigenous != "yes"))), 
-                               prob = c(0.057, 0.933, 0.01), replace = TRUE))
+                               size = first(count(survey_1 %>% 
+                                                    filter(group == "treatment", 
+                                                           indigenous != "yes"))), 
+                               prob = c(0.057, 0.933, 0.01), 
+                            replace = TRUE))
   ,
   survey_1 %>%
     filter(group == "control", indigenous != "yes") %>%
    mutate(visible = sample(c("yes", "no", "nonanswer"), 
-                              size = first(count(survey_1 %>% filter(group == "control", indigenous != "yes"))), 
-                              prob = c(0.08, 0.91, 0.01), replace = TRUE))
+                              size = first(count(survey_1 %>% 
+                                                   filter(group == "control", 
+                                                          indigenous != "yes"))), 
+                              prob = c(0.08, 0.91, 0.01), 
+                           replace = TRUE))
   ,
   survey_1 %>%
     filter(indigenous == "yes") %>%
@@ -383,19 +479,30 @@ survey_1
 ## Survey 2
 
 ```{r, warning = FALSE}
+# Randomly assign racial and ethnic minorities, and women, using the ratios above:
+
 set.seed(19893)
 survey_2 <- survey_2 %>%
-  mutate(woman = sample(c("yes","no","nonanswer"), size = num_total, prob = c(0.154, 0.836, 0.01), replace = TRUE))
+  mutate(woman = sample(c("yes","no","nonanswer"), 
+                        size = num_total, 
+                        prob = c(0.154, 0.836, 0.01), 
+                        replace = TRUE))
 
 set.seed(19893)
 survey_2 <- bind_rows(
   survey_2 %>%
     filter(group == "treatment") %>%
-    mutate(indigenous = sample(c("yes", "no", "nonanswer"), size = num_treat, prob = c(0.009, 0.981, 0.01), replace = TRUE))
+    mutate(indigenous = sample(c("yes", "no", "nonanswer"), 
+                               size = num_treat, 
+                               prob = c(0.009, 0.981, 0.01), 
+                               replace = TRUE))
   ,
   survey_2 %>%
     filter(group == "control") %>%
-   mutate(indigenous = sample(c("yes", "no", "nonanswer"), size = num_control, prob = c(0.011, 0.979, 0.01), replace = TRUE))
+   mutate(indigenous = sample(c("yes", "no", "nonanswer"), 
+                              size = num_control, 
+                              prob = c(0.011, 0.979, 0.01), 
+                              replace = TRUE))
 )
 
 set.seed(19893)
@@ -403,13 +510,18 @@ survey_2 <- bind_rows(
   survey_2 %>%
     filter(group == "treatment", indigenous != "yes") %>%
     mutate(visible = sample(c("yes", "no", "nonanswer"), 
-                               size = first(count(survey_2 %>% filter(group == "treatment", indigenous != "yes"))), 
-                               prob = c(0.057, 0.933, 0.01), replace = TRUE))
+                               size = first(count(survey_2 %>% 
+                                                    filter(group == "treatment", 
+                                                           indigenous != "yes"))), 
+                               prob = c(0.057, 0.933, 0.01), 
+                            replace = TRUE))
   ,
   survey_2 %>%
     filter(group == "control", indigenous != "yes") %>%
    mutate(visible = sample(c("yes", "no", "nonanswer"), 
-                              size = first(count(survey_2 %>% filter(group == "control", indigenous != "yes"))), 
+                              size = first(count(survey_2 %>% 
+                                                   filter(group == "control", 
+                                                          indigenous != "yes"))), 
                               prob = c(0.08, 0.91, 0.01), replace = TRUE))
   ,
   survey_1 %>%
@@ -432,21 +544,23 @@ survey_2
 3% closed of restaurants in the US closed permanently between March and June [@restaurantclosures]. This period was about six times as long as our two week closure.
 
 ```{r, warning = FALSE}
+# Randomly assign shutdown using the ratios above only for the treatment group:
+
 set.seed(19893)
 survey_2 <- bind_rows(
   survey_2 %>%
     filter(group == "treatment") %>%
-    mutate(shutdown = sample(c("none", "temporary", "permanent"), 
-                                                            size = num_treat, 
-                                                            prob = c(0.558, 0.432, 0.01),
-                                                            replace = TRUE))
+    mutate(shutdown = sample(c("none", "temporary", "permanent"),
+                             size = num_treat,
+                             prob = c(0.558, 0.432, 0.01),
+                             replace = TRUE))
   ,
   survey_2 %>%
     filter(group == "control") %>%
-    mutate(shutdown = sample(c("none", "temporary", "permanent"), 
-                                                          size = num_control, 
-                                                          prob = c(.99, 0.005, 0.005),
-                                                          replace = TRUE))
+    mutate(shutdown = sample(c("none", "temporary", "permanent"),
+                             size = num_control,
+                             prob = c(.99, 0.005, 0.005),
+                             replace = TRUE))
 ) %>%
   arrange(ID)
   
@@ -472,6 +586,8 @@ From an analysis of Kaggle restaurant data [@kagglerestaurantdata], we can see t
 The distribution rf(n, df1, df2, ncp) = rf(num_rest, 10, 5) gives an approximate shape. Using the f-distribution formula, we know the distribution has a mean of 10/9, so we would multiply by 62,963 to get the mean to 69,959.
 
 ```{r, warning = FALSE}
+# Randomly sample from the scaled F distribution to generate restaurant revenues:
+
 set.seed(19894)
 survey_1 <- survey_1 %>%
   mutate(revenue = 62963 * rf(num_total,20,20))
@@ -496,12 +612,16 @@ All businesses had a median decrease of -15%, but visible minority-owned busines
 There seems to be no significant difference in business losses for disabled owners or female business owners [@aug20192020].
 
 ```{r, warning = FALSE}
+# Randomly sample from the scaled F distribution to generate restaurant revenues, and apply a random number around 1 to add variation:
+
 set.seed(19894)
 survey_2 <- survey_2 %>%
   mutate(revenue = 62963 * rf(num_total,20,20)) %>%
   mutate(factor = abs(rnorm(num_total, 1, .1))) %>%
   mutate(revenue = factor * revenue) %>%
   select(-factor)
+
+# Reduce the treatment revenues to those that shutdown:
 
 survey_2 <-
   bind_rows(
@@ -518,6 +638,8 @@ survey_2 <-
       mutate(revenue = 0.25 * revenue)
   ) %>%
   arrange(ID)
+
+# reduce the treatment revenues for those with more dine-in and less take-out service:
 
 survey_2 <-
   bind_rows(
@@ -538,10 +660,13 @@ survey_2 <-
   ) %>%
   arrange(ID)
 
+# reduce the treatment revenues further for racial and ethnic minority owned businesses:
+
 survey_2 <-
   bind_rows(
     survey_2 %>%
-      filter((visible == "yes" | indigenous == "yes") & group == "treatment") %>%
+      filter((visible == "yes" | indigenous == "yes") 
+             & group == "treatment") %>%
       mutate(revenue = 0.88 * revenue)
     ,
     survey_2 %>%
@@ -568,11 +693,15 @@ Part time employees in service and sales averaged 16.6 hours per week. We will a
 Therefore, for every 1.9 + 1 employees, there are 1.9 + 1*0.5 FTE. For every 2.9 employees, there are 2.4 FTE. 
 
 2.4 FTE -> 1.9 FT + 1 PT.
-0.79 = 1.9 / 2.4 = 1.9 / (1.9 + 0.5)
-0.42 = 1 / 2.4 = 0.42 = 1 / (1.9 + 0.5)
+
+$ 1.9 / (1.9 + 0.5) = 1.9 / 2.4 = 0.79 $
+
+$ 1 / (1.9 + 0.5) = 1 / 2.4 = 0.42 $
 
 ## Survey 1
 ```{r, warning = FALSE}
+# Use revenue to generate realistic numbers of employees for restaurants:
+
 set.seed(19893)
 survey_1 <- survey_1 %>%
   mutate(fte = revenue / 6833) %>%
@@ -592,10 +721,10 @@ survey_1
 ## Survey 2
 
 For the second survey, we will assume that treatment restaurants shifted towards part time random amounts-- that is, the number of full time employees per part time employee dropped from 1.9. X is some number less than or equal to 1.9.
-x / (x + 0.5)
-1 / (x + 0.5)
 
 ```{r, warning = FALSE}
+# Use revenue to generate realistic numbers of employees for restaurants:
+
 set.seed(19893)
 survey_2 <- survey_2 %>%
   mutate(fte = revenue / 6833) %>%
@@ -621,16 +750,24 @@ A professional mail survey with follow up found a non-response rate of 61% [@non
 We will also assume that some people will mail in answers and fill in the form incompletely.
 
 ```{r, warning = FALSE}
+# Randomly select only a subset of all the generated responses to keep, simulating nonresponse:
+# Also randomly select columns to delete in partial responses, and delete the data from those rows/columns:
+
 num_cols_1 = 11
 
 set.seed(891)
 survey_1 <- survey_1 %>%
-  mutate(nonresponse = sample(c("yes","partial","no"), size = num_total, prob = c(0.6, 0.01, 0.39), replace = TRUE)) %>%
+  mutate(nonresponse = sample(c("yes","partial","no"), 
+                              size = num_total, 
+                              prob = c(0.6, 0.01, 0.39), 
+                              replace = TRUE)) %>%
   filter(nonresponse != "yes") 
 
 set.seed(891)
 survey_1 <- survey_1 %>%
-  mutate(which_partial = sample(c(4:num_cols_1), size = first(count(survey_1)), replace = TRUE))
+  mutate(which_partial = sample(c(4:num_cols_1), 
+                                size = first(count(survey_1)), 
+                                replace = TRUE))
 
 for (i in c(1:as.numeric(count(survey_1)))){
   if (survey_1[i, "nonresponse"] == "partial") {
@@ -645,16 +782,24 @@ survey_1
 ```
 
 ```{r, warning = FALSE}
+# Randomly select only a subset of all the generated responses to keep, simulating nonresponse:
+# Also randomly select columns to delete in partial responses, and delete the data from those rows/columns:
+
 num_cols_2 = 12
 
 set.seed(198)
 survey_2 <- survey_2 %>%
-  mutate(nonresponse = sample(c("yes","partial","no"), size = num_total, prob = c(0.6, 0.01, 0.39), replace = TRUE)) %>%
+  mutate(nonresponse = sample(c("yes","partial","no"), 
+                              size = num_total, 
+                              prob = c(0.6, 0.01, 0.39), 
+                              replace = TRUE)) %>%
   filter(nonresponse != "yes") 
 
 set.seed(198)
 survey_2 <- survey_2 %>%
-  mutate(which_partial = sample(c(4:num_cols_1), size = first(count(survey_2)), replace = TRUE))
+  mutate(which_partial = sample(c(4:num_cols_1), 
+                                size = first(count(survey_2)), 
+                                replace = TRUE))
 
 for (i in c(1:as.numeric(count(survey_2)))){
   if (survey_2[i, "nonresponse"] == "partial") {
@@ -670,18 +815,12 @@ survey_2
 
 
 ```{r, warning = FALSE}
+# Save the two survey results tables:
+
 write_csv(survey_1, here("outputs/data/survey_1.csv"))
+
 write_csv(survey_2, here("outputs/data/survey_2.csv"))
 ```
-
-
-
-
-
-
-
-
-
 
 
 

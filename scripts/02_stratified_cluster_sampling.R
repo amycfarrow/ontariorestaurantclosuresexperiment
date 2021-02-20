@@ -5,7 +5,7 @@
 # Contact: amy.farrow@mail.utoronto.ca
 # License: MIT
 # Pre-requisites: 
-# - Need to have run 01 script
+# - Need to have run 01_scrape_health_depts
 
 
 #### Workspace setup ####
@@ -86,4 +86,4 @@ treatment_control_groups <-
 
 
 ### Save sampling ###
-write_csv(treatment_control_groups, here::here("outputs/treatment_control_groups.csv"))
+write_csv(treatment_control_groups, here::here("outputs/data/treatment_control_groups.csv"))
