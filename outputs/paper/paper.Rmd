@@ -19,7 +19,6 @@ library(bookdown)    # for cross referencing figures and graphs; referencing
 library(kableExtra)  # for nicer tables
 library(here) # for working in an RProject
 library(finalfit) # for a summary table
-library(gridExtra)  # for paired graphs
 library(cowplot)  # for plotting side by side
 
 # NOTE: scripts 01_scrape_health_depts, 
@@ -38,7 +37,7 @@ The COVID-19 pandemic has presented challenges that continue to test our resilie
 
 # Data
 
-#TODO: CITATIONS FOR R AND ALL PACKAGES LOADED ABOVE
+#TODO: CITATIONS FOR R AND ALL PACKAGES LOADED ABOVE, AND IN SCRIPTS/SIMULATION FILE
 
 ## Methodology
 
@@ -114,15 +113,15 @@ Survey 1 Data was used to confirm that the two-stage stratified cluster sampling
 Survey 1 collected the following data:
 
 * Demographic information
-- Disability status: According to the UN Convention on the Rights of Persons with Disabilities, persons with disabilities are described as having "long-term physical, mental, intellectual or sensory impairments which in interaction with various barriers may hinder their full and effective participation in society on an equal basis with others."
-- Indigenous status: According to the Government of Canada, Indigenous people include "First Nations (North American Indian), Métis or Inuit and/or those who reported Registered or Treaty Indian status, that is registered under the Indian Act of Canada, and/or those who reported membership in a First Nation or Indian band". 
-- Visible minority (non-Indigenous) status: "Visible minority" is defined by the Government of Canada as "persons, other than aboriginal peoples, who are non-Caucasian in race or non-white in colour."
-- Gender identity
+    + Disability status: According to the UN Convention on the Rights of Persons with Disabilities, persons with disabilities are described as having "long-term physical, mental, intellectual or sensory impairments which in interaction with various barriers may hinder their full and effective participation in society on an equal basis with others."
+    + Indigenous status: According to the Government of Canada, Indigenous people include "First Nations (North American Indian), Métis or Inuit and/or those who reported Registered or Treaty Indian status, that is registered under the Indian Act of Canada, and/or those who reported membership in a First Nation or Indian band". 
+    + Visible minority (non-Indigenous) status: "Visible minority" is defined by the Government of Canada as "persons, other than aboriginal peoples, who are non-Caucasian in race or non-white in colour."
+    + Gender identity
 * Type of service provided (dine-in, take-out, or both)
 * Revenue in May 2021
 * Employees
-- Number of full-time employees (30 hours/week or more)
-- Number of part-time employees (less than 30 hours/week)
+    + Number of full-time employees (30 hours/week or more)
+    + Number of part-time employees (less than 30 hours/week)
 
 The demographic information was collected so that disparate impacts on different communities could be identified.
 Revenue and number of employees were collected as measures of the restaurant's performance and impact on the local employment levels. These were the primary indicators of interest, due to the Ontario Ministry of Economic Development, Job Creation and Trade's focus on economic stability and employment levels.
@@ -139,16 +138,16 @@ Survey 2 was conducted August 3rd to 27th 2021, and it asked about the month of 
 Survey 2 collected the following data:
 
 * Demographic information
-- Disability status
-- Indigenous status
-- Visible minority (non-Indigenous) status
-- Gender identity
+    + Disability status
+    + Indigenous status
+    + Visible minority (non-Indigenous) status
+    + Gender identity
 * Type of service provided (dine-in, take-out, or both)
 * Closures (none, temporary, or permanent)
 * Revenue in May 2021
 * Employees
-- Number of full-time employees (30 hours/week or more)
-- Number of part-time employees (less than 30 hours/week)
+    + Number of full-time employees (30 hours/week or more)
+    + Number of part-time employees (less than 30 hours/week)
 
 #TODO: ADD SURVEY STRENGTHS AND WEAKNESSES
 
@@ -386,7 +385,7 @@ ggplot() +
        x = "Service type provided",
        title = "Revenues were more heavily impacted for dine-in only establishments",
        y = "Revenue (in thousands of Canadian dollars)") +
-  scale_x_discrete(labels = c( "Dine-in Only", "Both dine-in and take-out", "Take-out only")) +
+  scale_x_discrete(labels = c( "Dine-in only", "Both dine-in and take-out", "Take-out only")) +
   theme_minimal() +
   scale_fill_manual(values = c("#5BBCD6", "#D8B70A"))
 ```
