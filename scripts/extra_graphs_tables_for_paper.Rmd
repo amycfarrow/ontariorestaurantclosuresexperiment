@@ -179,3 +179,101 @@ survey_2 %>%
                col.names = c("Service Type", "", "Dine-in Only", "Takeout Only", "Both")) %>%
   kableExtra::kable_styling()
 ```
+
+
+
+
+```{r}
+bind_rows(
+  survey_2 %>%
+    filter(indigenous == "yes" | visible == "yes") %>%
+     mutate(minority = "Visible minority / Indigenous")
+  ,
+  survey_2 %>%
+   filter(indigenous == "no" & visible == "no") %>%
+    mutate(minority = "No")
+) %>% 
+  mutate(minority = fct_relevel(minority, "Visible minority / Indigenous", "No")) %>%
+  ggplot(aes(x = minority, y = revenue / 1000, fill = group)) +
+  geom_violin() +
+  labs(fill = NULL,
+       x = "Racial and ethnic minorities",
+       y = "Mean revenue (in thousands of Canadian dollars") +
+  theme_minimal()
+```
+
+
+```{r}
+bind_rows(
+  survey_2 %>%
+    filter(indigenous == "yes" | visible == "yes") %>%
+     mutate(minority = "Visible minority / Indigenous")
+  ,
+  survey_2 %>%
+   filter(indigenous == "no" & visible == "no") %>%
+    mutate(minority = "No")
+) %>% 
+  mutate(minority = fct_relevel(minority, "Visible minority / Indigenous", "No")) %>%
+  ggplot(aes(x = minority, y = revenue / 1000, fill = group)) +
+  geom_split_violin() +
+  labs(fill = NULL,
+       x = "Racial and ethnic minorities",
+       y = "Mean revenue (in thousands of Canadian dollars") +
+  theme_minimal()
+```
+
+
+
+```{r}
+bind_rows(
+  survey_2 %>%
+    filter(indigenous == "yes" | visible == "yes") %>%
+     mutate(minority = "Visible minority / Indigenous")
+  ,
+  survey_2 %>%
+   filter(indigenous == "no" & visible == "no") %>%
+    mutate(minority = "No")
+) %>% 
+  mutate(minority = fct_relevel(minority, "Visible minority / Indigenous", "No")) %>%
+  ggplot(aes(x = minority, y = revenue / 1000, fill = group)) +
+  geom_violin() +
+  labs(fill = NULL,
+       x = "Racial and ethnic minorities",
+       y = "Mean revenue (in thousands of Canadian dollars") +
+  theme_minimal()
+```
+
+
+```{r servicetypeimpactx, fig.cap="Revenues more heavily impacted for dine-in only establishments", fig.width=6, fig.height=4, echo = FALSE, message = FALSE, warning = FALSE, out.width = '70%', fig.align = "center"}
+survey_2 %>%
+  filter(service_type != "NA") %>%
+  ggplot(aes(x = service_type, y = revenue / 1000, fill = group)) +
+  geom_bar(position = "dodge", stat = "summary", fun.y = mean) +
+  labs(fill = NULL,
+       x = "Service type provided",
+       y = "Mean revenue (in thousands of Canadian dollars") +
+  scale_x_discrete(labels = c( "Dine-in Only", "Take-out only", "Both")) +
+  theme_minimal()
+```
+
+```{r minorityimpactx, fig.cap="Minority-owned businesses were more heavily impacted", fig.width=4.5, fig.height=4, echo = FALSE, message = FALSE, warning = FALSE, out.width = '60%', fig.align = "center"}
+bind_rows(
+  survey_2 %>%
+    filter(indigenous == "yes" | visible == "yes") %>%
+     mutate(minority = "Visible minority / Indigenous")
+  ,
+  survey_2 %>%
+   filter(indigenous == "no" & visible == "no") %>%
+    mutate(minority = "No")
+) %>% 
+  mutate(minority = fct_relevel(minority, "Visible minority / Indigenous", "No")) %>%
+  ggplot(aes(x = minority, y = revenue / 1000, fill = group)) +
+  geom_bar(position = "dodge", stat = "summary", fun.y = mean) +
+  labs(fill = NULL,
+       x = "Racial and ethnic minorities",
+       y = "Mean revenue (in thousands of Canadian dollars") +
+  theme_minimal()
+```
+
+
+
