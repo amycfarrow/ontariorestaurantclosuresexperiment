@@ -38,3 +38,5 @@ vignettes/*.pdf
 # R Environment Variables
 .Renviron
 inputs/data/yelp_academic_dataset_business.json
+
+.DS_Store
