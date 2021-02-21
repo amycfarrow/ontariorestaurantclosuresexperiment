@@ -52,7 +52,7 @@ The population was all restaurants in Ontario.
 
 A list of Ontario local health authorities (LHAs) was used to identify units that carry out food inspections of restaurants. Using census data from 2016, these LHAs were sorted by population size, and the list was stratified into equally sized strata: small LHAs (population of less than 150,000), medium LHAs (population of 150,000 to 400,000), and large LHAs (population of more than 400,000). The stratified LHAs produced the frame, or list of units of interest from which to draw a sample, at the cluster level.
 
-From each strata, two LHAs were randomly sampled to participate in the treatment, and two LHAs were randomly selected to participate in the control. This was the sample at the cluster level. This sample is shown in Table \@ref(tab:treatmentcontrolgroups).
+From each stratum, two LHAs were randomly sampled to participate in the treatment, and two LHAs were randomly selected to participate in the control. This was the sample at the cluster level. This sample is shown in Table \@ref(tab:treatmentcontrolgroups).
 
 The clusters were used because pandemic shutdowns operated based on LHA, and the goal was to recreate the effect as closely as possible.
 
