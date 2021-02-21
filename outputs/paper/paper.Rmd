@@ -40,7 +40,7 @@ The COVID-19 pandemic has presented challenges that continue to test our resilie
 
 Analysis for this report uses the `R` statistical programming language [@R], and more specifically, the `tidyverse` package for data manipulation [@tidyverse]. To facilitate a reproducible workflow, `here` is used to reference file locations [@here]. Graphs and tables use features from `cowplot` [@cowplot], `finalfit` [@finalfit], `lubridate` [@lubridate], and `kableExtra` [@kableExtra]. Finally, `bookdown` is used to format the report [@bookdown].
 
-In addition to survey data collected by Petit Poll, this report relies on publicly available federal census data [@census_2016] and data from provincial public health departments[@inspection].
+In addition to survey data collected by Petit Poll, this report relies on publicly available federal census data [@census_2016] and data from provincial public health departments [@inspection].
 
 This section presents details on the data collection approach and methods, and the steps taken to ensure accuracy.
 
