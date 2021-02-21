@@ -19,6 +19,7 @@ library(bookdown)    # for cross referencing figures and graphs; referencing
 library(kableExtra)  # for nicer tables
 library(here) # for working in an RProject
 library(finalfit) # for a summary table
+library(gridExtra)  # for paired graphs
 library(cowplot)  # for plotting side by side
 
 # NOTE: scripts 01_scrape_health_depts, 
@@ -37,15 +38,11 @@ The COVID-19 pandemic has presented challenges that continue to test our resilie
 
 # Data
 
-<<<<<<< HEAD
-#TODO: CITATIONS FOR R AND ALL PACKAGES LOADED ABOVE, AND IN SCRIPTS/SIMULATION FILE
-=======
 Analysis for this report uses the R statistical programming language [@R], and more specifically, the tidyverse package for data manipulation [@tidyverse]. To facilitate a reproducible workflow, here is used to reference file locations [@here]. Graphs and tables use features from cowplot, finalfit, gridExtra, and kableExtra [@cowplot] [@finalfit] [@gridExtra] [@kableExtra]. Finally, bookdown is used to format the report [@bookdown].
 
 In addition to survey data collected by Petit Poll, this report relies on publicly available federal census data [@census_2016] and data from provincial public health departments[@inspection].
 
 This section presents details on the data collection approach and methods, and the steps taken to ensure accuracy.
->>>>>>> 6b91bea8a84125ae874200117b8bd92fa8dabbe7
 
 ## Methodology
 
@@ -126,17 +123,6 @@ Survey 1 Data was used to confirm that the two-stage stratified cluster sampling
 Survey 1 collected the following data:
 
 * Demographic information
-<<<<<<< HEAD
-    + Disability status: According to the UN Convention on the Rights of Persons with Disabilities, persons with disabilities are described as having "long-term physical, mental, intellectual or sensory impairments which in interaction with various barriers may hinder their full and effective participation in society on an equal basis with others."
-    + Indigenous status: According to the Government of Canada, Indigenous people include "First Nations (North American Indian), Métis or Inuit and/or those who reported Registered or Treaty Indian status, that is registered under the Indian Act of Canada, and/or those who reported membership in a First Nation or Indian band". 
-    + Visible minority (non-Indigenous) status: "Visible minority" is defined by the Government of Canada as "persons, other than aboriginal peoples, who are non-Caucasian in race or non-white in colour."
-    + Gender identity
-* Type of service provided (dine-in, take-out, or both)
-* Revenue in May 2021
-* Employees
-    + Number of full-time employees (30 hours/week or more)
-    + Number of part-time employees (less than 30 hours/week)
-=======
   - Disability status: According to the UN Convention on the Rights of Persons with Disabilities, persons with disabilities are described as having "long-term physical, mental, intellectual or sensory impairments which in interaction with various barriers may hinder their full and effective participation in society on an equal basis with others."
   - Indigenous status: According to the Government of Canada, Indigenous people include "First Nations (North American Indian), Métis or Inuit and/or those who reported Registered or Treaty Indian status, that is registered under the Indian Act of Canada, and/or those who reported membership in a First Nation or Indian band". 
   - Visible minority (non-Indigenous) status: "Visible minority" is defined by the Government of Canada as "persons, other than aboriginal peoples, who are non-Caucasian in race or non-white in colour."
@@ -146,7 +132,6 @@ Survey 1 collected the following data:
 * Employees
   - Number of full-time employees (30 hours/week or more)
   - Number of part-time employees (less than 30 hours/week)
->>>>>>> 6b91bea8a84125ae874200117b8bd92fa8dabbe7
 
 The demographic information was collected so that disparate impacts on different communities could be identified.
 Revenue and number of employees were collected as measures of the restaurant's performance and impact on the local employment levels. These were the primary indicators of interest, due to the Ontario Ministry of Economic Development, Job Creation and Trade's focus on economic stability and employment levels.
@@ -162,28 +147,16 @@ Survey 2 was conducted August 3rd to 27th 2021, and it asked about the month of 
 Survey 2 followed a similar format as Survey 1, with the addition of a question about closures. It collected the following data:
 
 * Demographic information
-<<<<<<< HEAD
-    + Disability status
-    + Indigenous status
-    + Visible minority (non-Indigenous) status
-    + Gender identity
-=======
   - Disability status
   - Indigenous status
   - Visible minority (non-Indigenous) status
   - Gender identity
->>>>>>> 6b91bea8a84125ae874200117b8bd92fa8dabbe7
 * Type of service provided (dine-in, take-out, or both)
 * Closures (none, temporary, or permanent)
 * Revenue in July 2021
 * Employees
-<<<<<<< HEAD
-    + Number of full-time employees (30 hours/week or more)
-    + Number of part-time employees (less than 30 hours/week)
-=======
   - Number of full-time employees (30 hours/week or more)
   - Number of part-time employees (less than 30 hours/week)
->>>>>>> 6b91bea8a84125ae874200117b8bd92fa8dabbe7
 
 The scope of this experiment required a structured questionnaire that was easy to distribute, easy to answer, cost effective, reliable, and that provided flexibility of mode of response, including online, over the phone, or on paper. With these features in mind, a survey was an appropriate choice. However, due to the rigidity of pre-determined questions, the survey format might lack potential depth, reducing complex circumstances to simple data points that are easier to collect, manage, and analyze. To account for this, the questions were carefully designed to gather, exactly and only, the necessary data for our study.
 
@@ -442,7 +415,7 @@ ggplot() +
        x = "Service type provided",
        title = "Revenues were more heavily impacted for dine-in only establishments",
        y = "Revenue (in thousands of Canadian dollars)") +
-  scale_x_discrete(labels = c( "Dine-in only", "Both dine-in and take-out", "Take-out only")) +
+  scale_x_discrete(labels = c( "Dine-in Only", "Both dine-in and take-out", "Take-out only")) +
   theme_minimal() +
   scale_fill_manual(values = c("#5BBCD6", "#D8B70A"))
 ```
