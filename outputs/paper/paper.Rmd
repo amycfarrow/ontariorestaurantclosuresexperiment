@@ -1,5 +1,5 @@
 ---
-title: "COVID-19 Closures Negatively Impacts Restaurant Revenue and Employment"
+title: "COVID-19 Closures Negatively Impact Restaurant Revenue and Employment"
 author: "Lorena Almaraz De La Garza, Amy Farrow, and Kumalasari Sondjaja"
 date: "September 20th, 2021"
 output:
@@ -226,6 +226,9 @@ Survey 2 followed a similar format as Survey 1, with the addition of a question 
   - Number of part-time employees (less than 30 hours/week)
 
 The scope of this experiment required a structured questionnaire that was easy to distribute, easy to answer, cost effective, reliable, and that provided flexibility of mode of response, including online, over the phone, or on paper. With these features in mind, a survey was an appropriate choice. However, due to the rigidity of pre-determined questions, the survey format might lack potential depth, reducing complex circumstances to simple data points that are easier to collect, manage, and analyze. To account for this, the questions were carefully designed to gather, exactly and only, the necessary data for our study.
+
+[Appendix B](#appendixB) contains screen captures of the online version of Survey 1 and Survey 2.
+For images of the sheet included in the mailers for Survey 1 and Survey 2 sent to restaurant owners, containing all survey questions and answer options, refer to [Appendix C](#appendixC).
 
 ```{r, include = FALSE}
 survey_1 <- read_csv(here("outputs/data/survey_1.csv")) %>%
@@ -598,8 +601,6 @@ Finally, this experiment did not differentiate between independent restaurant bu
 
 \newpage
 
-# Appendix {-}
-
 # Appendix A {#appendixA}
 
 ```{r echo=FALSE, message=FALSE, warning=FALSE}
@@ -633,13 +634,44 @@ survey_budget %>%
   kableExtra::kable_styling(latex_options = c("hold_position"))
 ```
 
+
+\newpage
 # Appendix B {#appendixB}
 
-TODO: ADD A SURVEY SCREENSHOT. REFERENCE IN THE MAIN PAPER.
+```{r page1, echo=FALSE, fig.cap="Screen capture of the first section of Survey 1 and Survey 2.", out.width = '70%', fig.align="center"}
+knitr::include_graphics(here("outputs/images/page1.png"))
+```
+
+```{r page2a, echo=FALSE, fig.cap="Screen capture of the second section of Survey 1.", out.width = '75%', fig.align="center"}
+knitr::include_graphics(here("outputs/images/page2a.png"))
+```
+
+```{r page2b, echo=FALSE, fig.cap="Screen capture of the second section of Survey 2.", out.width = '75%', fig.align="center"}
+knitr::include_graphics(here("outputs/images/page2b.png"))
+```
+
+```{r page3, echo=FALSE, fig.cap="Screen capture of the third section of Survey 1 and Survey 2.", out.width = '75%', fig.align="center"}
+knitr::include_graphics(here("outputs/images/page3.png"))
+```
+
+```{r page4, echo=FALSE, fig.cap="Screen capture of the fourth section of Survey 1 and Survey 2.", out.width = '75%', fig.align="center"}
+knitr::include_graphics(here("outputs/images/page4.png"))
+```
+
+
+
+
+\clearpage
 
 # Appendix C {#appendixC}
 
-TODO: ADD A COMPLETE LIST OF SURVEY QUESTIONS AND OPTIONS. REFERENCE IN THE MAIN PAPER.
+
+```{r survey1png, echo=FALSE, fig.cap="Image of the mailer sent to restaurant owners containing Survey 1.", out.width = '78%', fig.align="center"}
+knitr::include_graphics(here("outputs/images/survey1.png"))
+```
+```{r survey2png, echo=FALSE, fig.cap="Image of the mailer sent to restaurant owners containing Survey 2.", out.width = '78%', fig.align="center"}
+knitr::include_graphics(here("outputs/images/survey2.png"))
+```
 
 \newpage
 
