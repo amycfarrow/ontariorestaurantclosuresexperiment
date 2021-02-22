@@ -46,25 +46,21 @@ This section presents details on the data collection approach and methods, and t
 
 ## Methodology
 
-This experiment used two-stage stratified cluster sampling for survey data collection, a process by which a population is divided into groups, or stata, and subsequently divided into clusters. A random sample is drawn from each stratum and each cluster [@gertler].
+This experiment used two-stage stratified cluster sampling for survey data collection, a process by which a population is divided into groups, or strata, and subsequently divided into clusters. A random sample is drawn from each stratum and each cluster [@gertler].
 
-The population was all restaurants in Ontario.
+The population for this study was all restaurants in Ontario. A list of Ontario local health authorities (LHAs) was used to identify units that carry out food inspections of restaurants. Using census data from 2016, these LHAs were sorted by population size, and the list was stratified into equally sized strata: small LHAs (population of less than 150,000), medium LHAs (population of 150,000 to 400,000), and large LHAs (population of more than 400,000). The stratified LHAs produced the frame, or list of units of interest from which to draw a sample, at the cluster level. From each stratum, two LHAs were randomly sampled to participate in the treatment, and two LHAs were randomly selected to participate in the control. This was the sample at the cluster level. This sample is shown in Table \@ref(tab:treatmentcontrolgroups).
 
-A list of Ontario local health authorities (LHAs) was used to identify units that carry out food inspections of restaurants. Using census data from 2016, these LHAs were sorted by population size, and the list was stratified into equally sized strata: small LHAs (population of less than 150,000), medium LHAs (population of 150,000 to 400,000), and large LHAs (population of more than 400,000). The stratified LHAs produced the frame, or list of units of interest from which to draw a sample, at the cluster level.
-
-From each stratum, two LHAs were randomly sampled to participate in the treatment, and two LHAs were randomly selected to participate in the control. This was the sample at the cluster level. This sample is shown in Table \@ref(tab:treatmentcontrolgroups).
-
-The clusters were used because pandemic shutdowns operated based on LHA, and the goal was to recreate the effect as closely as possible.
-
-The stratification was used because there were very differently sized LHAs, and randomly selecting only 12 LHAs from a list of 33 left too high a likelihood of nonequivalent treatment and control groups. Given the limitations of cluster sampling, stratifying the clusters by size helped ensure the experiment would be representative of Ontario. 
+The clusters were used because pandemic shutdowns operated based on LHA, and the goal was to recreate the effect as closely as possible. The stratification was used because there were very differently sized LHAs, and randomly selecting only 12 LHAs from a list of 33 left too high a likelihood of nonequivalent treatment and control groups. Given the limitations of cluster sampling, stratifying the clusters by size helped ensure the experiment would be representative of Ontario. 
 
 #TODO: ADD STUFF ABOUT STATISTICAL PROPERTIES OF CLUSTER AND STRATIFIED SAMPLING. CITE TEXTBOOK READING
 
 ```{r, include = FALSE}
+# Import table that shows LHAs selected for treatment and control groups
 treatment_control_groups <- read_csv(here::here("outputs/data/treatment_control_groups.csv"))
 ```
 
 ```{r treatmentcontrolgroups, echo = FALSE, message = FALSE, warning = FALSE}
+# format table to show LHAs that were selected for treatment and control groups
 treatment_control_groups %>%
   knitr::kable(caption = "Cluster sample randomly selecting Local Health Authorities from strata based on population size",
                booktabs = TRUE) %>%
@@ -76,10 +72,12 @@ treatment_control_groups %>%
 Once the treatment and control LHAs were selected, each corresponding Food Inspection unit was contacted, and a list of all registered restaurants in each LHA was obtained. Each restaurant was listed by name and address. Once collected into one dataframe, this was the frame at the unit level. A sample of this frame is shown in Table \@ref(tab:sampleallunitsdata).
 
 ```{r, include = FALSE}
+# import table that contains the complete list of restaurants in treatment and control groups
 all_units_data <- read_csv(here::here("outputs/data/all_units_data.csv")) 
 ```
 
 ```{r sampleallunitsdata, echo = FALSE, message = FALSE, warning = FALSE}
+# format table to show a few rows of the complete list of restaurants in treatment and control groups
 all_units_data %>%
   slice(101,1100,2101,3101,4100,5100,6100,7100,8100,9101) %>%
   knitr::kable(caption = "Example segment of the unit level sampling frame",
@@ -92,26 +90,23 @@ all_units_data %>%
   row_spec(0, color = "#972D15")
 ```
 
-A simple random sample of 15% of the treatment list and 15% of the control list was randomly selected to be surveyed. This was the sample at the unit level.
-
-This selection was used to create a panel, so the same restaurants would be surveyed for the first survey and the second survey. Attempting to sample only 15% of the restaurants allowed time and money to be spent on follow-up and multiple methods of data collecting, reducing the non-response bias.
+A simple random sample of 15% of the treatment list and 15% of the control list was randomly selected to be surveyed. This was the sample at the unit level. This selection was used to create a panel, so the same restaurants would be surveyed for the first survey and the second survey. Attempting to sample only 15% of the restaurants allowed time and money to be spent on follow-up and multiple methods of data collecting, reducing the non-response bias. The randomly sampled restaurants were all assigned ID numbers in a random order.
 
 ```{r, include = FALSE}
+# import the table that was used to send out survey mailers
 table_for_surveys <- read_csv(here::here("outputs/data/table_for_surveys.csv"))
 ```
 
-The randomly sampled restaurants were all assigned ID numbers in a random order.
-
 The table for surveys was used to generate 2,006 mailers to be sent to each restaurant on the list. Each mailer was a small envelope containing a sheet that invited the restaurant owner to participate, explained the survey, provided a link to the survey, and provided a QR code that went to the same place as the link. There was also a copy of the survey contained in a mailer envelope and a contact number, allowing restaurant owners to complete the survey by phone or mail if they did not feel able to complete it online. If there was no response within two weeks, the restaurant was contacted by phone, and again five days letter if there was no response. This procedure was repeated for Survey 1 and Survey 2.
 
-Each link and paper survey was personalized to the restaurant's ID number. The link lead to the survey, which asked for confirmation of the last three digits of the restaurant's postal code. This was to ensure that no mailing mistakes were made, and to prevent duplicate data collection. Once verified, the survey-taker was given the main survey.
-
-This survey cost $6,711.18. A detailed breakdown of costs can be found on [Appendix A](#appendixA).
+Each link and paper survey was personalized to the restaurant's ID number. The link lead to the survey, which asked for confirmation of the last three digits of the restaurant's postal code. This was to ensure that no mailing mistakes were made, and to prevent duplicate data collection. Once verified, the survey-taker was given the main survey. This survey cost $6,711.18. A detailed breakdown of costs can be found on [Appendix A](#appendixA).
 
 The data from the survey was tied to the ID number and last three digits of the postal code, but not the restaurant name or address, and the restaurant owner's name was not collected. This was to ensure data privacy. The identifying information was kept in a separate dataframe (Table for Surveys) than the survey answers (Survey 1 Data, Survey 2 Data).
 
 ```{r timeline, fig.cap = "Timeline of restaurant closure experiment with surveys", fig.width = 8, fig.height = 4, echo = FALSE, message = FALSE, warning = FALSE}
-# from https://benalexkeen.com/creating-a-timeline-graphic-using-r-and-ggplot2/
+### from https://benalexkeen.com/creating-a-timeline-graphic-using-r-and-ggplot2/
+
+# create basic dataframe with the milestone events on the line
 df <- data.frame(
   year = c(2021, 2021, 2021, 2021, 2021, 2021, 2021),
   month = c(6, 6, 6, 7, 7, 8, 8),
@@ -120,16 +115,20 @@ df <- data.frame(
   status = c("Survey 1", "Survey 1", "Treatment", "Treatment", "Treatment", "Survey 2", "Survey 2")
 )
 
+# append event date
 df$date <- with(df, ymd(sprintf('%04d%02d%02d', year, month, day)))
 df <- df[with(df, order(date)), ]
 
+# set the colors for the milestone events
 status_levels <- c("Survey 1", "Treatment", "Survey 2")
 status_colors <- c("#D8B70A", "#972D15", "#5BBCD6")
 
 df$status <- factor(df$status, levels=status_levels, ordered=TRUE)
 
+# decide if the milestones will be labelled above or below the line
 directions <- c(1, 1, -1, -1, -1, 1, 1)
 
+# set the distance and direction of milestone labels
 line_pos <- data.frame(
     "date"=unique(df$date),
     "position"= c(0.2, 0.2, -0.2, -0.4, -0.6, 0.2, 0.2),
@@ -144,11 +143,12 @@ text_offset <- 0.05
 df$month_count <- ave(df$date==df$date, df$date, FUN=cumsum)
 df$text_position <- (df$month_count * text_offset * df$direction) + df$position
 
+# set the date range for the timeline
 month_date_range <- c(as_date("2021-05-01"), as_date("2021-06-01"), as_date("2021-07-01"), as_date("2021-08-01"), as_date("2021-09-01"))  
 month_format <- format(month_date_range, '%b')
 month_df <- data.frame(month_date_range, month_format)
 
-#### PLOT ####
+# plot the data
 ggplot(df,aes(x = date, y = 0, col = status, label = milestone)) +
   labs(col = "") +
   scale_color_manual(values = status_colors, labels = status_levels, drop = FALSE) +
@@ -157,6 +157,7 @@ ggplot(df,aes(x = date, y = 0, col = status, label = milestone)) +
   geom_hline(yintercept = 0, color = "black", size = 0.3) +
   # Plot vertical segment lines for milestones
   geom_segment(data = df[df$month_count == 1,], aes(y = position, yend = 0, xend = date), color = 'black', size = 0.2) +
+  # plot colored lines for ongoing events
   geom_segment(aes(x = as_date("2021-05-01"), xend = as_date("2021-05-31"), y = 0, yend = 0), color = "#D8B70A", size = 1) +
   geom_segment(aes(x = as_date("2021-07-01"), xend = as_date("2021-07-31"), y = 0, yend = 0, ), color = "#5BBCD6", size = 1) +
   # Plot scatter points at zero and date
@@ -177,17 +178,12 @@ ggplot(df,aes(x = date, y = 0, col = status, label = milestone)) +
   # Show text for each milestone
   geom_text(aes(x = c(as_date("2021-06-03"), as_date("2021-06-26"), as_date("2021-06-25"), as_date("2021-07-01"), as_date("2021-07-15"), as_date("2021-08-03"), as_date("2021-08-27")),
                 y = text_position, label = milestone),size=3) +
+  # add labels for the ongoing events
   geom_text(aes(x = as_date("2021-05-16"), y = 0.1, label = "Study period of Survey 1"), size = 3, color = "#D8B70A") +
   geom_text(aes(x = as_date("2021-07-16"), y = 0.1, label = "Study period of Survey 2"), size = 3, color = "#5BBCD6")
 ```
 
-A project timeline can be found in Figure \@ref(fig:timeline).
-
-Survey 1 was conducted June 3rd to 27th 2021, and it asked about the month of May 2021. The survey can be found online by clicking here: [2021 Ontario Restaurant Survey 1](https://forms.gle/ZDc5HJBWmJu5snHf9).
-
-Survey 1 Data was used to confirm that the two-stage stratified cluster sampling had created treatment and control groups that were roughly equivalent.
-
-Survey 1 collected the following data:
+A project timeline can be found in Figure \@ref(fig:timeline). Survey 1 was conducted June 3rd to 27th 2021, and it asked about the month of May 2021. The survey can be found online by clicking here: [2021 Ontario Restaurant Survey 1](https://forms.gle/ZDc5HJBWmJu5snHf9).Survey 1 Data was used to confirm that the two-stage stratified cluster sampling had created treatment and control groups that were roughly equivalent. Survey 1 collected the following data:
 
 * Demographic information
   - Disability status: According to the UN Convention on the Rights of Persons with Disabilities, persons with disabilities are described as having "long-term physical, mental, intellectual or sensory impairments which in interaction with various barriers may hinder their full and effective participation in society on an equal basis with others."
@@ -209,9 +205,7 @@ To date, mandated closure enforcement has included issuing fines from $750 to $1
 
 Because it is very difficult for a restaurant to move location in under two weeks, the control and treatment groups were effectively separated.
 
-Survey 2 was conducted August 3rd to 27th 2021, and it asked about the month of July 2021. The survey can be found online by clicking here: [2021 Ontario Restaurant Survey 2](https://forms.gle/JWn6VU299uTyufj99).
-
-Survey 2 followed a similar format as Survey 1, with the addition of a question about closures. It collected the following data:
+Survey 2 was conducted August 3rd to 27th 2021, and it asked about the month of July 2021. The survey can be found online by clicking here: [2021 Ontario Restaurant Survey 2](https://forms.gle/JWn6VU299uTyufj99). Survey 2 followed a similar format as Survey 1, with the addition of a question about closures. It collected the following data:
 
 * Demographic information
   - Disability status
@@ -231,6 +225,7 @@ The scope of this experiment required a structured questionnaire that was easy t
 For images of the sheet included in the mailers for Survey 1 and Survey 2 sent to restaurant owners, containing all survey questions and answer options, refer to [Appendix C](#appendixC).
 
 ```{r, include = FALSE}
+# import survey 1 and 2 data, relevelling the factors so that tables and graphs will display correctly
 survey_1 <- read_csv(here("outputs/data/survey_1.csv")) %>%
     mutate(group = fct_relevel(group, "treatment", "control"),
            service_type = fct_relevel(service_type, "dinein", "both", "takeout"),
@@ -247,6 +242,7 @@ survey_2 <- read_csv(here("outputs/data/survey_2.csv")) %>%
            indigenous = fct_relevel(indigenous, "yes", "no", "nonanswer"),
            visible = fct_relevel(visible, "yes", "no", "nonanswer"))
 
+# count the full number of restaurants who replied to at least one survey
 count(full_join(survey_1, survey_2, by = "ID"))
 ```
 
@@ -256,8 +252,6 @@ Reaching restaurant owners to better understand their businesses, and the impact
 
 ### Survey 1
 
-#TODO: HOW CAN WE PLOT MORE RAW DATA?
-
 The initial survey provided a clear description of the characteristics of the treatment and control groups. As indicated in Table \@ref(tab:survey1summary), the groups are equivalent, showing no notable differences across any of the variables studied. It was necessary to collect data before the intervention to ensure that the treatment and control groups were in fact comparable.
 
 Survey 1 data was used to effectively establish a baseline for comparison. In addition to the use of random selection of participants and random assignment to either treatment or control, establishing a baseline allows for an accurate estimation of the counterfactual. The counterfactual – or the representation of what would have happened had the intervention not taken place – is essential to measuring, and reporting on, the effect of the mandated restaurant closures.
@@ -265,6 +259,7 @@ Survey 1 data was used to effectively establish a baseline for comparison. In ad
 The baseline distributions for reported revenue in the treatment and control groups, based on information from May 2021, can be found in Figure \@ref(fig:baselinerevenue). The baseline distributions for number of full-time and part-time employees in the treatment and control groups, also based on information from May 2021, is shown in Figure \@ref(fig:baselineemployees).
 
 ```{r survey1summary, echo = FALSE, message = FALSE, warning = FALSE}
+# summarize results for survey 1
 survey_1 %>% 
   summary_factorlist("group", c("service_type", "disability", "woman", "indigenous", "visible", "revenue", "ft", "pt"),
                      p = FALSE, 
@@ -276,6 +271,8 @@ survey_1 %>%
                      total_col = FALSE,
                      col_totals_prefix = "N (%) = ") %>%
   mutate(group = c("", "Service type", "", "", "Owner has disability", "", "", "Owner identifies as woman", "", "", "Owner is Indigenous", "", "", "Owner is a visible minority (non-Indigenous)", "", "", "Revenue", "Number of full-time employees", "Number of part-time employees")) %>%
+  
+# put the results in a table
   knitr::kable(caption = "Summary statistics for treatment and control baselines",
                booktabs = TRUE, linesep = "",
                col.names = c("", "", "Treatment", "Control")) %>%
@@ -284,6 +281,7 @@ survey_1 %>%
 ```
 
 ```{r baselinerevenue, fig.cap="Revenue distribution for treatment and control baselines, from Survey 1", fig.width=10, fig.height=4, echo = FALSE, message = FALSE, warning = FALSE}
+# plot survey 1 revenue distribution, separating treatment and control
 ggplot(survey_1, aes(x = revenue / 1000, fill = group)) +                       
   geom_histogram(position = "dodge", binwidth = 5) +
   theme_minimal() +
@@ -296,6 +294,9 @@ ggplot(survey_1, aes(x = revenue / 1000, fill = group)) +
 ```
 
 ```{r baselineemployees, fig.cap="Employment distribution for treatment and control baselines, from Survey 1", fig.width=10, fig.height=6, echo = FALSE, message = FALSE, warning = FALSE}
+# plot survey 1 employement numbers, separating treatment and control
+
+# make the full time employment count plot
 p1 <- ggplot(survey_1, aes(x = pt, fill = group)) +                       
   geom_histogram(position = "dodge", binwidth = 1, show.legend = FALSE) +
   coord_flip() +
@@ -307,6 +308,7 @@ p1 <- ggplot(survey_1, aes(x = pt, fill = group)) +
        title = "Part-time employees") +
   scale_fill_manual(values = c("#5BBCD6", "#D8B70A"))
 
+# make the part time employment count plot
 p2 <- ggplot(survey_1, aes(x = ft, fill = group)) +                       
   geom_histogram(position = "dodge", binwidth = 1) +
   coord_flip() +
@@ -320,6 +322,7 @@ p2 <- ggplot(survey_1, aes(x = ft, fill = group)) +
   scale_fill_manual(values = c("#5BBCD6", "#D8B70A"))
 
 # using https://stackoverflow.com/questions/37052059/how-to-add-a-title-for-a-grid-layout-figure-in-ggplot2
+# display the full-time and part-time plots side by side
 p <- plot_grid(p1, p2, align = "h", nrow = 1, rel_widths = c(0.555,0.445))
 title <- ggdraw() + draw_label("Employment distributions were similar in the treatment and control samples")
 plot_grid(title, p, ncol=1, rel_heights=c(0.1, 1))
@@ -327,13 +330,12 @@ plot_grid(title, p, ncol=1, rel_heights=c(0.1, 1))
 
 ### Survey 2
 
-#TODO: HOW CAN WE PLOT MORE RAW DATA?
-
 The second survey results showed marked differences between treatment and control groups in most variables. A summary of these results is found in Table \@ref(tab:survey2summary). Naturally, a salient difference is found in service type, with dine-in restaurants decreasing due to mandated shutdowns – the intervention itself – with 7% of restaurants in the control group providing dine-in service, and only 4% in the treatment group. Similarly, the mean revenue decreases noticeably for the treatment group (\$45,959.60) compared to the control group ($70,675.60). The mean numbers of employees, both full-time and part-time, show a decrease as well, from 8 and 5 respectively in the control group, to 5 and 3 for the treatment. A visual representation of the differences between treatment and control groups for revenue and number of employees can be found in Figure \@ref(fig:postrevenue) and Figure \@ref(fig:postemployees) respectively.
 
 #TODO: ADD SENTENCE ABOUT REST OF VARIABLES?
 
 ```{r survey2summary, echo = FALSE, message = FALSE, warning = FALSE}
+# summarize results for survey 1
 survey_2 %>% 
   summary_factorlist("group", c("service_type", "disability", "woman", "indigenous", "visible", "shutdown", "revenue", "ft", "pt"),
                      p = FALSE, 
@@ -345,6 +347,8 @@ survey_2 %>%
                      total_col = FALSE,
                      col_totals_prefix = "N (%) = ") %>%
   mutate(group = c("", "Service type", "", "", "Owner has disability", "", "", "Owner identifies as woman", "", "", "Owner is Indigenous", "", "", "Owner is a visible minority (non-Indigenous)", "", "", "Closure", "", "", "Revenue", "Number of full-time employees", "Number of part-time employees")) %>%
+
+# put the results in a table
   knitr::kable(caption = "Summary statistics for treatment and control groups post-treatment",
                booktabs = TRUE, linesep = "",
                col.names = c("", "", "Treatment", "Control")) %>%
@@ -368,13 +372,12 @@ To prevent a misleading estimate of the counterfactual in this experiment, the e
 
 ### Closures had a negative impact on revenues and employment counts
 
-As noted in the results from Survey 2, the intervention led to a noticeable difference in reported revenues. The mean reported revenue for the treatment group was \$45,959.60 and $70,675.60 for the control. The revenue distribution for both groups is show in Figure \@ref(fig:postrevenue). 
-
-The mean number of employees, both full-time and part-time, show a decrease as well, from 8 and 5 respectively in the control group, to 5 and 3 for the treatment. Figure \@ref(fig:postemployees) shows further detail of this finding.
+As noted in the results from Survey 2, the intervention led to a noticeable difference in reported revenues. The mean reported revenue for the treatment group was \$45,959.60 and $70,675.60 for the control. The revenue distribution for both groups is show in Figure \@ref(fig:postrevenue). The mean number of employees, both full-time and part-time, show a decrease as well, from 8 and 5 respectively in the control group, to 5 and 3 for the treatment. Figure \@ref(fig:postemployees) shows further detail of this finding.
 
 With these effects in mind, Petit Poll supports the Government of Ontario's programs in benefit of small businesses: the Ontario Small Business Support Grant, the Personal Protective Equipment Relief Grant, and the current Property Tax and Energy Rebate Grants [@relief]. Additionally, based on the evidence shown in this report, it is important to consider developing provincial financial support programs for furloughed employees, in addition to standing federal programs like Employment Insurance, that directly address the negative impact of COVID-19 closures. Ensuring the protection of workers in the restaurant industry specifically, not only physically as the spread of the virus is contained, but economically with financial aid will be crucial to the success of mandated closures.
 
 ```{r postrevenue, fig.cap="Revenue distribution for treatment and control groups, from Survey 2", fig.width=10, fig.height=4, echo = FALSE, message = FALSE, warning = FALSE}
+# plot survey 2 revenue distribution, separating treatment and control
 ggplot(survey_2, aes(x = revenue / 1000, fill = group)) +                       
   geom_histogram(position = "dodge", binwidth = 5) +
   theme_minimal() +
@@ -387,6 +390,9 @@ ggplot(survey_2, aes(x = revenue / 1000, fill = group)) +
 ```
 
 ```{r postemployees, fig.cap="Employment distribution for treatment and control groups, from Survey 2", fig.width=10, fig.height=6, echo = FALSE, message = FALSE, warning = FALSE}
+# plot survey 2 employement numbers, separating treatment and control
+
+# make the full time employment count plot
 p1 <- ggplot(survey_2, aes(x = pt, fill = group)) +                       
   geom_histogram(position = "dodge", binwidth = 1, show.legend = FALSE) +
   coord_flip() +
@@ -398,6 +404,7 @@ p1 <- ggplot(survey_2, aes(x = pt, fill = group)) +
        title = "Part-time employees") +
   scale_fill_manual(values = c("#5BBCD6", "#D8B70A"))
 
+# make the part time employment count plot
 p2 <- ggplot(survey_2, aes(x = ft, fill = group)) +                       
   geom_histogram(position = "dodge", binwidth = 1) +
   coord_flip() +
@@ -410,6 +417,8 @@ p2 <- ggplot(survey_2, aes(x = ft, fill = group)) +
        title = "Full-time employees") +
   scale_fill_manual(values = c("#5BBCD6", "#D8B70A"))
 
+# using https://stackoverflow.com/questions/37052059/how-to-add-a-title-for-a-grid-layout-figure-in-ggplot2
+# display the full-time and part-time plots side by side
 p <- plot_grid(p1, p2, align = "h", nrow = 1, rel_widths = c(0.555,0.445))
 title <- ggdraw() + draw_label("Employment distributions were lower for the treatment sample")
 plot_grid(title, p, ncol=1, rel_heights=c(0.1, 1))
@@ -422,8 +431,9 @@ It is worth noting that the negative impact on revenue was not equally distribut
 The effect of mandated closures is attenuated for take-out only restaurants. This indicates that providing restaurant owners with support to transition their regular operations to take-out only service should be considered. The City of Toronto-funded Digital Main Street, created by the Toronto Association of Business Improvement Areas, might serve as an exemplary approach. The program provides businesses with the tools and information to build an online presence. The free program includes an online learning platform, training programs, and dedicated support staff [@mainstreet]. A parallel provincial program aimed directly at restaurant owners who wish to transition out of dine-in only service might help alleviate the economic pressures of COVID-19 mandated closures, while maintaining the necessary health emergency protocols.
 
 ```{r servicetypeimpact, fig.cap = "Survey 2 revenue distributions for service types with means marked", fig.width=7, fig.height=5, echo = FALSE, message = FALSE, warning = FALSE, out.width = '80%', fig.align = "center"}
-# from https://stackoverflow.com/questions/47651868/split-violin-plot-with-ggplot2-with-quantiles
+# plot distributions of revenue, split by treatment/control and by type of service offered
 
+# from https://stackoverflow.com/questions/47651868/split-violin-plot-with-ggplot2-with-quantiles
 GeomSplitViolin <- ggproto("GeomSplitViolin", GeomViolin, draw_group = function(self, data, ..., draw_quantiles = NULL){
   data <- transform(data, xminv = x - violinwidth * (x - xmin), xmaxv = x + violinwidth * (xmax - x))
   grp <- data[1,'group']
@@ -444,18 +454,20 @@ GeomSplitViolin <- ggproto("GeomSplitViolin", GeomViolin, draw_group = function(
     ggplot2:::ggname("geom_split_violin", GeomPolygon$draw_panel(newdata, ...))
   }
 })
-
 geom_split_violin <- function (mapping = NULL, data = NULL, stat = "ydensity", position = "identity", ..., draw_quantiles = NULL, trim = TRUE, scale = "area", na.rm = FALSE, show.legend = NA, inherit.aes = TRUE) {
   layer(data = data, mapping = mapping, stat = stat, geom = GeomSplitViolin, position = position, show.legend = show.legend, inherit.aes = inherit.aes, params = list(trim = trim, scale = scale, draw_quantiles = draw_quantiles, na.rm = na.rm, ...))
 }
 
+# create summary data of means for the plot
 means <- survey_2 %>%
   filter(service_type != "NA" & revenue != "NA") %>%
   group_by(group, service_type) %>%
   summarise(mean = mean(revenue) / 1000)
 
+# create plot using summary data of means, original dataframe, and the split violin function above:
 ggplot() +
   geom_split_violin(data = (survey_2 %>% filter(service_type != "NA")), aes(x = service_type, y = revenue / 1000, fill = group), color = NA) +
+  # add lines to indicate means of the distributions
   geom_errorbar(data = means, 
                 aes(x = service_type, y = mean, ymax = mean, ymin = mean, fill = group), 
                 position = "dodge",
@@ -476,6 +488,9 @@ The negative impact of mandated closures was not distributed equally across rest
 Protecting populations that face systemic inequalities is absolutely imperative to the success of any proposed pandemic response. Following the approach of the federal government might be a fruitful start. Currently, the Government of Canada offers interest-free loans and non-repayable contributions to Indigenous-owned businesses [@ibi]. Further, the federal government has announced and collected applications to the Black Entrepreneurship Program, an initiative to ensure Black-owned businesses thrive [@bep]. Petit Poll recommends Ontario take similar, yet bolder, steps to ensure Indigenous and visible minority owners are not left behind during the COVID-19 pandemic. To do so, restaurant industry-specific interest-free loans, non-repayable contributions, free educational programming, mentorship, and additional supports should be extended to Indigenous and visible minority restaurant owners across the province.
 
 ```{r minorityimpact, fig.cap="Survey 2 revenue distributions for minority status with means marked", fig.width=6.25, fig.height=5, echo = FALSE, message = FALSE, warning = FALSE, out.width = '70%', fig.align = "center"}
+# plot distributions of revenue, split by treatment/control and by type of service offered
+
+# create summary data for the plot
 data <- bind_rows(
   survey_2 %>%
     filter(indigenous == "yes" | visible == "yes") %>%
@@ -487,13 +502,16 @@ data <- bind_rows(
 ) %>% 
   mutate(minority = fct_relevel(minority, "Visible minority / Indigenous", "No"))
 
+# create summary data of means for the plot
 means <- data %>%
   filter(service_type != "NA" & revenue != "NA") %>%
   group_by(group, minority) %>%
   summarise(mean = mean(revenue) / 1000)
-  
+
+# create plot using summary data of means, original dataframe, and the split violin function above:  
 ggplot() +
   geom_split_violin(data = data, aes(x = minority, y = revenue / 1000, fill = group), color = NA) +
+  # add lines to indicate means of the distributions
   geom_errorbar(data = means,
                 aes(x = minority, y = mean, ymax = mean, ymin = mean, fill = group),
                 position = "dodge",
@@ -541,11 +559,14 @@ A second limitation arises from the decision to use food inspection records to c
 #TODO: TALK ABOUT SURVEY NON-RESPONSE AND HOW IT AFFECTS ACCURACY. CITE READINGS. Figure \@ref(fig:nonresponse)
 
 ```{r nonresponse, fig.cap="Non-response and partial response rates for Survey 1 and 2", fig.width=8, fig.height=4, echo = FALSE, message = FALSE, warning = FALSE}
+# plot nonresponse, response, and partial response numbers for survey 1 and survey 2
+
+# calculate relevant numbers for the plot for the sample
 num_treat_sample <- as.numeric(count(table_for_surveys %>% filter(group == "treatment")))
 
 num_control_sample <- as.numeric(count(table_for_surveys %>% filter(group == "control")))
 
-
+# calculate relevant numbers for the plot for survey 1
 num_treat_complete_survey1 <- sum(complete.cases(survey_1 %>% filter(group == "treatment")))
 
 num_control_complete_survey1 <- sum(complete.cases(survey_1 %>% filter(group == "control")))
@@ -558,7 +579,7 @@ num_treat_nonre_survey1 <- num_treat_sample - num_treat_complete_survey1 - num_t
 
 num_control_nonresurvey1 <- num_control_sample - num_control_complete_survey1 - num_control_partial_survey1
 
-
+# calculate relevant numbers for the plot for survey 2
 num_treat_complete_survey2 <- sum(complete.cases(survey_2 %>% filter(group == "treatment")))
 
 num_control_complete_survey2 <- sum(complete.cases(survey_2 %>% filter(group == "control")))
@@ -571,19 +592,19 @@ num_treat_nonre_survey2 <- num_treat_sample - num_treat_complete_survey2 - num_t
 
 num_control_nonresurvey2 <- num_control_sample - num_control_complete_survey2 - num_control_partial_survey2
 
-
+# make tibble containing above numbers
 tibble(Group = c("Treatment", "Control", "Treatment", "Control", "Treatment", "Control", "Treatment", "Control", "Treatment", "Control", "Treatment", "Control"), 
         Response = c("Complete", "Complete", "Partial", "Partial", "No response", "No response", "Complete", "Complete", "Partial", "Partial", "No response", "No response"), 
         Survey = c("Survey 1", "Survey 1","Survey 1","Survey 1","Survey 1","Survey 1", "Survey 2", "Survey 2", "Survey 2", "Survey 2", "Survey 2", "Survey 2"), 
         Count = c(num_treat_complete_survey1, num_control_complete_survey1, num_treat_partial_survey1, num_control_partial_survey1, num_treat_nonre_survey1, num_control_nonresurvey1,
           num_treat_complete_survey2, num_control_complete_survey2, num_treat_partial_survey2, num_control_partial_survey2, num_treat_nonre_survey2, num_control_nonresurvey2)) %>%
+  # plot the data
   ggplot(aes(x = Response, y = Count, fill = Group)) +
   geom_bar(stat = "identity", position = "dodge") +
   labs(title = "More than half of surveyed restaurants did not respond") +
   facet_wrap(~Survey) +
   theme_minimal() +
   scale_fill_manual(values = c("#5BBCD6", "#D8B70A"))
-
 ```
 
 #TODO: TALK ABOUT THE ISSUES WITH SELF-REPORTED INFORMATION. CITE READING.
@@ -598,33 +619,15 @@ This experiment collected information about restaurant owners in Ontario to stud
 
 Finally, this experiment did not differentiate between independent restaurant businesses and franchises or chains. To better develop support programs, it might be advantageous to deliberately inquire about the type of business model under which the restaurant operates. As this experiment revealed, dine-in and visible minority-owned restaurants were the most affected by closures. Understanding whether take-out service is more frequent in franchises, or if less members of visible minority groups own independent restaurants, for example, would allow for the informed allocation of funds towards targeted support programs.
 
-
 \newpage
 
 # Appendix A {#appendixA}
 
 ```{r echo=FALSE, message=FALSE, warning=FALSE}
-restaurants = 2006
-survey_total = 2
-indiv_postage = 0.85 # https://www.canadapost.ca/cpc/en/business/postal-services/mailing/letter-discounts.page?
-minimum_wage = 14.25 # https://www.ontario.ca/document/your-guide-employment-standards-act-0/minimum-wage
-management_service = 1300 # https://www.alchemer.com/plans-pricing/small-teams/
-average_call_mins = 7
-response_rate = .3 
+# import survey budget table
+survey_budget <- read_csv(here("outputs/data/survey_budget.csv"))
 
-phone_interviewer_cost = round(restaurants * survey_total*response_rate, 2) * average_call_mins / 60 * minimum_wage
-
-postage_cost = (restaurants * 2) * indiv_postage
-
-survey_budget <- data.frame(
-  Item = c ("Data Management", "Phone Interviewer Wages", "Postage", "TOTAL"),
-  Cost = c (management_service, phone_interviewer_cost, postage_cost, sum(management_service, phone_interviewer_cost, postage_cost)),
-  Description = c ("Online survey management account fees",
-                   "1,203 calls (7 minutes on average) at $14.25/hr",
-                   "4,012 mailers at $0.85/ea",
-                   "")
-)
-
+# display survey budget in a table
 survey_budget %>% 
   kable(digits = 2,
         caption = "2021 Ontario Restaurant Survey Budget") %>% 
@@ -634,8 +637,8 @@ survey_budget %>%
   kableExtra::kable_styling(latex_options = c("hold_position"))
 ```
 
-
 \newpage
+
 # Appendix B {#appendixB}
 
 ```{r page1, echo=FALSE, fig.cap="Screen capture of the first section of Survey 1 and Survey 2.", out.width = '70%', fig.align="center"}
@@ -658,17 +661,14 @@ knitr::include_graphics(here("outputs/images/page3.png"))
 knitr::include_graphics(here("outputs/images/page4.png"))
 ```
 
-
-
-
 \clearpage
 
 # Appendix C {#appendixC}
 
-
 ```{r survey1png, echo=FALSE, fig.cap="Image of the mailer sent to restaurant owners containing Survey 1.", out.width = '78%', fig.align="center"}
 knitr::include_graphics(here("outputs/images/survey1.png"))
 ```
+
 ```{r survey2png, echo=FALSE, fig.cap="Image of the mailer sent to restaurant owners containing Survey 2.", out.width = '78%', fig.align="center"}
 knitr::include_graphics(here("outputs/images/survey2.png"))
 ```

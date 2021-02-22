@@ -4,7 +4,7 @@ author: "Lorena Almaraz De La Garza, Amy Farrow, and Kumalasari Sondjaja"
 date: "`r format(Sys.time(), '%d %B %Y')`"
 output:
   bookdown::pdf_document2:
-    toc: no
+    toc: yes
 subtitle: "Simulation Methods and Parameterization Research"
 abstract: "This document explains how data for the Ontario restaurant closures experiment was simulated, including the research that was used for parameterization and the methods used to randomize data."
 thanks: 'Code and data are available at: [github.com/amycfarrow/ontariorestaurantclosuresexperiment](https://github.com/amycfarrow/ontariorestaurantclosuresexperiment).'
@@ -21,6 +21,7 @@ library(here) # for working in projects
 
 ```
 
+# Introduction
 
 Analysis for this project uses the R statistical programming language [@R], and more specifically, the `tidyverse` package for data manipulation [@tidyverse]. Because the data is managed using R Projects, `here` is used to reference file locations [@here]. `kableExtra` formats tables [@kableExtra]. `bookdown` is used to format the report [@bookdown].
 
@@ -56,8 +57,9 @@ survey_1
 
 From there, data was simulated for all questions asked on the survey.
 
-
 # Type of service provided
+
+## Research
 
 First, some research:
 
@@ -81,12 +83,14 @@ takeout_percentage <- takeout %>%
 
 takeout_percentage
 ```
+
 ```{r, warning = FALSE}
 # Check proportion of RestaurantsTableService
 tableserv <- yelp_data %>% 
   select(RestaurantsTableService)
 summary(tableserv)
 ```
+
 ```{r, warning = FALSE}
 tableserv_percentage <- tableserv %>%
   group_by(RestaurantsTableService) %>% 
@@ -124,10 +128,12 @@ service_percentage<- data.frame(
 
  service_percentage
 ```
+
 According to Ontario restaurant data from Yelp [@yelp_dataset], approximately 6% of restaurants
 offer dine in service, 32.5% offer takeout, and 61.5% offer both.
 
 ## Survey 1
+
 ```{r, warning = FALSE}
 # randomly assign service_provided using ratios above
 
@@ -145,6 +151,7 @@ survey_1
 ```
 
 ## Survey 2
+
 ```{r, warning = FALSE}
 # randomly assign service_provided using ratios above
 
@@ -161,22 +168,14 @@ survey_2 <- survey_2 %>%
 survey_2
 ```
 
+# Demographic traits of owners: disability
 
-
-
-
-
-
-
-
-
-
-
-# Demographic traits of owners
+## Research
 
 0.5% of small to medium enterprises in Canada are owned by persons with disabilities [@ownershipdemos].
 
 ## Survey 1
+
 ```{r, warning = FALSE}
 # randomly assign disability status using ratios above
 
@@ -191,6 +190,7 @@ survey_1
 ```
 
 ## Survey 2
+
 ```{r, warning = FALSE}
 # randomly assign disability status using ratios above
 
@@ -204,7 +204,9 @@ survey_2 <- survey_2 %>%
 survey_2
 ```
 
+# Demographic traits of owners: racial and ethnic minorities and gender
 
+## Research
 
 Some research for racial and ethnic minorities and women in Canada and in business:
 
@@ -421,7 +423,6 @@ Therefore, we can estimate that 0.058 of restaurant owners are a visible minorit
 Indigenous people have 3.7% service business ownership as opposed to 15.3% in the reference population [@businessesper]. They are 0.24 times as likely to own a service business in Ontario.
 Therefore, we can estimate that 0.009 of business owners in the treatment group are Indigenous, and 0.011 in the control group.
 
-
 ## Survey 1
 ```{r, warning = FALSE}
 # Randomly assign racial and ethnic minorities, and women, using the ratios above:
@@ -534,16 +535,15 @@ survey_2 <- bind_rows(
 survey_2
 ```
 
-
-
-
 # Shutdowns
 
-# Survey 2
+## Research
 
 43.2% of restaurants shut down temporarily due to the pandemic [@covid19impactonbusiness].
 
 3% closed of restaurants in the US closed permanently between March and June [@restaurantclosures]. This period was about six times as long as our two week closure.
+
+# Survey 2
 
 ```{r, warning = FALSE}
 # Randomly assign shutdown using the ratios above only for the treatment group:
@@ -569,14 +569,9 @@ survey_2 <- bind_rows(
 survey_2
 ```
 
-
-
-
-
-
 # Revenue
 
-## Survey 1
+## Research into restaurant revenue
 
 In 2019, there were 25,836 restaurants and eating-places that were employers [@businesseswithemployees] and 6,968 restaurants that were not employers [@businesseswithoutemployees] in Canada, for a total of 32,804 restaurants.
 
@@ -586,6 +581,8 @@ From this, we can calculate an estimated \$69,959 average revenue per month.
 
 From an analysis of Kaggle restaurant data [@kagglerestaurantdata], we can see that restaurant revenue looks like an F distribution.
 The distribution rf(n, df1, df2, ncp) = rf(num_rest, 10, 5) gives an approximate shape. Using the f-distribution formula, we know the distribution has a mean of 10/9, so we would multiply by 62,963 to get the mean to 69,959.
+
+## Survey 1
 
 ```{r, warning = FALSE}
 # Randomly sample from the scaled F distribution to generate restaurant revenues:
@@ -597,8 +594,7 @@ survey_1 <- survey_1 %>%
 survey_1
 ```
 
-
-## Survey 2
+## Research into changes in revenue due to closures
 
 First, the revenues from the first survey will have a randomized factor (normal distribution with a mean of 1 and a standard distribution of 0.1) to add some random variance between months.
 
@@ -613,8 +609,11 @@ All businesses had a median decrease of -15%, but visible minority-owned busines
 
 There seems to be no significant difference in business losses for disabled owners or female business owners [@aug20192020].
 
+## Survey 2
+
 ```{r, warning = FALSE}
-# Randomly sample from the scaled F distribution to generate restaurant revenues, and apply a random number around 1 to add variation:
+# Randomly sample from the scaled F distribution to generate restaurant revenues, 
+# and apply a random number around 1 to add variation:
 
 set.seed(19894)
 survey_2 <- survey_2 %>%
@@ -681,9 +680,9 @@ survey_2 <-
 survey_2
 ```
 
-
-
 # Number of employees
+
+## Research
 
 $82,000 in yearly sales (gross revenue) per full-time equivalent employee [@restfact]
 
@@ -694,13 +693,12 @@ Therefore there are 1.9 full time employees per part time employee.
 Part time employees in service and sales averaged 16.6 hours per week. We will assume that 2 PTE = 1 FTE, or 1 PTE = 0.5 FTE.
 Therefore, for every 1.9 + 1 employees, there are 1.9 + 1*0.5 FTE. For every 2.9 employees, there are 2.4 FTE. 
 
-2.4 FTE -> 1.9 FT + 1 PT.
+$1.9 / (1.9 + 0.5) = 1.9 / 2.4 = 0.79$
 
-$ 1.9 / (1.9 + 0.5) = 1.9 / 2.4 = 0.79 $
-
-$ 1 / (1.9 + 0.5) = 1 / 2.4 = 0.42 $
+$1 / (1.9 + 0.5) = 1 / 2.4 = 0.42$
 
 ## Survey 1
+
 ```{r, warning = FALSE}
 # Use revenue to generate realistic numbers of employees for restaurants:
 
@@ -745,15 +743,19 @@ survey_2
 
 ```
 
-
 # Non-response
+
+## Research
 
 A professional mail survey with follow up found a non-response rate of 61% [@nonresponse].
 We will also assume that some people will mail in answers and fill in the form incompletely.
 
+## Survey 1
+
 ```{r, warning = FALSE}
-# Randomly select only a subset of all the generated responses to keep, simulating nonresponse:
-# Also randomly select columns to delete in partial responses, and delete the data from those rows/columns:
+# Randomly select only a subset of all the generated responses to keep, 
+# simulating nonresponse. Also randomly select columns to delete in partial responses, 
+# and delete the data from those rows/columns:
 
 num_cols_1 = 11
 
@@ -783,9 +785,12 @@ survey_1 <- survey_1 %>%
 survey_1
 ```
 
+## Survey 2
+
 ```{r, warning = FALSE}
-# Randomly select only a subset of all the generated responses to keep, simulating nonresponse:
-# Also randomly select columns to delete in partial responses, and delete the data from those rows/columns:
+# Randomly select only a subset of all the generated responses to keep, 
+# simulating nonresponse. Also randomly select columns to delete in partial responses, 
+# and delete the data from those rows/columns:
 
 num_cols_2 = 12
 
@@ -815,7 +820,6 @@ survey_2 <- survey_2 %>%
 survey_2
 ```
 
-
 ```{r, warning = FALSE}
 # Save the two survey results tables:
 
@@ -824,8 +828,42 @@ write_csv(survey_1, here("outputs/data/survey_1.csv"))
 write_csv(survey_2, here("outputs/data/survey_2.csv"))
 ```
 
+# Budget
 
+```{r}
+# research for typical budget numbers
+restaurants = 2006
+survey_total = 2
+# https://www.canadapost.ca/cpc/en/business/postal-services/mailing/letter-discounts.page?
+indiv_postage = 0.85 
+# https://www.ontario.ca/document/your-guide-employment-standards-act-0/minimum-wage
+minimum_wage = 14.25 
+# https://www.alchemer.com/plans-pricing/small-teams/
+management_service = 1300 
+average_call_mins = 7
+response_rate = .3 
 
+# calculate costs
+phone_interviewer_cost = 
+  round(restaurants * survey_total*response_rate, 2) * average_call_mins / 60 * minimum_wage
+
+postage_cost = (restaurants * 2) * indiv_postage
+
+# save the information in a dataframe
+survey_budget <- data.frame(
+  Item = c ("Data Management", "Phone Interviewer Wages", "Postage", "TOTAL"),
+  Cost = c (management_service, 
+            phone_interviewer_cost, 
+            postage_cost, 
+            sum(management_service, phone_interviewer_cost, postage_cost)),
+  Description = c ("Online survey management account fees",
+                   "1,203 calls (7 minutes on average) at $14.25/hr",
+                   "4,012 mailers at $0.85/ea",
+                   "")
+)
+
+write_csv(survey_budget, here("outputs/data/survey_budget.csv"))
+```
 
 \newpage
 
