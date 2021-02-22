@@ -1,12 +1,12 @@
 ---
-title: "TITLE"
+title: "COVID-19 Closures Negatively Impacts Restaurant Revenue and Employment"
 author: "Lorena Almaraz De La Garza, Amy Farrow, and Kumalasari Sondjaja"
-date: "`r format(Sys.time(), '%d %B %Y')`"
+date: "September 20th, 2021"
 output:
   bookdown::pdf_document2:
     toc: no
-subtitle: "SUBTITLE"
-abstract: "Four sentences. 1) what was done, 2) what was found, and 3) why this matters (all at a high level). Top level finding"
+subtitle: "A random controlled trial, with surveys, to identify the impact of mandatory partial closures on Ontario restaurants"
+abstract: "This report covers an experiment conducted by Petit Poll to test the impact of COVID-19 closures on Ontario restaurants. A randomized controlled trial was conducted and surveys were used to collect results. The data show that restaurant revenue and employee counts were negatively impacted by a mandatory two-week partial closure, and dine-in restaurants and restaurants owned by visible minorites were more negatively impacted. These results suggest that if more closures are necessary, Ontario should support restaurant owners by offering support for take-out services and minority-owned businesses."
 thanks: 'Code and data are available at: [github.com/amycfarrow/ontariorestaurantclosuresexperiment](https://github.com/amycfarrow/ontariorestaurantclosuresexperiment).'
 bibliography: references.bib
 ---
@@ -34,7 +34,7 @@ library(lubridate)  # for timeline
 
 # Introduction
 
-The COVID-19 pandemic has presented challenges that continue to test our resilience, creativity, and ability to recover. From online learning to curbside shopping, the changes are tangible on a local level. To better understand the impact of intermittent lockdowns on restaurant businesses specifically, and to provide the Ontario Ministry of Economic Development, Job Creation and Trade with evidence-based advice, Petit Poll conducted a comprehensive study of over 1,200 restaurants in 12 regions of Ontario. This report describes the experiment design and rationale, measurement strategies, data characteristics, main findings, recommendations, limitations, and broader implications. Importantly, the intervention revealed three key effects of closures: (1) closures had a negative impact on revenues and employment counts, (2) closures had a stronger negative impact on dine-in only restaurants, and (3) closures had a stronger negative impact on Indigenous or visible minority-owned businesses. These findings provide more detail to an already stark picture: while the health of Ontarians has to be prioritized, and the transmission of COVID-19 has to be aggressively contained, it is impossible to ignore the economic consequences of prolonged business closures. In particular, support for Indigenous and visible minority-owned businesses is imperative, as these populations continue to bear the brunt of systemic inequalities. Preparing and supporting dine-in establishments to transition to takeout only, and providing furloughed workers with vital financial support, must be equally prioritized.
+The COVID-19 pandemic has presented challenges that continue to test our resilience, creativity, and ability to recover. From online learning to curbside shopping, the changes are tangible on a local level. To better understand the impact of intermittent lockdowns on restaurant businesses specifically, and to provide the Ontario Ministry of Economic Development, Job Creation and Trade with evidence-based advice, Petit Poll conducted a comprehensive study of over 1,200 restaurants in 12 regions of Ontario. This report describes the experiment design and rationale, measurement strategies, data characteristics, main findings, recommendations, limitations, and broader implications. Importantly, the intervention revealed three key effects of closures: (1) closures had a negative impact on revenues and employment counts, (2) closures had a stronger negative impact on dine-in only restaurants, and (3) closures had a stronger negative impact on Indigenous or visible minority-owned businesses. These findings provide more detail to an already stark picture: while the health of Ontarians has to be prioritized, and the transmission of COVID-19 has to be aggressively contained, it is impossible to ignore the economic consequences of prolonged business closures. In particular, support for Indigenous and visible minority-owned businesses is imperative, as these populations continue to bear the brunt of systemic inequalities. Preparing and supporting dine-in establishments to transition to take-out only, and providing furloughed workers with vital financial support, must be equally prioritized.
 
 # Data
 
@@ -81,7 +81,7 @@ all_units_data <- read_csv(here::here("outputs/data/all_units_data.csv"))
 
 ```{r sampleallunitsdata, echo = FALSE, message = FALSE, warning = FALSE}
 all_units_data %>%
-  slice(1:10) %>%
+  slice(101,1100,2101,3101,4100,5100,6100,7100,8100,9101) %>%
   knitr::kable(caption = "Example segment of the unit level sampling frame",
                booktabs = TRUE) %>%
   column_spec(1, width = "14em") %>%
@@ -183,7 +183,7 @@ ggplot(df,aes(x = date, y = 0, col = status, label = milestone)) +
 
 A project timeline can be found in Figure \@ref(fig:timeline).
 
-Survey 1 was conducted June 3rd to 27th 2021, and it asked about the month of May 2021.
+Survey 1 was conducted June 3rd to 27th 2021, and it asked about the month of May 2021. The survey can be found online by clicking here: [2021 Ontario Restaurant Survey 1](https://forms.gle/ZDc5HJBWmJu5snHf9).
 
 Survey 1 Data was used to confirm that the two-stage stratified cluster sampling had created treatment and control groups that were roughly equivalent.
 
@@ -209,7 +209,7 @@ To date, mandated closure enforcement has included issuing fines from $750 to $1
 
 Because it is very difficult for a restaurant to move location in under two weeks, the control and treatment groups were effectively separated.
 
-Survey 2 was conducted August 3rd to 27th 2021, and it asked about the month of July 2021.
+Survey 2 was conducted August 3rd to 27th 2021, and it asked about the month of July 2021. The survey can be found online by clicking here: [2021 Ontario Restaurant Survey 2](https://forms.gle/JWn6VU299uTyufj99).
 
 Survey 2 followed a similar format as Survey 1, with the addition of a question about closures. It collected the following data:
 
@@ -365,7 +365,7 @@ To prevent a misleading estimate of the counterfactual in this experiment, the e
 
 ### Closures had a negative impact on revenues and employment counts
 
-As noted in the results from survey 2, the intervention led to a noticeable difference in reported revenues. The mean reported revenue for the treatment group was \$45,959.60 and $70,675.60 for the control. The revenue distribution for both groups is show in Figure \@ref(fig:postrevenue). 
+As noted in the results from Survey 2, the intervention led to a noticeable difference in reported revenues. The mean reported revenue for the treatment group was \$45,959.60 and $70,675.60 for the control. The revenue distribution for both groups is show in Figure \@ref(fig:postrevenue). 
 
 The mean number of employees, both full-time and part-time, show a decrease as well, from 8 and 5 respectively in the control group, to 5 and 3 for the treatment. Figure \@ref(fig:postemployees) shows further detail of this finding.
 
@@ -461,7 +461,7 @@ ggplot() +
        x = "Service type provided",
        title = "Revenues were more heavily impacted for dine-in only establishments",
        y = "Revenue (in thousands of Canadian dollars)") +
-  scale_x_discrete(labels = c( "Dine-in Only", "Both dine-in and take-out", "Take-out only")) +
+  scale_x_discrete(labels = c( "Dine-in only", "Both dine-in and take-out", "Take-out only")) +
   theme_minimal() +
   scale_fill_manual(values = c("#5BBCD6", "#D8B70A"))
 ```
@@ -470,9 +470,9 @@ ggplot() +
 
 The negative impact of mandated closures was not distributed equally across restaurant owner demographics either. As indicated in Figure \@ref(fig:minorityimpact), treatment group restaurant owners who identified as Indigenous or as members of a visible minority group reported a larger loss in average revenues, compared to the control, than those who did not identify as Indigenous or a visible minority. The mean revenue for those who identified as visible minority or Indigenous in the treatment group was \$28,749.17, and it was \$47,572.93 for those who did not. In the control group, the mean revenue for those who identified as Indigenous or as members of a visible minority group was \$73,983.60, and it was \$70,777.57 for those who did not.
 
-Protecting populations that face systemic inequalities is absolutely imperative to the success of any proposed pandemic response. Following the approach of the federal government might be a fruitful start. Currently, the Government of Canada offers interest-free loans and non-repayable contributions to Indigenous-owned businesses [@ibi]. Further, the federal government has announced and collected applications to the Black Entrepreneurship Program, an initiative to ensure Black-owned businesses thrive [@bep]. Petit Poll recommends Ontario take similar, yet bolder, steps to ensure Indigenous and visible minority owners are not left behind in during the COVID-19 pandemic. To do so, restaurant industry-specific interest-free loans, non-repayable contributions, free educational programming, mentorship, and additional supports should be extended to Indigenous and visible minority restaurant owners across the province.
+Protecting populations that face systemic inequalities is absolutely imperative to the success of any proposed pandemic response. Following the approach of the federal government might be a fruitful start. Currently, the Government of Canada offers interest-free loans and non-repayable contributions to Indigenous-owned businesses [@ibi]. Further, the federal government has announced and collected applications to the Black Entrepreneurship Program, an initiative to ensure Black-owned businesses thrive [@bep]. Petit Poll recommends Ontario take similar, yet bolder, steps to ensure Indigenous and visible minority owners are not left behind during the COVID-19 pandemic. To do so, restaurant industry-specific interest-free loans, non-repayable contributions, free educational programming, mentorship, and additional supports should be extended to Indigenous and visible minority restaurant owners across the province.
 
-```{r minorityimpact, fig.cap="Survey 2 revenue distributions for minority status with means marked", fig.width=6, fig.height=5, echo = FALSE, message = FALSE, warning = FALSE, out.width = '70%', fig.align = "center"}
+```{r minorityimpact, fig.cap="Survey 2 revenue distributions for minority status with means marked", fig.width=6.25, fig.height=5, echo = FALSE, message = FALSE, warning = FALSE, out.width = '70%', fig.align = "center"}
 data <- bind_rows(
   survey_2 %>%
     filter(indigenous == "yes" | visible == "yes") %>%
@@ -505,26 +505,39 @@ ggplot() +
 
 ### Implications
 
-##TODO: Talk about broad economic interdependencies: restaurants as a key feature in neighbourhoods, closures impacting the desirability of an area, impacting the real estate market
+The findings from this experiment uncover the negative impact that mandated closures have on restaurant businesses specifically. In a national emergency, these effects have to be contextualized by assessing the impact on a broader societal level. As the COVID-19 pandemic continues to test our resilience, it is important to consider the economic inter-dependencies that rely on the health of restaurant businesses. As noted in Forbes [-@forbes], a key feature of neighbourhood desirability is access to a wide range of shops and restaurants. Restaurant closures, leading to vacant commercial lots, might have a negative impact on the real estate market, setting off an unfortunate ripple effect that could destabilize the economy further. Preventing the permanent closure of restaurants might prove to be a worthwhile investment in the months following the pandemic.
 
-##TODO: Talk about individual level: gainful employment and psychological wellbeing, especially the role of the service industry in financial independence for oppressed/undereducated/immigrants or otherwise made-vulnerable folks
+On an individual level, these findings point at the importance of employment. Gainful employment is directly tied to psychological wellbeing, with experts citing work as one of the most important determinants of quality of life, second only to personal relationships. [@sage] During a crisis that has the potential to severely impact the population's mental health, ensuring individuals retain their employment is vital. Employment, aside from providing an income and the possibility of financial independence, fosters a positive network of social support — a crucial social determinant of health [@who]. Prioritizing efforts to establish positive networks of social support seems particularly necessary during a pandemic that requires measures of physical distancing.
+
+These examples provide a mere glance at the economic and social implications of our findings. To better understand these implications on a micro and macro level, Petit Poll recommends the Ontario Ministry of Economic Development, Job Creation and Trade, consult with relevant government authorities and departments.
+
 
 ## Ethics
 
-##TODO: WRITE ABOUT ETHICS AND BIAS, FIRST IN TERMS OF SURVEYS
-https://www.qualtrics.com/blog/ethical-issues-for-online-surveys/
-https://www.statcan.gc.ca/eng/dai/btd/variance_bias
+This experiment would not have been possible without the participation of hundreds of restaurant owners. It is Petit Poll's greatest priority to ensure all studies adhere to the highest ethical standards, especially when involving human participants. Ethical requirements for this project, particularly the survey portion, included:
+
+- Anonymity, by determining that collecting the restaurant owner's name was unnecessary, and processing survey data with numerical IDs rather than the restaurant name or address.
+- Confidentiality, by employing a professional data management account throughout the entirety of the project.
+- Informed consent, by providing a clear explanation of the purposes of the study, the nature of the survey, and contact details should participants require additional information. 
+- Voluntary participation and disclosure, by allowing respondents to engage or refuse to engage in the study and allowing non-response of demographic questions.
+
+Additionally, in order to reduce potential biases, the survey portion of this experiment used a thoroughly-tested questionnaire, a robust methodology, expert interviewers, and invested in following up with selected participants who did not initially respond.
+
+
+#TODO: talk a bit more about who might have been excluded
+
 
 ## Limitations
 
-#TODO: TALK ABOUT EXTERNAL VALIDITY AND THE ISSUES WITH CLUSTER SAMPLING.
-Unavoidable because shutdowns were by health unit for COVID, and we were trying to replicate them. It was ethically unsound to run the experiment on the entire province, so sampling was necessary.
+Although great care was taken with every step of the design of this experiment, with the goal of gathering data that would accurately represent current conditions, the authors acknowledge to following limitations.
 
-#TODO: TALK ABOUT HOW IT ONLY CATCHES LEGALLY REGISTERED BUSINESSES
+Cluster sampling has inherent constraints that might affect external validity, including the reduction of the population, in this case the entirety of restaurant business in Ontario, to smaller groups, potentially affect representation. This may lead to a higher potential of sampling error and biases, as the factor by which the population is clustered might introduce unforeseen conditions. However, cluster sampling by local health authority population sizes was necessary as the goal of this experiment was to replicate current protocols for mandated closures, which have been dictated by local health authorities. The ethical implications of experimenting in the entirety of the population proved to be unsound, as the negative effects of closures would have been exacerbated. Sampling was necessary to understand the impact while containing its potentially devastating effects.
+
+A second limitation arises from the decision to use food inspection records to collect information on current restaurants. We acknowledge that this process would effectively erase from our study all businesses that do not currently operate in accordance to the legal requirement to properly license a restaurant business. As such, should the Ontario Ministry of Economic Development, Job Creation and Trade need to understand the COVID-19 impact on non-licensed restaurant businesses, we recommend further research.
 
 #TODO: TALK ABOUT SURVEY NON-RESPONSE AND HOW IT AFFECTS ACCURACY. CITE READINGS. Figure \@ref(fig:nonresponse)
 
-```{r nonresponse, fig.cap="Nonresponse and partial response rates for Survey 1 and 2", fig.width=8, fig.height=4, echo = FALSE, message = FALSE, warning = FALSE}
+```{r nonresponse, fig.cap="Non-response and partial response rates for Survey 1 and 2", fig.width=8, fig.height=4, echo = FALSE, message = FALSE, warning = FALSE}
 num_treat_sample <- as.numeric(count(table_for_surveys %>% filter(group == "treatment")))
 
 num_control_sample <- as.numeric(count(table_for_surveys %>% filter(group == "control")))
@@ -578,9 +591,10 @@ tibble(Group = c("Treatment", "Control", "Treatment", "Control", "Treatment", "C
 
 #TODO: TALK ABOUT RESEARCH INTO HOW TO EFFECTIVELY SUPPORT BUSINESSES
 
-#TODO: talk about research on individual impact (we look at owners and not employees, might be missing key info there)
+This experiment collected information about restaurant owners in Ontario to study the economic and social impact of closures on a business level. To understand the effects on an individual level, questionnaires that are aimed at employees would be a feasible adaptation of this study. 
 
-#TODO: briefly talk about potential unevenness of impact on franchises vs independent businesses. How were they impacted and what does that mean for our findings, are there connected? Are franchises more likely to already have take-out? Or be visible minority-owned?
+Finally, this experiment did not differentiate between independent restaurant businesses and franchises or chains. To better develop support programs, it might be advantageous to deliberately inquire about the type of business model under which the restaurant operates. As this experiment revealed, dine-in and visible minority-owned restaurants were the most affected by closures. Understanding whether take-out service is more frequent in franchises, or if less members of visible minority groups own independent restaurants, for example, would allow for the informed allocation of funds towards targeted support programs.
+
 
 \newpage
 

@@ -317,20 +317,22 @@ populations <- bind_cols(populationss,
                          waterloo_pop, 
                          durham_pop)
 
-colnames(populations) <- c("Info", "Ontario", "Haliburton", "Algoma", 
-                           "Hamilton", "Windsor_Essex", "Simcoe_Muskoka", 
-                           "Timiskaming", "Brant", "Sudbury", "Oxford", 
-                           "Elgin", "Northwest", "Waterloo", "Durham")
+colnames(populations) <- c("Info", "Ontario", "haliburton", "algoma", 
+                           "hamilton", "windsor", "simcoe", 
+                           "timiskaming", "brant", "sudbury", "oxford", 
+                           "elgin", "northwestern", "waterloo", "durham")
 
 populations <- populations %>%
-  mutate(Southwestern = Oxford + Elgin) %>%
+  mutate(southwestern = oxford + elgin) %>%
   mutate(total_treat = 
-           Haliburton + Algoma + Hamilton + Windsor_Essex + Simcoe_Muskoka + Timiskaming,
+           haliburton + algoma + hamilton + windsor + simcoe + timiskaming,
          total_control = 
-           Brant + Sudbury + Northwest + Waterloo + Durham + Southwestern) %>%
-  select(-Oxford, -Elgin)
+           brant + sudbury + northwestern + waterloo + durham + southwestern) %>%
+  select(-oxford, -elgin)
 
 populations
+
+write_csv(populations, here("outputs/data/populations"))
 ```
 
 ```{r, warning = FALSE}
