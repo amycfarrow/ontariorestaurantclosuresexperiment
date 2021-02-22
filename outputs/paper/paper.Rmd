@@ -46,7 +46,7 @@ This section presents details on the data collection approach and methods, and t
 
 ## Methodology
 
-This experiment used two-stage stratified cluster sampling for survey data collection, a process by which a population is divided into groups, or strata, and subsequently divided into clusters. A random sample is drawn from each stratum and each cluster [@gertler].
+This experiment used two-stage stratified cluster sampling for survey data collection, a process by which a population is divided into clusters, and subsequently divided into groups, or strata. A random sample is drawn from each cluster and each stratum [@gertler].
 
 The population for this study was all restaurants in Ontario. A list of Ontario local health authorities (LHAs) was used to identify units that carry out food inspections of restaurants. Using census data from 2016, these LHAs were sorted by population size, and the list was stratified into equally sized strata: small LHAs (population of less than 150,000), medium LHAs (population of 150,000 to 400,000), and large LHAs (population of more than 400,000). The stratified LHAs produced the frame, or list of units of interest from which to draw a sample, at the cluster level. From each stratum, two LHAs were randomly sampled to participate in the treatment, and two LHAs were randomly selected to participate in the control. This was the sample at the cluster level. This sample is shown in Table \@ref(tab:treatmentcontrolgroups).
 
@@ -332,7 +332,6 @@ plot_grid(title, p, ncol=1, rel_heights=c(0.1, 1))
 
 The second survey results showed marked differences between treatment and control groups in most variables. A summary of these results is found in Table \@ref(tab:survey2summary). Naturally, a salient difference is found in service type, with dine-in restaurants decreasing due to mandated shutdowns – the intervention itself – with 7% of restaurants in the control group providing dine-in service, and only 4% in the treatment group. Similarly, the mean revenue decreases noticeably for the treatment group (\$45,959.60) compared to the control group ($70,675.60). The mean numbers of employees, both full-time and part-time, show a decrease as well, from 8 and 5 respectively in the control group, to 5 and 3 for the treatment. A visual representation of the differences between treatment and control groups for revenue and number of employees can be found in Figure \@ref(fig:postrevenue) and Figure \@ref(fig:postemployees) respectively.
 
-#TODO: ADD SENTENCE ABOUT REST OF VARIABLES?
 
 ```{r survey2summary, echo = FALSE, message = FALSE, warning = FALSE}
 # summarize results for survey 1
@@ -544,8 +543,7 @@ This experiment would not have been possible without the participation of hundre
 
 Additionally, in order to reduce potential biases, the survey portion of this experiment used a thoroughly-tested questionnaire, a robust methodology, expert interviewers, and invested in following up with selected participants who did not initially respond.
 
-
-#TODO: talk a bit more about who might have been excluded
+Finally, in order to ascertain that the recommendations for each of the findings in this report promote and advance human rights, we highlight the right to work as noted by the Ontario Human Rights Commission (OHRC). In response to the COVID-19 pandemic, the OHRC calls for the upholding of this right by providing special supports to vulnerable groups, including racialized communities and workers in precarious employment. The OHRC recognizes the loss of employment that leads to loss of household income and increased poverty as a direct impact of COVID-19 on vulnerable groups [@ohrc2].
 
 
 ## Limitations
@@ -556,7 +554,8 @@ Cluster sampling has inherent constraints that might affect external validity, i
 
 A second limitation arises from the decision to use food inspection records to collect information on current restaurants. We acknowledge that this process would effectively erase from our study all businesses that do not currently operate in accordance to the legal requirement to properly license a restaurant business. As such, should the Ontario Ministry of Economic Development, Job Creation and Trade need to understand the COVID-19 impact on non-licensed restaurant businesses, we recommend further research.
 
-#TODO: TALK ABOUT SURVEY NON-RESPONSE AND HOW IT AFFECTS ACCURACY. CITE READINGS. Figure \@ref(fig:nonresponse)
+Two types of survey non-response, unit and item non-response, present another limitation. The first, in which an individual refuses to participate, and the second, in which a participant refuses to answer a particular question, might affect the accuracy of inferences if the individuals who participate are systemically different from those who do not [@imai].
+
 
 ```{r nonresponse, fig.cap="Non-response and partial response rates for Survey 1 and 2", fig.width=8, fig.height=4, echo = FALSE, message = FALSE, warning = FALSE}
 # plot nonresponse, response, and partial response numbers for survey 1 and survey 2
@@ -607,7 +606,7 @@ tibble(Group = c("Treatment", "Control", "Treatment", "Control", "Treatment", "C
   scale_fill_manual(values = c("#5BBCD6", "#D8B70A"))
 ```
 
-#TODO: TALK ABOUT THE ISSUES WITH SELF-REPORTED INFORMATION. CITE READING.
+A final limitation is the use of self-reported information. A main concern is the incidence of social desirability bias, in which respondents might provide answers they deem socially acceptable, rather than the truth [@imai]. In this experiment, such bias could be present in the answers of Survey 2 which asks respondents about closures. Victims to this type of bias, respondents might have claimed they voluntarily ceased their restaurant operations to limit the spread of COVID-19 when they had not.
 
 ## Future Directions
 
@@ -616,6 +615,8 @@ tibble(Group = c("Treatment", "Control", "Treatment", "Control", "Treatment", "C
 #TODO: TALK ABOUT RESEARCH INTO HOW TO EFFECTIVELY SUPPORT BUSINESSES
 
 This experiment collected information about restaurant owners in Ontario to study the economic and social impact of closures on a business level. To understand the effects on an individual level, questionnaires that are aimed at employees would be a feasible adaptation of this study. 
+
+Particularly, future research might consider studying the impact of closures on populations made vulnerable by the COVID-19 pandemic. The discrimination against the East Asian community that the pandemic exacerbated [@ohrc1], fueled by sensationalist media reports and mis- and disinformation online, might have targeted restaurant businesses directly. A comprehensive study would reveal further information.
 
 Finally, this experiment did not differentiate between independent restaurant businesses and franchises or chains. To better develop support programs, it might be advantageous to deliberately inquire about the type of business model under which the restaurant operates. As this experiment revealed, dine-in and visible minority-owned restaurants were the most affected by closures. Understanding whether take-out service is more frequent in franchises, or if less members of visible minority groups own independent restaurants, for example, would allow for the informed allocation of funds towards targeted support programs.
 
