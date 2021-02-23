@@ -4,7 +4,7 @@ author: "Lorena Almaraz De La Garza, Amy Farrow, and Kumalasari Sondjaja"
 date: "September 20th, 2021"
 output:
   bookdown::pdf_document2:
-    toc: no
+    toc: yes
 subtitle: "A random controlled trial, with surveys, to identify the impact of mandatory partial closures on Ontario restaurants"
 abstract: "This report covers an experiment conducted by Petit Poll to test the impact of COVID-19 closures on Ontario restaurants. A randomized controlled trial was conducted and surveys were used to collect results. The data show that restaurant revenue and employee counts were negatively impacted by a mandatory two-week partial closure, and dine-in restaurants and restaurants owned by visible minorites were more negatively impacted. These results suggest that if more closures are necessary, Ontario should support restaurant owners by offering support for take-out services and minority-owned businesses."
 thanks: 'Code and data are available at: [github.com/amycfarrow/ontariorestaurantclosuresexperiment](https://github.com/amycfarrow/ontariorestaurantclosuresexperiment).'
@@ -46,15 +46,13 @@ This section presents details on the data collection approach and methods, and t
 
 ## Methodology
 
-This experiment used two-stage stratified cluster sampling for survey data collection, a process by which a population is divided into clusters, and subsequently divided into groups, or strata. A random sample is drawn from each cluster and each stratum [@gertler].
+This experiment used two-stage stratified cluster sampling for survey data collection, a process by which a population is divided into clusters, and these clusters are subsequently divided into strata. A random sample is drawn from each stratum and each cluster. Use of a simple random sample at each stage increases the external validity of the experiment, or the accuracy with which the sampled population represents the target population  [@gertler].
 
-The population for this study was all restaurants in Ontario. A list of Ontario local health authorities (LHAs) was used to identify units that carry out food inspections of restaurants. Using census data from 2016, these LHAs were sorted by population size, and the list was stratified into equally sized strata: small LHAs (population of less than 150,000), medium LHAs (population of 150,000 to 400,000), and large LHAs (population of more than 400,000). The stratified LHAs produced the frame, or list of units of interest from which to draw a sample, at the cluster level. From each stratum, two LHAs were randomly sampled to participate in the treatment, and two LHAs were randomly selected to participate in the control. This was the sample at the cluster level. This sample is shown in Table \@ref(tab:treatmentcontrolgroups).
+The target population for this study was all restaurants in Ontario. Because restaurant inspection is carried out by different authorities across the province, a list of Ontario local health authorities (LHAs) was collected. These LHAs were the primary sampling units, forming the primary sampling frame, or list of units of interest from which to draw a sample. Using census data from 2016, the primary sampling frame was stratified into small LHAs (population of less than 150,000), medium LHAs (population of 150,000 to 400,000), and large LHAs (population of more than 400,000). Each strata contained the same number of LHAs. From each stratum, two LHAs were randomly sampled to participate in the treatment, and two LHAs were randomly selected to participate in the control. This primary sample is shown in Table \@ref(tab:treatmentcontrolgroups).
 
-The clusters were used because pandemic shutdowns operated based on LHA, and the goal was to recreate the effect as closely as possible. The stratification was used because there were very differently sized LHAs, and randomly selecting only 12 LHAs from a list of 33 left too high a likelihood of nonequivalent treatment and control groups. Given the limitations of cluster sampling, stratifying the clusters by size helped ensure the experiment would be representative of Ontario. 
+This cluster design was used because pandemic shutdowns in Ontario have operated based on LHA, and the goal was to recreate the effect as closely as possible. It also allowed for more consistent enforcement of closures. The stratification was used because there were very differently sized LHAs, the larger typically in urban areas and the smaller in rural areas, and randomly selecting only 12 LHAs from a list of 33 left too high a likelihood of differently sized treatment and control groups. Stratification can create a more balanced survey sample [@samplingtheory]. Given the limitations of sampling from a primary sampling frame of only 33 clusters, stratifying the frame by size of cluster helped ensure the treatment and control groups would be comparable and that the sample population would be representative of the target population.
 
-#TODO: ADD STUFF ABOUT STATISTICAL PROPERTIES OF CLUSTER AND STRATIFIED SAMPLING. CITE TEXTBOOK READING
-
-```{r, include = FALSE}
+```{r, echo = FALSE, message = FALSE, warning = FALSE}
 # Import table that shows LHAs selected for treatment and control groups
 treatment_control_groups <- read_csv(here::here("outputs/data/treatment_control_groups.csv"))
 ```
@@ -62,14 +60,18 @@ treatment_control_groups <- read_csv(here::here("outputs/data/treatment_control_
 ```{r treatmentcontrolgroups, echo = FALSE, message = FALSE, warning = FALSE}
 # format table to show LHAs that were selected for treatment and control groups
 treatment_control_groups %>%
-  knitr::kable(caption = "Cluster sample randomly selecting Local Health Authorities from strata based on population size",
+  knitr::kable(caption = "Primary sample of Local Health Authorities from strata based on population size",
+               col.names = c("Group", 
+                             "Large Population LHAs", 
+                             "Medium Population LHAs", 
+                             "Small Population LHAs"),
                booktabs = TRUE) %>%
   kableExtra::kable_styling() %>%
   collapse_rows() %>%
   column_spec(1, color = "#972D15")
 ```
 
-Once the treatment and control LHAs were selected, each corresponding Food Inspection unit was contacted, and a list of all registered restaurants in each LHA was obtained. Each restaurant was listed by name and address. Once collected into one dataframe, this was the frame at the unit level. A sample of this frame is shown in Table \@ref(tab:sampleallunitsdata).
+Once the treatment and control LHAs were selected, each corresponding Food Inspection unit was contacted, and a list of all registered restaurants, the secondary sample units, in each LHA was obtained. Each restaurant was listed by name and address, forming the secondary sampling frame. A portion of this frame is shown in Table \@ref(tab:sampleallunitsdata).
 
 ```{r, include = FALSE}
 # import table that contains the complete list of restaurants in treatment and control groups
@@ -80,7 +82,7 @@ all_units_data <- read_csv(here::here("outputs/data/all_units_data.csv"))
 # format table to show a few rows of the complete list of restaurants in treatment and control groups
 all_units_data %>%
   slice(101,1100,2101,3101,4100,5100,6100,7100,8100,9101) %>%
-  knitr::kable(caption = "Example segment of the unit level sampling frame",
+  knitr::kable(caption = "Example segment of the secondary sampling frame",
                booktabs = TRUE) %>%
   column_spec(1, width = "14em") %>%
   column_spec(2, width = "14em") %>%
@@ -90,7 +92,7 @@ all_units_data %>%
   row_spec(0, color = "#972D15")
 ```
 
-A simple random sample of 15% of the treatment list and 15% of the control list was randomly selected to be surveyed. This was the sample at the unit level. This selection was used to create a panel, so the same restaurants would be surveyed for the first survey and the second survey. Attempting to sample only 15% of the restaurants allowed time and money to be spent on follow-up and multiple methods of data collecting, reducing the non-response bias. The randomly sampled restaurants were all assigned ID numbers in a random order.
+A simple random sample of 15% of the treatment list and 15% of the control list was selected to be surveyed, forming the secondary sample. As a result of the simple random sample, the number of restaurants from each LHA was roughly proportionate to the total population of restaurants in each LHA. This selection was used to create a panel, so the same restaurants would be contacted for the first survey and the second survey. Attempting to sample only 15% of the restaurants allowed time and money to be spent on follow-up and multiple methods of data collecting, reducing the non-response bias. The randomly sampled restaurants were all assigned ID numbers in a random order.
 
 ```{r, include = FALSE}
 # import the table that was used to send out survey mailers
@@ -99,7 +101,7 @@ table_for_surveys <- read_csv(here::here("outputs/data/table_for_surveys.csv"))
 
 The table for surveys was used to generate 2,006 mailers to be sent to each restaurant on the list. Each mailer was a small envelope containing a sheet that invited the restaurant owner to participate, explained the survey, provided a link to the survey, and provided a QR code that went to the same place as the link. There was also a copy of the survey contained in a mailer envelope and a contact number, allowing restaurant owners to complete the survey by phone or mail if they did not feel able to complete it online. If there was no response within two weeks, the restaurant was contacted by phone, and again five days letter if there was no response. This procedure was repeated for Survey 1 and Survey 2.
 
-Each link and paper survey was personalized to the restaurant's ID number. The link lead to the survey, which asked for confirmation of the last three digits of the restaurant's postal code. This was to ensure that no mailing mistakes were made, and to prevent duplicate data collection. Once verified, the survey-taker was given the main survey. This survey cost $6,711.18. A detailed breakdown of costs can be found on [Appendix A](#appendixA).
+Each link and paper survey was personalized to the restaurant's ID number. The link lead to the survey, which asked for confirmation of the last three digits of the restaurant's postal code. This was to ensure that no mailing mistakes were made, and to prevent duplicate data collection. Once verified, the survey-taker was given the main survey. This survey cost $6,711.18. A detailed breakdown of costs can be found in [Appendix A](#appendixA).
 
 The data from the survey was tied to the ID number and last three digits of the postal code, but not the restaurant name or address, and the restaurant owner's name was not collected. This was to ensure data privacy. The identifying information was kept in a separate dataframe (Table for Surveys) than the survey answers (Survey 1 Data, Survey 2 Data).
 
@@ -252,11 +254,9 @@ Reaching restaurant owners to better understand their businesses, and the impact
 
 ### Survey 1
 
-The initial survey provided a clear description of the characteristics of the treatment and control groups. As indicated in Table \@ref(tab:survey1summary), the groups are equivalent, showing no notable differences across any of the variables studied. It was necessary to collect data before the intervention to ensure that the treatment and control groups were in fact comparable.
+The initial survey provided a clear description of the characteristics of the treatment and control groups. As indicated in Table \@ref(tab:survey1summary), the groups are comparable, showing no notable differences across any of the variables studied. Survey 1 was necessary to collect data before the intervention to ensure that the treatment and control groups were in fact comparable, verifying the efficacy of the randomized treatment assignment and allowing for an accurate estimation of the counterfactual. The counterfactual – or the representation of what would have happened had the intervention not taken place – is essential to measuring, and reporting on, the effect of the mandated restaurant closures. If the control is an accurate estimate of the counterfactual, the experiment is internally valid and we can observe the true impact of the treatment [@gertler]. 
 
-Survey 1 data was used to effectively establish a baseline for comparison. In addition to the use of random selection of participants and random assignment to either treatment or control, establishing a baseline allows for an accurate estimation of the counterfactual. The counterfactual – or the representation of what would have happened had the intervention not taken place – is essential to measuring, and reporting on, the effect of the mandated restaurant closures.
-
-The baseline distributions for reported revenue in the treatment and control groups, based on information from May 2021, can be found in Figure \@ref(fig:baselinerevenue). The baseline distributions for number of full-time and part-time employees in the treatment and control groups, also based on information from May 2021, is shown in Figure \@ref(fig:baselineemployees).
+The baseline distributions for reported revenue in the treatment and control groups, based on information from May 2021, can be found in Figure \@ref(fig:baselinerevenue). The baseline distributions for number of full-time and part-time employees in the treatment and control groups, also based on information from May 2021, is shown in Figure \@ref(fig:baselineemployees). In this figures, the distributions are extremely similar, indicating the comparability of the treatment and control populations with regard to revenue and employment numbers.
 
 ```{r survey1summary, echo = FALSE, message = FALSE, warning = FALSE}
 # summarize results for survey 1
@@ -550,11 +550,11 @@ Finally, in order to ascertain that the recommendations for each of the findings
 
 Although great care was taken with every step of the design of this experiment, with the goal of gathering data that would accurately represent current conditions, the authors acknowledge to following limitations.
 
-Cluster sampling has inherent constraints that might affect external validity, including the reduction of the population, in this case the entirety of restaurant business in Ontario, to smaller groups, potentially affect representation. This may lead to a higher potential of sampling error and biases, as the factor by which the population is clustered might introduce unforeseen conditions. However, cluster sampling by local health authority population sizes was necessary as the goal of this experiment was to replicate current protocols for mandated closures, which have been dictated by local health authorities. The ethical implications of experimenting in the entirety of the population proved to be unsound, as the negative effects of closures would have been exacerbated. Sampling was necessary to understand the impact while containing its potentially devastating effects.
+Cluster sampling has inherent constraints that might affect external validity, including the reduction of the population, in this case the entirety of restaurant business in Ontario, to smaller groups, potentially affecting representation. This may lead to a higher potential of sampling error and biases, as the factor by which the population is clustered might introduce unforeseen conditions. However, cluster sampling by local health authority population sizes was necessary as the goal of this experiment was to replicate current protocols for mandated closures, which have been dictated by local health authorities. The ethical implications of experimenting in the entirety of the population proved to be unsound, as the negative effects of closures would have been exacerbated. Sampling was necessary to understand the impact while containing its potentially devastating effects.
 
 A second limitation arises from the decision to use food inspection records to collect information on current restaurants. We acknowledge that this process would effectively erase from our study all businesses that do not currently operate in accordance to the legal requirement to properly license a restaurant business. As such, should the Ontario Ministry of Economic Development, Job Creation and Trade need to understand the COVID-19 impact on non-licensed restaurant businesses, we recommend further research.
 
-Two types of survey non-response, unit and item non-response, present another limitation. The first, in which an individual refuses to participate, and the second, in which a participant refuses to answer a particular question, might affect the accuracy of inferences if the individuals who participate are systemically different from those who do not [@imai].
+Two types of survey non-response, unit and item non-response, present another limitation. The first, in which an individual refuses to participate, and the second, in which a participant refuses to answer a particular question, might affect the accuracy of inferences if the individuals who participate are systemically different from those who do not [@imai]. This study reduced the impact of non-response bias by allowing participants to complete the survey by online form, mail, or phone, and by following up on non-responses.
 
 
 ```{r nonresponse, fig.cap="Non-response and partial response rates for Survey 1 and 2", fig.width=8, fig.height=4, echo = FALSE, message = FALSE, warning = FALSE}
@@ -610,7 +610,7 @@ A final limitation is the use of self-reported information. A main concern is th
 
 ## Future Directions
 
-#TODO: TALK ABOUT POTENTIALLY USING PROPENSITY SCORE WEIGHTING TO MAKE SURE THAT THE RESULTS REFLECT ONTARIO'S RACIAL DEMOGRAPHICS. SEE DATA_SIMULATION FILE FOR COMPARISON OF ONTARIO, TREATMENT, AND CONTROL. CITE READING.
+For extrapolating results to the whole of Ontario, the demographics of the areas sampled should be compared to the demographics of the entire province. While efforts were taken to take a sample of LHA areas representative of all those in Ontario, extreme demographic variation between LHAs made this difficult. Considering the LHAs selected for the treatment group, the population is 3.8% Indigenous and 11.9% visible minority [@census_2016]. If we look at the LHAs selected for the control group, the population is 4.7% Indigenous and 16.6% visible minority [@census_2016]. Ontario's population as a whole is 2.8% Indigenous and 28.9% visible minority [@census_2016]. While the units of study in this experiment were restaurants and not individuals, it is worth considering that there may proportionately be more minority-owned restaurants in the entire province than these surveys suggest. As minority-owned restaurants were more impacted by the closures in this study, the proportion of minority-owned restaurants may influence the outcome of a pandemic closure.
 
 #TODO: TALK ABOUT RESEARCH INTO HOW TO EFFECTIVELY SUPPORT BUSINESSES
 
