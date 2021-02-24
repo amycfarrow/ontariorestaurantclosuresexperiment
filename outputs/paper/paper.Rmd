@@ -1,11 +1,11 @@
 ---
-title: "COVID-19 Closures Negatively Impact Restaurant Revenue and Employment"
+title: "COVID-19 Closures Impact Restaurant Revenue and Employment Unequally"
 author: "Lorena Almaraz De La Garza, Amy Farrow, and Kumalasari Sondjaja"
 date: "September 20th, 2021"
 output:
   bookdown::pdf_document2:
     toc: yes
-subtitle: "A random controlled trial, with surveys, to identify the impact of mandatory partial closures on Ontario restaurants"
+subtitle: "A random controlled trial to identify the impact of mandatory partial closures on Ontario restaurants"
 abstract: "This report covers an experiment conducted by Petit Poll to test the impact of COVID-19 closures on Ontario restaurants. A randomized controlled trial was conducted and surveys were used to collect results. The data show that restaurant revenue and employee counts were negatively impacted by a mandatory two-week partial closure, and dine-in restaurants and restaurants owned by visible minorites were more negatively impacted. These results suggest that if more closures are necessary, Ontario should support restaurant owners by offering support for take-out services and minority-owned businesses."
 thanks: 'Code and data are available at: [github.com/amycfarrow/ontariorestaurantclosuresexperiment](https://github.com/amycfarrow/ontariorestaurantclosuresexperiment).'
 bibliography: references.bib
@@ -185,7 +185,7 @@ ggplot(df,aes(x = date, y = 0, col = status, label = milestone)) +
   geom_text(aes(x = as_date("2021-07-16"), y = 0.1, label = "Study period of Survey 2"), size = 3, color = "#84b7d0")
 ```
 
-A project timeline can be found in Figure \@ref(fig:timeline). Survey 1 was conducted June 3rd to 27th 2021, and it asked about the month of May 2021. The survey can be found online by clicking here: [2021 Ontario Restaurant Survey 1](https://forms.gle/ZDc5HJBWmJu5snHf9).Survey 1 Data was used to confirm that the two-stage stratified cluster sampling had created treatment and control groups that were roughly equivalent. Survey 1 collected the following data:
+A project timeline can be found in Figure \@ref(fig:timeline). Survey 1 was conducted June 3rd to 27th 2021, and it asked about the month of May 2021. The survey can be found online by clicking here: [2021 Ontario Restaurant Survey 1](https://forms.gle/ZDc5HJBWmJu5snHf9). Survey 1 collected the following data:
 
 * Demographic information
   - Disability status: According to the UN Convention on the Rights of Persons with Disabilities, persons with disabilities are described as having "long-term physical, mental, intellectual or sensory impairments which in interaction with various barriers may hinder their full and effective participation in society on an equal basis with others."
@@ -254,9 +254,9 @@ Reaching restaurant owners to better understand their businesses, and the impact
 
 ### Survey 1
 
-The initial survey provided a clear description of the characteristics of the treatment and control groups. As indicated in Table \@ref(tab:survey1summary), the groups are comparable, showing no notable differences across any of the variables studied. Survey 1 was necessary to collect data before the intervention to ensure that the treatment and control groups were in fact comparable, verifying the efficacy of the randomized treatment assignment and allowing for an accurate estimation of the counterfactual. The counterfactual – or the representation of what would have happened had the intervention not taken place – is essential to measuring, and reporting on, the effect of the mandated restaurant closures. If the control is an accurate estimate of the counterfactual, the experiment is internally valid and we can observe the true impact of the treatment [@gertler]. 
+The initial survey provided a clear description of the characteristics of the treatment and control groups. The data was used to confirm that the two-stage stratified cluster sampling had created treatment and control groups that were roughly equivalent. As indicated in Table \@ref(tab:survey1summary), the groups are comparable, showing no notable differences across any of the variables studied. Survey 1 was necessary to collect data before the intervention to ensure that the treatment and control groups were in fact comparable, verifying the efficacy of the randomized treatment assignment and allowing for an accurate estimation of the counterfactual. The counterfactual – or the representation of what would have happened had the intervention not taken place – is essential to measuring, and reporting on, the effect of the mandated restaurant closures. If the control is an accurate estimate of the counterfactual, the experiment is internally valid and we can observe the true impact of the treatment [@gertler]. 
 
-The baseline distributions for reported revenue in the treatment and control groups, based on information from May 2021, can be found in Figure \@ref(fig:baselinerevenue). The baseline distributions for number of full-time and part-time employees in the treatment and control groups, also based on information from May 2021, is shown in Figure \@ref(fig:baselineemployees). In this figures, the distributions are extremely similar, indicating the comparability of the treatment and control populations with regard to revenue and employment numbers.
+The pre-treatment distributions for reported revenue in the treatment and control groups, based on information from May 2021, can be found in Figure \@ref(fig:baselinerevenue). The pre-treatment distributions for number of full-time and part-time employees in the treatment and control groups, also based on information from May 2021, is shown in Figure \@ref(fig:baselineemployees). In these figures, the distributions are extremely similar, indicating the comparability of the treatment and control populations with regard to revenue and employment numbers.
 
 ```{r survey1summary, echo = FALSE, message = FALSE, warning = FALSE}
 # summarize results for survey 1
@@ -273,14 +273,14 @@ survey_1 %>%
   mutate(group = c("", "Service type", "", "", "Owner has disability", "", "", "Owner identifies as woman", "", "", "Owner is Indigenous", "", "", "Owner is a visible minority (non-Indigenous)", "", "", "Revenue", "Number of full-time employees", "Number of part-time employees")) %>%
   
 # put the results in a table
-  knitr::kable(caption = "Summary statistics for treatment and control baselines",
+  knitr::kable(caption = "Summary statistics for treatment and control groups, pre-treatment",
                booktabs = TRUE, linesep = "",
                col.names = c("", "", "Treatment", "Control")) %>%
   kableExtra::kable_styling(latex_options = "striped", stripe_index =c(1,5:7,11:13,17:19), stripe_color = "#f9f9f9") %>%
   column_spec(1, color = "#cd6423")
 ```
 
-```{r baselinerevenue, fig.cap="Revenue distribution for treatment and control baselines, from Survey 1", fig.width=10, fig.height=4, echo = FALSE, message = FALSE, warning = FALSE}
+```{r baselinerevenue, fig.cap="Revenue distribution for treatment and control groups, pre-treatment", fig.width=10, fig.height=4, echo = FALSE, message = FALSE, warning = FALSE}
 # plot survey 1 revenue distribution, separating treatment and control
 ggplot(survey_1, aes(x = revenue / 1000, fill = group)) +                       
   geom_histogram(position = "dodge", binwidth = 5) +
@@ -293,7 +293,7 @@ ggplot(survey_1, aes(x = revenue / 1000, fill = group)) +
   scale_fill_manual(values = c("#84b7d0", "#D8B70A"))
 ```
 
-```{r baselineemployees, fig.cap="Employment distribution for treatment and control baselines, from Survey 1", fig.width=10, fig.height=6, echo = FALSE, message = FALSE, warning = FALSE}
+```{r baselineemployees, fig.cap="Employment distribution for treatment and control groups, pre-treatment", fig.width=10, fig.height=6, echo = FALSE, message = FALSE, warning = FALSE}
 # plot survey 1 employement numbers, separating treatment and control
 
 # make the full time employment count plot
@@ -330,7 +330,7 @@ plot_grid(title, p, ncol=1, rel_heights=c(0.1, 1))
 
 ### Survey 2
 
-The second survey results showed marked differences between treatment and control groups in most variables. A summary of these results is found in Table \@ref(tab:survey2summary). Naturally, a salient difference is found in service type, with dine-in restaurants decreasing due to mandated shutdowns – the intervention itself – with 7% of restaurants in the control group providing dine-in service, and only 4% in the treatment group. Similarly, the mean revenue decreases noticeably for the treatment group (\$45,959.60) compared to the control group ($70,675.60). The mean numbers of employees, both full-time and part-time, show a decrease as well, from 8 and 5 respectively in the control group, to 5 and 3 for the treatment. A visual representation of the differences between treatment and control groups for revenue and number of employees can be found in Figure \@ref(fig:postrevenue) and Figure \@ref(fig:postemployees) respectively.
+The second survey results showed marked differences between treatment and control groups in most variables. A summary of these results is found in Table \@ref(tab:survey2summary). Naturally, a salient difference is found in reported revenue, given the treatment group restaurants were unable to offer dine-in service for almost half the month. The mean revenue decreases noticeably for the treatment group (\$45,959.60), compared to the control group (\$70,675.60). The mean numbers of employees, both full-time and part-time, show a decrease as well, from 8 and 5 respectively in the control group, to 5 and 3 for the treatment. A visual representation of the differences between treatment and control groups for revenue and number of employees can be found in Figure \@ref(fig:postrevenue) and Figure \@ref(fig:postemployees) respectively.
 
 
 ```{r survey2summary, echo = FALSE, message = FALSE, warning = FALSE}
@@ -348,7 +348,7 @@ survey_2 %>%
   mutate(group = c("", "Service type", "", "", "Owner has disability", "", "", "Owner identifies as woman", "", "", "Owner is Indigenous", "", "", "Owner is a visible minority (non-Indigenous)", "", "", "Closure", "", "", "Revenue", "Number of full-time employees", "Number of part-time employees")) %>%
 
 # put the results in a table
-  knitr::kable(caption = "Summary statistics for treatment and control groups post-treatment",
+  knitr::kable(caption = "Summary statistics for treatment and control groups, post-treatment",
                booktabs = TRUE, linesep = "",
                col.names = c("", "", "Treatment", "Control")) %>%
    kableExtra::kable_styling(latex_options = "striped", stripe_index =c(1,5:7,11:13,17:19), stripe_color = "#f9f9f9") %>%
@@ -371,11 +371,11 @@ To prevent a misleading estimate of the counterfactual in this experiment, the e
 
 ### Closures had a negative impact on revenues and employment counts
 
-As noted in the results from Survey 2, the intervention led to a noticeable difference in reported revenues. The mean reported revenue for the treatment group was \$45,959.60 and $70,675.60 for the control. The revenue distribution for both groups is show in Figure \@ref(fig:postrevenue). The mean number of employees, both full-time and part-time, show a decrease as well, from 8 and 5 respectively in the control group, to 5 and 3 for the treatment. Figure \@ref(fig:postemployees) shows further detail of this finding.
+As noted in the results from Survey 2, the intervention led to a noticeable difference in reported revenues. The mean reported revenue for the treatment group was \$45,959.60 and $70,675.60 for the control. The revenue distribution for both groups is show in Figure \@ref(fig:postrevenue). The mean number of employees, both full-time and part-time, show a were noticeably different as well. There were an average of 8.0 full-time and 4.7 part-time employees in control group restaurants, but only 5.2 full-time and 3.0 part-time employees in the treatment group restaurants. Figure \@ref(fig:postemployees) shows further detail of this finding.
 
-With these effects in mind, Petit Poll supports the Government of Ontario's programs in benefit of small businesses: the Ontario Small Business Support Grant, the Personal Protective Equipment Relief Grant, and the current Property Tax and Energy Rebate Grants [@relief]. Additionally, based on the evidence shown in this report, it is important to consider developing provincial financial support programs for furloughed employees, in addition to standing federal programs like Employment Insurance, that directly address the negative impact of COVID-19 closures. Ensuring the protection of workers in the restaurant industry specifically, not only physically as the spread of the virus is contained, but economically with financial aid will be crucial to the success of mandated closures.
+With these effects in mind, Petit Poll supports the Government of Ontario's programs in benefit of small businesses: the Ontario Small Business Support Grant, the Personal Protective Equipment Relief Grant, and the current Property Tax and Energy Rebate Grants [@relief]. Additionally, based on the evidence shown in this report, it is important to consider developing provincial financial support programs for furloughed employees that directly address the negative impact of COVID-19 closures, in addition to standing federal programs like Employment Insurance. Ensuring the protection of workers in the restaurant industry specifically, not only physically as the spread of the virus is contained, but economically with financial aid, will be crucial to the success of mandated closures.
 
-```{r postrevenue, fig.cap="Revenue distribution for treatment and control groups, from Survey 2", fig.width=10, fig.height=4, echo = FALSE, message = FALSE, warning = FALSE}
+```{r postrevenue, fig.cap="Revenue distribution for treatment and control groups, post-treatment", fig.width=10, fig.height=4, echo = FALSE, message = FALSE, warning = FALSE}
 # plot survey 2 revenue distribution, separating treatment and control
 ggplot(survey_2, aes(x = revenue / 1000, fill = group)) +                       
   geom_histogram(position = "dodge", binwidth = 5) +
@@ -388,7 +388,7 @@ ggplot(survey_2, aes(x = revenue / 1000, fill = group)) +
   scale_fill_manual(values = c("#84b7d0", "#D8B70A"))
 ```
 
-```{r postemployees, fig.cap="Employment distribution for treatment and control groups, from Survey 2", fig.width=10, fig.height=6, echo = FALSE, message = FALSE, warning = FALSE}
+```{r postemployees, fig.cap="Employment distribution for treatment and control groups, post-treatment", fig.width=10, fig.height=6, echo = FALSE, message = FALSE, warning = FALSE}
 # plot survey 2 employement numbers, separating treatment and control
 
 # make the full time employment count plot
@@ -536,7 +536,7 @@ These examples provide a mere glance at the economic and social implications of 
 
 This experiment would not have been possible without the participation of hundreds of restaurant owners. It is Petit Poll's greatest priority to ensure all studies adhere to the highest ethical standards, especially when involving human participants. Ethical requirements for this project, particularly the survey portion, included:
 
-- Anonymity, by determining that collecting the restaurant owner's name was unnecessary, and processing survey data with numerical IDs rather than the restaurant name or address.
+- Anonymity, by determining that collecting the restaurant owner's name was unnecessary, and processing survey data with numerical IDs rather than restaurant names or addresses.
 - Confidentiality, by employing a professional data management account throughout the entirety of the project.
 - Informed consent, by providing a clear explanation of the purposes of the study, the nature of the survey, and contact details should participants require additional information. 
 - Voluntary participation and disclosure, by allowing respondents to engage or refuse to engage in the study and allowing non-response of demographic questions.
@@ -554,8 +554,7 @@ Cluster sampling has inherent constraints that might affect external validity, i
 
 A second limitation arises from the decision to use food inspection records to collect information on current restaurants. We acknowledge that this process would effectively erase from our study all businesses that do not currently operate in accordance to the legal requirement to properly license a restaurant business. As such, should the Ontario Ministry of Economic Development, Job Creation and Trade need to understand the COVID-19 impact on non-licensed restaurant businesses, we recommend further research.
 
-Two types of survey non-response, unit and item non-response, present another limitation. The first, in which an individual refuses to participate, and the second, in which a participant refuses to answer a particular question, might affect the accuracy of inferences if the individuals who participate are systemically different from those who do not [@imai]. This study reduced the impact of non-response bias by allowing participants to complete the survey by online form, mail, or phone, and by following up on non-responses.
-
+Two types of survey non-response, unit and item non-response, present another limitation. The first, in which an individual refuses to participate, and the second, in which a participant refuses to answer a particular question, might affect the accuracy of inferences if the individuals who participate are systemically different from those who do not [@imai]. This study reduced the impact of non-response bias by allowing participants to complete the survey by online form, mail, or phone, and by following up on non-responses. However, it is important to consider that, despite these measures, closed restaurants may have been less likely to participate, potentially biasing the results.
 
 ```{r nonresponse, fig.cap="Non-response and partial response rates for Survey 1 and 2", fig.width=8, fig.height=4, echo = FALSE, message = FALSE, warning = FALSE}
 # plot nonresponse, response, and partial response numbers for survey 1 and survey 2
@@ -610,7 +609,7 @@ A final limitation is the use of self-reported information. A main concern is th
 
 ## Future Directions
 
-For extrapolating results to the whole of Ontario, the demographics of the areas sampled should be compared to the demographics of the entire province. While efforts were taken to take a sample of LHA areas representative of all those in Ontario, extreme demographic variation between LHAs made this difficult. Considering the LHAs selected for the treatment group, the population is 3.8% Indigenous and 11.9% visible minority [@census_2016]. If we look at the LHAs selected for the control group, the population is 4.7% Indigenous and 16.6% visible minority [@census_2016]. Ontario's population as a whole is 2.8% Indigenous and 28.9% visible minority [@census_2016]. While the units of study in this experiment were restaurants and not individuals, it is worth considering that there may proportionately be more minority-owned restaurants in the entire province than these surveys suggest. As minority-owned restaurants were more impacted by the closures in this study, the proportion of minority-owned restaurants may influence the outcome of a pandemic closure. Therefore, this experiment should be considered a first step in understanding the impact of COVID-19 closures and additional research, aimed deliberately at understanding minority-owned businesses, should be conducted.
+For extrapolating results to the whole of Ontario, the demographics of the areas sampled should be compared to the demographics of the entire province. While efforts were taken to take a sample of LHA areas representative of all those in Ontario, extreme demographic variation between LHAs made this difficult. Considering the LHAs selected for the treatment group, the population is 3.8% Indigenous and 11.9% visible minority [@census_2016]. If we look at the LHAs selected for the control group, the population is 4.7% Indigenous and 16.6% visible minority [@census_2016]. Ontario's population as a whole is 2.8% Indigenous and 28.9% visible minority [@census_2016]. While the units of study in this experiment were restaurants and not individuals, it is worth considering that there may proportionately be more minority-owned restaurants in the entire province than these surveys suggest. As minority-owned restaurants were more impacted by the closures in this study, the proportion of minority-owned restaurants may influence the societal outcome of a pandemic closure. Therefore, this experiment should be considered a first step in understanding the impact of COVID-19 closures and additional research, aimed deliberately at understanding minority-owned businesses, should be conducted.
 
 This experiment collected information about restaurant owners in Ontario to study the economic and social impact of closures on a business level. To understand the effects on an individual level, questionnaires that are aimed at employees would be a feasible adaptation of this study. 
 
