@@ -1,11 +1,11 @@
 ---
-title: "COVID-19 Closures Impact Restaurant Revenue and Employment Unequally"
+title: "Impact of COVID-19 Closures on Revenue and Employment More Severe for Minority-Owned and Dine-In Restaurants"
 author: "Lorena Almaraz De La Garza, Amy Farrow, and Kumalasari Sondjaja"
 date: "September 20th, 2021"
 output:
   bookdown::pdf_document2:
     toc: yes
-subtitle: "A randomized controlled trial to identify the impact of mandatory partial closures on Ontario restaurants"
+subtitle: "A randomized controlled trial of mandatory partial closures and Ontario restaurants"
 abstract: "This report covers an experiment conducted by Petit Poll to test the impact of COVID-19 closures on Ontario restaurants. A randomized controlled trial was conducted and surveys were used to collect results. The data show that restaurant revenue and employee counts were negatively impacted by a mandatory two-week partial closure, and dine-in restaurants and restaurants owned by visible minorites were more negatively impacted. These results suggest that if more closures are necessary, Ontario should assist restaurant owners by offering support for take-out services and minority-owned businesses."
 thanks: 'Code and data are available at: [github.com/amycfarrow/ontariorestaurantclosuresexperiment](https://github.com/amycfarrow/ontariorestaurantclosuresexperiment).'
 bibliography: references.bib

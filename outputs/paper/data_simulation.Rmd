@@ -19,22 +19,21 @@ library(bookdown)    # for cross referencing figures and graphs; referencing
 library(kableExtra)  # for nicer tables
 library(here) # for working in projects
 
-```
-
-# Introduction
-
-Analysis for this project uses the R statistical programming language [@R], and more specifically, the `tidyverse` package for data manipulation [@tidyverse]. Because the data is managed using R Projects, `here` is used to reference file locations [@here]. `kableExtra` formats tables [@kableExtra]. `bookdown` is used to format the report [@bookdown].
-
-First, we read in the skeleton for the survey data. This is what we would hypothetically know about a restaurant before they took the survey. We keep only the ID numbers, the group, and the last 3 characters of the postal code, which the survey-taker will have to enter to verify identity. All other variables, like name and full address, are only kept in the only frame for surveying, which contains no private information.
-
-```{r, warning = FALSE}
 # read in the data
 # NOTE: scripts 01_scrape_health_depts, 
 # 02_stratified_cluster_sampling,
 # 03_clean_restaurant_list_csvs, 
 # 04_restaurant_survey_frame,
 # and 05_import_yelp_data must have been run already
+```
 
+# Introduction
+
+Analysis for this project uses the R statistical programming language [@R], and more specifically, the `tidyverse` package for data manipulation [@tidyverse]. Because the data is managed using R Projects, `here` is used to reference file locations [@here]. `kableExtra` formats tables [@kableExtra]. `bookdown` is used to format the report [@bookdown].
+
+First, we read in the skeleton for the survey data in Table \@ref(tab:start). This is what we would hypothetically know about a restaurant before they took the survey. We keep only the ID numbers, the group, and the last 3 characters of the postal code, which the survey-taker will have to enter to verify identity. All other variables, like name and full address, are only kept in the only frame for surveying, which contains no private information.
+
+```{r start, echo = FALSE, message = FALSE, warning = FALSE}
 table_for_surveys <- read_csv(here::here("outputs/data/table_for_surveys.csv"))
 
 survey_1 <- table_for_surveys %>%
@@ -52,7 +51,10 @@ num_total <- first(count(survey_1))
 
 survey_2 <- survey_1
 
-survey_1
+survey_1 %>%
+  slice(101:110) %>%
+  knitr::kable(booktabs = TRUE, linesep ='', caption = "Frame for surveys") %>%
+  kableExtra::kable_styling(latex_options = "hold_position")
 ```
 
 From there, data was simulated for all questions asked on the survey.
@@ -61,9 +63,9 @@ From there, data was simulated for all questions asked on the survey.
 
 ## Research
 
-First, some research:
+First, we used Yelp restaurant data to see how many Ontario restaurants offered different types of service in Table \@ref(tab:yelptakeout) and Table \@ref(tab:yelptable) [@yelp_dataset].
 
-```{r, warning = FALSE}
+```{r, include = FALSE}
 # Read in data
 yelp_data <- read_csv(here("inputs/data/yelp_restaurants_ontario.csv")) %>% 
   na.omit() # Remove all NAs
@@ -75,32 +77,39 @@ takeout <- yelp_data %>%
   select(RestaurantsTakeOut)
 summary(takeout)
 ```
-```{r, warning = FALSE}
+
+```{r yelptakeout, echo = FALSE, message = FALSE, warning = FALSE}
 takeout_percentage <- takeout %>%
   group_by(RestaurantsTakeOut) %>% 
   summarize(count = n()) %>%
   mutate(percentage = count/sum(count))
 
-takeout_percentage
+takeout_percentage %>%
+  knitr::kable(booktabs = TRUE, caption = "Yelp Ontario take-out data") %>%
+  kableExtra::kable_styling(latex_options = "hold_position")
 ```
 
-```{r, warning = FALSE}
+```{r, include = FALSE}
 # Check proportion of RestaurantsTableService
 tableserv <- yelp_data %>% 
   select(RestaurantsTableService)
 summary(tableserv)
 ```
 
-```{r, warning = FALSE}
+```{r yelptable, echo = FALSE, message = FALSE, warning = FALSE}
 tableserv_percentage <- tableserv %>%
   group_by(RestaurantsTableService) %>% 
   summarize(count = n()) %>%
   mutate(percentage = count/sum(count))
 
-tableserv_percentage
+tableserv_percentage %>%
+  knitr::kable(booktabs = TRUE, caption = "Yelp Ontario table service data") %>%
+  kableExtra::kable_styling() 
 ```
 
-```{r, warning = FALSE}
+We used these percentages to estimate proportions of restaurants with take-out and dine-in service, in Table \@ref(tab:serviceprop).
+
+```{r serviceprop, echo = FALSE, message = FALSE, warning = FALSE}
 # Calculate invalid responses (neither dine-in nor takeout)
 invalid <- yelp_data %>% 
   filter(RestaurantsTableService == FALSE & RestaurantsTakeOut == FALSE) %>% 
@@ -126,15 +135,19 @@ service_percentage<- data.frame(
   percentage = c(takeout_only$n, dinein_only$n, both$n), options(digits = 2)
 )
 
- service_percentage
+ service_percentage %>%
+  knitr::kable(booktabs = TRUE, caption = "Estimated service type proportions") %>%
+  kableExtra::kable_styling()
 ```
 
 According to Ontario restaurant data from Yelp [@yelp_dataset], approximately 6% of restaurants
 offer dine in service, 32.5% offer takeout, and 61.5% offer both.
 
-## Survey 1
+## Survey 1 and 2
 
-```{r, warning = FALSE}
+We randomly sampled to assign each restaurant to be "dinein", "both", or "takeout", with probabilities of 0.06, 0.615, and 0.325, in Table \@ref(tab:servicetype1) and Table \@ref(tab:servicetype2).
+
+```{r servicetype1, echo = FALSE, message = FALSE, warning = FALSE}
 # randomly assign service_provided using ratios above
 
 set.seed(19)
@@ -147,12 +160,14 @@ survey_1 <- survey_1 %>%
       prob = c(0.06, 0.615, 0.325)
       ))
 
-survey_1
+survey_1 %>%
+  slice(101:110) %>%
+  knitr::kable(booktabs = TRUE, linesep ='', caption = "Adding service type to Survey 1 data") %>%
+  kableExtra::kable_styling()
 ```
 
-## Survey 2
 
-```{r, warning = FALSE}
+```{r servicetype2, echo = FALSE, message = FALSE, warning = FALSE}
 # randomly assign service_provided using ratios above
 
 set.seed(19)
@@ -165,7 +180,10 @@ survey_2 <- survey_2 %>%
       prob = c(0.06, 0.615, 0.325)
       ))
 
-survey_2
+survey_2 %>%
+  slice(101:110) %>%
+  knitr::kable(booktabs = TRUE, linesep ='', caption = "Adding service type to Survey 2 data") %>%
+  kableExtra::kable_styling()
 ```
 
 # Demographic traits of owners: disability
@@ -174,24 +192,28 @@ survey_2
 
 0.5% of small to medium enterprises in Canada are owned by persons with disabilities [@ownershipdemos].
 
-## Survey 1
+## Survey 1 and 2
 
-```{r, warning = FALSE}
+We randomly sampled to assign each restaurant to either "yes", "no", or "nonanswer", with probabilities of 0.005, 0.985, and 0.01, in Table \@ref(tab:disability1) and Table \@ref(tab:disability2).
+
+```{r disability1, echo = FALSE, message = FALSE, warning = FALSE}
 # randomly assign disability status using ratios above
 
 set.seed(19893)
 survey_1 <- survey_1 %>%
   mutate(disability = sample(c("yes", "no", "nonanswer"),
                              size = num_total,
-                             prob = c(0.005, .985, 0.01),
+                             prob = c(0.005, 0.985, 0.01),
                              replace = TRUE))
 
-survey_1
+survey_1 %>%
+  slice(101:110) %>%
+  knitr::kable(booktabs = TRUE, linesep ='', caption = "Adding owner disability status to Survey 1 data") %>%
+  kableExtra::kable_styling()
 ```
 
-## Survey 2
 
-```{r, warning = FALSE}
+```{r disability2, echo = FALSE, message = FALSE, warning = FALSE}
 # randomly assign disability status using ratios above
 
 set.seed(19893)
@@ -201,16 +223,19 @@ survey_2 <- survey_2 %>%
                              prob = c(0.005, .985, 0.01),
                              replace = TRUE))
 
-survey_2
+survey_2 %>%
+  slice(101:110) %>%
+  knitr::kable(booktabs = TRUE, linesep ='', caption = "Adding owner disability status to Survey 2 data") %>%
+  kableExtra::kable_styling()
 ```
 
 # Demographic traits of owners: racial and ethnic minorities and gender
 
 ## Research
 
-Some research for racial and ethnic minorities and women in Canada and in business:
+We researched racial and ethnic minorities and women using census data broken down by local health authorities [@census_2016], shown in Table \@ref(tab:LHApop), Table \@ref(tab:groupscount), and Table \@ref(tab:groupsprop).
 
-```{r, warning = FALSE}
+```{r LHApop, echo = FALSE, message = FALSE, warning = FALSE}
 ### Load census dataset by Health Regions ###
 ### Download link: 
 ### https://www12.statcan.gc.ca/census-recensement/2016/dp-pd/prof/details/
@@ -332,12 +357,18 @@ populations <- populations %>%
            brant + sudbury + northwestern + waterloo + durham + southwestern) %>%
   select(-oxford, -elgin)
 
-populations
+populations %>%
+  slice(1,2,3,5) %>%
+  select(-Ontario, -total_treat, -total_control) %>%
+  mutate(Info = c("Total Population", "Indigenous", "Visible Minority", "Women")) %>%
+  knitr::kable(booktabs = TRUE, caption = "Populations in Ontario local health authorities") %>%
+  kableExtra::kable_styling(latex_options = "scale_down")
 
+#save this table
 write_csv(populations, here("outputs/data/populations"))
 ```
 
-```{r, warning = FALSE}
+```{r groupscount, echo = FALSE, message = FALSE, warning = FALSE}
 # Split the population info into our treatment and control groups.
 
 populations_split <- matrix(ncol=4, nrow=5)
@@ -377,10 +408,13 @@ populations_split[,4] <- control
 populations_split <- as.data.frame(populations_split)
 colnames(populations_split) <- c("Info", "Ontario", "Treatment", "Control")
 
-populations_split
+populations_split %>%
+  slice(1,2,3,5) %>%
+  knitr::kable(booktabs = TRUE, caption = "Populations in treatment and control groups") %>%
+  kableExtra::kable_styling()
 ```
 
-```{r, warning = FALSE}
+```{r groupsprop, echo = FALSE, message = FALSE, warning = FALSE}
 ### Get percentage proportions of demographic groups of interest
 
 populations_split_percentage <- matrix(ncol=4, nrow=5)
@@ -406,7 +440,10 @@ colnames(populations_split_percentage) <- c("Info",
                                             "Treatment", 
                                             "Control")
 
-populations_split_percentage
+populations_split_percentage %>%
+  slice(1,2,3,5) %>%
+  knitr::kable(booktabs = TRUE, caption = "Proportions in treatment and control groups") %>%
+  kableExtra::kable_styling()
 ```
 
 We established expected percentages for the treatment and control regions based on census data [@census_2016].
@@ -423,8 +460,11 @@ Therefore, we can estimate that 0.058 of restaurant owners are a visible minorit
 Indigenous people have 3.7% service business ownership as opposed to 15.3% in the reference population [@businessesper]. They are 0.24 times as likely to own a service business in Ontario.
 Therefore, we can estimate that 0.009 of business owners in the treatment group are Indigenous, and 0.011 in the control group.
 
-## Survey 1
-```{r, warning = FALSE}
+## Survey 1 and 2
+
+We randomly sampled to assign each restaurant to either "yes", "no", or "nonanswer", for the owner being Indigenous, a visible minority, or a woman, using the proportions above (with 0.01 set aside for "nonresponse"), in Table \@ref(tab:minority1) and Table \@ref(tab:minority2).
+
+```{r minority1, echo = FALSE, message = FALSE, warning = FALSE}
 # Randomly assign racial and ethnic minorities, and women, using the ratios above:
 
 set.seed(19893)
@@ -476,12 +516,14 @@ survey_1 <- bind_rows(
     mutate(visible = "no")
 )
   
-survey_1
+survey_1 %>%
+  arrange(ID) %>%
+  slice(101:110) %>%
+  knitr::kable(booktabs = TRUE, linesep ='', caption = "Adding owner minority status and gender to Survey 1 data") %>%
+  kableExtra::kable_styling()
 ```
 
-## Survey 2
-
-```{r, warning = FALSE}
+```{r minority2, echo = FALSE, message = FALSE, warning = FALSE}
 # Randomly assign racial and ethnic minorities, and women, using the ratios above:
 
 set.seed(19893)
@@ -532,7 +574,11 @@ survey_2 <- bind_rows(
     mutate(visible = "no")
 )
   
-survey_2
+survey_2 %>%
+  arrange(ID) %>%
+  slice(101:110) %>%
+  knitr::kable(booktabs = TRUE, linesep ='', caption = "Adding owner minority status and gender to Survey 2 data") %>%
+  kableExtra::kable_styling()
 ```
 
 # Shutdowns
@@ -545,7 +591,9 @@ survey_2
 
 # Survey 2
 
-```{r, warning = FALSE}
+We randomly sampled to assign each restaurant to either "none", "temporary", or "permanent" for shutdowns, with probabilities of 0.558, 0.432, and 0.01, in Table \@ref(tab:closures).
+
+```{r closures, echo = FALSE, message = FALSE, warning = FALSE}
 # Randomly assign shutdown using the ratios above only for the treatment group:
 
 set.seed(19893)
@@ -566,7 +614,10 @@ survey_2 <- bind_rows(
 ) %>%
   arrange(ID)
   
-survey_2
+survey_2 %>%
+  slice(101:110) %>%
+  knitr::kable(booktabs = TRUE, linesep ='', caption = "Adding closures to Survey 2 data") %>%
+  kableExtra::kable_styling()
 ```
 
 # Revenue
@@ -579,19 +630,26 @@ In the same year, full-service restaurants had \$13,456,600,000 in revenue, and 
 
 From this, we can calculate an estimated \$69,959 average revenue per month.
 
-From an analysis of Kaggle restaurant data [@kagglerestaurantdata], we can see that restaurant revenue looks like an F distribution.
-The distribution rf(n, df1, df2, ncp) = rf(num_rest, 10, 5) gives an approximate shape. Using the f-distribution formula, we know the distribution has a mean of 10/9, so we would multiply by 62,963 to get the mean to 69,959.
+From an analysis of Kaggle restaurant data [@kagglerestaurantdata], we can see that restaurant revenue looks like an F-distribution.
+The distribution rf(n, df1, df2, ncp) = rf(num_rest, 20, 20) gives an approximately correct shape. Using the F-distribution formula, we know the distribution has a mean of 10/9, so we would multiply by 62,963 to get the mean to 69,959.
 
 ## Survey 1
 
-```{r, warning = FALSE}
+We randomly sampled from the above F-distribution to generate revenues for the restaurants, in Table 
+\@ref(tab:revenue1).
+
+```{r revenue1, echo = FALSE, message = FALSE, warning = FALSE}
 # Randomly sample from the scaled F distribution to generate restaurant revenues:
 
 set.seed(19894)
 survey_1 <- survey_1 %>%
   mutate(revenue = 62963 * rf(num_total,20,20))
 
-survey_1
+survey_1 %>%
+  arrange(ID) %>%
+  slice(101:110) %>%
+  knitr::kable(booktabs = TRUE, linesep ='', caption = "Adding revenue to Survey 1 data") %>%
+  kableExtra::kable_styling()
 ```
 
 ## Research into changes in revenue due to closures
@@ -604,14 +662,16 @@ Revenues went to -35% during the first lockdown wave in March [@bythenumbers]. W
 
 We will assume that takeout-only restaurants will not have losses on average, and dine-in only places will have -100% revenue on average for the days they are closed. With closures 14 out of 31 days in the month, dine-in only will have average losses of -45%.
 
-
 All businesses had a median decrease of -15%, but visible minority-owned businesses had a median decrease of -25% [@aug20192020]. Therefore, an additional -12% will be applied to visible minority-owned restaurants.
 
 There seems to be no significant difference in business losses for disabled owners or female business owners [@aug20192020].
 
 ## Survey 2
 
-```{r, warning = FALSE}
+We started by randomly sampling from the same F-distribution multiplied by 62963, but also multiplied by random sampling from normal distribution centred at 1, with a standard deviation of 0.1, to add some variation from the previous data. For the treatment group data, we then applied a factor that reduced revenue based on level of shutdown (0.5 for temporary and 0.25 for permanent), another factor that reduced revenue based on service type (0.55 for dine-in and 0.83 for both), and another factor that reduced revenue based on minority status (0.88 for minority business owners). This can be seen in Table \@ref(tab:revenue2).
+
+
+```{r revenue2, echo = FALSE, message = FALSE, warning = FALSE}
 # Randomly sample from the scaled F distribution to generate restaurant revenues, 
 # and apply a random number around 1 to add variation:
 
@@ -677,20 +737,21 @@ survey_2 <-
       filter(group == "control")
   )
 
-survey_2
+survey_2 %>%
+  arrange(ID) %>%
+  slice(101:110) %>%
+  knitr::kable(booktabs = TRUE, linesep ='', caption = "Adding revenue to Survey 2 data") %>%
+  kableExtra::kable_styling()
 ```
 
 # Number of employees
 
 ## Research
 
-$82,000 in yearly sales (gross revenue) per full-time equivalent employee [@restfact]
+Restaurants averaged $82,000 in yearly sales (gross revenue) per full-time equivalent employee [@restfact]. Therefore, we can estimate 6,833 monthly revenue per full-time equivalent employee.
 
-Therefore 6,833 monthly revenue per full-time equivalent employee.
-
-In January 2021, there were 2187300 full time sales and service employees in Canada and 1164000 part time sales and service employees [@hourswages].
-Therefore there are 1.9 full time employees per part time employee.
-Part time employees in service and sales averaged 16.6 hours per week. We will assume that 2 PTE = 1 FTE, or 1 PTE = 0.5 FTE.
+In January 2021, there were 2187300 full time sales and service employees in Canada and 1164000 part time sales and service employees [@hourswages]. Therefore, there are 1.9 full time employees per part time employee.
+Part time employees in service and sales averaged 16.6 hours per week [@hourswages]. We will assume that 2 PTE = 1 FTE, or 1 PTE = 0.5 FTE.
 Therefore, for every 1.9 + 1 employees, there are 1.9 + 1*0.5 FTE. For every 2.9 employees, there are 2.4 FTE. 
 
 $1.9 / (1.9 + 0.5) = 1.9 / 2.4 = 0.79$
@@ -699,7 +760,9 @@ $1 / (1.9 + 0.5) = 1 / 2.4 = 0.42$
 
 ## Survey 1
 
-```{r, warning = FALSE}
+We divided revenue by 6833, multiplied by 0.79 and rounded to find the number of full time employees, and multiplied by 0.42 and rounded to find the number of part time employees, in Table \@ref(tab:employ1).
+
+```{r employ1, echo = FALSE, message = FALSE, warning = FALSE}
 # Use revenue to generate realistic numbers of employees for restaurants:
 
 set.seed(19893)
@@ -715,14 +778,21 @@ survey_1 <- bind_rows(
   survey_1 %>% filter(ft >= 1)
 )
 
-survey_1
+survey_1 %>%
+  arrange(ID) %>%
+  slice(101:110) %>%
+  knitr::kable(booktabs = TRUE, linesep ='', caption = "Adding employment numbers to Survey 1 data") %>%
+  kableExtra::kable_styling()
 ```
 
 ## Survey 2
 
-For the second survey, we will assume that treatment restaurants shifted towards part time random amounts-- that is, the number of full time employees per part time employee dropped from 1.9. X is some number less than or equal to 1.9.
+For the second survey, we will assume that treatment restaurants shifted towards part time random amounts-- that is, the number of full time employees per part time employee dropped from 1.9, a small drop that varied per restaurant.
 
-```{r, warning = FALSE}
+We divided revenue by 6833. We used the absolute value of random sample of a normal distribution centred at zero, with a standard deviation of 0.1, as a factor to decrease the part-time ratio of 1.9.
+We then used the new ratio to calculate the number of full-time and part-time employees. This can be seen in Table \@ref(tab:employ2).
+
+```{r employ2, echo = FALSE, message = FALSE, warning = FALSE}
 # Use revenue to generate realistic numbers of employees for restaurants:
 
 set.seed(19893)
@@ -739,8 +809,11 @@ survey_2 <- bind_rows(
   survey_2 %>% filter(ft >= 1)
 )
 
-survey_2
-
+survey_2 %>%
+  arrange(ID) %>%
+  slice(101:110) %>%
+  knitr::kable(booktabs = TRUE, linesep ='', caption = "Adding employment numbers to Survey 2 data") %>%
+  kableExtra::kable_styling(latex_options = "scale_down")
 ```
 
 # Non-response
@@ -750,9 +823,11 @@ survey_2
 A professional mail survey with follow up found a non-response rate of 61% [@nonresponse].
 We will also assume that some people will mail in answers and fill in the form incompletely.
 
-## Survey 1
+## Survey 1 and 2
 
-```{r, warning = FALSE}
+We randomly sampled to assign each row as "yes", "partial", or "no", with probabilities 0.6, 0.01, and 0.39, for nonresponse. We then discarded all the "no" rows. For the partial rows, we randomly selected a column to delete the data for. This can be seen in Table \@ref(tab:response1) and Table \@ref(tab:response2).
+
+```{r response1, echo = FALSE, message = FALSE, warning = FALSE}
 # Randomly select only a subset of all the generated responses to keep, 
 # simulating nonresponse. Also randomly select columns to delete in partial responses, 
 # and delete the data from those rows/columns:
@@ -782,12 +857,14 @@ for (i in c(1:as.numeric(count(survey_1)))){
 survey_1 <- survey_1 %>%
   select(-nonresponse, -which_partial)
 
-survey_1
+survey_1 %>%
+  arrange(ID) %>%
+  slice(101:110) %>%
+  knitr::kable(booktabs = TRUE, linesep ='', caption = "Adding nonresponse to Survey 1 data") %>%
+  kableExtra::kable_styling()
 ```
 
-## Survey 2
-
-```{r, warning = FALSE}
+```{r response2, echo = FALSE, message = FALSE, warning = FALSE}
 # Randomly select only a subset of all the generated responses to keep, 
 # simulating nonresponse. Also randomly select columns to delete in partial responses, 
 # and delete the data from those rows/columns:
@@ -817,10 +894,14 @@ for (i in c(1:as.numeric(count(survey_2)))){
 survey_2 <- survey_2 %>%
   select(-nonresponse, -which_partial)
 
-survey_2
+survey_2 %>%
+  arrange(ID) %>%
+  slice(101:110) %>%
+  knitr::kable(booktabs = TRUE, linesep ='', caption = "Adding nonresponse to Survey 2 data") %>%
+  kableExtra::kable_styling(latex_options = c("scale_down", "hold_position"))
 ```
 
-```{r, warning = FALSE}
+```{r, include = FALSE}
 # Save the two survey results tables:
 
 write_csv(survey_1, here("outputs/data/survey_1.csv"))
@@ -830,7 +911,9 @@ write_csv(survey_2, here("outputs/data/survey_2.csv"))
 
 # Budget
 
-```{r}
+We Calculated our budget based on Canada Post's business costs [@canadapost], Ontario's minimum wage [@minimumwage], and pricing for data management systems for surveys [@alchemer]. The budget can be seen in Table \@ref(tab:budget).
+
+```{r budget, echo = FALSE, message = FALSE, warning = FALSE}
 # research for typical budget numbers
 restaurants = 2006
 survey_total = 2
@@ -860,10 +943,17 @@ survey_budget <- data.frame(
                    "1,203 calls (7 minutes on average) at $14.25/hr",
                    "4,012 mailers at $0.85/ea",
                    "")
-)
+) 
 
+survey_budget %>%
+  knitr::kable(booktabs = TRUE, caption = "Total survey budget") %>%
+  kableExtra::kable_styling(latex_options = "hold_position")
+
+#save the survey for presentation in the main report.
 write_csv(survey_budget, here("outputs/data/survey_budget.csv"))
 ```
+
+\clearpage
 
 \newpage
 
